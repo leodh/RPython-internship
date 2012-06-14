@@ -1,1 +1,1 @@
-{(x x) (with (x x) (with (x (+ x 2)) (+ x x)  ))} {(g x) (* x 4)} (with (x (x 2)) (with (y (g x)) (with (z (+ x 2)) (+ y z))))
+{(x x) (with (x x) (with (x (+ x 2)) (+ x x)  ))} {(g x) (* x 4)} (with (x (x 2)) (with (y (g x)) (with (z (+ x 2)) (+ (y) (z) ))))

@@ -1,0 +1,1 @@
+(with (l (with (l (with (l 9) (with (r 7) ( + l r )))) (with (r (with (l 1) (with (r 0) ( + l r )))) ( - l r )))) (with (r (with (l (with (l 8) (with (r 0) ( - l r )))) (with (r 6) ( + l r )))) ( - l r )))

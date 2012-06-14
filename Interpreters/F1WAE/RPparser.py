@@ -184,6 +184,33 @@ def partitionSpace(word):
             pc += 1
 
     return head, tail
+
+##Replace str.qplit() available, but we need the number of spaces deleted at the beging of the word
+def StripSpace(word):
+    """ Same as str.strip(' ') but also return the number of spaces deleted at the begining. """
+
+    beg = 0
+    end = len(word)
+    count = 0
+
+    while beg < end:
+        if word[beg] == ' ':
+            count += 1
+            beg += 1
+        else:
+            break
+
+    while end > beg:
+        end -= 1
+        if word[end] != ' ':
+            break
+
+    if beg == end == len(word):
+        return '', len(word)
+    else:
+        end += 1
+        assert(end>=0)
+        return word[beg: end], count
 ##
 
 def ParseF1WAE((block, dic)):
@@ -195,12 +222,12 @@ def ParseF1WAE((block, dic)):
     elif block[0] == '(':
         lastPos = dic[0]
         assert(lastPos >= 0)
-        blockContent = (block[1:lastPos]).strip(' ')
+        blockContent, count = StripSpace(block[1:lastPos])
         # First word in blockContent allows to identify the case
         head, tail = partitionSpace(blockContent)
         #
         if head == 'with':
-            bodyWith = SplittingCode(tail, FilterDic(dic,len(head+' ')+1,dic[0]))
+            bodyWith = SplittingCode(tail, FilterDic(dic,len(head+' ')+1+count,dic[0]))
             if len(bodyWith) != 2:
                 raise ValueError("Two expressions expected following keyword 'with':\n" + block)
             else:
@@ -211,14 +238,14 @@ def ParseF1WAE((block, dic)):
                     return RPtreeClass.With(falseApp.funName, falseApp.arg, ParseF1WAE(bodyWith[1]))
             #
         elif head[0] in ('+','-','*','/','%'): # Treats the case were space is forgotten after operator
-            bodyOp = SplittingCode((head[1:len(head)] + tail),FilterDic(dic,len(head+' ')+1,dic[0]))
+            bodyOp = SplittingCode((head[1:len(head)] + tail),FilterDic(dic,len(head+' ')+1+count,dic[0]))
             if len(bodyOp) != 2:
                 raise ValueError("Two expressions expected following operator :\n" + block)
             else:
                 return RPtreeClass.Op(head[0], ParseF1WAE(bodyOp[0]), ParseF1WAE(bodyOp[1]))
             #
         else: # An App or a parenthesized Num or Id
-            bodyApp =  SplittingCode(tail, FilterDic(dic,len(head+' ')+1,dic[0]))
+            bodyApp =  SplittingCode(tail, FilterDic(dic,len(head+' ')+1+count,dic[0]))
             lenght = len(bodyApp)
             if lenght == 0: # Parenthesized Num or Id
                 return ParseF1WAE((head, FilterDic(dic,1,dic[0])))
