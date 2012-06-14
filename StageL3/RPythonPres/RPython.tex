@@ -1,0 +1,149 @@
+\documentclass{beamer}
+
+\include{pythonlisting}
+
+\usepackage{beamerthemesplit} % Activate for custom appearance
+\usetheme{Warsaw}
+
+
+
+\newtheorem{question}{Question}
+
+\title{RPython}
+\author{Leonard de HARO}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Introduction}
+\frame
+{
+  \frametitle{The Pypy Project}
+
+  \begin{itemize}
+ 	 \item<1-> New Python VM, written in RPython\\
+  			\uncover<3->{\emph{The Interpreter}}
+  	\item<2-> New language to design VMs: RPython\\
+  			\uncover<3->{\emph{The Translation Toolchain}}
+  \end{itemize}
+  
+\uncover<4->
+{   
+  \begin{fact}
+  The Translation Toolchain provides a JIT compiler on demand!
+  \end{fact}
+ } 
+}
+
+\section{Just-In-Time compilation}
+
+\frame
+{
+  \frametitle{Sure... But what's a JIT compiler?}
+  
+  Two kinds:
+	\begin{itemize}
+		\item Method JITs \\
+			\textit{e.g.} HotSpot in JVM)
+		\item Tracing JITs \\
+			\textit{e.g.} Pypy
+	\end{itemize}
+}
+
+\frame
+{
+  \frametitle{Method JITs}
+
+	\begin{itemize}
+	  	\item<1-> Works on the bytecode (linear)
+	  	\item<2-> Notices "Hot Spots"
+	  	\item<3-> Compiles them (native code)
+	  	\item<4-> Uses the native code version
+	\end{itemize}
+  
+}
+
+\frame
+{
+  \frametitle{Tracing JIT}
+  	
+	\begin{itemize}
+		\item<1-> Works during execution
+		\item<2-> Finds a "hot loop"
+		\item<3-> Traces the execution
+		\item<4-> Optimizes it (including guards)
+		\item<5-> Uses the optimized traced version
+	\end{itemize}
+\uncover<6->
+{
+	\begin{fact}
+	Pypy is a \textbf{meta-tracing JIT} compiler: feed it a properly annotated interpreter, it gives you back a tracing JIT	 interpreter.
+	\end{fact}
+}
+}
+
+\frame
+{
+	\begin{question}
+	Examples of Pypy's JIT all work with bytecode. Can we make it work on ASTs?
+	\end{question}
+}		
+
+
+\section{RPython as a language}
+\frame
+{
+  \frametitle{General properties of RPython}
+  
+  \begin{itemize}
+  	\item<1-> Strict and valid subset of Python
+	\item<2-> Statically typed (with exception)
+	\item<3-> Output C (when used in TT)
+	\item<4-> \textbf{Creates JITing VMs} (for under 10 lines of code)
+	\item<5-> Still in development although useable
+  \end{itemize}
+}
+
+\frame
+{
+  \frametitle{Writing a JIT VM}
+  
+  \begin{itemize}
+  	\item<1-> Write your interpreter
+	\item<2-> Add RPython instructions for translation
+	\item<3-> Add RPython instructions for JITing
+		\begin{itemize}
+			\item<4-> \texttt{can\_enter\_jit}
+			\item<5-> \texttt{jit\_merge\_point}
+			\item<6-> Declare \textit{Red} and \textit{Green} variables
+		\end{itemize}
+	\item<7-> Optimize (\textit{e.g.} insert \textit{assert} to help the interpreter or  use fixed-size lists)
+  \end{itemize}
+}
+
+\section{Demonstration}
+\frame
+{
+\begin{center}
+\textbf{Demo Time !}\\
+(see Andrew Brown's tutorial on Pypy's Blog)
+\end{center}
+}
+
+
+%\begin{frame}[fragile]{Some Python Code}
+%\begin{python}
+%def foo(x):
+%	if x==0:
+%		return 42
+%	else:
+%		return "42"
+%\end{python}
+%\end{frame}
+
+\end{document}
