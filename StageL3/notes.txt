@@ -29,3 +29,18 @@ interpret F1WAE a priori termine.
 quelques formes d'erreur, semble convaincant)
 
 Passons a la translation
+Ai ecris un fichier d'ecriture d'exemple (sans fonction)
+ai fait tourne les differentes version sur des exemples de plus en plus compliques
+
+il en ressort que pypy et + de 2x plus rapide que python et que les version traduite donne un gain d'environ 5 sur pypy intereprete
+
+par contre le jiting semble ralentir tres legerement (5ms sur 1s20) sur les plus gros exemples
+
+deux hypothese:
+jit annotations erronees
+ou langages pas assez expressif pour un gain reel au jit
+
+tenter l'optimisation?
+regarder les traces d'abord, verifier que j'ai bien fait le truc
+
+autre possibilite: jit ineffectif sur parcours recursif!

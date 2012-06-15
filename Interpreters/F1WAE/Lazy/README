@@ -1,0 +1,6 @@
+These files use lazy substitution, which is not usefull in this research. They are put aside.
+
+The firsts results showed that translated and JITing translated versions have similar results on cases without function declaration (see repertory resultTests). Whenever there is a function declared, JITing version becomes way slower.
+
+A possible explanation would be the tests the JIT interpreter runs to know if it has already encounter the loop.
+
