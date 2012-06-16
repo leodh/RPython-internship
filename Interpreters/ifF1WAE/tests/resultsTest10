@@ -1,0 +1,1540 @@
+With python, without .pyc
+
+run 1
+real         0.05
+user         0.03
+sys          0.01
+
+run 2
+real         0.05
+user         0.03
+sys          0.01
+
+run 3
+real         0.05
+user         0.03
+sys          0.01
+
+run 4
+real         0.05
+user         0.03
+sys          0.01
+
+run 5
+real         0.05
+user         0.03
+sys          0.01
+
+run 6
+real         0.05
+user         0.03
+sys          0.01
+
+run 7
+real         0.05
+user         0.03
+sys          0.01
+
+run 8
+real         0.05
+user         0.03
+sys          0.01
+
+run 9
+real         0.05
+user         0.03
+sys          0.01
+
+run 10
+real         0.05
+user         0.03
+sys          0.01
+
+run 11
+real         0.05
+user         0.03
+sys          0.01
+
+run 12
+real         0.05
+user         0.03
+sys          0.01
+
+run 13
+real         0.05
+user         0.03
+sys          0.01
+
+run 14
+real         0.05
+user         0.03
+sys          0.01
+
+run 15
+real         0.06
+user         0.03
+sys          0.01
+
+run 16
+real         0.05
+user         0.03
+sys          0.01
+
+run 17
+real         0.05
+user         0.03
+sys          0.01
+
+run 18
+real         0.05
+user         0.03
+sys          0.01
+
+run 19
+real         0.05
+user         0.03
+sys          0.01
+
+run 20
+real         0.05
+user         0.03
+sys          0.01
+
+With python, with .pyc
+
+With pypy, without .pyc
+
+run 1
+real         0.05
+user         0.03
+sys          0.01
+
+run 2
+real         0.05
+user         0.03
+sys          0.01
+
+run 3
+real         0.05
+user         0.03
+sys          0.01
+
+run 4
+real         0.05
+user         0.03
+sys          0.01
+
+run 5
+real         0.05
+user         0.03
+sys          0.01
+
+run 6
+real         0.05
+user         0.03
+sys          0.01
+
+run 7
+real         0.05
+user         0.03
+sys          0.01
+
+run 8
+real         0.05
+user         0.03
+sys          0.01
+
+run 9
+real         0.05
+user         0.03
+sys          0.01
+
+run 10
+real         0.05
+user         0.03
+sys          0.01
+
+run 11
+real         0.05
+user         0.03
+sys          0.01
+
+run 12
+real         0.05
+user         0.03
+sys          0.01
+
+run 13
+real         0.05
+user         0.03
+sys          0.01
+
+run 14
+real         0.05
+user         0.03
+sys          0.01
+
+run 15
+real         0.05
+user         0.03
+sys          0.01
+
+run 16
+real         0.05
+user         0.03
+sys          0.01
+
+run 17
+real         0.05
+user         0.03
+sys          0.01
+
+run 18
+real         0.05
+user         0.03
+sys          0.01
+
+run 19
+real         0.05
+user         0.03
+sys          0.01
+
+run 20
+real         0.05
+user         0.03
+sys          0.01
+
+With pypy, with .pyc
+
+run 1
+real         0.04
+user         0.03
+sys          0.01
+
+run 2
+real         0.04
+user         0.03
+sys          0.01
+
+run 3
+real         0.04
+user         0.03
+sys          0.01
+
+run 4
+real         0.04
+user         0.03
+sys          0.01
+
+run 5
+real         0.04
+user         0.03
+sys          0.01
+
+run 6
+real         0.04
+user         0.03
+sys          0.01
+
+run 7
+real         0.04
+user         0.03
+sys          0.01
+
+run 8
+real         0.04
+user         0.03
+sys          0.01
+
+run 9
+real         0.04
+user         0.03
+sys          0.01
+
+run 10
+real         0.04
+user         0.03
+sys          0.01
+
+run 11
+real         0.04
+user         0.03
+sys          0.01
+
+run 12
+real         0.05
+user         0.03
+sys          0.01
+
+run 13
+real         0.04
+user         0.03
+sys          0.01
+
+run 14
+real         0.05
+user         0.03
+sys          0.01
+
+run 15
+real         0.04
+user         0.03
+sys          0.01
+
+run 16
+real         0.04
+user         0.03
+sys          0.01
+
+run 17
+real         0.04
+user         0.03
+sys          0.01
+
+run 18
+real         0.04
+user         0.03
+sys          0.01
+
+run 19
+real         0.04
+user         0.03
+sys          0.01
+
+run 20
+real         0.04
+user         0.03
+sys          0.01
+
+run 1
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.05 real         0.00 user         0.00 sys
+
+run 2
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.07 real         0.00 user         0.00 sys
+
+run 4
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.02 real         0.00 user         0.00 sys
+
+run 6
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.03 real         0.00 user         0.00 sys
+
+run 7
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.03 real         0.00 user         0.00 sys
+
+run 19
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 20
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9432, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 1
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.02 real         0.00 user         0.00 sys
+
+run 2
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.03 real         0.00 user         0.00 sys
+
+run 3
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.03 real         0.00 user         0.00 sys
+
+run 7
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.03 real         0.00 user         0.00 sys
+
+run 8
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.02 real         0.00 user         0.00 sys
+
+run 19
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.02 real         0.00 user         0.00 sys
+
+run 20
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7963, in ParseF1WAE
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+With python, without .pyc
+
+run 1
+real         0.05
+user         0.04
+sys          0.01
+
+run 2
+real         0.05
+user         0.04
+sys          0.01
+
+run 3
+real         0.05
+user         0.04
+sys          0.01
+
+run 4
+real         0.05
+user         0.04
+sys          0.01
+
+run 5
+real         0.05
+user         0.04
+sys          0.01
+
+run 6
+real         0.05
+user         0.04
+sys          0.01
+
+run 7
+real         0.05
+user         0.04
+sys          0.01
+
+run 8
+real         0.05
+user         0.04
+sys          0.01
+
+run 9
+real         0.05
+user         0.04
+sys          0.01
+
+run 10
+real         0.05
+user         0.04
+sys          0.01
+
+run 11
+real         0.05
+user         0.04
+sys          0.01
+
+run 12
+real         0.05
+user         0.03
+sys          0.01
+
+run 13
+real         0.05
+user         0.03
+sys          0.01
+
+run 14
+real         0.05
+user         0.04
+sys          0.01
+
+run 15
+real         0.05
+user         0.04
+sys          0.01
+
+run 16
+real         0.06
+user         0.04
+sys          0.01
+
+run 17
+real         0.06
+user         0.04
+sys          0.01
+
+run 18
+real         0.05
+user         0.04
+sys          0.01
+
+run 19
+real         0.05
+user         0.04
+sys          0.01
+
+run 20
+real         0.05
+user         0.04
+sys          0.01
+
+With python, with .pyc
+
+With pypy, without .pyc
+
+run 1
+real         0.05
+user         0.04
+sys          0.01
+
+run 2
+real         0.05
+user         0.04
+sys          0.01
+
+run 3
+real         0.05
+user         0.04
+sys          0.01
+
+run 4
+real         0.05
+user         0.04
+sys          0.01
+
+run 5
+real         0.05
+user         0.04
+sys          0.01
+
+run 6
+real         0.05
+user         0.04
+sys          0.01
+
+run 7
+real         0.05
+user         0.04
+sys          0.01
+
+run 8
+real         0.05
+user         0.04
+sys          0.01
+
+run 9
+real         0.05
+user         0.04
+sys          0.01
+
+run 10
+real         0.05
+user         0.04
+sys          0.01
+
+run 11
+real         0.05
+user         0.04
+sys          0.01
+
+run 12
+real         0.06
+user         0.04
+sys          0.01
+
+run 13
+real         0.05
+user         0.03
+sys          0.01
+
+run 14
+real         0.05
+user         0.04
+sys          0.01
+
+run 15
+real         0.05
+user         0.04
+sys          0.01
+
+run 16
+real         0.05
+user         0.03
+sys          0.01
+
+run 17
+real         0.05
+user         0.04
+sys          0.01
+
+run 18
+real         0.05
+user         0.04
+sys          0.01
+
+run 19
+real         0.05
+user         0.04
+sys          0.01
+
+run 20
+real         0.05
+user         0.03
+sys          0.01
+
+With pypy, with .pyc
+
+run 1
+real         0.04
+user         0.03
+sys          0.01
+
+run 2
+real         0.05
+user         0.03
+sys          0.01
+
+run 3
+real         0.05
+user         0.03
+sys          0.01
+
+run 4
+real         0.05
+user         0.03
+sys          0.01
+
+run 5
+real         0.04
+user         0.03
+sys          0.01
+
+run 6
+real         0.04
+user         0.03
+sys          0.01
+
+run 7
+real         0.05
+user         0.03
+sys          0.01
+
+run 8
+real         0.05
+user         0.03
+sys          0.01
+
+run 9
+real         0.05
+user         0.03
+sys          0.01
+
+run 10
+real         0.05
+user         0.03
+sys          0.01
+
+run 11
+real         0.05
+user         0.03
+sys          0.01
+
+run 12
+real         0.05
+user         0.03
+sys          0.01
+
+run 13
+real         0.05
+user         0.03
+sys          0.01
+
+run 14
+real         0.04
+user         0.03
+sys          0.01
+
+run 15
+real         0.05
+user         0.03
+sys          0.01
+
+run 16
+real         0.05
+user         0.03
+sys          0.01
+
+run 17
+real         0.05
+user         0.03
+sys          0.01
+
+run 18
+real         0.05
+user         0.03
+sys          0.01
+
+run 19
+real         0.05
+user         0.03
+sys          0.01
+
+run 20
+real         0.05
+user         0.03
+sys          0.01
+
+With translated non-JITing version
+
+run 1
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.04 real         0.00 user         0.00 sys
+
+run 2
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.02 real         0.00 user         0.00 sys
+
+run 12
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.02 real         0.00 user         0.00 sys
+
+run 20
+RPython traceback:
+  File "implement.c", line 96, in entry_point
+  File "implement.c", line 751, in Main
+  File "implement.c", line 2169, in Parse
+  File "implement.c", line 7582, in ParseFunc
+  File "implement.c", line 9447, in ParseF1WAE
+  File "implement.c", line 10852, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+With translated JITing version
+
+run 1
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.02 real         0.00 user         0.00 sys
+
+run 2
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.03 real         0.00 user         0.00 sys
+
+run 11
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+
+run 20
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 803, in Main
+  File "implement.c", line 2213, in Parse
+  File "implement.c", line 6114, in ParseFunc
+  File "implement.c", line 7978, in ParseF1WAE
+  File "implement.c", line 9403, in FilterDic
+Fatal RPython error: ValueError
+Command terminated abnormally.
+        0.01 real         0.00 user         0.00 sys
+

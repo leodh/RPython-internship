@@ -1,11 +1,10 @@
 import os
 import sys
 
+import parser
 
 def Main():
-    fl = (lambda x : x)
-    qd = (fl(42))
-    return qd
+    return 42
     
 def run(fp):
     program_contents = ""
