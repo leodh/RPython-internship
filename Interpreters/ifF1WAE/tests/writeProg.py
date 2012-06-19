@@ -15,7 +15,7 @@ def generateProg(nodes):
 def generateFunc(nodes,runs):
     prog = generateProg(nodes)
     funcF = "{ (f x) "+prog+ "}"
-    funcRun = "{ (run x) (if (= x 0) 42 (with (y (f 3)) (run (- x 1)))) }"
+    funcRun = "{ (run x) (if (= x 0) (f 3) (with (y (f 3)) (run (- x 1)))) }"
     process = "( run "+str(runs)+")"
     fileT = funcF + "\n" + funcRun + "\n" + process
     return fileT

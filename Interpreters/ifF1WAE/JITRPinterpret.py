@@ -18,6 +18,8 @@ jitdriver = JitDriver(greens=['tree','funDict','contVar'], reds=[])
 def Interpret(tree, funDict, contVar):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
+    jitdriver.jit_merge_point(tree=tree,funDict=funDict, contVar=contVar)
+    
     if isinstance(tree, treeClass.Num):
         return tree.n
     #

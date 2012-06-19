@@ -96,6 +96,17 @@ do
 	done
 	i=1
         #
+	fileToRun="../JITRPinterpretCpsTailRec-c"
+        echo "With translated JITing version (cpsed tail recursive)\n">> $fileToWrite
+	echo "Processing tests with translated JITing version (cpsed tail recursive)..."
+	until [ "$i" -gt 20 ];
+	do
+	    echo "run $i" >> $fileToWrite
+	    /usr/bin/time $fileToRun $fileToTest 2>> $fileToWrite
+	    echo "" >> $fileToWrite
+	    i=`expr $i + 1`
+	done
+	i=1
     runs=`expr $runs \\* 10`
     done
 nodes=`expr $nodes \\* 10`

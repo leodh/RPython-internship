@@ -12,13 +12,14 @@ def belong(n,s,e):
 
 def CutWord(string,i): 
     """Find the first blank character following string[i] in string. If there's none, return the length of the list."""
-    ind = i
-    while ind < len(string):
-        if string[ind] in (' ','\n','\t'): 
-            break
-        else:
-            ind += 1
-    return ind
+    
+    if string[i] in (' ','\n','\t'): 
+        return i 
+    else:
+        try: 
+            return CutWord(string,i+1)
+        except IndexError:
+            return i+1
 
 # Block of functions to define an identifier or a number
 
@@ -148,21 +149,19 @@ def FilterDic(dictry, start, end):
     """Return a new dictionnary containning only pairing of indices between start and (end-1) inclued."""
 
     newDic ={}
-    try:
-        for i,k in dictry.items():
-            if belong(i,start,end) and belong(k,start,end):
-                newDic[i-start]=k-start
-            elif belong(i,start,end) and not belong(k,start,end):
-                raise ValueError("Not a valid bracket matching")
-            else:
-                pass
-        return newDic
-    except ValueError:
-        raise ValueError("Not a valid bracket matching")    
+    for i,k in dictry.items():
+        if belong(i,start,end) and belong(k,start,end):
+            newDic[i-start]=k-start
+        elif belong(i,start,end) and not belong(k,start,end):
+            raise ValueError("Not a valid bracket matching")
+        else:
+            pass
+    return newDic
 
 
 # Spliting code into meaningful blocks
 
+###### BUG : use this file to translate without print(lapin) -> Bug during execution!
 def SplittingCode(fileToUse, bracketMap):
     """ Splits the code into meaningful blocks. """
 
@@ -183,6 +182,7 @@ def SplittingCode(fileToUse, bracketMap):
             pc = matchingBracket
         else:
             end = CutWord(fileToUse,pc)
+            print("lapin")
             assert(end >= 0)
             blocks.append((fileToUse[pc:end], {}))
             pc = end
@@ -314,8 +314,11 @@ def Parse(myFile):
         else:
             prog.append((s,d))
     #
-    if len(prog)>1: # Check that BNF is respected
-        raise ValueError("Only one <Prog> accepted.")   
+    try: # Check that BNF is respected
+        prog[1]
+        raise ValueError("Only one <Prog> is allowed.")
+    except IndexError:
+        pass
     #
     # Create the function dictionnary
     funcDict = {}

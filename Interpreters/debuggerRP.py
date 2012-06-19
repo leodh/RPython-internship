@@ -1,11 +1,10 @@
 import os
 import sys
 
-import parser
 
 def Main():
     return 42
-    
+
 def run(fp):
     program_contents = ""
     while True:
