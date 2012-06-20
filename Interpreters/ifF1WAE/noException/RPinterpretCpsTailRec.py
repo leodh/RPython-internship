@@ -93,7 +93,7 @@ def Interpk(tree, funDict, env,k):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
     #  try:
-    #assert(isinstance(tree,treeClass.F1WAE))
+    assert(isinstance(tree,treeClass.F1WAE))
     #
     if isinstance(tree, treeClass.Num):
         return k.apply(tree.n)
@@ -118,7 +118,7 @@ def Interpk(tree, funDict, env,k):
         #
     # elif isinstance(tree, treeClass.If):
     else:
-        #assert(isinstance(tree, treeClass.If))
+        assert(isinstance(tree, treeClass.If))
         return Interpk(tree.cond,funDict,env,Ifk(tree.ctrue,tree.cfalse,funDict,env,k))
     #     #
     #     else: # Not an <F1WAE>

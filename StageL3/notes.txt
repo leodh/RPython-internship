@@ -64,3 +64,9 @@ Prochaine étape: cps
 Dans un premier temps, sous forme fonctionelle, ensuite sous forme de
 frame.
 Obj: arriver à du pur itératif.
+
+20/06
+Interpret cps ecrit, pret en jiting or not.
+problem: sur gros exemples, stack overflow no matter jiting or not
+recursive version jiting fait aussi du stack overflow
+J'ai ecrit une version en remplacant tous les raise par des assert -> plus de bug (en tout cas sur test10000runs2000) pour la recursive, les deux cps toujours plantees
