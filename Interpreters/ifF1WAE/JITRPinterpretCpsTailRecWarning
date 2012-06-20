@@ -1,0 +1,4 @@
+[platform:WARNING] rpython_lltypesystem_rffi.c: In function ‘pypy_g__PyPy_dg_dtoa__Float_Signed_Signed_arrayPtr_arra’:
+[platform:WARNING] rpython_lltypesystem_rffi.c:534: warning: passing argument 4 of ‘_PyPy_dg_dtoa’ from incompatible pointer type
+[platform:WARNING] rpython_lltypesystem_rffi.c:534: warning: passing argument 5 of ‘_PyPy_dg_dtoa’ from incompatible pointer type
+

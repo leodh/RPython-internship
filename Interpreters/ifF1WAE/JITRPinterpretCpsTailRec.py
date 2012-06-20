@@ -103,33 +103,37 @@ def Interpk(tree, funDict, env,k):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
     jitdriver.jit_merge_point(tree=tree, funDict=funDict, env=env, k=k)
-    
-    if isinstance(tree, treeClass.Num):
-        return k.apply(tree.n)
-    #
-    elif isinstance(tree, treeClass.Op):
-        k2 = OpLeftk(tree.rhs, funDict, env, k, tree.op)
-        return Interpk(tree.lhs, funDict, env, k2)
-    #
-    elif isinstance(tree, treeClass.With):
-        val = Interpk(tree.nameExpr, funDict, env, Idk())
-        env[tree.name] = val #Eager
-        return Interpk(tree.body, funDict, env, k)
-    #
-    elif isinstance(tree, treeClass.Id):
-        try:
-            return k.apply(env[tree.name])
-        except KeyError:
-            raise ValueError("Interpret Error: free identifier :\n" + tree.name)
-    #
-    elif isinstance(tree, treeClass.App):
-        return Interpk(tree.arg, funDict, env, Appk(tree.funName, funDict, k))
-    #
-    elif isinstance(tree, treeClass.If):
-        return Interpk(tree.cond,funDict,env,Ifk(tree.ctrue,tree.cfalse,funDict,env,k))
-    #
-    else: # Not an <F1WAE>
-        raise ValueError("Argument of Interpk is not a <F1WAE>:\n")
+    try:
+        #
+        if isinstance(tree, treeClass.Num):
+            return k.apply(tree.n)
+        #
+        elif isinstance(tree, treeClass.Op):
+            k2 = OpLeftk(tree.rhs, funDict, env, k, tree.op)
+            return Interpk(tree.lhs, funDict, env, k2)
+        #
+        elif isinstance(tree, treeClass.With):
+            val = Interpk(tree.nameExpr, funDict, env, Idk())
+            env[tree.name] = val #Eager
+            return Interpk(tree.body, funDict, env, k)
+        #
+        elif isinstance(tree, treeClass.Id):
+            try:
+                return k.apply(env[tree.name])
+            except KeyError:
+                raise ValueError("Interpret Error: free identifier :\n" + tree.name)
+        #
+        elif isinstance(tree, treeClass.App):
+            return Interpk(tree.arg, funDict, env, Appk(tree.funName, funDict, k))
+        #
+        elif isinstance(tree, treeClass.If):
+            return Interpk(tree.cond,funDict,env,Ifk(tree.ctrue,tree.cfalse,funDict,env,k))
+        #
+        else: # Not an <F1WAE>
+            raise ValueError("Argument of Interpk is not a <F1WAE>:\n")
+        #
+    except ValueError as text:
+        raise ValueError(text)
 
 def Main(file):
     t,d = parser.Parse(file)
