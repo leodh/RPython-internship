@@ -1,26 +1,11 @@
 import treeClass
 import parser
-import sys
-
-# So that you can still run this module under standard CPython, I add this
-# import guard that creates a dummy class instead.
-try:
-    from pypy.rlib.jit import JitDriver
-except ImportError:
-    class JitDriver(object):
-        def __init__(self,**kw): pass
-        def jit_merge_point(self,**kw): pass
-        def can_enter_jit(self,**kw): pass
-
-# JITing instructions
-jitdriver = JitDriver(greens=['tree','funDict'], reds=['contVar'])
-
+ 
 def Interpret(tree, funDict, contVar):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
-
-    jitdriver.jit_merge_point(tree=tree,funDict=funDict, contVar=contVar)
-
+    
     try:
+        #
         if isinstance(tree, treeClass.Num):
             return tree.n
         #
@@ -43,12 +28,12 @@ def Interpret(tree, funDict, contVar):
                 else:
                     return 0
             else:
-                raise ValueError("Parsing Error, symobl "+ tree.op+" shouldn't be here.")
+                    raise ValueError("Parsing Error, symobl "+ tree.op+" shouldn't be here.")
         #
         elif isinstance(tree, treeClass.With):
-            val = Interpret(tree.nameExpr, funDict, contVar)
-            contVar[tree.name] = val #Eager
-            return Interpret(tree.body, funDict, contVar)
+                val = Interpret(tree.nameExpr, funDict, contVar)
+                contVar[tree.name] = val #Eager
+                return Interpret(tree.body, funDict, contVar)
         #
         elif isinstance(tree, treeClass.Id):
             try:
@@ -65,7 +50,7 @@ def Interpret(tree, funDict, contVar):
                     raise ValueError("Wrong Dictionnary.")
                 newCont = {funDef.argName: val} # Eager
                 return Interpret(funDef.body, funDict, newCont)
-                #
+            #
             except KeyError:
                 raise ValueError("Invalid function : " + tree.funName)
         #
@@ -79,43 +64,19 @@ def Interpret(tree, funDict, contVar):
         else: # Not an <F1WAE>
             raise ValueError("Argument of Interpret is not a <F1WAE>:\n")
         #
-    except ValueError as text:
+    except ValueError as text
         raise ValueError(text)
-        
+            
 def Main(file):
     t,d = parser.Parse(file)
     j = Interpret(t,d,{})
     print("the answer is :" + str(j))
 
-import os
-
-def jitpolicy(driver):
-    from pypy.jit.codewriter.policy import JitPolicy
-    return JitPolicy()
-
-def run(fp):
-    program_contents = ""
-    while True:
-        read = os.read(fp, 4096)
-        if len(read) == 0:
-            break
-        program_contents += read
-    os.close(fp)
-    Main(program_contents)
-
-def entry_point(argv):
-    try:
-        filename = argv[1]
-    except IndexError:
-        print "You must supply a filename"
-        return 1
-
-    run(os.open(filename, os.O_RDONLY, 0777))
-    return 0
-
-
-def target(*args):
-    return entry_point, None
-
 if __name__ == "__main__":
-    entry_point(sys.argv)
+    import sys
+    try:
+        with open(sys.argv[1],"r") as file:
+                    prog = file.read()
+                    Main(prog)
+    except IndexError:
+        print("You must supply a file to interpret")
