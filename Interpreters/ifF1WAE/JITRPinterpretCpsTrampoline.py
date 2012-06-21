@@ -2,6 +2,16 @@ import treeClass
 import parser
 import sys
 
+# So that you can still run this module under standard CPython, I add this
+# import guard that creates a dummy class instead.
+try:
+    from pypy.rlib.jit import JitDriver
+except ImportError:
+    class JitDriver(object):
+        def __init__(self,**kw): pass
+        def jit_merge_point(self,**kw): pass
+        def can_enter_jit(self,**kw): pass
+
 ##########################
 # Class Function for CPS #
 ##########################
@@ -125,9 +135,13 @@ def Trampoline(bouncer):
 #Interpret CPS - Trampoline #
 #############################
 
+# JITing instructions
+jitdriver = JitDriver(greens=['tree','funDict'], reds=['env','k'])
+
 def Interpk(tree, funDict, env,k):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
+    jitdriver.jit_merge_point(tree=tree, funDict=funDict, env=env, k=k)
     #
     if isinstance(tree, treeClass.Num):
         return k.apply(tree.n)
@@ -168,6 +182,10 @@ def Main(file):
     print("the answer is :" + str(j))
 
 import os
+
+def jitpolicy(driver):
+    from pypy.jit.codewriter.policy import JitPolicy
+    return JitPolicy()
 
 def run(fp):
     program_envents = ""

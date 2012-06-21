@@ -3,7 +3,11 @@ import sys
 
 
 def Main():
-    return 42
+    d={42:42}
+    if (42 in d.keys()):
+        return 32
+    else:
+        return 15
 
 def run(fp):
     program_contents = ""

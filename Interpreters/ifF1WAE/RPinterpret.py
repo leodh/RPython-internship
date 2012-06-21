@@ -27,7 +27,8 @@ def Interpret(tree, funDict, contVar):
             else:
                 return 0
         else:
-            raise ValueError("Parsing Error, symobl "+ tree.op+" shouldn't be here.")
+            print("Parsing Error, symobl "+ tree.op+" shouldn't be here.")
+            return 2
     #
     elif isinstance(tree, treeClass.With):
         val = Interpret(tree.nameExpr, funDict, contVar)
@@ -35,23 +36,27 @@ def Interpret(tree, funDict, contVar):
         return Interpret(tree.body, funDict, contVar)
     #
     elif isinstance(tree, treeClass.Id):
-        try:
+        if tree.name in contVar.keys():
             return contVar[tree.name] 
-        except KeyError:
-            raise ValueError("Interpret Error: free identifier :\n" + tree.name)
+        else:
+            print("Interpret Error: free identifier :\n" + tree.name)
+            return 2
     #
     elif isinstance(tree, treeClass.App):
-        try:
+        if tree.funName in funDict.keys():
             #
             funDef = funDict[tree.funName]
             val = Interpret(tree.arg, funDict, contVar)
+            #
             if not isinstance(funDef, treeClass.Func):
-                raise ValueError("Wrong Dictionnary.")
+                print("Wrong Dictionnary.")
+            #
             newCont = {funDef.argName: val} # Eager
             return Interpret(funDef.body, funDict, newCont)
         #
-        except KeyError:
-            raise ValueError("Invalid function : " + tree.funName)
+        else:
+            print("Invalid function : " + tree.funName)
+            return 2
     #
     elif isinstance(tree, treeClass.If):
         condition = Interpret(tree.cond, funDict, contVar)
@@ -61,7 +66,8 @@ def Interpret(tree, funDict, contVar):
             return Interpret(tree.cfalse, funDict, contVar)
     #
     else: # Not an <F1WAE>
-                raise ValueError("Argument of Interpret is not a <F1WAE>:\n")
+        print("Argument of Interpret is not a <F1WAE>:\n")
+        return 2        
         
 def Main(file):
     t,d = parser.Parse(file)

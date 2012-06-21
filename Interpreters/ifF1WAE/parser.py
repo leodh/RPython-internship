@@ -1,3 +1,7 @@
+# There shall be no defensive programing.
+# Tests are maintained and print something if they are not passed,
+# but we'll let the program crash without raising an error
+
 import treeClass
 
 #######################################
@@ -5,13 +9,14 @@ import treeClass
 ########################################
 
 def belong(n,s,e):
-    """ Raises True if s<=n<e """
+    """ Returns True if s<=n<e """
     
     return n<e and n>=s
 
 
 def CutWord(string,i): 
     """Find the first blank character following string[i] in string. If there's none, return the length of the list."""
+    
     ind = i
     while ind < len(string):
         if string[ind] in (' ','\n','\t'): 
@@ -27,9 +32,10 @@ digit = ('0','1','2','3','4','5','6','7','8','9')
 
 def isAlphaOrUndChar(c):
     """ Check if the first character belongs to alphaOrUnd. """
-    try:
+
+    if len(c)>0:
         return c[0] in alphaOrUnd
-    except IndexError:
+    else:
         return False
 
 def isAlphaNumOrUnd(c):
@@ -126,14 +132,14 @@ def BuildAssociativity(fileToUse):
         elif char == ')':
             left = leftstack.pop()
             if fileToUse[left] != '(':
-                raise ValueError("Should be } at " + str(pc))
+                print("Should be } at " + str(pc))
             right = pc
             bracketMap[left] = right
             bracketMap[right] = left
         elif char == '}':
             left = leftstack.pop()
             if fileToUse[left] != '{':
-                raise ValueError("Should be ) at "+str(pc))
+                print("Should be ) at "+str(pc))
             right = pc
             bracketMap[left] = right
             bracketMap[right] = left
@@ -148,18 +154,15 @@ def FilterDic(dictry, start, end):
     """Return a new dictionnary containning only pairing of indices between start and (end-1) inclued."""
 
     newDic ={}
-    try:
-        for i,k in dictry.items():
-            if belong(i,start,end) and belong(k,start,end):
-                newDic[i-start]=k-start
-            elif belong(i,start,end) and not belong(k,start,end):
-                raise ValueError("Not a valid bracket matching")
-            else:
-                pass
-        return newDic
-    except ValueError:
-        raise ValueError("Not a valid bracket matching")    
-
+    for i,k in dictry.items():
+        if belong(i,start,end) and belong(k,start,end):
+            newDic[i-start]=k-start
+        elif belong(i,start,end) and not belong(k,start,end):
+            print("Not a valid bracket matching")
+        else:
+            pass
+    return newDic
+    
 
 # Spliting code into meaningful blocks
 
@@ -201,30 +204,31 @@ def ParseFunc((block, dic)):
 
     n = dic[0]
     if not (block[0] == '{' and block[n] == '}'):
-        raise ValueError("Not a function block :\n"+ block)
-    else:
-        assert(n>=0)
-        workingBlock = block[1:n]
-        dic2 = FilterDic(dic,1,n)
-        subBlocks = SplittingCode(workingBlock, dic2)
-        #
-        if len(subBlocks) != 2:
-            raise ValueError("Only two sub-blocks expected in block :\n"+block)
-        else:
-            declaration, dd = subBlocks[0]
-            #
-            if len(dd.values()) != 2 :
-                raise ValueError("No sub-blocks expected inside of :\n" + declaration)
-            #
-            end = dd[0]
-            assert(end>=0)
-            declareList = declaration[1:end].split(" ")
-            if len(declareList) != 2:
-                raise ValueError("Wrong declaration: \n" + declaration + "\nExpected form: <id> <id>")
-            name = declareList[0]
-            argName = declareList[1]
-                
-            bodyTree = ParseF1WAE(subBlocks[1])
+        print("Not a function block :\n"+ block)
+    assert(n>=0)
+    workingBlock = block[1:n]
+    dic2 = FilterDic(dic,1,n)
+    subBlocks = SplittingCode(workingBlock, dic2)
+    #
+    if len(subBlocks) != 2:
+        print("Only two sub-blocks expected in block :\n"+block)
+    #
+    declaration, dd = subBlocks[0]
+    #
+    if len(dd.values()) != 2 :
+        print("No sub-blocks expected inside of :\n" + declaration)
+    #
+    end = dd[0]
+    assert(end>=0)
+    declareList = declaration[1:end].split(" ")
+    #
+    if len(declareList) != 2:
+        print("Wrong declaration: \n" + declaration + "\nExpected form: <id> <id>")
+    #
+    name = declareList[0]
+    argName = declareList[1]
+    
+    bodyTree = ParseF1WAE(subBlocks[1])
 
     return name, treeClass.Func(name,argName,bodyTree)
 
@@ -235,7 +239,7 @@ def ParseF1WAE((block, dic)):
     """Parses <F1WAE>. Only simple spaces."""
 
     if block[0] == '{':
-        raise ValueError("Function declaration is not allowed in <F1WAE> :\n" + block)
+        print("Function declaration is not allowed in <F1WAE> :\n" + block)
     #
     elif block[0] == '(':
         lastPos = dic[0]
@@ -247,24 +251,23 @@ def ParseF1WAE((block, dic)):
         if head == 'with':
             bodyWith = SplittingCode(tail, FilterDic(dic,len(head+' ')+1+count,dic[0]))
             if len(bodyWith) != 2:
-                raise ValueError("Two expressions expected following keyword 'with':\n" + block)
+                print("Two expressions expected following keyword 'with':\n" + block)
             else:
                 falseApp = ParseF1WAE(bodyWith[0]) #Same syntax as an App
                 if not(isinstance(falseApp, treeClass.App)):
-                    raise ValueError("Wrong assignement in with block:\n" + block)
+                    print("Wrong assignement in with block:\n" + block)
                 else:
                     return treeClass.With(falseApp.funName, falseApp.arg, ParseF1WAE(bodyWith[1]))
             #
         elif head == 'if':
             bodyWith = SplittingCode(tail, FilterDic(dic, len(head+' ')+1+count, dic[0]))
             length = len(bodyWith)
-            if length ==  3: # All fields requested. No 'pass' instructions in the language.
-                cond = ParseF1WAE(bodyWith[0])
-                ctrue = ParseF1WAE(bodyWith[1])
-                cfalse = ParseF1WAE(bodyWith[2])
-                return treeClass.If(cond, ctrue, cfalse)
-            else:
-                raise ValueError("Too many (or no) instructions in 'if' block :\n"+block)
+            if length !=  3: # All fields requested. No 'pass' instructions in the language.
+                print("Too many (or no) instructions in 'if' block :\n"+block)
+            cond = ParseF1WAE(bodyWith[0])
+            ctrue = ParseF1WAE(bodyWith[1])
+            cfalse = ParseF1WAE(bodyWith[2])
+            return treeClass.If(cond, ctrue, cfalse)
             #
         elif head[0] in ('+','-','*','/','%','='): # Treats the case were space is forgotten after operator
             if len(head)==1: # There is a space after the operator
@@ -273,9 +276,8 @@ def ParseF1WAE((block, dic)):
                 newHead = head[1:len(head)] +' '
                 bodyOp = SplittingCode((newHead + tail),FilterDic(dic, 1+1+count,dic[0]))
             if len(bodyOp) != 2:
-                raise ValueError("Two expressions expected following operator :\n" + block)
-            else:
-                return treeClass.Op(head[0], ParseF1WAE(bodyOp[0]), ParseF1WAE(bodyOp[1]))
+                print("Two expressions expected following operator :\n" + block)
+            return treeClass.Op(head[0], ParseF1WAE(bodyOp[0]), ParseF1WAE(bodyOp[1]))
             #
         else: # An App or a parenthesized Num or Id
             bodyApp =  SplittingCode(tail, FilterDic(dic,len(head+' ')+1+count,dic[0]))
@@ -292,7 +294,8 @@ def ParseF1WAE((block, dic)):
         elif IsNumber(block):
             return treeClass.Num(int(block))
         else:
-            raise ValueError("Syntax Error in identifier :\n" + block)
+            print("Syntax Error in identifier :\n" + block)
+            return None
 
 # Global parsing method
         
@@ -315,20 +318,19 @@ def Parse(myFile):
             prog.append((s,d))
     #
     if len(prog)>1: # Check that BNF is respected
-        raise ValueError("Only one <Prog> accepted.")   
+        print("Only one <Prog> accepted.")   
     #
     # Create the function dictionnary
-    funcDict = {}
+    funDict = {}
     for funcDef in funcToDefine:
         name, descr = ParseFunc(funcDef)
-        try:
-            uselessVar = funcDict[name]
-            raise ValueError("Function "+name+" already defined.")
-        except KeyError:
-            funcDict[name] = descr
+        if name in funDict.keys():
+            print("Function "+name+" already defined.")
+        else:
+            funDict[name] = descr
     #
     # Create AST of main program
     ast = ParseF1WAE(prog[0])
 
-    return ast, funcDict
+    return ast, funDict
     

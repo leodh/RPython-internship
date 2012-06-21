@@ -70,3 +70,9 @@ Interpret cps ecrit, pret en jiting or not.
 problem: sur gros exemples, stack overflow no matter jiting or not
 recursive version jiting fait aussi du stack overflow
 J'ai ecrit une version en remplacant tous les raise par des assert -> plus de bug (en tout cas sur test10000runs2000) pour la recursive, les deux cps toujours plantees
+
+
+21/06
+Pour ne plus m'embeter avec les soucis de renvoie d'erreur, j'ai vire les fichiers precedents dans un dossier marque depracated et j'ai tout repris en remplacant les raise par des print et en retournant une valeur (2) conforme au type attendue pour le typage statique de RPython
+
+JITinterp-c passe test10000runs2000 de cette façon. J'ai aussi sur les conseils des developpeurs declare l'env red.

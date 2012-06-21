@@ -43,7 +43,8 @@ class Opk(Funck):
             else:
                 return self.k.apply(0)
         else:
-            raise ValueError("Parsing Error, symobl "+ self.op +" shouldn't be here.")
+            print("Parsing Error, symobl "+ self.op +" shouldn't be here.")
+            return 2
 
 class OpLeftk(Funck):
     def __init__(self, exprRight, funDict, env, k, op):
@@ -63,11 +64,13 @@ class Appk(Funck):
         self.k=k
 
     def apply(self, arg):
-        try:
+        if self.funName in self.funDict.keys():
             g=self.funDict[self.funName]
-        except KeyError:
-            raise ValueError("Invalid function : " + self.funName)
-        return Interpk(g.body,self.funDict, {g.argName: arg}, self.k)
+            return Interpk(g.body,self.funDict, {g.argName: arg}, self.k)
+        else:
+            print("Invalid function : " + self.funName)
+            return 2
+
 
 class Ifk(Funck):
     def __init__(self, true, false, funDict, env, k):
@@ -90,38 +93,37 @@ class Ifk(Funck):
 def Interpk(tree, funDict, env,k):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
-    try:
-        #
-        if isinstance(tree, treeClass.Num):
-            return k.apply(tree.n)
-        #
-        elif isinstance(tree, treeClass.Op):
-            k2 = OpLeftk(tree.rhs, funDict, env, k, tree.op)
-            return Interpk(tree.lhs, funDict, env, k2)
-        #
-        elif isinstance(tree, treeClass.With):
-            val = Interpk(tree.nameExpr, funDict, env, Idk())
-            env[tree.name] = val #Eager
-            return Interpk(tree.body, funDict, env, k)
-        #
-        elif isinstance(tree, treeClass.Id):
-            try:
-                return k.apply(env[tree.name])
-            except KeyError:
-                raise ValueError("Interpret Error: free identifier :\n" + tree.name)
-        #
-        elif isinstance(tree, treeClass.App):
-            return Interpk(tree.arg, funDict, env, Appk(tree.funName, funDict, k))
-        #
-        elif isinstance(tree, treeClass.If):
-            return Interpk(tree.cond,funDict,env,Ifk(tree.ctrue,tree.cfalse,funDict,env,k))
-        #
-        else: # Not an <F1WAE>
-            raise ValueError("Argument of Interpk is not a <F1WAE>:\n")
-        #
-    except ValueError as text:
-        raise ValueError(text)
-
+    #
+    if isinstance(tree, treeClass.Num):
+        return k.apply(tree.n)
+    #
+    elif isinstance(tree, treeClass.Op):
+        k2 = OpLeftk(tree.rhs, funDict, env, k, tree.op)
+        return Interpk(tree.lhs, funDict, env, k2)
+    #
+    elif isinstance(tree, treeClass.With):
+        val = Interpk(tree.nameExpr, funDict, env, Idk())
+        env[tree.name] = val #Eager
+        return Interpk(tree.body, funDict, env, k)
+    #
+    elif isinstance(tree, treeClass.Id):
+        if tree.name in env.keys():
+            return k.apply(env[tree.name])
+        else:
+            print("Interpret Error: free identifier :\n" + tree.name)
+            return 2
+    #
+    elif isinstance(tree, treeClass.App):
+        return Interpk(tree.arg, funDict, env, Appk(tree.funName, funDict, k))
+    #
+    elif isinstance(tree, treeClass.If):
+        return Interpk(tree.cond,funDict,env,Ifk(tree.ctrue,tree.cfalse,funDict,env,k))
+    #
+    else: # Not an <F1WAE>
+        print("Argument of Interpk is not a <F1WAE>:\n")
+        return 2
+    #
+    
 def Main(file):
     t,d = parser.Parse(file)
     j = Interpk(t,d,{},Idk())
