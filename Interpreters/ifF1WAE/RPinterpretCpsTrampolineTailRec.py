@@ -110,6 +110,16 @@ class BounceFun(Bounce):
     def bounce(self):
         return Interpk(self.arg, self.funDict, self.env, Appk(self.funName, self.funDict, self.k))
 
+def Trampoline(bouncer):
+    """Execute the trampoline while there's still one to do"""
+    
+    if isinstance(bouncer,ExpVal):
+        return bouncer.val
+    elif isinstance(bouncer, BounceFun):
+        return Trampoline(bouncer.bounce())
+    else:
+        print("Not a Bounce!")
+        return 2
 
 #############################    
 #Interpret CPS - Trampoline #
@@ -128,15 +138,8 @@ def Interpk(tree, funDict, env,k):
     #
     elif isinstance(tree, treeClass.With):
         
-        val = (Interpk(tree.nameExpr, funDict, env, Idk()))
-        while isinstance(val, BounceFun):
-            val2 = val.bounce()
-        if isinstance(val,ExpVal):
-            val2 = val.val
-        else:
-            print("Not a bounce!")
-            val2 = 2
-        env[tree.name] = val2 #Eager
+        val = Trampoline(Interpk(tree.nameExpr, funDict, env, Idk()))
+        env[tree.name] = val #Eager
         return Interpk(tree.body, funDict, env, k)
     #
     elif isinstance(tree, treeClass.Id):
@@ -161,13 +164,8 @@ def Interpk(tree, funDict, env,k):
 def Main(file):
     t,d = parser.Parse(file)
     bou = Interpk(t,d,{},Idk())
-    while isinstance(bou,BounceFun):
-        bou = bou.bounce()
-    if isinstance(bou,ExpVal):
-        j=bou.val
-        print("the answer is :" + str(j))
-    else:
-        print("Not a bounce!")
+    j = Trampoline(bou)
+    print("the answer is :" + str(j))
 
 import os
 

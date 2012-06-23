@@ -9,150 +9,178 @@ class Contk:
     def __init__(self,*arg):
         raise NotImplementedError("For abstract class")
     
-    def apply(self,expr,env,cont,val,proc):
-        return expr, env, cont, val, proc
+    def apply(self,expr,env,val):
+        raise NotImplementedError("For abstract class")
 
-# TO IMPLEMENT
-#
-# class Idk(Funck):
-#     def __init__(self):
-#         pass
+
+class Endk(Contk):
+    def __init__(self,val):
+        self.val = val
+
+    def apply(self):
+        return self.val
+
+class Idk(Contk):
+    def __init__(self):
+        pass
     
-#     def apply(self,arg):
-#         return arg
+    def apply(self, expr, env, val):
+        return expr, env, Endk(val), val
 
-# class Opk(Funck):
-#     def __init__(self,argLeft,op,k):
-#         self.argLeft=argLeft
-#         self.op=op
-#         self.k=k
+class Withk(Contk):
+    def __init__(self, expr, env, cont, val, name, body):
+        self.expr = expr
+        self.env = env
+        self.cont = cont
+        self.val = val
+        self.name = name
+        self.body = body
 
+    def apply(self, expr, env, val):
+        env2 = self.env
+        env2[self.name]=val
+        return self.body, env2, self.cont, val
 
-#     def apply(self,arg):
-#         if self.op == '+':
-#             return self.k.apply(self.argLeft + arg)
-#         elif self.op == '-':
-#             return self.k.apply(self.argLeft - arg)
-#         elif self.op == '*':
-#             return self.k.apply(self.argLeft * arg)
-#         elif self.op == '/':
-#             return self.k.apply(self.argLeft / arg)
-#         elif self.op == '%':
-#             return self.k.apply(self.argLeft % arg)
-#         elif self.op == '=':
-#             if self.argLeft - arg == 0:
-#                 return self.k.apply(1)
-#             else:
-#                 return self.k.apply(0)
-#         else:
-#             print("Parsing Error, symobl "+ self.op +" shouldn't be here.")
-#             return 2
+class Ifk(Contk):
+    def __init__(self, expr, env, cont, val, true, false):
+        self.expr = expr
+        self.env = env
+        self.cont = cont
+        self.val = val
+        self.true = true
+        self.false = false
 
-# class OpLeftk(Funck):
-#     def __init__(self, exprRight, funDict, env, k, op):
-#         self.exprRight=exprRight
-#         self.funDict=funDict
-#         self.env=env
-#         self.k=k
-#         self.op=op
+    def apply(self, expr, env, val):
+        if val:
+            expAnsw = self.true
+        else:
+            expAnsw = self.false
+        return expAnsw, self.env, self.cont, val
 
-#     def apply(self, arg):
-#         return Interpk(self.exprRight,self.funDict,self.env, Opk(arg,self.op,self.k))
+class Op1k(Contk):
+    def __init__(self, expr, env, cont, val, op, rhs):
+        self.expr = expr
+        self.env = env
+        self.cont = cont
+        self.val = val
+        self.op = op
+        self.rhs = rhs
 
-# class Appk(Funck):
-#     def __init__(self, funName, funDict, k):
-#         self.funName=funName
-#         self.funDict=funDict
-#         self.k=k
+    def apply(self, expr, env, val):
+        cont2 = Op2k(expr, env, self.cont, val, self.op)
+        return self.rhs, self.env, cont2, val
 
-#     def apply(self, arg):
-#         if self.funName in self.funDict.keys():
-#             g=self.funDict[self.funName]
-#             return Interpk(g.body,self.funDict, {g.argName: arg}, self.k)
-#         else:
-#             print("Invalid function : " + self.funName)
-#             return 2
+class Op2k(Contk):
+    def __init__(self, expr, env, cont, val, op):
+        self.expr = expr
+        self.env = env
+        self.cont = cont
+        self.val = val
+        self.op = op
 
+    def apply(self, expr, env, val):
+        left = self.val
+        right = val
+        
+        if self.op == '+':
+            valAnsw = left + right
+        elif self.op == '-':
+            valAnsw = left - right
+        elif self.op == '*':
+            valAnsw = left * right
+        elif self.op == '/':
+            valAnsw = left / right
+        elif self.op == '%':
+            valAnsw = left % right
+        elif self.op == '=':
+            if left - right == 0:
+                valAnsw = 1
+            else:
+                valAnsw = 0
+        else:
+            print("Parsing Error, symobl "+ self.op +" shouldn't be here.")
+            valAnsw = 2
+            
+        return self.cont.apply(expr, env, valAnsw)
 
-# class Ifk(Funck):
-#     def __init__(self, true, false, funDict, env, k):
-#         self.true=true
-#         self.false=false
-#         self.funDict=funDict
-#         self.env=env
-#         self.k=k
+class Appk(Contk):
+    def __init__(self, expr, env, cont, val,arg):
+        self.expr = expr
+        self.env = env
+        self.cont = cont
+        self.val = val
+        self.arg = arg
 
-#     def apply(self,arg):
-#         if arg != 0:
-#             return Interpk(self.true, self.funDict, self.env, self.k)
-#         else:
-#             return Interpk(self.false, self.funDict, self.env, self.k)
-
-
+    def apply(self, expr, env, val):
+        return self.expr, {self.arg : val}, self.cont, val
+        
+        
 #Interpret CPS - imperative
 
 
-def Interpk(tree, funDict, env1)
+def Interpk(tree, funDict, env1):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
     expr = tree
     env = env1
-    cont = Endk() # Continuation de fin
+    cont = Idk() 
     val = None
-    proc = None
+
+    obs = False
 
     #value-of/k
-    while \ # Condition à determiner
-        True :
+    while not(isinstance(cont,Endk)):
 
         #
-        if isinstance(env, treeClass.Num):
-            val = tree.n
-            ex, en, co, va, pr = cont.apply(expr,env,val,proc) # apply-cont
-            expr = en
+        if isinstance(expr, treeClass.Num):
+            val = expr.n
+            ex, en, co, va = cont.apply(expr,env,val) 
+            expr = ex
             env = en
             cont = co
             val = va
-            proc = pr
         #
-        elif isinstance(tree, treeClass.Id):
-            if tree.name in env.keys():
-                var = (env[tree.name])
+        elif isinstance(expr, treeClass.Id):
+            if expr.name in env.keys():
+                val = (env[expr.name])
             else:
                 print("Interpret Error: free identifier :\n" + tree.name)
-            ex, en, co, va, pr = cont.apply(expr,env,val,proc) # Besoin des 5: selon le cas certains resteront inchangé, d'autres non, pour rester général, les fonction apply prennent tout en argument et renvoient tout
-            expr = en
+            ex, en, co, va = cont.apply(expr,env,val) 
+            expr = ex
             env = en
             cont = co
             val = va
-            proc = pr
         #
-        elif isinstance(tree, treeClass.With):
-            cont = Withk(expr, env, cont, val, cont, tree.name, tree.body)
-            expr = tree.nameExpr
+        elif isinstance(expr, treeClass.With):
+            cont = Withk(expr, env, cont, val, expr.name, expr.body)
+            expr = expr.nameExpr
         #
-        elif isinstance(tree, treeClass.If):
-            cont = Ifk(expr, env, cont, val, proc, tree.true, tree.false)
-            expr = tree.cond
+        elif isinstance(expr, treeClass.If):
+            cont = Ifk(expr, env, cont, val, expr.ctrue, expr.cfalse)
+            expr = expr.cond
         #
-        elif isinstance(tree, treeClass.Op):
-            cont = Op1k(expr, env, cont, val, proc, tree.op, tree.rhs)
-            expr = tree.lhs
+        elif isinstance(expr, treeClass.Op):
+            cont = Op1k(expr, env, cont, val, expr.op, expr.rhs)
+            expr = expr.lhs
         #
-        elif isinstance(tree, treeClass.App):
-            cont = Ratork(expr, env, cont, val, proc, tree.arg)
-            if tree.funName in funDict.key():
-                expr = funDict[tree.funName]
-            else:
-                print("Inexistant function : "+tree.funName)
+        elif isinstance(expr, treeClass.App):
+            if not expr.funName in funDict.keys():
+                print("Inexistant function : "+expr.funName)
+            fun = funDict[expr.funName]
+            body = fun.body
+            arg = fun.argName
+            expr = expr.arg
+            cont = Appk(body, env, cont, val, arg)
         #
         else: # Not an <F1WAE>
             print("Argument of Interpk is not a <F1WAE>:\n")
-    #
+            cont = Endk(2)
+    # End of while
+    return cont.apply()
     
 def Main(file):
     t,d = parser.Parse(file)
-    j = Interpk(t,d,{},Idk())
+    j = Interpk(t,d,{})
     print("the answer is :" + str(j))
 
 import os
