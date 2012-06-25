@@ -2,6 +2,15 @@ import treeClass
 import parser
 import sys
 
+# So that you can still run this module under standard CPython, I add this
+# import guard that creates a dummy class instead.
+try:
+    from pypy.rlib.jit import JitDriver
+except ImportError:
+    class JitDriver(object):
+        def __init__(self,**kw): pass
+        def jit_merge_point(self,**kw): pass
+        def can_enter_jit(self,**kw): pass
 
 #Class Function for CPS
 
@@ -117,18 +126,23 @@ class Appk(Contk):
         
 #Interpret CPS - imperative
 
+# JITing instructions
+jitdriver = JitDriver(greens=['expr'], reds=['val','cont','env', 'funDict'])
 
-def Interpk(tree, funDict, env1):
+def Interpk(expr, funDict, env):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
-    expr = tree
-    env = env1
-    cont = Idk()
     val = -1
+    funDict = funDict
+    expr = expr
+    env = env
+    cont = Idk()
 
     #value-of/k
     while not(isinstance(cont,Endk)):
-
+        #
+        jitdriver.can_enter_jit(val=val, expr=expr, env=env, cont=cont, funDict=funDict)
+        jitdriver.jit_merge_point(val=val, expr=expr, env=env, cont=cont, funDict=funDict)
         #
         if isinstance(expr, treeClass.Num):
             val = expr.n
@@ -142,7 +156,7 @@ def Interpk(tree, funDict, env1):
             if expr.name in env.keys():
                 val = (env[expr.name])
             else:
-                print("Interpret Error: free identifier :\n" + tree.name)
+                print("Interpret Error: free identifier :\n" + expr.name)
             ex, en, co, va = cont.apply(expr,env,val) 
             expr = ex
             env = en
@@ -173,7 +187,7 @@ def Interpk(tree, funDict, env1):
         else: # Not an <F1WAE>
             print("Argument of Interpk is not a <F1WAE>:\n")
             cont = Endk(2)
-        # End of while
+    # End of while
     assert isinstance(cont, Endk)
     return cont.val
     
@@ -183,6 +197,10 @@ def Main(file):
     print("the answer is :" + str(j))
 
 import os
+
+def jitpolicy(driver):
+    from pypy.jit.codewriter.policy import JitPolicy
+    return JitPolicy()
 
 def run(fp):
     program_envents = ""

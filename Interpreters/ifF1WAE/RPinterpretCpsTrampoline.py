@@ -160,15 +160,22 @@ def Interpk(tree, funDict, env,k):
 
 def Main(file):
     t,d = parser.Parse(file)
-    bou = Interpk(t,d,{},Idk())
-    while isinstance(bou,BounceFun):
-        bou = bou.bounce()
-    if isinstance(bou,ExpVal):
-        j=bou.val
-        print("the answer is :" + str(j))
-    else:
-        print("Not a bounce!")
-
+    bouncer = Interpk(t,d,{},Idk())
+    val = None
+    #
+    while True:
+        if isinstance(bouncer,ExpVal):
+            val = bouncer.val
+            break
+        elif isinstance(bouncer, BounceFun):
+            print("bounce!")
+            bouncer = bouncer.bounce()
+        else:
+            print("Not a Bounce!")
+            break
+    j=val
+    print("the answer is :" + str(j))
+    
 import os
 
 def run(fp):
