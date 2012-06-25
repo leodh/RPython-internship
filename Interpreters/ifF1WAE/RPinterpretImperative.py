@@ -5,7 +5,7 @@ import sys
 
 #Class Function for CPS
 
-class Contk:
+class Contk(object):
     def __init__(self,*arg):
         raise NotImplementedError("For abstract class")
     
@@ -17,7 +17,7 @@ class Endk(Contk):
     def __init__(self,val):
         self.val = val
 
-    def apply(self):
+    def apply(self,expr, env, val):
         return self.val
 
 class Idk(Contk):
@@ -25,7 +25,9 @@ class Idk(Contk):
         pass
     
     def apply(self, expr, env, val):
-        return expr, env, Endk(val), val
+        cont2 = Endk(val)
+        assert isinstance(cont2, Contk)
+        return expr, env, cont2, val
 
 class Withk(Contk):
     def __init__(self, expr, env, cont, val, name, body):
@@ -68,6 +70,7 @@ class Op1k(Contk):
 
     def apply(self, expr, env, val):
         cont2 = Op2k(expr, env, self.cont, val, self.op)
+        assert isinstance(cont2, Contk)
         return self.rhs, self.env, cont2, val
 
 class Op2k(Contk):
@@ -123,7 +126,8 @@ def Interpk(tree, funDict, env1):
 
     expr = tree
     env = env1
-    cont = Idk() 
+    cont = Idk()
+    assert(isinstance(cont, Contk))
     val = None
 
     obs = False
@@ -137,6 +141,7 @@ def Interpk(tree, funDict, env1):
             ex, en, co, va = cont.apply(expr,env,val) 
             expr = ex
             env = en
+            assert isinstance(co, Contk)
             cont = co
             val = va
         #
@@ -148,19 +153,26 @@ def Interpk(tree, funDict, env1):
             ex, en, co, va = cont.apply(expr,env,val) 
             expr = ex
             env = en
+            assert isinstance(co, Contk)
             cont = co
             val = va
         #
         elif isinstance(expr, treeClass.With):
-            cont = Withk(expr, env, cont, val, expr.name, expr.body)
+            cont2 = Withk(expr, env, cont, val, expr.name, expr.body)
+            assert isinstance(cont2, Contk)
+            cont = cont2
             expr = expr.nameExpr
         #
         elif isinstance(expr, treeClass.If):
-            cont = Ifk(expr, env, cont, val, expr.ctrue, expr.cfalse)
+            cont2 = Ifk(expr, env, cont, val, expr.ctrue, expr.cfalse)
+            assert isinstance(cont2, Contk)
+            cont = cont2
             expr = expr.cond
         #
         elif isinstance(expr, treeClass.Op):
-            cont = Op1k(expr, env, cont, val, expr.op, expr.rhs)
+            cont2 = Op1k(expr, env, cont, val, expr.op, expr.rhs)
+            assert isinstance(cont2, Contk)
+            cont = cont2
             expr = expr.lhs
         #
         elif isinstance(expr, treeClass.App):
@@ -170,13 +182,17 @@ def Interpk(tree, funDict, env1):
             body = fun.body
             arg = fun.argName
             expr = expr.arg
-            cont = Appk(body, env, cont, val, arg)
+            cont2 = Appk(body, env, cont, val, arg)
+            assert isinstance(cont, Contk)
+            cont = cont2
         #
         else: # Not an <F1WAE>
             print("Argument of Interpk is not a <F1WAE>:\n")
-            cont = Endk(2)
+            cont2 = Endk(2)
+            assert isinstance(cont2, Contk)
+            cont = cont2
     # End of while
-    return cont.apply()
+    return cont.apply(expr, env, val)
     
 def Main(file):
     t,d = parser.Parse(file)

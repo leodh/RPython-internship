@@ -1,13 +1,30 @@
 import os
 import sys
 
+class Contk:
+    def __init__(self,*arg):
+        raise NotImplementedError("For abstract class")
+    
+    def apply(self,expr,env,val):
+        raise NotImplementedError("For abstract class")
+
+
+class Endk(Contk):
+    def __init__(self,val):
+        self.val = val
+
+    def apply(self,expr, env, val):
+        return self.val
+
+class Idk(Contk):
+    def __init__(self):
+        pass
+    
+    def apply(self, expr, env, val):
+        return expr, env, Endk(val), val
 
 def Main():
-    d={42:42}
-    if (42 in d.keys()):
-        return 32
-    else:
-        return 15
+    return "ok"
 
 def run(fp):
     program_contents = ""
