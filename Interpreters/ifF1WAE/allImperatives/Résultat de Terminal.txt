@@ -1,3 +1,221 @@
+leonard-de-haros-macbook:allImperatives leonarddeharo2$ sh
+sh-3.2$ for i in `ls *-c`
+> do
+> ./$i ../tests/test10000runs2000 
+> for i in `ls *-c`; do ./$i ../tests/test10000runs2000 
+sh-3.2$ for i in `ls *-c`; do time ./$i ../tests/test10000runs2000; done 
+the answer is :30000
+
+real	0m4.836s
+user	0m3.962s
+sys	0m0.065s
+the answer is :30000
+
+real	0m7.930s
+user	0m7.611s
+sys	0m0.083s
+^C
+real	0m10.959s
+user	0m9.918s
+sys	0m0.362s
+
+sh-3.2$ exit
+leonard-de-haros-macbook:allImperatives leonarddeharo2$ sh
+sh-3.2$ for i in `ls *-c`; do echo $i; time ./$i ../tests/test10000runs2000; done 
+JITRPinterpretImperative0-c
+the answer is :30000
+
+real	0m4.012s
+user	0m3.956s
+sys	0m0.046s
+JITRPinterpretImperative1-c
+the answer is :30000
+
+real	0m7.647s
+user	0m7.561s
+sys	0m0.057s
+JITRPinterpretImperative10-c
+the answer is :30000
+
+real	0m59.979s
+user	0m58.685s
+sys	0m1.252s
+JITRPinterpretImperative11-c
+the answer is :30000
+
+real	1m0.337s
+user	0m57.232s
+sys	0m2.761s
+JITRPinterpretImperative12-c
+the answer is :30000
+
+real	0m35.434s
+user	0m34.903s
+sys	0m0.224s
+JITRPinterpretImperative13-c
+the answer is :30000
+
+real	1m10.083s
+user	1m9.376s
+sys	0m0.231s
+JITRPinterpretImperative14-c
+the answer is :30000
+
+real	0m52.064s
+user	0m50.807s
+sys	0m1.037s
+JITRPinterpretImperative15-c
+the answer is :30000
+
+real	1m6.646s
+user	1m3.501s
+sys	0m2.937s
+JITRPinterpretImperative16-c
+the answer is :30000
+
+real	1m25.861s
+user	1m20.047s
+sys	0m5.666s
+JITRPinterpretImperative17-c
+the answer is :30000
+
+real	1m24.607s
+user	1m18.012s
+sys	0m6.442s
+JITRPinterpretImperative18-c
+the answer is :30000
+
+real	1m30.662s
+user	1m24.100s
+sys	0m6.268s
+JITRPinterpretImperative19-c
+the answer is :30000
+
+real	1m32.106s
+user	1m25.547s
+sys	0m6.333s
+JITRPinterpretImperative2-c
+the answer is :30000
+
+real	0m53.146s
+user	0m51.722s
+sys	0m1.069s
+JITRPinterpretImperative20-c
+the answer is :30000
+
+real	1m32.577s
+user	1m26.058s
+sys	0m6.317s
+JITRPinterpretImperative21-c
+the answer is :30000
+
+real	1m29.931s
+user	1m23.234s
+sys	0m6.494s
+JITRPinterpretImperative22-c
+the answer is :30000
+
+real	1m38.780s
+user	1m31.910s
+sys	0m6.387s
+JITRPinterpretImperative23-c
+the answer is :30000
+
+real	1m38.598s
+user	1m31.559s
+sys	0m6.653s
+JITRPinterpretImperative24-c
+the answer is :30000
+
+real	1m31.303s
+user	1m25.222s
+sys	0m5.796s
+JITRPinterpretImperative25-c
+the answer is :30000
+
+real	1m30.782s
+user	1m24.066s
+sys	0m6.407s
+JITRPinterpretImperative26-c
+the answer is :30000
+
+real	1m37.265s
+user	1m30.618s
+sys	0m6.379s
+JITRPinterpretImperative27-c
+the answer is :30000
+
+real	1m38.596s
+user	1m29.800s
+sys	0m6.837s
+JITRPinterpretImperative28-c
+the answer is :30000
+
+real	1m40.118s
+user	1m33.191s
+sys	0m6.551s
+JITRPinterpretImperative29-c
+the answer is :30000
+
+real	1m35.395s
+user	1m28.193s
+sys	0m6.842s
+JITRPinterpretImperative3-c
+the answer is :30000
+
+real	0m55.165s
+user	0m52.273s
+sys	0m2.557s
+JITRPinterpretImperative30-c
+the answer is :30000
+
+real	1m44.028s
+user	1m37.211s
+sys	0m6.634s
+JITRPinterpretImperative31-c
+the answer is :30000
+
+real	1m45.307s
+user	1m38.059s
+sys	0m6.881s
+JITRPinterpretImperative4-c
+the answer is :30000
+
+real	0m36.539s
+user	0m35.860s
+sys	0m0.228s
+JITRPinterpretImperative5-c
+the answer is :30000
+
+real	1m8.963s
+user	1m8.496s
+sys	0m0.199s
+JITRPinterpretImperative6-c
+the answer is :30000
+
+real	1m1.110s
+user	0m58.343s
+sys	0m2.572s
+JITRPinterpretImperative7-c
+the answer is :30000
+
+real	1m1.839s
+user	0m59.034s
+sys	0m2.680s
+JITRPinterpretImperative8-c
+the answer is :30000
+
+real	0m3.985s
+user	0m3.804s
+sys	0m0.049s
+JITRPinterpretImperative9-c
+the answer is :30000
+
+real	0m7.875s
+user	0m7.630s
+sys	0m0.076s
+sh-3.2$ exit
+leonard-de-haros-macbook:allImperatives leonarddeharo2$ cat JITRPinterpretImperative8.py
 import treeClass
 import parser
 import sys
@@ -134,7 +352,7 @@ def GetFunc(funDict,name):
 
 # JITing instructions
 
-jitdriver = JitDriver(greens=['expr'], reds=['val','cont','env', 'funDict'])
+jitdriver = JitDriver(greens=['funDict'], reds=['val', 'expr', 'env', 'cont'])
 
 def Interpk(expr, funDict, env):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
@@ -233,3 +451,4 @@ def target(*args):
 
 if __name__ == "__main__":
     entry_point(sys.argv)
+leonard-de-haros-macbook:allImperatives leonarddeharo2$ 

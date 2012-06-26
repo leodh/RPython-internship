@@ -134,7 +134,7 @@ def GetFunc(funDict,name):
 
 # JITing instructions
 
-jitdriver = JitDriver(greens=['expr'], reds=['val','cont','env', 'funDict'])
+jitdriver = JitDriver(greens=['expr', 'env', 'cont'], reds=['val', 'funDict'])
 
 def Interpk(expr, funDict, env):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""

@@ -5,15 +5,21 @@ import sys
 # So that you can still run this module under standard CPython, I add this
 # import guard that creates a dummy class instead.
 try:
-    from pypy.rlib.jit import JitDriver
+    from pypy.rlib.jit import JitDriver, purefunction
 except ImportError:
     class JitDriver(object):
         def __init__(self,**kw): pass
         def jit_merge_point(self,**kw): pass
         def can_enter_jit(self,**kw): pass
 
+@purefunction
+def GetFunc(funDict,name):
+    if not name in funDict.keys():
+        print("Inexistant function : "+ name)
+    return funDict[name]
+
 # JITing instructions
-jitdriver = JitDriver(greens=['funDict'], reds=['contVar', 'tree'])
+jitdriver = JitDriver(greens=['tree', 'funDict'], reds=['contVar'])
 
 def Interpret(tree, funDict, contVar):
     """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
@@ -60,7 +66,7 @@ def Interpret(tree, funDict, contVar):
     elif isinstance(tree, treeClass.App):
         if tree.funName in funDict.keys():
             #
-            funDef = funDict[tree.funName]
+            funDef = GetFunc(funDict,tree.funName)
             val = Interpret(tree.arg, funDict, contVar)
             #
             if not isinstance(funDef, treeClass.Func):
