@@ -2,6 +2,17 @@ import treeClass
 import parser
 import sys
 
+# So that you can still run this module under standard CPython, I add this
+# import guard that creates a dummy class instead.
+# (from Pypy's tutorial by Andrew Brown)
+try:
+    from pypy.rlib.jit import JitDriver, purefunction
+except ImportError:
+    class JitDriver(object):
+        def __init__(self,**kw): pass
+        def jit_merge_point(self,**kw): pass
+        def can_enter_jit(self,**kw): pass
+
 ##########################
 # Class Function for CPS #
 ##########################
@@ -66,7 +77,7 @@ class Appk(Contk):
 
     def apply(self, arg):
         if self.funName in self.funDict.keys():
-            g=self.funDict[self.funName]
+            g = GetFunc(self.funDict, self.funName)
             return Interpk(g.body,self.funDict, {g.argName: arg}, self.k)
         else:
             print("Invalid function : " + self.funName)
@@ -86,6 +97,13 @@ class Ifk(Contk):
         else:
             return Interpk(self.false, self.funDict, self.env, self.k)
 
+@purefunction
+def GetFunc(funDict,name):
+    """Equivalent to funDict[name], but labelled as purefunction to be run faster by the JITing VM."""
+    
+    if not name in funDict.keys():
+        print("Inexistant function : "+ name)
+    return funDict[name]
 
 #####################
 # Bounce Definition #
@@ -115,8 +133,14 @@ class BounceFun(Bounce):
 #Interpret CPS - Trampoline #
 #############################
 
+# JITing instructions
+jitdriver = JitDriver(greens=['env'], reds=['funDict', 'expr', 'k'])
+
 def Interpk(expr, funDict, env, k):
     """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
+
+    jitdriver.can_enter_jit(expr=expr, env=env, k=k, funDict=funDict)
+    jitdriver.jit_merge_point(expr=expr, env=env, k=k, funDict=funDict)
 
     #
     if isinstance(expr, treeClass.Num):
@@ -157,9 +181,6 @@ def Interpk(expr, funDict, env, k):
         return k.apply(2)
     #
 
-#############################    
-# Translation and execution #
-#############################
 
 def Main(file):
     t,d = parser.Parse(file)
@@ -178,6 +199,10 @@ def Main(file):
     print("the answer is :" + str(j))
     
 import os
+
+def jitpolicy(driver):
+    from pypy.jit.codewriter.policy import JitPolicy
+    return JitPolicy()
 
 def run(fp):
     program_envents = ""

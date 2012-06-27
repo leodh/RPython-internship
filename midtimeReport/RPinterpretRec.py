@@ -1,52 +1,56 @@
 import treeClass
 import parser
 import sys
- 
-def Interpret(tree, funDict, contVar):
-    """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
-    if isinstance(tree, treeClass.Num):
-        return tree.n
+######################    
+#Interpret Recursive #
+######################
+ 
+def Interpret(expr, funDict, env):
+    """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
+
+    if isinstance(expr, treeClass.Num):
+        return expr.n
     #
-    elif isinstance(tree, treeClass.Op):
-        left = Interpret(tree.lhs, funDict, contVar)
-        right = Interpret(tree.rhs, funDict, contVar)
-        if tree.op == '+':
+    elif isinstance(expr, treeClass.Op):
+        left = Interpret(expr.lhs, funDict, env)
+        right = Interpret(expr.rhs, funDict, env)
+        if expr.op == '+':
             return left + right
-        elif tree.op == '-':
+        elif expr.op == '-':
             return left - right
-        elif tree.op == '*':
+        elif expr.op == '*':
             return left * right
-        elif tree.op == '/':
+        elif expr.op == '/':
             return left/right
-        elif tree.op == '%':
+        elif expr.op == '%':
             return left % right
-        elif tree.op == '=':
+        elif expr.op == '=':
             if left == right:
                 return 1
             else:
                 return 0
         else:
-            print("Parsing Error, symobl "+ tree.op+" shouldn't be here.")
+            print("Parsing Error, symobl "+ expr.op+" shouldn't be here.")
             return 2
     #
-    elif isinstance(tree, treeClass.With):
-        val = Interpret(tree.nameExpr, funDict, contVar)
-        contVar[tree.name] = val #Eager
-        return Interpret(tree.body, funDict, contVar)
+    elif isinstance(expr, treeClass.With):
+        val = Interpret(expr.nameExpr, funDict, env)
+        env[expr.name] = val #Eager
+        return Interpret(expr.body, funDict, env)
     #
-    elif isinstance(tree, treeClass.Id):
-        if tree.name in contVar.keys():
-            return contVar[tree.name] 
+    elif isinstance(expr, treeClass.Id):
+        if expr.name in env.keys():
+            return env[expr.name] 
         else:
-            print("Interpret Error: free identifier :\n" + tree.name)
+            print("Interpret Error: free identifier :\n" + expr.name)
             return 2
     #
-    elif isinstance(tree, treeClass.App):
-        if tree.funName in funDict.keys():
+    elif isinstance(expr, treeClass.App):
+        if expr.funName in funDict.keys():
             #
-            funDef = funDict[tree.funName]
-            val = Interpret(tree.arg, funDict, contVar)
+            funDef = funDict[expr.funName]
+            val = Interpret(expr.arg, funDict, env)
             #
             if not isinstance(funDef, treeClass.Func):
                 print("Wrong Dictionnary.")
@@ -55,20 +59,24 @@ def Interpret(tree, funDict, contVar):
             return Interpret(funDef.body, funDict, newCont)
         #
         else:
-            print("Invalid function : " + tree.funName)
+            print("Invalid function : " + expr.funName)
             return 2
     #
-    elif isinstance(tree, treeClass.If):
-        condition = Interpret(tree.cond, funDict, contVar)
+    elif isinstance(expr, treeClass.If):
+        condition = Interpret(expr.cond, funDict, env)
         if condition != 0: #True
-            return Interpret(tree.ctrue, funDict, contVar)
+            return Interpret(expr.ctrue, funDict, env)
         else:
-            return Interpret(tree.cfalse, funDict, contVar)
+            return Interpret(expr.cfalse, funDict, env)
     #
-    else: # Not an <F1WAE>
-        print("Argument of Interpret is not a <F1WAE>:\n")
+    else: # Not an <ifF1WAE>
+        print("Argument of Interpret is not a <ifF1WAE>:\n")
         return 2        
-        
+
+#############################    
+# Translation and execution #
+#############################
+
 def Main(file):
     t,d = parser.Parse(file)
     j = Interpret(t,d,{})

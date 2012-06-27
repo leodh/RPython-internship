@@ -2,8 +2,9 @@ import treeClass
 import parser
 import sys
 
-
-#Class Function for CPS
+##########################
+# Class Function for CPS #
+##########################
 
 class Contk(object):
     def __init__(self,*arg):
@@ -28,25 +29,21 @@ class Idk(Contk):
         return expr, env, Endk(val), val
 
 class Withk(Contk):
-    def __init__(self, expr, env, cont, val, name, body):
+    def __init__(self, expr, env, cont, name):
         self.expr = expr
         self.env = env
         self.cont = cont
-        self.val = val
         self.name = name
-        self.body = body
 
     def apply(self, expr, env, val):
         env2 = self.env
         env2[self.name]=val
-        return self.body, env2, self.cont, val
+        return self.expr, env2, self.cont, val
 
 class Ifk(Contk):
-    def __init__(self, expr, env, cont, val, true, false):
-        self.expr = expr
+    def __init__(self, env, cont, true, false):
         self.env = env
         self.cont = cont
-        self.val = val
         self.true = true
         self.false = false
 
@@ -58,22 +55,18 @@ class Ifk(Contk):
         return expAnsw, self.env, self.cont, val
 
 class Op1k(Contk):
-    def __init__(self, expr, env, cont, val, op, rhs):
-        self.expr = expr
+    def __init__(self, env, cont, op, rhs):
         self.env = env
         self.cont = cont
-        self.val = val
         self.op = op
         self.rhs = rhs
 
     def apply(self, expr, env, val):
-        cont = Op2k(expr, env, self.cont, val, self.op)
+        cont = Op2k(self.cont, val, self.op)
         return self.rhs, self.env, cont, val
 
 class Op2k(Contk):
-    def __init__(self, expr, env, cont, val, op):
-        self.expr = expr
-        self.env = env
+    def __init__(self, cont, val, op):
         self.cont = cont
         self.val = val
         self.op = op
@@ -104,22 +97,22 @@ class Op2k(Contk):
         return self.cont.apply(expr, env, valAnsw)
 
 class Appk(Contk):
-    def __init__(self, expr, env, cont, val,arg):
+    def __init__(self, expr, cont, arg):
         self.expr = expr
-        self.env = env
         self.cont = cont
-        self.val = val
         self.arg = arg
 
     def apply(self, expr, env, val):
         return self.expr, {self.arg : val}, self.cont, val
         
         
-#Interpret CPS - imperative
+######################    
+#Interpret Iterative #
+######################
 
 
 def Interpk(tree, funDict, env1):
-    """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
+    """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
     expr = tree
     env = env1
@@ -150,15 +143,15 @@ def Interpk(tree, funDict, env1):
             val = va
         #
         elif isinstance(expr, treeClass.With):
-            cont = Withk(expr, env, cont, val, expr.name, expr.body)
+            cont = Withk(expr.body, env, cont, expr.name)
             expr = expr.nameExpr
         #
         elif isinstance(expr, treeClass.If):
-            cont = Ifk(expr, env, cont, val, expr.ctrue, expr.cfalse)
+            cont = Ifk(env, cont, expr.ctrue, expr.cfalse)
             expr = expr.cond
         #
         elif isinstance(expr, treeClass.Op):
-            cont = Op1k(expr, env, cont, val, expr.op, expr.rhs)
+            cont = Op1k(env, cont, expr.op, expr.rhs)
             expr = expr.lhs
         #
         elif isinstance(expr, treeClass.App):
@@ -168,15 +161,19 @@ def Interpk(tree, funDict, env1):
             body = fun.body
             arg = fun.argName
             expr = expr.arg
-            cont = Appk(body, env, cont, val, arg)
+            cont = Appk(body, cont, arg)
         #
-        else: # Not an <F1WAE>
-            print("Argument of Interpk is not a <F1WAE>:\n")
+        else: # Not an <ifF1WAE>
+            print("Argument of Interpk is not a <ifF1WAE>:\n")
             cont = Endk(2)
         # End of while
     assert isinstance(cont, Endk)
     return cont.val
-    
+
+#############################    
+# Translation and execution #
+#############################
+
 def Main(file):
     t,d = parser.Parse(file)
     j = Interpk(t,d,{})

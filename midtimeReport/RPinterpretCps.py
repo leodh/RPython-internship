@@ -2,24 +2,24 @@ import treeClass
 import parser
 import sys
 
-
-#Class Function for CPS
-
-class Funck:
+##########################
+# Class Function for CPS #
+##########################
+class Contk:
     def __init__(self):
         pass
     
     def apply(self,arg):
         return arg
 
-class Idk(Funck):
+class Idk(Contk):
     def __init__(self):
         pass
     
     def apply(self,arg):
         return arg
 
-class Opk(Funck):
+class Opk(Contk):
     def __init__(self,argLeft,op,k):
         self.argLeft=argLeft
         self.op=op
@@ -46,7 +46,7 @@ class Opk(Funck):
             print("Parsing Error, symobl "+ self.op +" shouldn't be here.")
             return 2
 
-class OpLeftk(Funck):
+class OpLeftk(Contk):
     def __init__(self, exprRight, funDict, env, k, op):
         self.exprRight=exprRight
         self.funDict=funDict
@@ -57,7 +57,7 @@ class OpLeftk(Funck):
     def apply(self, arg):
         return Interpk(self.exprRight,self.funDict,self.env, Opk(arg,self.op,self.k))
 
-class Appk(Funck):
+class Appk(Contk):
     def __init__(self, funName, funDict, k):
         self.funName=funName
         self.funDict=funDict
@@ -72,7 +72,7 @@ class Appk(Funck):
             return 2
 
 
-class Ifk(Funck):
+class Ifk(Contk):
     def __init__(self, true, false, funDict, env, k):
         self.true=true
         self.false=false
@@ -86,44 +86,48 @@ class Ifk(Funck):
         else:
             return Interpk(self.false, self.funDict, self.env, self.k)
 
+#################
+# Interpret CPS #
+#################
 
-#Interpret CPS - tail recursive
-
-
-def Interpk(tree, funDict, env,k):
-    """ Interpret the F1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
+def Interpk(expr, funDict, env, k):
+    """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
     #
-    if isinstance(tree, treeClass.Num):
-        return k.apply(tree.n)
+    if isinstance(expr, treeClass.Num):
+        return k.apply(expr.n)
     #
-    elif isinstance(tree, treeClass.Op):
-        k2 = OpLeftk(tree.rhs, funDict, env, k, tree.op)
-        return Interpk(tree.lhs, funDict, env, k2)
+    elif isinstance(expr, treeClass.Op):
+        k2 = OpLeftk(expr.rhs, funDict, env, k, expr.op)
+        return Interpk(expr.lhs, funDict, env, k2)
     #
-    elif isinstance(tree, treeClass.With):
-        val = Interpk(tree.nameExpr, funDict, env, Idk())
-        env[tree.name] = val #Eager
-        return Interpk(tree.body, funDict, env, k)
+    elif isinstance(expr, treeClass.With):
+        val = Interpk(expr.nameExpr, funDict, env, Idk())
+        env[expr.name] = val #Eager
+        return Interpk(expr.body, funDict, env, k)
     #
-    elif isinstance(tree, treeClass.Id):
-        if tree.name in env.keys():
-            return k.apply(env[tree.name])
+    elif isinstance(expr, treeClass.Id):
+        if expr.name in env.keys():
+            return k.apply(env[expr.name])
         else:
-            print("Interpret Error: free identifier :\n" + tree.name)
+            print("Interpret Error: free identifier :\n" + expr.name)
             return 2
     #
-    elif isinstance(tree, treeClass.App):
-        return Interpk(tree.arg, funDict, env, Appk(tree.funName, funDict, k))
+    elif isinstance(expr, treeClass.App):
+        return Interpk(expr.arg, funDict, env, Appk(expr.funName, funDict, k))
     #
-    elif isinstance(tree, treeClass.If):
-        return Interpk(tree.cond,funDict,env,Ifk(tree.ctrue,tree.cfalse,funDict,env,k))
+    elif isinstance(expr, treeClass.If):
+        return Interpk(expr.cond,funDict,env,Ifk(expr.ctrue,expr.cfalse,funDict,env,k))
     #
-    else: # Not an <F1WAE>
-        print("Argument of Interpk is not a <F1WAE>:\n")
+    else: # Not an <ifF1WAE>
+        print("Argument of Interpk is not a <ifF1WAE>:\n")
         return 2
     #
-    
+
+#############################    
+# Translation and execution #
+#############################
+
 def Main(file):
     t,d = parser.Parse(file)
     j = Interpk(t,d,{},Idk())
