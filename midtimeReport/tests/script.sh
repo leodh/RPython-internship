@@ -19,7 +19,6 @@ cp ../RPinterpretRec-c ../RPinterpretIter-c ../JITRPinterpretRec-c ../JITRPinter
 export i=1
 export nodes=10
 export runs=10
-export fileToRun=''
 export fileToTest=''
 
 until [ "$nodes" -gt 10000 ];
