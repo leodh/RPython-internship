@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.5.25)  27 JUN 2012 16:30
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.5.25)  27 JUN 2012 16:42
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -251,6 +251,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip49
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 11.
+Package hyperref Info: Option `linktocpage' set `true' on input line 12.
 
 (./MidTermReport.aux)
 \openout1 = `MidTermReport.aux'.
@@ -414,7 +415,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  5727 strings out of 493747
  84574 string characters out of 3143546
- 170846 words of memory out of 3000000
+ 170836 words of memory out of 3000000
  8866 multiletter control sequences out of 15000+200000
  14905 words of font info for 58 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
@@ -435,7 +436,7 @@ e/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/
 2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2
 010/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/20
 10/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on MidTermReport.pdf (9 pages, 220029 bytes).
+Output written on MidTermReport.pdf (9 pages, 220115 bytes).
 PDF statistics:
  295 PDF objects out of 1000 (max. 8388607)
  265 compressed objects within 3 object streams

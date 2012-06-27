@@ -8,8 +8,8 @@
 \usepackage{epstopdf}
 \usepackage{syntax}
 \usepackage{hyperref}
-\hypersetup{colorlinks=true}
-%\hypersetup{linktocpage}
+\hypersetup{colorlinks=true, menucolor = black, linkcolor=red, urlcolor=cyan}
+\hypersetup{linktocpage}
 % Mettre sommaire cliquable en noir?
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
@@ -241,9 +241,9 @@ The testing process is the following:
 
 \section*{Conclusion and acknowledgment}
 
-Building these took me some time, mostly time spent debugging the source code due to RPyhon limitations and time spent learning how Pypy works. Of course, this didn't took me the whole three weeks, but I don't count learning Python and continuation as time spent or the interpreter itself.
+Building these took me some time, mostly time spent debugging the source code due to RPyhon limitations and time spent learning how Pypy works. Of course, this didn't took me the whole three weeks, but I don't count learning Python and continuation as time spent or the interpreter itself. 
 
-I acknowledge the fact that my tests are not a proof and that they might perfectly be some limit cases. Still, I believe they give a good overview of the capability of different interpreters.
+I acknowledge the fact that my tests are not a proof and that they might perfectly be some limit cases. Still, I believe they give a good overview of the capability of different interpreters. I also humbly recognize that some of the above remarks and weakness of the programs might be entirely due to some personal misunderstanding or programing mistakes.
 
 From what I've done so far, it seems that JITing and interpreting is much more efficient on explicitly iterative interpreters. I hope, and believe, running the tests will confirm this. If they do, a first answer to "how easy it is to produce an efficient JITing VM for a language" would be "write a naive recursive-AST-based interpreter and progressively turn it to an iterative one". Even if intermediary steps might decrease the efficiency of the program, I think they represent a good way from recursive semi-efficient interpreters toward efficient iterative ones. I also believe that trying to improve Tail-call based interpreters would represent an amount of work superior to the potential gain: a skilled programmer being potentially able to skip these steps.
 
