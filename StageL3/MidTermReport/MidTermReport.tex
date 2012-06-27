@@ -198,7 +198,8 @@ In \texttt{JITRPinterp.py}, \texttt{JITRPinterpCps.py} and \texttt{JITRPinterpre
 
 In \texttt{JITRPinterpImperative.py}, only \texttt{expr} was green, \texttt{var}, \texttt{env} and \texttt{funDict} being red.
 
-Since the way I had chosen to color variables (mostly based on the first approach) produced results slower that the non-JITing version, I decided to brute force it: write every combination possible, translate them all and run them on two test files to see if something emerged from it. I firstly did it on the imperative versions, for it was the only one to support \texttt{test10000runs10000} without raising a stack overflow, and because this test took long enough to hope see a clear difference.  Only four colorations produced results faster or equivalent to the non-JITing version on \texttt{test10000runs2000} and two of them emerged from the run on \texttt{FTtest10000runs10000}.
+Since the way I had chosen to color variables (mostly based on the first approach) produced results slower that the non-JITing version, I decided to brute force it: write every combination possible, translate them all and run them on two test files to see if something emerged from it. I firstly did it on the imperative versions, for it was the only one to support \texttt{test10000runs10000} without raising a stack overflow, and because this test took long enough to hope see a clear difference.  Only four colorations produced results faster or equivalent to the non-JITing version on 
+\texttt{test10000runs2000} and two of them emerged from the run on \texttt{FTtest10000runs10000}.
 \begin{itemize}
 	\item The fastest version is the one were only \texttt{funDict} is green, all the loop variables being red. 
 	\item Declaring everything red tend do produce similar result than the previous.
@@ -218,20 +219,35 @@ Surprisingly, \texttt{funDict} alone in green produce a stack overflow on \textt
 
 \subsubsection{First set of tests}
 
-%While coding, I used two tests to see the evolution of performance: \texttt{test10runs10} to test the good translation and \texttt{test10000runs2000} to test the speed. Every version using tail calls (JITing or not) raise a stack overflow on the later. I then learned that this was normal since RPython does not provide implementation of tail-calls. That's why I didn't test them as much as the version at both extremity of the spectrum. It is also interesting to notice that \texttt{RPinterpCpsTrampolineIterative.py} seems to be stuck in an infinite loop (doesn't send a result even on \texttt{test10runs10}). That's why there is no JITing version of this one.
-%
-%Given that recursive and iterative versions both passed the bigger test, I used another file to test their limits: \texttt{test10000runs10000}. Both JITing and non-JITing recursive versions encountered stack overflow whereas iterative versions passed this test too.
-%
-%Both recursive and iterative versions seem Ñ at last Ñ faster when JITing on the tests they pass among the three mentioned. Let's run more tests.
+What first appeared when I made the first tests (with \texttt{FT}s files), is that JITing version had a lot of stack overflow. So much that none would pass \texttt{FTtest10000runs2000} when 
+\texttt{RPinterpretRec.py} would. The answer to that is to be found in the strange handling of errors by RPython-translated files
+\footnote{Documented \href{http://pypy.readthedocs.org/en/latest/coding-guide.html\#exception-rules}{here}.}
+ and my very-defensive programming. At first, every function that I wrote ensured to have valid arguments and raised errors when not. I even chose to test belonging to a dictionary with an access attempt instead of going through the keys. After realizing that,  I skipped to a non-defensive programing-style: the program continues to test validity of arguments, but instead of raising errors, prints what's going on and let the execution crashes in a way or in another. 
 
-\subsubsection{Benchmarks}
 
-I have compared four files: iterative and recursive interpreters both in non-JITing and JITing mode.
-You can find the test script, the file generated and the results file here %TODO : tests and link
+The other important result of the first test, is the fact that none of the version using tail-call is capable of running \texttt{FTtest10000runs2000}, whereas even the interpreted version of the recursive interpreter was able to do so (given enough time). They all produced stack overflow. This is explained by the fact that RPython does not support tail-call efficiently, as I was explained later. By the way, for an unknown reason, iterative trampoline versions seem to be stuck in an infinite loop when their recursive counterpart produces result in satisfying time for \texttt{FTtest10runs10}.
+
+\subsubsection{Proper tests}
+
+I haven't yet been through a proper test phase, mostly because of lack of time. Anyway, there is a script ready in \href{https://github.com/zebign1/RPython-internship/tree/master/midtimeReport/tests}{\texttt{tests}} repository. Although this script uses symbolic links I created for translation purpose and to use \texttt{pypy}, with very little modification it can be run on any Unix-based machine (at least, I think so, I'm not an expert in systems but I don't think I have used anything fancy).
+
+The testing process is the following:
+\begin{itemize}
+	\item Four files are tested, corresponding to both non-JITing and JITing versions of recursive and iterative interpreters. Cps and trampoline versions are left apart due to their tail-call structure.
+	\item In recursive JITing version, only \texttt{env} is green whereas in iterative version, only \texttt{funDict} is green. This is due to previously mentioned experiments.
+	\item $n$ and $runs$ vary in the set of power of $10$ from $10^{1}$ up to $10^{4}$
+	\item Each test is run $10$ times.
+\end{itemize}
 
 \section*{Conclusion and acknowledgment}
-%cas cps laissŽ en suspens pour le moment -> if too hard, why bother?
-% tests = limit cases?
+
+Building these took me some time, mostly time spent debugging the source code due to RPyhon limitations and time spent learning how Pypy works. Of course, this didn't took me the whole three weeks, but I don't count learning Python and continuation as time spent or the interpreter itself.
+
+I acknowledge the fact that my tests are not a proof and that they might perfectly be some limit cases. Still, I believe they give a good overview of the capability of different interpreters.
+
+From what I've done so far, it seems that JITing and interpreting is much more efficient on explicitly iterative interpreters. I hope, and believe, running the tests will confirm this. If they do, a first answer to "how easy it is to produce an efficient JITing VM for a language" would be "write a naive recursive-AST-based interpreter and progressively turn it to an iterative one". Even if intermediary steps might decrease the efficiency of the program, I think they represent a good way from recursive semi-efficient interpreters toward efficient iterative ones. I also believe that trying to improve Tail-call based interpreters would represent an amount of work superior to the potential gain: a skilled programmer being potentially able to skip these steps.
+
+Of course, this are not definitive nor scientific conclusions but intuitive and "little-experienced" based conclusions and a lot of work is still to be done to confirm them.
 
 \end{document}  
 

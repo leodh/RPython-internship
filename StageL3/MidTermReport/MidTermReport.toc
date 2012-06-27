@@ -14,4 +14,4 @@
 \contentsline {subsubsection}{\numberline {3.2.3}Greens and Reds ?}{6}{subsubsection.3.2.3}
 \contentsline {subsection}{\numberline {3.3}Results}{7}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}First set of tests}{7}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Benchmarks}{7}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2}Proper tests}{8}{subsubsection.3.3.2}
