@@ -324,7 +324,7 @@ def Parse(myFile):
     funDict = {}
     for funcDef in funcToDefine:
         name, descr = ParseFunc(funcDef)
-        if name in funDict.keys():
+        if not isinstance(funDict.get(name, treeClass.NoneFunc()), treeClass.NoneFunc):
             print("Function "+name+" already defined.")
         else:
             funDict[name] = descr

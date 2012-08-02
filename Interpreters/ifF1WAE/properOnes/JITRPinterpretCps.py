@@ -77,11 +77,10 @@ class Appk(Contk):
         self.k=k
 
     def apply(self, arg):
-        if self.funName in self.funDict.keys():
-            g=GetFunc(self.funDict, self.funName)
+        g = GetFunc(self.funDict, self.funName)
+        if not isinstance(g, treeClass.NoneFunc):
             return Interpk(g.body,self.funDict, {g.argName: arg}, self.k)
         else:
-            print("Invalid function : " + self.funName)
             return 2
 
 class Ifk(Contk):
@@ -103,22 +102,27 @@ class Ifk(Contk):
 #################
 
 @purefunction
-def GetFunc(funDict,name):
+def GetFunc(funDict, name):
     """Equivalent to funDict[name], but labelled as purefunction to be run faster by the JITing VM."""
-    
-    if not name in funDict.keys():
+
+    body = funDict.get(name, treeClass.NoneFunc())
+    if isinstance(body, treeClass.NoneFunc):
         print("Inexistant function : "+ name)
-    return funDict[name]
+    return body
 
 # JITing instructions
-jitdriver = JitDriver(greens=['env'], reds=['funDict', 'expr', 'k'])
+
+def get_printable_location(funDict, expr):
+    return treeClass.treePrint(expr)
+
+jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['env', 'k']),
+                    get_printable_location = get_printable_location
 
 #Interpret CPS - tail recursive
 
 def Interpk(expr, funDict, env, k):
     """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
-    jitdriver.can_enter_jit(expr=expr, funDict=funDict, env=env, k=k)
     jitdriver.jit_merge_point(expr=expr, funDict=funDict, env=env, k=k)
     #
     if isinstance(expr, treeClass.Num):
@@ -134,14 +138,18 @@ def Interpk(expr, funDict, env, k):
         return Interpk(expr.body, funDict, env, k)
     #
     elif isinstance(expr, treeClass.Id):
-        if expr.name in env.keys():
-            return k.apply(env[expr.name])
+        arg = env.get(expr.name, None)
+        if arg != None:
+            return k.apply(arg)
         else:
             print("Interpret Error: free identifier :\n" + expr.name)
             return 2
     #
     elif isinstance(expr, treeClass.App):
-        return Interpk(expr.arg, funDict, env, Appk(expr.funName, funDict, k))
+        expr = expr.arg
+        k = Appk(expr.funName, funDict, k)
+        jitdriver.can_enter_jit(expr=expr, funDict=funDict, env=env, k=k)
+        return Interpk(expr, funDict, env, k)
     #
     elif isinstance(expr, treeClass.If):
         return Interpk(expr.cond,funDict,env,Ifk(expr.ctrue,expr.cfalse,funDict,env,k))

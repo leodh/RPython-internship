@@ -76,11 +76,10 @@ class Appk(Contk):
         self.k=k
 
     def apply(self, arg):
-        if self.funName in self.funDict.keys():
-            g=GetFunc(self.funDict,self.funName)
+        g=GetFunc(self.funDict,self.funName)
+        if not isinstance(g, treeClass.NoneFunc):
             return Interpk(g.body,self.funDict, {g.argName: arg}, self.k)
         else:
-            print("Invalid function : " + self.funName)
             return ExpVal(2)
 
 class Ifk(Contk):
@@ -137,12 +136,13 @@ def Trampoline(bouncer):
 #############################
 
 @purefunction
-def GetFunc(funDict,name):
+def GetFunc(funDict, name):
     """Equivalent to funDict[name], but labelled as purefunction to be run faster by the JITing VM."""
-    
-    if not name in funDict.keys():
+
+    body = funDict.get(name, treeClass.NoneFunc())
+    if isinstance(body, treeClass.NoneFunc):
         print("Inexistant function : "+ name)
-    return funDict[name]
+    return body
 
 # JITing instructions
 jitdriver = JitDriver(greens=['env'], reds=['funDict', 'expr', 'k'])
@@ -167,8 +167,9 @@ def Interpk(expr, funDict, env, k):
         return Interpk(expr.body, funDict, env, k)
     #
     elif isinstance(expr, treeClass.Id):
-        if expr.name in env.keys():
-            return k.apply(env[expr.name])
+        arg = env.get(expr.name, None)
+        if arg != None:
+            return k.apply(arg)
         else:
             print("Interpret Error: free identifier :\n" + expr.name)
             return k.apply(2)

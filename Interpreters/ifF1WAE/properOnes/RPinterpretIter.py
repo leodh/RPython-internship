@@ -135,7 +135,7 @@ def Interpk(tree, funDict, env1):
             if expr.name in env.keys():
                 val = (env[expr.name])
             else:
-                print("Interpret Error: free identifier :\n" + tree.name)
+                print("Interpret Error: free identifier :\n" + expr.name)
             ex, en, co, va = cont.apply(expr,env,val) 
             expr = ex
             env = en

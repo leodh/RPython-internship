@@ -18,20 +18,25 @@ except ImportError:
 ##############################
 
 @purefunction
-def GetFunc(funDict,name):
+def GetFunc(funDict, name):
     """Equivalent to funDict[name], but labelled as purefunction to be run faster by the JITing VM."""
-    
-    if not name in funDict.keys():
+
+    body = funDict.get(name, treeClass.NoneFunc())
+    if isinstance(body, treeClass.NoneFunc) :
         print("Inexistant function : "+ name)
-    return funDict[name]
+    return body
 
 # JITing instructions
-jitdriver = JitDriver(greens=['env'], reds=['funDict', 'expr'])
+
+def get_printable_location(funDict, expr):
+    return treeClass.treePrint(expr)
+
+jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['env'],
+        get_printable_location=get_printable_location)
 
 def Interpret(expr, funDict, env):
     """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
-    jitdriver.can_enter_jit(expr=expr, funDict=funDict, env=env)
     jitdriver.jit_merge_point(expr=expr,funDict=funDict, env=env)
 
     if isinstance(expr, treeClass.Num):
@@ -65,26 +70,28 @@ def Interpret(expr, funDict, env):
         return Interpret(expr.body, funDict, env)
     #
     elif isinstance(expr, treeClass.Id):
-        if expr.name in env.keys():
-            return env[expr.name] 
+        identifier = env.get(expr.name, None)
+        if identifier != None:
+            return identifier 
         else:
             print("Interpret Error: free identifier :\n" + expr.name)
             return 2
     #
     elif isinstance(expr, treeClass.App):
-        if expr.funName in funDict.keys():
+        funDef = GetFunc(funDict, expr.funName)
+        if not isinstance(funDef, treeClass.NoneFunc):
             #
-            funDef = GetFunc(funDict, expr.funName)
             val = Interpret(expr.arg, funDict, env)
             #
             if not isinstance(funDef, treeClass.Func):
                 print("Wrong Dictionnary.")
             #
-            newCont = {funDef.argName: val} # Eager
-            return Interpret(funDef.body, funDict, newCont)
+            env = {funDef.argName: val} # Eager
+            expr = funDef.body
+            jitdriver.can_enter_jit(expr=expr, funDict=funDict, env=env)
+            return Interpret(expr, funDict, env)
         #
         else:
-            print("Invalid function : " + expr.funName)
             return 2
     #
     elif isinstance(expr, treeClass.If):

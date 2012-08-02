@@ -1,133 +1,133 @@
-[61f3162321f] {jit-log-opt-loop
-# Loop 0 (<Num object at 0x100fb7c>) : loop with 392 ops
+[156b0abb0206] {jit-log-opt-loop
+# Loop 0 (Num 3) : loop with 379 ops
 [i0, p1, p2]
-+57: label(i0, p1, p2, descr=TargetToken(6361192))
-debug_merge_point(0, 0, '<Num object at 0x60101c>')
-+57: guard_nonnull_class(p1, 1912944, descr=<Guard51>) [i0, p2, p1]
++57: label(i0, p1, p2, descr=TargetToken(6357096))
+debug_merge_point(0, 0, 'Num 3')
++57: guard_nonnull_class(p1, 1912976, descr=<Guard51>) [i0, p2, p1]
 +78: p4 = getfield_gc(p1, descr=<FieldP JITRPinterpretIter.Appk.inst_expr 16>)
 +81: p5 = getfield_gc(p1, descr=<FieldP JITRPinterpretIter.Appk.inst_arg 8>)
 +84: i7 = call(ConstClass(ll_strhash__rpy_stringPtr), p5, descr=<Calli 4 r EF=0>)
 p8 = new(, descr=<SizeDescr 16>)
 p10 = new_array(8, descr=<ArrayX 8>)
 +167: setfield_gc(p8, p10, descr=<FieldP dicttable.entries 12>)
-+170: i12 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, p5, i7, descr=<Calli 4 rri EF=4>)
++170: i12 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, p5, i7, descr=<Calli 4 rri EF=4>)
 +202: setfield_gc(p8, 16, descr=<FieldS dicttable.resize_counter 8>)
 +212: guard_no_exception(, descr=<Guard52>) [i12, i7, p4, p8, p5, p1]
-+225: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v93___simple_call__function__l), p8, p5, 3, i7, i12, descr=<Callv 0 rriii EF=4>)
++225: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v185___simple_call__function__), p8, p5, 3, i7, i12, descr=<Callv 0 rriii EF=4>)
 +267: guard_no_exception(, descr=<Guard53>) [p4, p8, p1]
 +280: p16 = getfield_gc(p1, descr=<FieldP JITRPinterpretIter.Appk.inst_cont 12>)
 +286: guard_value(p4, ConstPtr(ptr17), descr=<Guard54>) [p8, p16, p4]
-debug_merge_point(0, 0, '<Op object at 0x602024>')
-+301: guard_nonnull_class(p16, 1913016, descr=<Guard55>) [p8, p16]
-debug_merge_point(0, 0, '<Op object at 0x602038>')
-debug_merge_point(0, 0, '<Op object at 0x60204c>')
-debug_merge_point(0, 0, '<Op object at 0x602060>')
-debug_merge_point(0, 0, '<Op object at 0x602074>')
-debug_merge_point(0, 0, '<Op object at 0x602088>')
-debug_merge_point(0, 0, '<Op object at 0x60209c>')
-debug_merge_point(0, 0, '<Op object at 0x6020b0>')
-debug_merge_point(0, 0, '<Op object at 0x6020c4>')
-debug_merge_point(0, 0, '<Op object at 0x6020d8>')
-debug_merge_point(0, 0, '<Id object at 0x601358>')
-+319: i22 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr20), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Op +')
++301: guard_nonnull_class(p16, 1913048, descr=<Guard55>) [p8, p16]
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++319: i22 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr20), -1819822983, descr=<Calli 4 rri EF=4>)
 +358: guard_no_exception(, descr=<Guard56>) [p8, i22, p16]
 +371: i24 = int_and(i22, -2147483648)
 +379: i25 = int_is_true(i24)
 guard_false(i25, descr=<Guard57>) [p8, i22, p16]
 +388: p26 = getfield_gc(p8, descr=<FieldP dicttable.entries 12>)
 +394: i27 = getinteriorfield_gc(p26, i22, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Id object at 0x601430>')
-+398: i31 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr29), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Id x')
++398: i31 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr29), -1819822983, descr=<Calli 4 rri EF=4>)
 +437: guard_no_exception(, descr=<Guard58>) [i27, p8, i31, p16]
 +450: i33 = int_and(i31, -2147483648)
 +458: i34 = int_is_true(i33)
 guard_false(i34, descr=<Guard59>) [i27, p8, i31, p16]
 +467: i35 = getinteriorfield_gc(p26, i31, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
 +474: i36 = int_add(i27, i35)
-debug_merge_point(0, 0, '<Num object at 0x601544>')
-debug_merge_point(0, 0, '<Num object at 0x6015d4>')
-debug_merge_point(0, 0, '<Num object at 0x601664>')
-debug_merge_point(0, 0, '<Num object at 0x6016f4>')
-debug_merge_point(0, 0, '<Num object at 0x601784>')
-debug_merge_point(0, 0, '<Num object at 0x601814>')
-debug_merge_point(0, 0, '<Num object at 0x6018a4>')
-debug_merge_point(0, 0, '<Op object at 0x6020ec>')
-debug_merge_point(0, 0, '<Num object at 0x601970>')
-debug_merge_point(0, 0, '<Op object at 0x602100>')
-debug_merge_point(0, 0, '<Op object at 0x602114>')
-debug_merge_point(0, 0, '<Id object at 0x601a24>')
-+479: i40 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr38), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++479: i40 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr38), -1819822983, descr=<Calli 4 rri EF=4>)
 +515: guard_no_exception(, descr=<Guard60>) [p8, i40, i36, p16]
 +528: i42 = int_and(i40, -2147483648)
 +536: i43 = int_is_true(i42)
 guard_false(i43, descr=<Guard61>) [p8, i40, i36, p16]
 +545: i44 = getinteriorfield_gc(p26, i40, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Id object at 0x601afc>')
-+552: i48 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr46), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Id x')
++552: i48 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr46), -1819822983, descr=<Calli 4 rri EF=4>)
 +591: guard_no_exception(, descr=<Guard62>) [i44, p8, i48, i36, p16]
 +604: i50 = int_and(i48, -2147483648)
 +612: i51 = int_is_true(i50)
 guard_false(i51, descr=<Guard63>) [i44, p8, i48, i36, p16]
 +621: i52 = getinteriorfield_gc(p26, i48, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
 +628: i53 = int_add(i44, i52)
-debug_merge_point(0, 0, '<Num object at 0x601c10>')
+debug_merge_point(0, 0, 'Num 0')
 +633: i54 = int_add(i36, i53)
-debug_merge_point(0, 0, '<Op object at 0x602128>')
-debug_merge_point(0, 0, '<Op object at 0x60213c>')
-debug_merge_point(0, 0, '<Op object at 0x602150>')
-debug_merge_point(0, 0, '<Op object at 0x602164>')
-debug_merge_point(0, 0, '<Op object at 0x602178>')
-debug_merge_point(0, 0, '<Op object at 0x60218c>')
-debug_merge_point(0, 0, '<Op object at 0x6021a0>')
-debug_merge_point(0, 0, '<Id object at 0x601ebc>')
-+635: i58 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr56), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++635: i58 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr56), -1819822983, descr=<Calli 4 rri EF=4>)
 +671: guard_no_exception(, descr=<Guard64>) [i54, p8, i58, None, p16]
 +684: i61 = int_and(i58, -2147483648)
 +692: i62 = int_is_true(i61)
 guard_false(i62, descr=<Guard65>) [i54, p8, i58, None, p16]
 +701: i63 = getinteriorfield_gc(p26, i58, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Id object at 0x601f94>')
-+708: i67 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr65), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Id x')
++708: i67 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr65), -1819822983, descr=<Calli 4 rri EF=4>)
 +744: guard_no_exception(, descr=<Guard66>) [i63, p8, i67, i54, None, p16]
 +757: i69 = int_and(i67, -2147483648)
 +765: i70 = int_is_true(i69)
 guard_false(i70, descr=<Guard67>) [i63, p8, i67, i54, None, p16]
 +774: i71 = getinteriorfield_gc(p26, i67, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
 +781: i72 = int_add(i63, i71)
-debug_merge_point(0, 0, '<Num object at 0x6030b8>')
-debug_merge_point(0, 0, '<Num object at 0x603148>')
-debug_merge_point(0, 0, '<Id object at 0x6031d8>')
-+783: i76 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr74), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Id x')
++783: i76 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr74), -1819822983, descr=<Calli 4 rri EF=4>)
 +819: guard_no_exception(, descr=<Guard68>) [i72, p8, i76, i54, None, p16]
 +832: i78 = int_and(i76, -2147483648)
 +840: i79 = int_is_true(i78)
 guard_false(i79, descr=<Guard69>) [i72, p8, i76, i54, None, p16]
 +849: i80 = getinteriorfield_gc(p26, i76, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
 +856: i81 = int_add(i72, i80)
-debug_merge_point(0, 0, '<Op object at 0x6021b4>')
-debug_merge_point(0, 0, '<Num object at 0x603328>')
-debug_merge_point(0, 0, '<Op object at 0x6021c8>')
-debug_merge_point(0, 0, '<Op object at 0x6021dc>')
-debug_merge_point(0, 0, '<Id object at 0x6033dc>')
-+858: i85 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr83), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++858: i85 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr83), -1819822983, descr=<Calli 4 rri EF=4>)
 +894: guard_no_exception(, descr=<Guard70>) [p8, i85, i81, i54, None, p16]
 +907: i87 = int_and(i85, -2147483648)
 +915: i88 = int_is_true(i87)
 guard_false(i88, descr=<Guard71>) [p8, i85, i81, i54, None, p16]
 +924: i89 = getinteriorfield_gc(p26, i85, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Id object at 0x6034b4>')
-+931: i93 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr91), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Id x')
++931: i93 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr91), -1819822983, descr=<Calli 4 rri EF=4>)
 +970: guard_no_exception(, descr=<Guard72>) [i89, p8, i93, i81, i54, None, p16]
 +983: i95 = int_and(i93, -2147483648)
 +991: i96 = int_is_true(i95)
 guard_false(i96, descr=<Guard73>) [i89, p8, i93, i81, i54, None, p16]
 +1000: i97 = getinteriorfield_gc(p26, i93, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
 +1007: i98 = int_add(i89, i97)
-debug_merge_point(0, 0, '<Num object at 0x6035c8>')
+debug_merge_point(0, 0, 'Num 0')
 +1012: i99 = int_add(i81, i98)
-debug_merge_point(0, 0, '<Num object at 0x6036d0>')
-debug_merge_point(0, 0, '<Id object at 0x603760>')
-+1014: i103 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p8, ConstPtr(ptr101), -1819822983, descr=<Calli 4 rri EF=4>)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Id x')
++1014: i103 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p8, ConstPtr(ptr101), -1819822983, descr=<Calli 4 rri EF=4>)
 +1050: guard_no_exception(, descr=<Guard74>) [i99, p8, i103, None, i54, None, p16]
 +1063: i105 = int_and(i103, -2147483648)
 +1071: i106 = int_is_true(i105)
@@ -138,260 +138,247 @@ guard_false(i106, descr=<Guard75>) [i99, p8, i103, None, i54, None, p16]
 +1091: p110 = getfield_gc(p16, descr=<FieldP JITRPinterpretIter.Withk.inst_env 12>)
 +1097: p111 = getfield_gc(p16, descr=<FieldP JITRPinterpretIter.Withk.inst_name 20>)
 +1100: i113 = call(ConstClass(ll_strhash__rpy_stringPtr), p111, descr=<Calli 4 r EF=0>)
-+1121: i115 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p110, p111, i113, descr=<Calli 4 rri EF=4>)
++1121: i115 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p110, p111, i113, descr=<Calli 4 rri EF=4>)
 +1153: guard_no_exception(, descr=<Guard76>) [i115, i113, i109, p110, p111, p16, None, None, None, None]
-+1166: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v93___simple_call__function__l), p110, p111, i109, i113, i115, descr=<Callv 0 rriii EF=4>)
++1166: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v185___simple_call__function__), p110, p111, i109, i113, i115, descr=<Callv 0 rriii EF=4>)
 +1206: guard_no_exception(, descr=<Guard77>) [i109, p110, p16, None, None, None, None]
 +1219: p117 = getfield_gc(p16, descr=<FieldP JITRPinterpretIter.Withk.inst_expr 16>)
 +1225: p118 = getfield_gc(p16, descr=<FieldP JITRPinterpretIter.Withk.inst_cont 8>)
 +1228: guard_value(p117, ConstPtr(ptr119), descr=<Guard78>) [i109, p110, p118, p117, None, None, None, None]
-debug_merge_point(0, 0, '<App object at 0x600050>')
-+1240: guard_nonnull_class(p118, 1912744, descr=<Guard79>) [i109, p110, p118, None, None, None, None]
-+1258: i125 = call(ConstClass(ll_dict_lookup_trampoline__v144___simple_call__function_l), ConstPtr(ptr122), ConstPtr(ptr123), -1684490556, descr=<Calli 4 rri EF=4>)
-+1299: guard_no_exception(, descr=<Guard80>) [i109, p118, p110, i125, None, None, None, None]
-+1312: i127 = int_and(i125, -2147483648)
-+1320: i128 = int_is_true(i127)
-guard_false(i128, descr=<Guard81>) [i109, p118, p110, i125, None, None, None, None]
-+1329: p129 = getfield_gc(ConstPtr(ptr122), descr=<FieldP dicttable.entries 12>)
-+1335: p130 = getinteriorfield_gc(p129, i125, descr=<InteriorFieldDescr <FieldP dictentry.value 4>>)
-+1339: guard_nonnull(p130, descr=<Guard82>) [i109, p130, p118, p110, None, None, None, None]
-+1347: p131 = getfield_gc(p130, descr=<FieldP treeClass.Func.inst_body 12>)
-+1350: p132 = getfield_gc(p130, descr=<FieldP treeClass.Func.inst_argName 8>)
-debug_merge_point(0, 0, '<Op object at 0x602010>')
-debug_merge_point(0, 0, '<Id object at 0x6039c4>')
-+1353: i136 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p110, ConstPtr(ptr134), -1819822983, descr=<Calli 4 rri EF=4>)
-+1398: guard_no_exception(, descr=<Guard83>) [i109, p110, i136, p132, p118, p131, None, None, None, None]
-+1411: i138 = int_and(i136, -2147483648)
-+1419: i139 = int_is_true(i138)
-guard_false(i139, descr=<Guard84>) [i109, p110, i136, p132, p118, p131, None, None, None, None]
-+1428: p140 = getfield_gc(p110, descr=<FieldP dicttable.entries 12>)
-+1434: i141 = getinteriorfield_gc(p140, i136, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Num object at 0x603a9c>')
-+1438: i143 = int_sub(i141, 1)
-+1441: i145 = call(ConstClass(ll_strhash__rpy_stringPtr), p132, descr=<Calli 4 r EF=0>)
-p146 = new(, descr=<SizeDescr 16>)
-p148 = new_array(8, descr=<ArrayX 8>)
-+1521: setfield_gc(p146, p148, descr=<FieldP dicttable.entries 12>)
-+1524: i150 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p146, p132, i145, descr=<Calli 4 rri EF=4>)
-+1556: setfield_gc(p146, 16, descr=<FieldS dicttable.resize_counter 8>)
-+1566: guard_no_exception(, descr=<Guard85>) [i150, i145, i143, p131, p146, p132, p118]
-+1579: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v93___simple_call__function__l), p146, p132, i143, i145, i150, descr=<Callv 0 rriii EF=4>)
-+1616: guard_no_exception(, descr=<Guard86>) [i143, p131, p146, p132, p118]
-+1629: guard_value(p131, ConstPtr(ptr153), descr=<Guard87>) [i143, p146, p118, p131, None, None]
-debug_merge_point(0, 0, '<If object at 0x6021f0>')
-debug_merge_point(0, 0, '<Op object at 0x602204>')
-debug_merge_point(0, 0, '<Id object at 0x603c04>')
-+1644: i157 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p146, ConstPtr(ptr155), -1819822983, descr=<Calli 4 rri EF=4>)
-+1680: guard_no_exception(, descr=<Guard88>) [i143, p146, i157, None, p118]
-+1693: i159 = int_and(i157, -2147483648)
-+1701: i160 = int_is_true(i159)
-guard_false(i160, descr=<Guard89>) [i143, p146, i157, None, p118]
-+1710: p161 = getfield_gc(p146, descr=<FieldP dicttable.entries 12>)
-+1716: i162 = getinteriorfield_gc(p161, i157, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Num object at 0x603cdc>')
-+1720: i163 = int_is_zero(i162)
-guard_false(i163, descr=<Guard90>) [p146, i162, None, p118]
-debug_merge_point(0, 0, '<With object at 0x602218>')
-debug_merge_point(0, 0, '<App object at 0x600070>')
-+1729: i167 = call(ConstClass(ll_dict_lookup_trampoline__v144___simple_call__function_l), ConstPtr(ptr122), ConstPtr(ptr165), 171137383, descr=<Calli 4 rri EF=4>)
-+1767: guard_no_exception(, descr=<Guard91>) [p146, i167, None, None, p118]
-+1780: i169 = int_and(i167, -2147483648)
-+1788: i170 = int_is_true(i169)
-guard_false(i170, descr=<Guard92>) [p146, i167, None, None, p118]
-+1797: p171 = getinteriorfield_gc(p129, i167, descr=<InteriorFieldDescr <FieldP dictentry.value 4>>)
-+1804: guard_nonnull(p171, descr=<Guard93>) [p171, p146, None, None, p118]
-+1812: p172 = getfield_gc(p171, descr=<FieldP treeClass.Func.inst_body 12>)
-+1815: p173 = getfield_gc(p171, descr=<FieldP treeClass.Func.inst_argName 8>)
-debug_merge_point(0, 0, '<Num object at 0x60101c>')
-+1818: label(p173, p118, p146, p172, p129, descr=TargetToken(6361236))
-debug_merge_point(0, 0, '<Num object at 0x60101c>')
-+1818: i174 = call(ConstClass(ll_strhash__rpy_stringPtr), p173, descr=<Calli 4 r EF=0>)
-p175 = new(, descr=<SizeDescr 16>)
-p176 = new_array(8, descr=<ArrayX 8>)
-+1904: setfield_gc(p175, p176, descr=<FieldP dicttable.entries 12>)
-+1907: i177 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, p173, i174, descr=<Calli 4 rri EF=4>)
-+1939: setfield_gc(p175, 16, descr=<FieldS dicttable.resize_counter 8>)
-+1949: guard_no_exception(, descr=<Guard94>) [i177, i174, p172, p175, p173, p146, p118]
-+1962: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v93___simple_call__function__l), p175, p173, 3, i174, i177, descr=<Callv 0 rriii EF=4>)
-+2004: guard_no_exception(, descr=<Guard95>) [p172, p175, p173, p146, p118]
-+2017: guard_value(p172, ConstPtr(ptr17), descr=<Guard96>) [p175, p172, None, p146, p118]
-debug_merge_point(0, 0, '<Op object at 0x602024>')
-debug_merge_point(0, 0, '<Op object at 0x602038>')
-debug_merge_point(0, 0, '<Op object at 0x60204c>')
-debug_merge_point(0, 0, '<Op object at 0x602060>')
-debug_merge_point(0, 0, '<Op object at 0x602074>')
-debug_merge_point(0, 0, '<Op object at 0x602088>')
-debug_merge_point(0, 0, '<Op object at 0x60209c>')
-debug_merge_point(0, 0, '<Op object at 0x6020b0>')
-debug_merge_point(0, 0, '<Op object at 0x6020c4>')
-debug_merge_point(0, 0, '<Op object at 0x6020d8>')
-debug_merge_point(0, 0, '<Id object at 0x601358>')
-+2032: i178 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr20), -1819822983, descr=<Calli 4 rri EF=4>)
-+2068: guard_no_exception(, descr=<Guard97>) [p175, i178, None, p146, p118]
-+2081: i179 = int_and(i178, -2147483648)
-+2089: i180 = int_is_true(i179)
-guard_false(i180, descr=<Guard98>) [p175, i178, None, p146, p118]
-+2098: p181 = getfield_gc(p175, descr=<FieldP dicttable.entries 12>)
-+2104: i182 = getinteriorfield_gc(p181, i178, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Id object at 0x601430>')
-+2108: i183 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr29), -1819822983, descr=<Calli 4 rri EF=4>)
-+2150: guard_no_exception(, descr=<Guard99>) [i182, p175, i183, None, p146, p118]
-+2163: i184 = int_and(i183, -2147483648)
-+2171: i185 = int_is_true(i184)
-guard_false(i185, descr=<Guard100>) [i182, p175, i183, None, p146, p118]
-+2180: i186 = getinteriorfield_gc(p181, i183, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-+2187: i187 = int_add(i182, i186)
-debug_merge_point(0, 0, '<Num object at 0x601544>')
-debug_merge_point(0, 0, '<Num object at 0x6015d4>')
-debug_merge_point(0, 0, '<Num object at 0x601664>')
-debug_merge_point(0, 0, '<Num object at 0x6016f4>')
-debug_merge_point(0, 0, '<Num object at 0x601784>')
-debug_merge_point(0, 0, '<Num object at 0x601814>')
-debug_merge_point(0, 0, '<Num object at 0x6018a4>')
-debug_merge_point(0, 0, '<Op object at 0x6020ec>')
-debug_merge_point(0, 0, '<Num object at 0x601970>')
-debug_merge_point(0, 0, '<Op object at 0x602100>')
-debug_merge_point(0, 0, '<Op object at 0x602114>')
-debug_merge_point(0, 0, '<Id object at 0x601a24>')
-+2195: i188 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr38), -1819822983, descr=<Calli 4 rri EF=4>)
-+2231: guard_no_exception(, descr=<Guard101>) [p175, i188, i187, None, p146, p118]
-+2244: i189 = int_and(i188, -2147483648)
-+2252: i190 = int_is_true(i189)
-guard_false(i190, descr=<Guard102>) [p175, i188, i187, None, p146, p118]
-+2261: i191 = getinteriorfield_gc(p181, i188, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Id object at 0x601afc>')
-+2268: i192 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr46), -1819822983, descr=<Calli 4 rri EF=4>)
-+2310: guard_no_exception(, descr=<Guard103>) [i191, p175, i192, i187, None, p146, p118]
-+2323: i193 = int_and(i192, -2147483648)
-+2331: i194 = int_is_true(i193)
-guard_false(i194, descr=<Guard104>) [i191, p175, i192, i187, None, p146, p118]
-+2340: i195 = getinteriorfield_gc(p181, i192, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-+2347: i196 = int_add(i191, i195)
-debug_merge_point(0, 0, '<Num object at 0x601c10>')
-+2355: i197 = int_add(i187, i196)
-debug_merge_point(0, 0, '<Op object at 0x602128>')
-debug_merge_point(0, 0, '<Op object at 0x60213c>')
-debug_merge_point(0, 0, '<Op object at 0x602150>')
-debug_merge_point(0, 0, '<Op object at 0x602164>')
-debug_merge_point(0, 0, '<Op object at 0x602178>')
-debug_merge_point(0, 0, '<Op object at 0x60218c>')
-debug_merge_point(0, 0, '<Op object at 0x6021a0>')
-debug_merge_point(0, 0, '<Id object at 0x601ebc>')
-+2357: i198 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr56), -1819822983, descr=<Calli 4 rri EF=4>)
-+2393: guard_no_exception(, descr=<Guard105>) [i197, p175, i198, None, None, p146, p118]
-+2406: i199 = int_and(i198, -2147483648)
-+2414: i200 = int_is_true(i199)
-guard_false(i200, descr=<Guard106>) [i197, p175, i198, None, None, p146, p118]
-+2423: i201 = getinteriorfield_gc(p181, i198, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Id object at 0x601f94>')
-+2430: i202 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr65), -1819822983, descr=<Calli 4 rri EF=4>)
-+2466: guard_no_exception(, descr=<Guard107>) [i201, p175, i202, i197, None, None, p146, p118]
-+2479: i203 = int_and(i202, -2147483648)
-+2487: i204 = int_is_true(i203)
-guard_false(i204, descr=<Guard108>) [i201, p175, i202, i197, None, None, p146, p118]
-+2496: i205 = getinteriorfield_gc(p181, i202, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-+2503: i206 = int_add(i201, i205)
-debug_merge_point(0, 0, '<Num object at 0x6030b8>')
-debug_merge_point(0, 0, '<Num object at 0x603148>')
-debug_merge_point(0, 0, '<Id object at 0x6031d8>')
-+2505: i207 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr74), -1819822983, descr=<Calli 4 rri EF=4>)
-+2541: guard_no_exception(, descr=<Guard109>) [i206, p175, i207, i197, None, None, p146, p118]
-+2554: i208 = int_and(i207, -2147483648)
-+2562: i209 = int_is_true(i208)
-guard_false(i209, descr=<Guard110>) [i206, p175, i207, i197, None, None, p146, p118]
-+2571: i210 = getinteriorfield_gc(p181, i207, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-+2578: i211 = int_add(i206, i210)
-debug_merge_point(0, 0, '<Op object at 0x6021b4>')
-debug_merge_point(0, 0, '<Num object at 0x603328>')
-debug_merge_point(0, 0, '<Op object at 0x6021c8>')
-debug_merge_point(0, 0, '<Op object at 0x6021dc>')
-debug_merge_point(0, 0, '<Id object at 0x6033dc>')
-+2580: i212 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr83), -1819822983, descr=<Calli 4 rri EF=4>)
-+2616: guard_no_exception(, descr=<Guard111>) [p175, i212, i211, i197, None, None, p146, p118]
-+2629: i213 = int_and(i212, -2147483648)
-+2637: i214 = int_is_true(i213)
-guard_false(i214, descr=<Guard112>) [p175, i212, i211, i197, None, None, p146, p118]
-+2646: i215 = getinteriorfield_gc(p181, i212, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Id object at 0x6034b4>')
-+2653: i216 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr91), -1819822983, descr=<Calli 4 rri EF=4>)
-+2695: guard_no_exception(, descr=<Guard113>) [i215, p175, i216, i211, i197, None, None, p146, p118]
-+2708: i217 = int_and(i216, -2147483648)
-+2716: i218 = int_is_true(i217)
-guard_false(i218, descr=<Guard114>) [i215, p175, i216, i211, i197, None, None, p146, p118]
-+2725: i219 = getinteriorfield_gc(p181, i216, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-+2732: i220 = int_add(i215, i219)
-debug_merge_point(0, 0, '<Num object at 0x6035c8>')
-+2740: i221 = int_add(i211, i220)
-debug_merge_point(0, 0, '<Num object at 0x6036d0>')
-debug_merge_point(0, 0, '<Id object at 0x603760>')
-+2742: i222 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p175, ConstPtr(ptr101), -1819822983, descr=<Calli 4 rri EF=4>)
-+2778: guard_no_exception(, descr=<Guard115>) [i221, p175, i222, None, i197, None, None, p146, p118]
-+2791: i223 = int_and(i222, -2147483648)
-+2799: i224 = int_is_true(i223)
-guard_false(i224, descr=<Guard116>) [i221, p175, i222, None, i197, None, None, p146, p118]
-+2808: i225 = getinteriorfield_gc(p181, i222, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-+2815: i226 = int_add(i221, i225)
-+2817: i227 = int_add(i197, i226)
-+2819: i230 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p146, ConstPtr(ptr228), -1691822600, descr=<Calli 4 rri EF=4>)
-+2855: guard_no_exception(, descr=<Guard117>) [i230, i227, p146, None, None, None, None, None, p118]
-+2868: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v93___simple_call__function__l), p146, ConstPtr(ptr228), i227, -1691822600, i230, descr=<Callv 0 rriii EF=4>)
-+2912: guard_no_exception(, descr=<Guard118>) [i227, p146, None, None, None, None, None, p118]
-debug_merge_point(0, 0, '<App object at 0x600050>')
-+2925: i231 = call(ConstClass(ll_dict_lookup_trampoline__v144___simple_call__function_l), ConstPtr(ptr122), ConstPtr(ptr123), -1684490556, descr=<Calli 4 rri EF=4>)
-+2963: guard_no_exception(, descr=<Guard119>) [i227, p118, p146, i231, None, None, None, None, None, None]
-+2976: i232 = int_and(i231, -2147483648)
-+2984: i233 = int_is_true(i232)
-guard_false(i233, descr=<Guard120>) [i227, p118, p146, i231, None, None, None, None, None, None]
-+2993: p234 = getinteriorfield_gc(p129, i231, descr=<InteriorFieldDescr <FieldP dictentry.value 4>>)
-+3000: guard_nonnull(p234, descr=<Guard121>) [i227, p234, p118, p146, None, None, None, None, None, None]
-+3008: p235 = getfield_gc(p234, descr=<FieldP treeClass.Func.inst_body 12>)
-+3011: p236 = getfield_gc(p234, descr=<FieldP treeClass.Func.inst_argName 8>)
-debug_merge_point(0, 0, '<Op object at 0x602010>')
-debug_merge_point(0, 0, '<Id object at 0x6039c4>')
-+3014: i237 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p146, ConstPtr(ptr134), -1819822983, descr=<Calli 4 rri EF=4>)
-+3062: guard_no_exception(, descr=<Guard122>) [i227, p146, i237, p236, p235, None, None, None, None, None, p118]
-+3075: i238 = int_and(i237, -2147483648)
-+3083: i239 = int_is_true(i238)
-guard_false(i239, descr=<Guard123>) [i227, p146, i237, p236, p235, None, None, None, None, None, p118]
-+3092: p240 = getfield_gc(p146, descr=<FieldP dicttable.entries 12>)
-+3098: i241 = getinteriorfield_gc(p240, i237, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Num object at 0x603a9c>')
-+3102: i242 = int_sub(i241, 1)
-+3105: i243 = call(ConstClass(ll_strhash__rpy_stringPtr), p236, descr=<Calli 4 r EF=0>)
-p244 = new(, descr=<SizeDescr 16>)
-p245 = new_array(8, descr=<ArrayX 8>)
-+3191: setfield_gc(p244, p245, descr=<FieldP dicttable.entries 12>)
-+3194: i246 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p244, p236, i243, descr=<Calli 4 rri EF=4>)
-+3232: setfield_gc(p244, 16, descr=<FieldS dicttable.resize_counter 8>)
-+3242: guard_no_exception(, descr=<Guard124>) [i246, i243, i242, p235, p244, p236, p118]
-+3255: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v93___simple_call__function__l), p244, p236, i242, i243, i246, descr=<Callv 0 rriii EF=4>)
-+3298: guard_no_exception(, descr=<Guard125>) [i242, p235, p244, p236, p118]
-+3311: guard_value(p235, ConstPtr(ptr153), descr=<Guard126>) [i242, p244, p118, p235, None, None]
-debug_merge_point(0, 0, '<If object at 0x6021f0>')
-debug_merge_point(0, 0, '<Op object at 0x602204>')
-debug_merge_point(0, 0, '<Id object at 0x603c04>')
-+3329: i247 = call(ConstClass(ll_dict_lookup_trampoline__v66___simple_call__function_ll), p244, ConstPtr(ptr155), -1819822983, descr=<Calli 4 rri EF=4>)
-+3365: guard_no_exception(, descr=<Guard127>) [i242, p244, i247, None, p118]
-+3378: i248 = int_and(i247, -2147483648)
-+3386: i249 = int_is_true(i248)
-guard_false(i249, descr=<Guard128>) [i242, p244, i247, None, p118]
-+3395: p250 = getfield_gc(p244, descr=<FieldP dicttable.entries 12>)
-+3401: i251 = getinteriorfield_gc(p250, i247, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
-debug_merge_point(0, 0, '<Num object at 0x603cdc>')
-+3405: i252 = int_is_zero(i251)
-guard_false(i252, descr=<Guard129>) [p244, i251, None, p118]
-debug_merge_point(0, 0, '<With object at 0x602218>')
-debug_merge_point(0, 0, '<App object at 0x600070>')
-+3414: i253 = call(ConstClass(ll_dict_lookup_trampoline__v144___simple_call__function_l), ConstPtr(ptr122), ConstPtr(ptr165), 171137383, descr=<Calli 4 rri EF=4>)
-+3452: guard_no_exception(, descr=<Guard130>) [p244, i253, None, None, p118]
-+3465: i254 = int_and(i253, -2147483648)
-+3473: i255 = int_is_true(i254)
-guard_false(i255, descr=<Guard131>) [p244, i253, None, None, p118]
-+3482: p256 = getinteriorfield_gc(p129, i253, descr=<InteriorFieldDescr <FieldP dictentry.value 4>>)
-+3489: guard_nonnull(p256, descr=<Guard132>) [p256, p244, None, None, p118]
-+3497: p257 = getfield_gc(p256, descr=<FieldP treeClass.Func.inst_body 12>)
-+3500: p258 = getfield_gc(p256, descr=<FieldP treeClass.Func.inst_argName 8>)
-debug_merge_point(0, 0, '<Num object at 0x60101c>')
-+3503: jump(p258, p118, p244, p257, p129, descr=TargetToken(6361236))
-+3510: --end of the loop--
-[61f3188c55f] jit-log-opt-loop}
+debug_merge_point(0, 0, 'App run')
++1240: guard_nonnull_class(p118, 1912776, descr=<Guard79>) [i109, p110, p118, None, None, None, None]
++1258: p124 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr122), ConstPtr(ptr123), descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard19>) [i109, p124, p118, p110, None, None, None, None]
++1303: guard_no_exception(, descr=<Guard80>) [i109, p124, p118, p110, None, None, None, None]
++1316: guard_nonnull_class(p124, 1913348, descr=<Guard81>) [i109, p124, p118, p110, None, None, None, None]
++1334: p126 = getfield_gc(p124, descr=<FieldP treeClass.Func.inst_body 12>)
++1337: p127 = getfield_gc(p124, descr=<FieldP treeClass.Func.inst_argName 8>)
+debug_merge_point(0, 0, 'Op -')
+debug_merge_point(0, 0, 'Id x')
++1340: i131 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p110, ConstPtr(ptr129), -1819822983, descr=<Calli 4 rri EF=4>)
++1382: guard_no_exception(, descr=<Guard82>) [i109, p110, i131, p126, p118, p127, None, None, None, None]
++1395: i133 = int_and(i131, -2147483648)
++1403: i134 = int_is_true(i133)
+guard_false(i134, descr=<Guard83>) [i109, p110, i131, p126, p118, p127, None, None, None, None]
++1412: p135 = getfield_gc(p110, descr=<FieldP dicttable.entries 12>)
++1418: i136 = getinteriorfield_gc(p135, i131, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
+debug_merge_point(0, 0, 'Num 1')
++1422: i138 = int_sub(i136, 1)
++1425: i140 = call(ConstClass(ll_strhash__rpy_stringPtr), p127, descr=<Calli 4 r EF=0>)
+p141 = new(, descr=<SizeDescr 16>)
+p143 = new_array(8, descr=<ArrayX 8>)
++1505: setfield_gc(p141, p143, descr=<FieldP dicttable.entries 12>)
++1508: i145 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p141, p127, i140, descr=<Calli 4 rri EF=4>)
++1540: setfield_gc(p141, 16, descr=<FieldS dicttable.resize_counter 8>)
++1550: guard_no_exception(, descr=<Guard84>) [i145, i140, i138, p126, p141, p127, p118]
++1563: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v185___simple_call__function__), p141, p127, i138, i140, i145, descr=<Callv 0 rriii EF=4>)
++1600: guard_no_exception(, descr=<Guard85>) [i138, p126, p141, p127, p118]
++1613: guard_value(p126, ConstPtr(ptr148), descr=<Guard86>) [i138, p141, p118, p126, None, None]
+debug_merge_point(0, 0, 'If Op =')
+debug_merge_point(0, 0, 'Op =')
+debug_merge_point(0, 0, 'Id x')
++1628: i152 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p141, ConstPtr(ptr150), -1819822983, descr=<Calli 4 rri EF=4>)
++1664: guard_no_exception(, descr=<Guard87>) [i138, p141, i152, None, p118]
++1677: i154 = int_and(i152, -2147483648)
++1685: i155 = int_is_true(i154)
+guard_false(i155, descr=<Guard88>) [i138, p141, i152, None, p118]
++1694: p156 = getfield_gc(p141, descr=<FieldP dicttable.entries 12>)
++1700: i157 = getinteriorfield_gc(p156, i152, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
+debug_merge_point(0, 0, 'Num 0')
++1704: i158 = int_is_zero(i157)
+guard_false(i158, descr=<Guard89>) [p141, i157, None, p118]
+debug_merge_point(0, 0, 'With y')
+debug_merge_point(0, 0, 'App f')
++1713: p160 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr122), ConstPtr(ptr159), descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard26>) [p160, p141, None, None, p118]
++1752: guard_no_exception(, descr=<Guard90>) [p160, p141, None, None, p118]
++1765: guard_nonnull_class(p160, 1913348, descr=<Guard91>) [p160, p141, None, None, p118]
++1783: p162 = getfield_gc(p160, descr=<FieldP treeClass.Func.inst_body 12>)
++1786: p163 = getfield_gc(p160, descr=<FieldP treeClass.Func.inst_argName 8>)
+debug_merge_point(0, 0, 'Num 3')
++1789: label(p163, p118, p141, p162, descr=TargetToken(6357140))
+debug_merge_point(0, 0, 'Num 3')
++1789: i164 = call(ConstClass(ll_strhash__rpy_stringPtr), p163, descr=<Calli 4 r EF=0>)
+p165 = new(, descr=<SizeDescr 16>)
+p166 = new_array(8, descr=<ArrayX 8>)
++1872: setfield_gc(p165, p166, descr=<FieldP dicttable.entries 12>)
++1875: i167 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, p163, i164, descr=<Calli 4 rri EF=4>)
++1907: setfield_gc(p165, 16, descr=<FieldS dicttable.resize_counter 8>)
++1917: guard_no_exception(, descr=<Guard92>) [i167, i164, p162, p165, p163, p118, p141]
++1930: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v185___simple_call__function__), p165, p163, 3, i164, i167, descr=<Callv 0 rriii EF=4>)
++1972: guard_no_exception(, descr=<Guard93>) [p162, p165, p163, p118, p141]
++1985: guard_value(p162, ConstPtr(ptr17), descr=<Guard94>) [p165, p162, None, p118, p141]
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++2000: i168 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr20), -1819822983, descr=<Calli 4 rri EF=4>)
++2036: guard_no_exception(, descr=<Guard95>) [p165, i168, None, p118, p141]
++2049: i169 = int_and(i168, -2147483648)
++2057: i170 = int_is_true(i169)
+guard_false(i170, descr=<Guard96>) [p165, i168, None, p118, p141]
++2066: p171 = getfield_gc(p165, descr=<FieldP dicttable.entries 12>)
++2072: i172 = getinteriorfield_gc(p171, i168, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
+debug_merge_point(0, 0, 'Id x')
++2076: i173 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr29), -1819822983, descr=<Calli 4 rri EF=4>)
++2115: guard_no_exception(, descr=<Guard97>) [i172, p165, i173, None, p118, p141]
++2128: i174 = int_and(i173, -2147483648)
++2136: i175 = int_is_true(i174)
+guard_false(i175, descr=<Guard98>) [i172, p165, i173, None, p118, p141]
++2145: i176 = getinteriorfield_gc(p171, i173, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
++2152: i177 = int_add(i172, i176)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++2157: i178 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr38), -1819822983, descr=<Calli 4 rri EF=4>)
++2199: guard_no_exception(, descr=<Guard99>) [p165, i178, i177, None, p118, p141]
++2212: i179 = int_and(i178, -2147483648)
++2220: i180 = int_is_true(i179)
+guard_false(i180, descr=<Guard100>) [p165, i178, i177, None, p118, p141]
++2229: i181 = getinteriorfield_gc(p171, i178, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
+debug_merge_point(0, 0, 'Id x')
++2236: i182 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr46), -1819822983, descr=<Calli 4 rri EF=4>)
++2278: guard_no_exception(, descr=<Guard101>) [i181, p165, i182, i177, None, p118, p141]
++2291: i183 = int_and(i182, -2147483648)
++2299: i184 = int_is_true(i183)
+guard_false(i184, descr=<Guard102>) [i181, p165, i182, i177, None, p118, p141]
++2308: i185 = getinteriorfield_gc(p171, i182, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
++2315: i186 = int_add(i181, i185)
+debug_merge_point(0, 0, 'Num 0')
++2323: i187 = int_add(i177, i186)
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++2331: i188 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr56), -1819822983, descr=<Calli 4 rri EF=4>)
++2373: guard_no_exception(, descr=<Guard103>) [i187, p165, i188, None, None, p118, p141]
++2386: i189 = int_and(i188, -2147483648)
++2394: i190 = int_is_true(i189)
+guard_false(i190, descr=<Guard104>) [i187, p165, i188, None, None, p118, p141]
++2403: i191 = getinteriorfield_gc(p171, i188, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
+debug_merge_point(0, 0, 'Id x')
++2410: i192 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr65), -1819822983, descr=<Calli 4 rri EF=4>)
++2452: guard_no_exception(, descr=<Guard105>) [i191, p165, i192, i187, None, None, p118, p141]
++2465: i193 = int_and(i192, -2147483648)
++2473: i194 = int_is_true(i193)
+guard_false(i194, descr=<Guard106>) [i191, p165, i192, i187, None, None, p118, p141]
++2482: i195 = getinteriorfield_gc(p171, i192, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
++2489: i196 = int_add(i191, i195)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Id x')
++2497: i197 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr74), -1819822983, descr=<Calli 4 rri EF=4>)
++2533: guard_no_exception(, descr=<Guard107>) [i196, p165, i197, i187, None, None, p118, p141]
++2546: i198 = int_and(i197, -2147483648)
++2554: i199 = int_is_true(i198)
+guard_false(i199, descr=<Guard108>) [i196, p165, i197, i187, None, None, p118, p141]
++2563: i200 = getinteriorfield_gc(p171, i197, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
++2570: i201 = int_add(i196, i200)
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++2572: i202 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr83), -1819822983, descr=<Calli 4 rri EF=4>)
++2608: guard_no_exception(, descr=<Guard109>) [p165, i202, i201, i187, None, None, p118, p141]
++2621: i203 = int_and(i202, -2147483648)
++2629: i204 = int_is_true(i203)
+guard_false(i204, descr=<Guard110>) [p165, i202, i201, i187, None, None, p118, p141]
++2638: i205 = getinteriorfield_gc(p171, i202, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
+debug_merge_point(0, 0, 'Id x')
++2645: i206 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr91), -1819822983, descr=<Calli 4 rri EF=4>)
++2687: guard_no_exception(, descr=<Guard111>) [i205, p165, i206, i201, i187, None, None, p118, p141]
++2700: i207 = int_and(i206, -2147483648)
++2708: i208 = int_is_true(i207)
+guard_false(i208, descr=<Guard112>) [i205, p165, i206, i201, i187, None, None, p118, p141]
++2717: i209 = getinteriorfield_gc(p171, i206, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
++2724: i210 = int_add(i205, i209)
+debug_merge_point(0, 0, 'Num 0')
++2732: i211 = int_add(i201, i210)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Id x')
++2734: i212 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p165, ConstPtr(ptr101), -1819822983, descr=<Calli 4 rri EF=4>)
++2770: guard_no_exception(, descr=<Guard113>) [i211, p165, i212, None, i187, None, None, p118, p141]
++2783: i213 = int_and(i212, -2147483648)
++2791: i214 = int_is_true(i213)
+guard_false(i214, descr=<Guard114>) [i211, p165, i212, None, i187, None, None, p118, p141]
++2800: i215 = getinteriorfield_gc(p171, i212, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
++2807: i216 = int_add(i211, i215)
++2809: i217 = int_add(i187, i216)
++2817: i220 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p141, ConstPtr(ptr218), -1691822600, descr=<Calli 4 rri EF=4>)
++2853: guard_no_exception(, descr=<Guard115>) [i220, i217, p141, None, None, None, None, p118, None]
++2866: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v185___simple_call__function__), p141, ConstPtr(ptr218), i217, -1691822600, i220, descr=<Callv 0 rriii EF=4>)
++2910: guard_no_exception(, descr=<Guard116>) [i217, p141, None, None, None, None, p118, None]
+debug_merge_point(0, 0, 'App run')
++2923: p221 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr122), ConstPtr(ptr123), descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard43>) [i217, p221, p118, p141, None, None, None, None, None, None]
++2968: guard_no_exception(, descr=<Guard117>) [i217, p221, p118, p141, None, None, None, None, None, None]
++2981: guard_nonnull_class(p221, 1913348, descr=<Guard118>) [i217, p221, p118, p141, None, None, None, None, None, None]
++2999: p222 = getfield_gc(p221, descr=<FieldP treeClass.Func.inst_body 12>)
++3002: p223 = getfield_gc(p221, descr=<FieldP treeClass.Func.inst_argName 8>)
+debug_merge_point(0, 0, 'Op -')
+debug_merge_point(0, 0, 'Id x')
++3005: i224 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p141, ConstPtr(ptr129), -1819822983, descr=<Calli 4 rri EF=4>)
++3053: guard_no_exception(, descr=<Guard119>) [i217, p141, i224, p222, p223, None, None, None, None, p118, None]
++3066: i225 = int_and(i224, -2147483648)
++3074: i226 = int_is_true(i225)
+guard_false(i226, descr=<Guard120>) [i217, p141, i224, p222, p223, None, None, None, None, p118, None]
++3083: p227 = getfield_gc(p141, descr=<FieldP dicttable.entries 12>)
++3089: i228 = getinteriorfield_gc(p227, i224, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
+debug_merge_point(0, 0, 'Num 1')
++3093: i229 = int_sub(i228, 1)
++3096: i230 = call(ConstClass(ll_strhash__rpy_stringPtr), p223, descr=<Calli 4 r EF=0>)
+p231 = new(, descr=<SizeDescr 16>)
+p232 = new_array(8, descr=<ArrayX 8>)
++3182: setfield_gc(p231, p232, descr=<FieldP dicttable.entries 12>)
++3185: i233 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p231, p223, i230, descr=<Calli 4 rri EF=4>)
++3223: setfield_gc(p231, 16, descr=<FieldS dicttable.resize_counter 8>)
++3233: guard_no_exception(, descr=<Guard121>) [i233, i230, i229, p222, p231, p223, p118]
++3246: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v185___simple_call__function__), p231, p223, i229, i230, i233, descr=<Callv 0 rriii EF=4>)
++3289: guard_no_exception(, descr=<Guard122>) [i229, p222, p231, p223, p118]
++3302: guard_value(p222, ConstPtr(ptr148), descr=<Guard123>) [i229, p231, p118, p222, None, None]
+debug_merge_point(0, 0, 'If Op =')
+debug_merge_point(0, 0, 'Op =')
+debug_merge_point(0, 0, 'Id x')
++3320: i234 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p231, ConstPtr(ptr150), -1819822983, descr=<Calli 4 rri EF=4>)
++3356: guard_no_exception(, descr=<Guard124>) [i229, p231, i234, None, p118]
++3369: i235 = int_and(i234, -2147483648)
++3377: i236 = int_is_true(i235)
+guard_false(i236, descr=<Guard125>) [i229, p231, i234, None, p118]
++3386: p237 = getfield_gc(p231, descr=<FieldP dicttable.entries 12>)
++3392: i238 = getinteriorfield_gc(p237, i234, descr=<InteriorFieldDescr <FieldS dictentry.value 4>>)
+debug_merge_point(0, 0, 'Num 0')
++3396: i239 = int_is_zero(i238)
+guard_false(i239, descr=<Guard126>) [p231, i238, None, p118]
+debug_merge_point(0, 0, 'With y')
+debug_merge_point(0, 0, 'App f')
++3405: p240 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr122), ConstPtr(ptr159), descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard50>) [p240, p231, None, None, p118]
++3444: guard_no_exception(, descr=<Guard127>) [p240, p231, None, None, p118]
++3457: guard_nonnull_class(p240, 1913348, descr=<Guard128>) [p240, p231, None, None, p118]
++3475: p241 = getfield_gc(p240, descr=<FieldP treeClass.Func.inst_body 12>)
++3478: p242 = getfield_gc(p240, descr=<FieldP treeClass.Func.inst_argName 8>)
+debug_merge_point(0, 0, 'Num 3')
++3481: jump(p242, p118, p231, p241, descr=TargetToken(6357140))
++3488: --end of the loop--
+[156b0bb41d9c] jit-log-opt-loop}

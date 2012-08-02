@@ -28,6 +28,12 @@ class Func:
         self.argName=argName # Id
         self.body=body # ifF1WAE
 
+class NoneFunc(Func):
+    """Useful for GetFunc in Interpreter"""
+    
+    def __init__(self):
+        pass
+
 class ifF1WAE:
     def __init__(self):
         pass
@@ -78,4 +84,27 @@ class If(Node):
         self.ctrue=ctrue # If condition is true
         self.cfalse=cfalse #If condition is false
         
+def treePrint(tree):
+    """ Pretty printing a tree """
+
+    if isinstance(tree, Num):
+        return("Num " + str(tree.n))
+        
+    elif isinstance(tree, Id):
+        return("Id " + tree.name)
+
+    elif isinstance(tree, Op):
+        return("Op " + str(tree.op))
+
+    elif isinstance(tree, With):
+        return("With " + tree.name)
+
+    elif isinstance(tree, App):
+        return("App "+ tree.funName)
+
+    elif isinstance(tree, If):
+        return("If "+ treePrint(tree.cond))
+
+    else:
+        return("Not a ifF1WAE!")
         

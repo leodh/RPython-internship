@@ -121,19 +121,19 @@ class Appk(Contk):
 ##############################
 
 @purefunction
-def GetFunc(funDict,name):
+def GetFunc(funDict, name):
     """Equivalent to funDict[name], but labelled as purefunction to be run faster by the JITing VM."""
-    
-    if not name in funDict.keys():
+
+    body = funDict.get(name, treeClass.NoneFunc())
+    if isinstance(body, treeClass.NoneFunc):
         print("Inexistant function : "+ name)
-    return funDict[name]
+    return body
 
 # JITing instructions
 
 
 def get_printable_location(funDict, expr):
-    # would be better to pretty-print the AST here
-    return str(expr)
+    return treeClass.treePrint(expr)
 
 jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['val','cont','env'],
         get_printable_location=get_printable_location)
@@ -186,9 +186,8 @@ def Interpk(expr, funDict, env):
             expr = expr.lhs
         #
         elif isinstance(expr, treeClass.App):
-            fun = funDict.get(expr.funName, None)
-            if fun is None:
-                print("Inexistant function : "+expr.funName)
+            fun = GetFunc(funDict, expr.funName)
+            if isinstance(fun, treeClass.NoneFunc):
                 cont = Endk(2)
             else:
                 body = fun.body
