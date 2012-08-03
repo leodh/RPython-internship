@@ -70,10 +70,9 @@ def Interpret(expr, funDict, env):
         return Interpret(expr.body, funDict, env)
     #
     elif isinstance(expr, treeClass.Id):
-        identifier = env.get(expr.name, None)
-        if identifier != None:
-            return identifier 
-        else:
+        try:
+            return env[expr.name]
+        except KeyError:
             print("Interpret Error: free identifier :\n" + expr.name)
             return 2
     #

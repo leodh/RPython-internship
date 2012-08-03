@@ -2,6 +2,15 @@ import treeClass
 import parser
 import sys
 
+def GetFunc(funDict, name):
+    """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM.
+    Used here to make comparison accurate."""
+
+    body = funDict.get(name, treeClass.NoneFunc())
+    if isinstance(body, treeClass.NoneFunc) :
+        print("Inexistant function : "+ name)
+    return body
+
 ##########################
 # Class Function for CPS #
 ##########################
@@ -132,10 +141,11 @@ def Interpk(tree, funDict, env1):
             val = va
         #
         elif isinstance(expr, treeClass.Id):
-            if expr.name in env.keys():
-                val = (env[expr.name])
-            else:
+            try:
+                val = env[expr.name]
+            except KeyError:
                 print("Interpret Error: free identifier :\n" + expr.name)
+                val = 2
             ex, en, co, va = cont.apply(expr,env,val) 
             expr = ex
             env = en
@@ -155,9 +165,7 @@ def Interpk(tree, funDict, env1):
             expr = expr.lhs
         #
         elif isinstance(expr, treeClass.App):
-            if not expr.funName in funDict.keys():
-                print("Inexistant function : "+expr.funName)
-            fun = funDict[expr.funName]
+            fun = GetFunc(funDict, expr.funName)
             body = fun.body
             arg = fun.argName
             expr = expr.arg

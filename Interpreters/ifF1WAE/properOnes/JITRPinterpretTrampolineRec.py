@@ -167,12 +167,12 @@ def Interpk(expr, funDict, env, k):
         return Interpk(expr.body, funDict, env, k)
     #
     elif isinstance(expr, treeClass.Id):
-        arg = env.get(expr.name, None)
-        if arg != None:
-            return k.apply(arg)
-        else:
+        try:
+            arg = env[expr.name]
+        except KeyError:
             print("Interpret Error: free identifier :\n" + expr.name)
-            return k.apply(2)
+            arg = 2
+        return k.apply(arg)
     #
     elif isinstance(expr, treeClass.App):
         return BounceFun(expr.arg, funDict, env, expr.funName, k)

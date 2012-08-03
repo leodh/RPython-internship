@@ -2,6 +2,15 @@ import treeClass
 import parser
 import sys
 
+def GetFunc(funDict, name):
+    """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM.
+    Used here to make comparison accurate."""
+
+    body = funDict.get(name, treeClass.NoneFunc())
+    if isinstance(body, treeClass.NoneFunc) :
+        print("Inexistant function : "+ name)
+    return body
+
 ######################    
 #Interpret Recursive #
 ######################
@@ -40,16 +49,16 @@ def Interpret(expr, funDict, env):
         return Interpret(expr.body, funDict, env)
     #
     elif isinstance(expr, treeClass.Id):
-        if expr.name in env.keys():
-            return env[expr.name] 
-        else:
+        try:
+            return env[expr.name]
+        except KeyError:
             print("Interpret Error: free identifier :\n" + expr.name)
             return 2
     #
     elif isinstance(expr, treeClass.App):
-        if expr.funName in funDict.keys():
+        funDef = GetFunc(funDict, expr.funName)
+        if not isinstance(funDef, treeClass.NoneFunc):
             #
-            funDef = funDict[expr.funName]
             val = Interpret(expr.arg, funDict, env)
             #
             if not isinstance(funDef, treeClass.Func):

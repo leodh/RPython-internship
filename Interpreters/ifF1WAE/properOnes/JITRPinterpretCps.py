@@ -138,10 +138,9 @@ def Interpk(expr, funDict, env, k):
         return Interpk(expr.body, funDict, env, k)
     #
     elif isinstance(expr, treeClass.Id):
-        arg = env.get(expr.name, None)
-        if arg != None:
-            return k.apply(arg)
-        else:
+        try:
+            return env[expr.name]
+        except KeyError:
             print("Interpret Error: free identifier :\n" + expr.name)
             return 2
     #
