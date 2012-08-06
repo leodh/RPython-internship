@@ -2,6 +2,7 @@ import treeClass
 import parser
 import sys
 
+
 def GetFunc(funDict, name):
     """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM.
     Used here to make comparison accurate."""
@@ -14,20 +15,16 @@ def GetFunc(funDict, name):
 ##########################
 # Class Function for CPS #
 ##########################
-
 class Contk:
     def __init__(self):
         pass
-    
-    def apply(self,arg):
-        return ExpVal(arg)
 
-class Idk(Contk):
+class Endk(Contk):
     def __init__(self):
         pass
-    
-    def apply(self,arg):
-        return ExpVal(arg)
+
+    def apply(self, arg):
+        return NoMoreBounce(arg)
 
 class Opk(Contk):
     def __init__(self,argLeft,op,k):
@@ -54,7 +51,7 @@ class Opk(Contk):
                 return self.k.apply(0)
         else:
             print("Parsing Error, symobl "+ self.op +" shouldn't be here.")
-            return ExpVal(2)
+            return NoMoreBounce(2)
 
 class OpLeftk(Contk):
     def __init__(self, exprRight, funDict, env, k, op):
@@ -65,7 +62,7 @@ class OpLeftk(Contk):
         self.op=op
 
     def apply(self, arg):
-        return Interpk(self.exprRight,self.funDict,self.env, Opk(arg,self.op,self.k))
+        return ToBounce(self.exprRight, self.env, Opk(arg,self.op,self.k))
 
 class Appk(Contk):
     def __init__(self, funName, funDict, k):
@@ -76,9 +73,10 @@ class Appk(Contk):
     def apply(self, arg):
         g = GetFunc(self.funDict, self.funName)
         if not isinstance(g, treeClass.NoneFunc):
-            return Interpk(g.body,self.funDict, {g.argName: arg}, self.k)
+            return ToBounce(g.body, {g.argName: arg}, self.k)
         else:
-            return ExpVal(2)
+            return NoMoreBounce(2)
+
 
 class Ifk(Contk):
     def __init__(self, true, false, funDict, env, k):
@@ -90,84 +88,97 @@ class Ifk(Contk):
 
     def apply(self,arg):
         if arg != 0:
-            return Interpk(self.true, self.funDict, self.env, self.k)
+            return ToBounce(self.true, self.env, self.k)
         else:
-            return Interpk(self.false, self.funDict, self.env, self.k)
+            return ToBounce(self.false, self.env, self.k)
 
+class Evalk(Contk):
+    def __init__(self, body, name, env, k):
+        self.body = body
+        self.name = name
+        self.env = env
+        self.k = k
 
-#####################
-# Bounce Definition #
-#####################
+    def apply(self, arg):
+        self.env[self.name] = arg
+        return ToBounce(self.body, self.env, self.k)
+
+##########
+# Bounce #
+##########
 
 class Bounce:
     def __init__(self):
         pass
 
-class ExpVal(Bounce):
-    def __init__(self,val):
-        self.val=val
+class ToBounce(Bounce):
+    def __init__(self, expr, env, k):
+        self.expr = expr
+        self.env = env
+        self.k = k
 
-class BounceFun(Bounce):
-    def __init__(self,arg,funDict,env,funName,k):
-        self.arg=arg
-        self.funDict=funDict
-        self.env=env
-        self.funName=funName
-        self.k=k
-        
-    def bounce(self):
-        return Interpk(self.arg, self.funDict, self.env, Appk(self.funName, self.funDict, self.k))
+class NoMoreBounce(Bounce):
+    def __init__(self,value):
+        self.value = value
 
-def Trampoline(bouncer):
-    """Execute the trampoline while there's still one to do"""
-    
-    if isinstance(bouncer,ExpVal):
-        return bouncer.val
-    elif isinstance(bouncer, BounceFun):
-        return Trampoline(bouncer.bounce())
-    else:
-        print("Not a Bounce!")
-        return 2
+#################
+# Trampoline #
+#################
 
-#############################    
-#Interpret CPS - Trampoline #
-#############################
-
-def Interpk(expr, funDict, env, k):
+def Trampoline(expr, funDict, env, k):
     """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 
-    #
-    if isinstance(expr, treeClass.Num):
-        return k.apply(expr.n)
-    #
-    elif isinstance(expr, treeClass.Op):
-        k2 = OpLeftk(expr.rhs, funDict, env, k, expr.op)
-        return Interpk(expr.lhs, funDict, env, k2)
-    #
-    elif isinstance(expr, treeClass.With):
+    bouncer = ToBounce(expr, env, k)
+    expr = expr
+    env = env
+    k = k
+    
+    while 1:
+
+        if isinstance(bouncer, NoMoreBounce):
+            break
         
-        val = Trampoline(Interpk(expr.nameExpr, funDict, env, Idk()))
-        env[expr.name] = val #Eager
-        return Interpk(expr.body, funDict, env, k)
-    #
-    elif isinstance(expr, treeClass.Id):
-        try:
-            arg = env[expr.name]
-        except KeyError:
-            print("Interpret Error: free identifier :\n" + expr.name)
-            arg = 2
-        return k.apply(arg)
-    #
-    elif isinstance(expr, treeClass.App):
-        return BounceFun(expr.arg, funDict, env, expr.funName, k)
-    #
-    elif isinstance(expr, treeClass.If):
-        return Interpk(expr.cond,funDict,env,Ifk(expr.ctrue,expr.cfalse,funDict,env,k))
-    #
-    else: # Not an <ifF1WAE>
-        print("Argument of Interpk is not a <ifF1WAE>:\n")
-        return k.apply(2)
-    #
+        else:
+            expr = bouncer.expr
+            env = bouncer.env
+            k = bouncer.k
+            
+            #
+            if isinstance(expr, treeClass.Num):
+                bouncer = k.apply(expr.n)
+            #
+            elif isinstance(expr, treeClass.Op):
+                k2 = OpLeftk(expr.rhs, funDict, env, k, expr.op)
+                bouncer = ToBounce(expr.lhs, env, k2)
+            #
+            elif isinstance(expr, treeClass.With):
+                k2 = Evalk(expr.body, expr.name, env, k)
+                bouncer = ToBounce(expr.nameExpr, env, k2)
+                # val = Interpk(expr.nameExpr, funDict, env, Idk())
+                # env[expr.name] = val #Eager
+                # return Interpk(expr.body, funDict, env, k)
+            #
+            elif isinstance(expr, treeClass.Id):
+                try:
+                    arg = env[expr.name]
+                except KeyError:
+                    print("Interpret Error: free identifier :\n" + expr.name)
+                    arg = 2
+                bouncer = k.apply(arg)
+            #
+            elif isinstance(expr, treeClass.App):
+                bouncer = ToBounce(expr.arg, env, Appk(expr.funName, funDict, k))
+            #
+            elif isinstance(expr, treeClass.If):
+                bouncer = ToBounce(expr.cond, env, Ifk(expr.ctrue,expr.cfalse,funDict,env,k))
+            #
+            else: # Not an <ifF1WAE>
+                print("Argument of Interpk is not a <ifF1WAE>:\n")
+                bouncer = NoMoreBounce(2)
+            #
+
+    assert isinstance(bouncer, NoMoreBounce)
+    return bouncer.value
 
 #############################    
 # Translation and execution #
@@ -175,8 +186,7 @@ def Interpk(expr, funDict, env, k):
 
 def Main(file):
     t,d = parser.Parse(file)
-    bou = Interpk(t,d,{},Idk())
-    j = Trampoline(bou)
+    j = Trampoline(t,d,{},Endk())
     print("the answer is :" + str(j))
 
 import os

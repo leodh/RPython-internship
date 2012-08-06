@@ -6,10 +6,10 @@ def GetFunc(funDict, name):
     """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM.
     Used here to make comparison accurate."""
 
-    body = funDict.get(name, treeClass.NoneFunc())
-    if isinstance(body, treeClass.NoneFunc) :
+    funDef = funDict.get(name, treeClass.NoneFunc())
+    if isinstance(funDef, treeClass.NoneFunc) :
         print("Inexistant function : "+ name)
-    return body
+    return funDef
 
 ######################    
 #Interpret Recursive #
@@ -17,6 +17,7 @@ def GetFunc(funDict, name):
  
 def Interpret(expr, funDict, env):
     """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
+    treeClass.treePrint(expr)
 
     if isinstance(expr, treeClass.Num):
         return expr.n
@@ -64,8 +65,8 @@ def Interpret(expr, funDict, env):
             if not isinstance(funDef, treeClass.Func):
                 print("Wrong Dictionnary.")
             #
-            newCont = {funDef.argName: val} # Eager
-            return Interpret(funDef.body, funDict, newCont)
+            newEnv = {funDef.argName: val} # Eager
+            return Interpret(funDef.body, funDict, newEnv)
         #
         else:
             print("Invalid function : " + expr.funName)

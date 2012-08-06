@@ -129,8 +129,10 @@ def Interpk(tree, funDict, env1):
     val = -1
 
     #value-of/k
-    while not(isinstance(cont,Endk)):
-
+    while 1:
+        
+        if (isinstance(cont,Endk)):
+            break
         #
         if isinstance(expr, treeClass.Num):
             val = expr.n
