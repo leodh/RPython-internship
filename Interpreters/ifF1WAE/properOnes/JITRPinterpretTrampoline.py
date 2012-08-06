@@ -2,7 +2,18 @@ import treeClass
 import parser
 import sys
 
+# So that you can still run this module under standard CPython, I add this
+# import guard that creates a dummy class instead.
+# (from Pypy's tutorial by Andrew Brown)
+try:
+    from pypy.rlib.jit import JitDriver, purefunction
+except ImportError:
+    class JitDriver(object):
+        def __init__(self,**kw): pass
+        def jit_merge_point(self,**kw): pass
+        def can_enter_jit(self,**kw): pass
 
+@purefunction
 def GetFunc(funDict, name):
     """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM.
     Used here to make comparison accurate."""
@@ -121,9 +132,18 @@ class NoMoreBounce(Bounce):
     def __init__(self,value):
         self.value = value
 
-#################
+##############
 # Trampoline #
-#################
+##############
+
+# JITing instructions
+
+
+def get_printable_location(funDict, expr):
+    return treeClass.treePrint(expr)
+
+jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['k','env'],
+        get_printable_location=get_printable_location)
 
 def Trampoline(expr, funDict, env, k):
     """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
@@ -135,6 +155,7 @@ def Trampoline(expr, funDict, env, k):
     
     while 1:
 
+        jitdriver.jit_merge_point(funDict, expr, k, env)
         if isinstance(bouncer, NoMoreBounce):
             break
         
@@ -154,9 +175,6 @@ def Trampoline(expr, funDict, env, k):
             elif isinstance(expr, treeClass.With):
                 k2 = Evalk(expr.body, expr.name, env, k)
                 bouncer = ToBounce(expr.nameExpr, env, k2)
-                # val = Interpk(expr.nameExpr, funDict, env, Idk())
-                # env[expr.name] = val #Eager
-                # return Interpk(expr.body, funDict, env, k)
             #
             elif isinstance(expr, treeClass.Id):
                 try:
@@ -168,6 +186,10 @@ def Trampoline(expr, funDict, env, k):
             #
             elif isinstance(expr, treeClass.App):
                 bouncer = ToBounce(expr.arg, env, Appk(expr.funName, funDict, k))
+                expr = bouncer.expr
+                env = bouncer.env
+                k = bouncer.k
+                jitdriver.can_enter_jit(funDict, expr, env, k)
             #
             elif isinstance(expr, treeClass.If):
                 bouncer = ToBounce(expr.cond, env, Ifk(expr.ctrue,expr.cfalse,funDict,env,k))
@@ -190,6 +212,10 @@ def Main(file):
     print("the answer is :" + str(j))
 
 import os
+
+def jitpolicy(driver):
+    from pypy.jit.codewriter.policy import JitPolicy
+    return JitPolicy()
 
 def run(fp):
     program_envents = ""
