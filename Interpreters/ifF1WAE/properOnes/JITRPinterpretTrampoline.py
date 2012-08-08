@@ -123,6 +123,7 @@ class Bounce:
         pass
 
 class ToBounce(Bounce):
+    _immutable_fields_ = ["expr"]
     def __init__(self, expr, env, k):
         self.expr = expr
         self.env = env
@@ -136,69 +137,78 @@ class NoMoreBounce(Bounce):
 # Trampoline #
 ##############
 
+def Trampoline(bouncer, funDict):
+    """ Interpret the ifF1WAE AST given a set of defined functions, one step at a time. We use deferred substituion and eagerness."""
+
+    # promote(funDict)
+
+    assert isinstance(bouncer, ToBounce)
+    expr = bouncer.expr
+    env = bouncer.env
+    k = bouncer.k
+    
+    #
+    if isinstance(expr, treeClass.Num):
+        return k.apply(expr.n)
+    #
+    elif isinstance(expr, treeClass.Op):
+        k2 = OpLeftk(expr.rhs, funDict, env, k, expr.op)
+        return ToBounce(expr.lhs, env, k2)
+    #
+    elif isinstance(expr, treeClass.With):
+        k2 = Evalk(expr.body, expr.name, env, k)
+        return ToBounce(expr.nameExpr, env, k2)
+    #
+    elif isinstance(expr, treeClass.Id):
+        try:
+            arg = env[expr.name]
+        except KeyError:
+            print("Interpret Error: free identifier :\n" + expr.name)
+            arg = 2
+        return k.apply(arg)
+    #
+    elif isinstance(expr, treeClass.App):
+        return ToBounce(expr.arg, env, Appk(expr.funName, funDict, k))
+    #
+    elif isinstance(expr, treeClass.If):
+        return ToBounce(expr.cond, env, Ifk(expr.ctrue,expr.cfalse,funDict,env,k))
+    #
+    else: # Not an <ifF1WAE>
+        print("Argument of Interpk is not a <ifF1WAE>:\n")
+        return NoMoreBounce(2)
+    #
+
 # JITing instructions
 
+def get_printable_location(funDict, bouncer):
+    if isinstance(bouncer, ToBounce):
+        return "ToBounce :\n\t " + treeClass.treePrint(bouncer.expr)
+    elif isinstance(bouncer, NoMoreBounce):
+        return "NoMoreBounce :\n\t " + str(bouncer.value)
+    else:
+        return "Not a valid bounce!"
 
-def get_printable_location(funDict, expr):
-    return treeClass.treePrint(expr)
-
-jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['k','env'],
+jitdriver = JitDriver(greens=['funDict', 'bouncer'], reds=[],
         get_printable_location=get_printable_location)
 
-def Trampoline(expr, funDict, env, k):
-    """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
+def Interp(exp, funDict, env, k):
 
-    bouncer = ToBounce(expr, env, k)
-    expr = expr
-    env = env
-    k = k
-    
+    bouncer = ToBounce(exp, env, k)
+
     while 1:
 
-        jitdriver.jit_merge_point(funDict, expr, k, env)
+        jitdriver.jit_merge_point(funDict=funDict, bouncer=bouncer)
         if isinstance(bouncer, NoMoreBounce):
             break
-        
-        else:
-            expr = bouncer.expr
-            env = bouncer.env
-            k = bouncer.k
-            
-            #
-            if isinstance(expr, treeClass.Num):
-                bouncer = k.apply(expr.n)
-            #
-            elif isinstance(expr, treeClass.Op):
-                k2 = OpLeftk(expr.rhs, funDict, env, k, expr.op)
-                bouncer = ToBounce(expr.lhs, env, k2)
-            #
-            elif isinstance(expr, treeClass.With):
-                k2 = Evalk(expr.body, expr.name, env, k)
-                bouncer = ToBounce(expr.nameExpr, env, k2)
-            #
-            elif isinstance(expr, treeClass.Id):
-                try:
-                    arg = env[expr.name]
-                except KeyError:
-                    print("Interpret Error: free identifier :\n" + expr.name)
-                    arg = 2
-                bouncer = k.apply(arg)
-            #
-            elif isinstance(expr, treeClass.App):
-                bouncer = ToBounce(expr.arg, env, Appk(expr.funName, funDict, k))
-                expr = bouncer.expr
-                env = bouncer.env
-                k = bouncer.k
-                jitdriver.can_enter_jit(funDict, expr, env, k)
-            #
-            elif isinstance(expr, treeClass.If):
-                bouncer = ToBounce(expr.cond, env, Ifk(expr.ctrue,expr.cfalse,funDict,env,k))
-            #
-            else: # Not an <ifF1WAE>
-                print("Argument of Interpk is not a <ifF1WAE>:\n")
-                bouncer = NoMoreBounce(2)
-            #
-
+        elif isinstance(bouncer, ToBounce):
+            if isinstance(bouncer.expr, treeClass.App):
+                enter = True
+            else:
+                enter = False
+            bouncer = Trampoline(bouncer, funDict)
+            if enter:
+                jitdriver.can_enter_jit(funDict=funDict, bouncer=bouncer)
+                
     assert isinstance(bouncer, NoMoreBounce)
     return bouncer.value
 
@@ -208,7 +218,7 @@ def Trampoline(expr, funDict, env, k):
 
 def Main(file):
     t,d = parser.Parse(file)
-    j = Trampoline(t,d,{},Endk())
+    j = Interp(t,d,{},Endk())
     print("the answer is :" + str(j))
 
 import os

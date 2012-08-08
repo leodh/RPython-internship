@@ -6,7 +6,7 @@ import sys
 # import guard that creates a dummy class instead.
 # (from Pypy's tutorial by Andrew Brown)
 try:
-    from pypy.rlib.jit import JitDriver, purefunction
+    from pypy.rlib.jit import JitDriver, purefunction, elidable, promote
 except ImportError:
     class JitDriver(object):
         def __init__(self,**kw): pass
@@ -129,6 +129,17 @@ def GetFunc(funDict, name):
         print("Inexistant function : "+ name)
     return body
 
+@elidable
+def GetInEnv(env, name):
+    """Equivalent to env[name], but labelled as purefunction to be run faster by the JITing VM."""
+
+    try:
+        val = env[name]
+    except KeyError:
+        print("Interpret Error: free identifier :\n" + name)
+        val = 2
+    return val
+
 # JITing instructions
 
 
@@ -163,10 +174,11 @@ def Interpk(expr, funDict, env):
             val = va
         #
         elif isinstance(expr, treeClass.Id):
-            try:
-                val = env[expr.name]
-            except KeyError:
-                print("Interpret Error: free identifier :\n" + expr.name)
+            # try:
+            #     val = env[expr.name]
+            # except KeyError:
+            #     print("Interpret Error: free identifier :\n" + expr.name)
+            val = GetInEnv(env, expr.name)
             ex, en, co, va = cont.apply(expr,env,val) 
             expr = ex
             env = en
