@@ -129,7 +129,7 @@ def GetFunc(funDict, name):
         print("Inexistant function : "+ name)
     return body
 
-@elidable
+@purefunction
 def GetInEnv(env, name):
     """Equivalent to env[name], but labelled as purefunction to be run faster by the JITing VM."""
 

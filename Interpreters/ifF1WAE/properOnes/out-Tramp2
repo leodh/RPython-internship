@@ -1,0 +1,781 @@
+[8a4175cc625] {jit-log-opt-loop
+# Loop 0 (Num 3) : loop with 776 ops
+[p0, p1, p2]
++57: label(p0, p1, p2, descr=TargetToken(6374008))
+debug_merge_point(0, 0, 'Num 3')
++57: guard_nonnull_class(p0, 1904692, descr=<Guard52>) [p2, p1, p0]
++78: p4 = getfield_gc(p0, descr=<FieldP JITRPInterpretTramp.Bounce.inst_expr 12>)
++81: p5 = getfield_gc(p0, descr=<FieldP JITRPInterpretTramp.Bounce.inst_env 8>)
++84: p6 = getfield_gc(p0, descr=<FieldP JITRPInterpretTramp.Bounce.inst_k 16>)
++87: guard_value(p4, ConstPtr(ptr7), descr=<Guard53>) [p6, p5, p0, p4]
++99: i8 = getfield_gc_pure(p4, descr=<FieldS treeClass.Num.inst_n 8>)
++102: guard_class(p6, 1904896, descr=<Guard54>) [p6, p5, p4, i8]
++115: p10 = getfield_gc(p6, descr=<FieldP JITRPInterpretTramp.Appk.inst_funDict 8>)
++118: p11 = getfield_gc(p6, descr=<FieldP JITRPInterpretTramp.Appk.inst_funName 12>)
++121: p13 = call_may_force(ConstClass(GetFunc), p10, p11, descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard2>) [p6, p5, p4, i8, p13]
++162: guard_no_exception(, descr=<Guard55>) [p6, p5, p4, i8, p13]
++175: guard_nonnull_class(p13, 1905252, descr=<Guard56>) [p6, p5, p4, i8, p13]
++193: p15 = getfield_gc(p13, descr=<FieldP treeClass.Func.inst_body 12>)
++196: p16 = getfield_gc(p13, descr=<FieldP treeClass.Func.inst_argName 8>)
++199: i18 = call(ConstClass(ll_strhash__rpy_stringPtr), p16, descr=<Calli 4 r EF=0>)
+p19 = new(, descr=<SizeDescr 16>)
+p21 = new_array(8, descr=<ArrayX 8>)
++282: setfield_gc(p19, p21, descr=<FieldP dicttable.entries 12>)
++285: i23 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p19, p16, i18, descr=<Calli 4 rri EF=4>)
++317: setfield_gc(p19, 16, descr=<FieldS dicttable.resize_counter 8>)
++327: guard_no_exception(, descr=<Guard57>) [p6, p5, p4, i23, i18, i8, p15, p16, p19]
++340: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v54___simple_call__function__l), p19, p16, i8, i18, i23, descr=<Callv 0 rriii EF=4>)
++380: guard_no_exception(, descr=<Guard58>) [p6, p5, p4, p15, p19]
++393: p26 = getfield_gc(p6, descr=<FieldP JITRPInterpretTramp.Appk.inst_k 16>)
+debug_merge_point(0, 0, 'Num 3')
++399: guard_value(p15, ConstPtr(ptr27), descr=<Guard59>) [p26, p19, p15]
++414: p28 = getfield_gc_pure(p15, descr=<FieldP treeClass.Op.inst_rhs 12>)
++417: i29 = getfield_gc_pure(p15, descr=<FieldU treeClass.Op.inst_op 16>)
++421: p30 = getfield_gc_pure(p15, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++424: guard_value(p30, ConstPtr(ptr31), descr=<Guard60>) [p19, p30, p26, i29, p28]
++436: p32 = getfield_gc_pure(p30, descr=<FieldP treeClass.Op.inst_rhs 12>)
++439: i33 = getfield_gc_pure(p30, descr=<FieldU treeClass.Op.inst_op 16>)
++443: p34 = getfield_gc_pure(p30, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++446: guard_value(p34, ConstPtr(ptr35), descr=<Guard61>) [p19, p34, p32, i33, p26, i29, p28]
++458: p36 = getfield_gc_pure(p34, descr=<FieldP treeClass.Op.inst_rhs 12>)
++464: i37 = getfield_gc_pure(p34, descr=<FieldU treeClass.Op.inst_op 16>)
++471: p38 = getfield_gc_pure(p34, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++474: guard_value(p38, ConstPtr(ptr39), descr=<Guard62>) [p19, p38, i37, p36, p32, i33, p26, i29, p28]
++486: p40 = getfield_gc_pure(p38, descr=<FieldP treeClass.Op.inst_rhs 12>)
++492: i41 = getfield_gc_pure(p38, descr=<FieldU treeClass.Op.inst_op 16>)
++499: p42 = getfield_gc_pure(p38, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++502: guard_value(p42, ConstPtr(ptr43), descr=<Guard63>) [p19, p42, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++514: p44 = getfield_gc_pure(p42, descr=<FieldP treeClass.Op.inst_rhs 12>)
++520: i45 = getfield_gc_pure(p42, descr=<FieldU treeClass.Op.inst_op 16>)
++527: p46 = getfield_gc_pure(p42, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++530: guard_value(p46, ConstPtr(ptr47), descr=<Guard64>) [p19, p46, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++542: p48 = getfield_gc_pure(p46, descr=<FieldP treeClass.Op.inst_rhs 12>)
++548: i49 = getfield_gc_pure(p46, descr=<FieldU treeClass.Op.inst_op 16>)
++555: p50 = getfield_gc_pure(p46, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++558: guard_value(p50, ConstPtr(ptr51), descr=<Guard65>) [p19, p50, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++570: p52 = getfield_gc_pure(p50, descr=<FieldP treeClass.Op.inst_rhs 12>)
++576: i53 = getfield_gc_pure(p50, descr=<FieldU treeClass.Op.inst_op 16>)
++583: p54 = getfield_gc_pure(p50, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++586: guard_value(p54, ConstPtr(ptr55), descr=<Guard66>) [p19, p54, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++598: p56 = getfield_gc_pure(p54, descr=<FieldP treeClass.Op.inst_rhs 12>)
++604: i57 = getfield_gc_pure(p54, descr=<FieldU treeClass.Op.inst_op 16>)
++611: p58 = getfield_gc_pure(p54, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++614: guard_value(p58, ConstPtr(ptr59), descr=<Guard67>) [p19, p58, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++626: p60 = getfield_gc_pure(p58, descr=<FieldP treeClass.Op.inst_rhs 12>)
++632: i61 = getfield_gc_pure(p58, descr=<FieldU treeClass.Op.inst_op 16>)
++639: p62 = getfield_gc_pure(p58, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++642: guard_value(p62, ConstPtr(ptr63), descr=<Guard68>) [p19, p62, i61, p60, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++654: p64 = getfield_gc_pure(p62, descr=<FieldP treeClass.Op.inst_rhs 12>)
++660: i65 = getfield_gc_pure(p62, descr=<FieldU treeClass.Op.inst_op 16>)
++667: p66 = getfield_gc_pure(p62, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++670: guard_value(p66, ConstPtr(ptr67), descr=<Guard69>) [p19, p66, p64, i65, i61, p60, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++682: p68 = getfield_gc_pure(p66, descr=<FieldP treeClass.Id.inst_name 8>)
++691: i70 = call_may_force(ConstClass(GetInEnv), p19, p68, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard7>) [p19, p66, i70, p64, i65, i61, p60, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++753: guard_no_exception(, descr=<Guard70>) [p19, p66, i70, p64, i65, i61, p60, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
+debug_merge_point(0, 0, 'Id x')
++766: guard_value(p64, ConstPtr(ptr71), descr=<Guard71>) [p19, p64, i70, None, i65, i61, p60, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++784: p73 = getfield_gc_pure(p64, descr=<FieldP treeClass.Id.inst_name 8>)
++787: i75 = call_may_force(ConstClass(GetInEnv), p19, p73, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard8>) [p19, p64, i75, i70, None, i65, i61, p60, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++825: guard_no_exception(, descr=<Guard72>) [p19, p64, i75, i70, None, i65, i61, p60, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++838: i77 = int_eq(i65, 43)
+guard_true(i77, descr=<Guard73>) [p19, p64, i75, i70, None, i65, i61, p60, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++851: i78 = int_add(i70, i75)
+debug_merge_point(0, 0, 'Id x')
++859: guard_value(p60, ConstPtr(ptr79), descr=<Guard74>) [p19, p60, i78, None, None, None, i61, None, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++877: i80 = getfield_gc_pure(p60, descr=<FieldS treeClass.Num.inst_n 8>)
++880: i82 = int_eq(i61, 43)
+guard_true(i82, descr=<Guard75>) [p19, p60, i80, i78, None, None, None, i61, None, i57, p56, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++893: i83 = int_add(i78, i80)
+debug_merge_point(0, 0, 'Num 0')
++895: guard_value(p56, ConstPtr(ptr84), descr=<Guard76>) [p19, p56, i83, None, None, None, None, None, None, i57, None, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++910: i85 = getfield_gc_pure(p56, descr=<FieldS treeClass.Num.inst_n 8>)
++913: i87 = int_eq(i57, 43)
+guard_true(i87, descr=<Guard77>) [p19, p56, i85, i83, None, None, None, None, None, None, i57, None, p52, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++926: i88 = int_add(i83, i85)
+debug_merge_point(0, 0, 'Num 0')
++928: guard_value(p52, ConstPtr(ptr89), descr=<Guard78>) [p19, p52, i88, None, None, None, None, None, None, None, None, None, None, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++943: i90 = getfield_gc_pure(p52, descr=<FieldS treeClass.Num.inst_n 8>)
++946: i92 = int_eq(i53, 43)
+guard_true(i92, descr=<Guard79>) [p19, p52, i90, i88, None, None, None, None, None, None, None, None, None, None, i53, p48, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++956: i93 = int_add(i88, i90)
+debug_merge_point(0, 0, 'Num 0')
++958: guard_value(p48, ConstPtr(ptr94), descr=<Guard80>) [p19, p48, i93, None, None, None, None, None, None, None, None, None, None, None, None, None, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++973: i95 = getfield_gc_pure(p48, descr=<FieldS treeClass.Num.inst_n 8>)
++976: i97 = int_eq(i49, 43)
+guard_true(i97, descr=<Guard81>) [p19, p48, i95, i93, None, None, None, None, None, None, None, None, None, None, None, None, None, i49, p44, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++986: i98 = int_add(i93, i95)
+debug_merge_point(0, 0, 'Num 0')
++988: guard_value(p44, ConstPtr(ptr99), descr=<Guard82>) [p19, p44, i98, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++1003: i100 = getfield_gc_pure(p44, descr=<FieldS treeClass.Num.inst_n 8>)
++1006: i102 = int_eq(i45, 43)
+guard_true(i102, descr=<Guard83>) [p19, p44, i100, i98, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i45, p40, i41, i37, p36, p32, i33, p26, i29, p28]
++1016: i103 = int_add(i98, i100)
+debug_merge_point(0, 0, 'Num 0')
++1018: guard_value(p40, ConstPtr(ptr104), descr=<Guard84>) [p19, p40, i103, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i41, i37, p36, p32, i33, p26, i29, p28]
++1033: i105 = getfield_gc_pure(p40, descr=<FieldS treeClass.Num.inst_n 8>)
++1036: i107 = int_eq(i41, 43)
+guard_true(i107, descr=<Guard85>) [p19, p40, i105, i103, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i41, i37, p36, p32, i33, p26, i29, p28]
++1046: i108 = int_add(i103, i105)
+debug_merge_point(0, 0, 'Num 0')
++1048: guard_value(p36, ConstPtr(ptr109), descr=<Guard86>) [p19, p36, i108, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i37, None, p32, i33, p26, i29, p28]
++1063: i110 = getfield_gc_pure(p36, descr=<FieldS treeClass.Num.inst_n 8>)
++1066: i112 = int_eq(i37, 43)
+guard_true(i112, descr=<Guard87>) [p19, p36, i110, i108, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i37, None, p32, i33, p26, i29, p28]
++1076: i113 = int_add(i108, i110)
+debug_merge_point(0, 0, 'Num 0')
++1078: guard_value(p32, ConstPtr(ptr114), descr=<Guard88>) [p19, p32, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1093: p115 = getfield_gc_pure(p32, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1096: i116 = getfield_gc_pure(p32, descr=<FieldU treeClass.Op.inst_op 16>)
++1100: p117 = getfield_gc_pure(p32, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1103: guard_value(p117, ConstPtr(ptr118), descr=<Guard89>) [p19, p117, p115, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1115: i119 = getfield_gc_pure(p117, descr=<FieldS treeClass.Num.inst_n 8>)
+debug_merge_point(0, 0, 'Num 0')
++1118: guard_value(p115, ConstPtr(ptr120), descr=<Guard90>) [p19, p115, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1130: p121 = getfield_gc_pure(p115, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1133: i122 = getfield_gc_pure(p115, descr=<FieldU treeClass.Op.inst_op 16>)
++1137: p123 = getfield_gc_pure(p115, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1140: guard_value(p123, ConstPtr(ptr124), descr=<Guard91>) [p19, p123, p121, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1152: p125 = getfield_gc_pure(p123, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1161: i126 = getfield_gc_pure(p123, descr=<FieldU treeClass.Op.inst_op 16>)
++1171: p127 = getfield_gc_pure(p123, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1174: guard_value(p127, ConstPtr(ptr128), descr=<Guard92>) [p19, p127, p125, i126, p121, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1186: p129 = getfield_gc_pure(p127, descr=<FieldP treeClass.Id.inst_name 8>)
++1195: i131 = call_may_force(ConstClass(GetInEnv), p19, p129, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard9>) [p19, p127, i131, p125, i126, p121, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1257: guard_no_exception(, descr=<Guard93>) [p19, p127, i131, p125, i126, p121, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
+debug_merge_point(0, 0, 'Id x')
++1270: guard_value(p125, ConstPtr(ptr132), descr=<Guard94>) [p19, p125, i131, None, i126, p121, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1288: p133 = getfield_gc_pure(p125, descr=<FieldP treeClass.Id.inst_name 8>)
++1291: i135 = call_may_force(ConstClass(GetInEnv), p19, p133, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard10>) [p19, p125, i135, i131, None, i126, p121, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1329: guard_no_exception(, descr=<Guard95>) [p19, p125, i135, i131, None, i126, p121, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1342: i137 = int_eq(i126, 43)
+guard_true(i137, descr=<Guard96>) [p19, p125, i135, i131, None, i126, p121, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1355: i138 = int_add(i131, i135)
+debug_merge_point(0, 0, 'Id x')
++1363: guard_value(p121, ConstPtr(ptr139), descr=<Guard97>) [p19, p121, i138, None, None, None, None, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1381: i140 = getfield_gc_pure(p121, descr=<FieldS treeClass.Num.inst_n 8>)
++1384: i142 = int_eq(i122, 43)
+guard_true(i142, descr=<Guard98>) [p19, p121, i140, i138, None, None, None, None, i122, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1397: i143 = int_add(i138, i140)
++1401: i145 = int_eq(i116, 43)
+guard_true(i145, descr=<Guard99>) [p19, p121, i143, i138, None, None, None, None, None, i119, None, i116, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1414: i146 = int_add(i119, i143)
++1422: i148 = int_eq(i33, 43)
+guard_true(i148, descr=<Guard100>) [p19, p121, i146, i138, None, None, None, None, None, i119, None, None, i113, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i33, p26, i29, p28]
++1432: i149 = int_add(i113, i146)
+debug_merge_point(0, 0, 'Num 0')
++1440: guard_value(p28, ConstPtr(ptr150), descr=<Guard101>) [p19, p28, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1455: p151 = getfield_gc_pure(p28, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1458: i152 = getfield_gc_pure(p28, descr=<FieldU treeClass.Op.inst_op 16>)
++1462: p153 = getfield_gc_pure(p28, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1465: guard_value(p153, ConstPtr(ptr154), descr=<Guard102>) [p19, p153, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1477: p155 = getfield_gc_pure(p153, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1480: i156 = getfield_gc_pure(p153, descr=<FieldU treeClass.Op.inst_op 16>)
++1484: p157 = getfield_gc_pure(p153, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1487: guard_value(p157, ConstPtr(ptr158), descr=<Guard103>) [p19, p157, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1499: p159 = getfield_gc_pure(p157, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1508: i160 = getfield_gc_pure(p157, descr=<FieldU treeClass.Op.inst_op 16>)
++1518: p161 = getfield_gc_pure(p157, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1521: guard_value(p161, ConstPtr(ptr162), descr=<Guard104>) [p19, p161, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1533: p163 = getfield_gc_pure(p161, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1542: i164 = getfield_gc_pure(p161, descr=<FieldU treeClass.Op.inst_op 16>)
++1552: p165 = getfield_gc_pure(p161, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1555: guard_value(p165, ConstPtr(ptr166), descr=<Guard105>) [p19, p165, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1567: p167 = getfield_gc_pure(p165, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1576: i168 = getfield_gc_pure(p165, descr=<FieldU treeClass.Op.inst_op 16>)
++1586: p169 = getfield_gc_pure(p165, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1589: guard_value(p169, ConstPtr(ptr170), descr=<Guard106>) [p19, p169, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1601: p171 = getfield_gc_pure(p169, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1610: i172 = getfield_gc_pure(p169, descr=<FieldU treeClass.Op.inst_op 16>)
++1620: p173 = getfield_gc_pure(p169, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1623: guard_value(p173, ConstPtr(ptr174), descr=<Guard107>) [p19, p173, i172, p171, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1635: p175 = getfield_gc_pure(p173, descr=<FieldP treeClass.Op.inst_rhs 12>)
++1644: i176 = getfield_gc_pure(p173, descr=<FieldU treeClass.Op.inst_op 16>)
++1654: p177 = getfield_gc_pure(p173, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++1657: guard_value(p177, ConstPtr(ptr178), descr=<Guard108>) [p19, p177, p175, i176, i172, p171, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1669: p179 = getfield_gc_pure(p177, descr=<FieldP treeClass.Id.inst_name 8>)
++1678: i181 = call_may_force(ConstClass(GetInEnv), p19, p179, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard11>) [p19, p177, i181, p175, i176, i172, p171, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1740: guard_no_exception(, descr=<Guard109>) [p19, p177, i181, p175, i176, i172, p171, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
+debug_merge_point(0, 0, 'Id x')
++1753: guard_value(p175, ConstPtr(ptr182), descr=<Guard110>) [p19, p175, i181, None, i176, i172, p171, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1771: p183 = getfield_gc_pure(p175, descr=<FieldP treeClass.Id.inst_name 8>)
++1774: i185 = call_may_force(ConstClass(GetInEnv), p19, p183, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard12>) [p19, p175, i185, i181, None, i176, i172, p171, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1812: guard_no_exception(, descr=<Guard111>) [p19, p175, i185, i181, None, i176, i172, p171, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1825: i187 = int_eq(i176, 43)
+guard_true(i187, descr=<Guard112>) [p19, p175, i185, i181, None, i176, i172, p171, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1838: i188 = int_add(i181, i185)
+debug_merge_point(0, 0, 'Id x')
++1846: guard_value(p171, ConstPtr(ptr189), descr=<Guard113>) [p19, p171, i188, None, None, None, i172, None, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1864: i190 = getfield_gc_pure(p171, descr=<FieldS treeClass.Num.inst_n 8>)
++1867: i192 = int_eq(i172, 43)
+guard_true(i192, descr=<Guard114>) [p19, p171, i190, i188, None, None, None, i172, None, i168, p167, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1880: i193 = int_add(i188, i190)
+debug_merge_point(0, 0, 'Num 0')
++1882: guard_value(p167, ConstPtr(ptr194), descr=<Guard115>) [p19, p167, i193, None, None, None, None, None, None, i168, None, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1900: i195 = getfield_gc_pure(p167, descr=<FieldS treeClass.Num.inst_n 8>)
++1903: i197 = int_eq(i168, 43)
+guard_true(i197, descr=<Guard116>) [p19, p167, i195, i193, None, None, None, None, None, None, i168, None, i164, p163, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1916: i198 = int_add(i193, i195)
+debug_merge_point(0, 0, 'Num 0')
++1918: guard_value(p163, ConstPtr(ptr199), descr=<Guard117>) [p19, p163, i198, None, None, None, None, None, None, None, None, None, i164, None, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1936: p200 = getfield_gc_pure(p163, descr=<FieldP treeClass.Id.inst_name 8>)
++1939: i202 = call_may_force(ConstClass(GetInEnv), p19, p200, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard13>) [p19, p163, i202, i198, None, None, None, None, None, None, None, None, None, i164, None, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1977: guard_no_exception(, descr=<Guard118>) [p19, p163, i202, i198, None, None, None, None, None, None, None, None, None, i164, None, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++1990: i204 = int_eq(i164, 43)
+guard_true(i204, descr=<Guard119>) [p19, p163, i202, i198, None, None, None, None, None, None, None, None, None, i164, None, i160, p159, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2003: i205 = int_add(i198, i202)
+debug_merge_point(0, 0, 'Id x')
++2011: guard_value(p159, ConstPtr(ptr206), descr=<Guard120>) [p19, p159, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2029: p207 = getfield_gc_pure(p159, descr=<FieldP treeClass.Op.inst_rhs 12>)
++2032: i208 = getfield_gc_pure(p159, descr=<FieldU treeClass.Op.inst_op 16>)
++2036: p209 = getfield_gc_pure(p159, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++2039: guard_value(p209, ConstPtr(ptr210), descr=<Guard121>) [p19, p209, i208, p207, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2051: i211 = getfield_gc_pure(p209, descr=<FieldS treeClass.Num.inst_n 8>)
+debug_merge_point(0, 0, 'Num 0')
++2054: guard_value(p207, ConstPtr(ptr212), descr=<Guard122>) [p19, p207, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2066: p213 = getfield_gc_pure(p207, descr=<FieldP treeClass.Op.inst_rhs 12>)
++2069: i214 = getfield_gc_pure(p207, descr=<FieldU treeClass.Op.inst_op 16>)
++2073: p215 = getfield_gc_pure(p207, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++2076: guard_value(p215, ConstPtr(ptr216), descr=<Guard123>) [p19, p215, i214, p213, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2088: p217 = getfield_gc_pure(p215, descr=<FieldP treeClass.Op.inst_rhs 12>)
++2097: i218 = getfield_gc_pure(p215, descr=<FieldU treeClass.Op.inst_op 16>)
++2107: p219 = getfield_gc_pure(p215, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++2110: guard_value(p219, ConstPtr(ptr220), descr=<Guard124>) [p19, p219, p217, i218, i214, p213, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2122: p221 = getfield_gc_pure(p219, descr=<FieldP treeClass.Id.inst_name 8>)
++2131: i223 = call_may_force(ConstClass(GetInEnv), p19, p221, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard14>) [p19, p219, i223, p217, i218, i214, p213, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2193: guard_no_exception(, descr=<Guard125>) [p19, p219, i223, p217, i218, i214, p213, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
+debug_merge_point(0, 0, 'Id x')
++2206: guard_value(p217, ConstPtr(ptr224), descr=<Guard126>) [p19, p217, i223, None, i218, i214, p213, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2224: p225 = getfield_gc_pure(p217, descr=<FieldP treeClass.Id.inst_name 8>)
++2227: i227 = call_may_force(ConstClass(GetInEnv), p19, p225, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard15>) [p19, p217, i227, i223, None, i218, i214, p213, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2265: guard_no_exception(, descr=<Guard127>) [p19, p217, i227, i223, None, i218, i214, p213, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2278: i229 = int_eq(i218, 43)
+guard_true(i229, descr=<Guard128>) [p19, p217, i227, i223, None, i218, i214, p213, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2291: i230 = int_add(i223, i227)
+debug_merge_point(0, 0, 'Id x')
++2299: guard_value(p213, ConstPtr(ptr231), descr=<Guard129>) [p19, p213, i230, None, None, None, i214, None, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2317: i232 = getfield_gc_pure(p213, descr=<FieldS treeClass.Num.inst_n 8>)
++2320: i234 = int_eq(i214, 43)
+guard_true(i234, descr=<Guard130>) [p19, p213, i232, i230, None, None, None, i214, None, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2333: i235 = int_add(i230, i232)
++2337: i237 = int_eq(i208, 43)
+guard_true(i237, descr=<Guard131>) [p19, p213, i235, i230, None, None, None, None, None, i211, i208, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2350: i238 = int_add(i211, i235)
++2358: i240 = int_eq(i160, 43)
+guard_true(i240, descr=<Guard132>) [p19, p213, i238, i230, None, None, None, None, None, i211, None, None, i205, None, None, None, None, None, None, None, None, None, None, None, None, i160, None, i156, p155, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2371: i241 = int_add(i205, i238)
+debug_merge_point(0, 0, 'Num 0')
++2379: guard_value(p155, ConstPtr(ptr242), descr=<Guard133>) [p19, p155, i241, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i156, None, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2397: i243 = getfield_gc_pure(p155, descr=<FieldS treeClass.Num.inst_n 8>)
++2400: i245 = int_eq(i156, 43)
+guard_true(i245, descr=<Guard134>) [p19, p155, i243, i241, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i156, None, p151, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2413: i246 = int_add(i241, i243)
+debug_merge_point(0, 0, 'Num 0')
++2415: guard_value(p151, ConstPtr(ptr247), descr=<Guard135>) [p19, p151, i246, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2433: p248 = getfield_gc_pure(p151, descr=<FieldP treeClass.Id.inst_name 8>)
++2436: i250 = call_may_force(ConstClass(GetInEnv), p19, p248, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard16>) [p19, p151, i250, i246, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2474: guard_no_exception(, descr=<Guard136>) [p19, p151, i250, i246, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2487: i252 = int_eq(i152, 43)
+guard_true(i252, descr=<Guard137>) [p19, p151, i250, i246, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i152, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2500: i253 = int_add(i246, i250)
++2508: i255 = int_eq(i29, 43)
+guard_true(i255, descr=<Guard138>) [p19, p151, i253, i246, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p26, i29, None]
++2518: i256 = int_add(i149, i253)
++2526: guard_class(p26, 1904920, descr=<Guard139>) [p19, p151, i256, p26, i246, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
++2542: p258 = getfield_gc(p26, descr=<FieldP JITRPInterpretTramp.Evalk.inst_env 12>)
++2545: p259 = getfield_gc(p26, descr=<FieldP JITRPInterpretTramp.Evalk.inst_name 20>)
++2548: i261 = call(ConstClass(ll_strhash__rpy_stringPtr), p259, descr=<Calli 4 r EF=0>)
++2581: i263 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p258, p259, i261, descr=<Calli 4 rri EF=4>)
++2622: guard_no_exception(, descr=<Guard140>) [p19, p151, i263, i261, i256, p259, p258, p26, i246, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
++2635: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v54___simple_call__function__l), p258, p259, i256, i261, i263, descr=<Callv 0 rriii EF=4>)
++2690: guard_no_exception(, descr=<Guard141>) [p19, p151, p26, i246, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i149, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
++2703: p265 = getfield_gc(p26, descr=<FieldP JITRPInterpretTramp.Evalk.inst_body 8>)
++2709: p266 = getfield_gc(p26, descr=<FieldP JITRPInterpretTramp.Evalk.inst_k 16>)
+debug_merge_point(0, 0, 'Id x')
++2712: guard_nonnull_class(p265, 1905788, descr=<Guard142>) [p266, p258, p265, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
++2730: p268 = getfield_gc_pure(p265, descr=<FieldP treeClass.App.inst_arg 8>)
++2733: p269 = getfield_gc_pure(p265, descr=<FieldP treeClass.App.inst_funName 12>)
++2736: guard_value(p268, ConstPtr(ptr270), descr=<Guard143>) [p258, p268, p269, p266, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+debug_merge_point(0, 0, 'Op -')
+debug_merge_point(0, 0, 'Op -')
++2748: i273 = call_may_force(ConstClass(GetInEnv), p258, ConstPtr(ptr272), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard20>) [p258, i273, p269, p266, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
++2800: guard_no_exception(, descr=<Guard144>) [p258, i273, p269, p266, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+debug_merge_point(0, 0, 'Id x')
++2813: i275 = int_sub(i273, 1)
++2818: p278 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr277), p269, descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard21>) [p258, i275, p278, i273, p269, p266, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
++2870: guard_no_exception(, descr=<Guard145>) [p258, i275, p278, i273, p269, p266, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
++2883: guard_nonnull_class(p278, 1905252, descr=<Guard146>) [p258, i275, p278, i273, p269, p266, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
++2901: p280 = getfield_gc(p278, descr=<FieldP treeClass.Func.inst_body 12>)
++2904: p281 = getfield_gc(p278, descr=<FieldP treeClass.Func.inst_argName 8>)
++2907: i283 = call(ConstClass(ll_strhash__rpy_stringPtr), p281, descr=<Calli 4 r EF=0>)
+p284 = new(, descr=<SizeDescr 16>)
+p286 = new_array(8, descr=<ArrayX 8>)
++2999: setfield_gc(p284, p286, descr=<FieldP dicttable.entries 12>)
++3002: i288 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p284, p281, i283, descr=<Calli 4 rri EF=4>)
++3043: setfield_gc(p284, 16, descr=<FieldS dicttable.resize_counter 8>)
++3056: guard_no_exception(, descr=<Guard147>) [p258, i288, i283, i275, p280, p281, p284, p269, i273, p266]
++3069: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v54___simple_call__function__l), p284, p281, i275, i283, i288, descr=<Callv 0 rriii EF=4>)
++3118: guard_no_exception(, descr=<Guard148>) [p258, p280, p284, p269, i273, p266]
+debug_merge_point(0, 0, 'Num 1')
++3131: guard_value(p280, ConstPtr(ptr291), descr=<Guard149>) [p266, p284, p280, None, None, None]
++3149: p292 = getfield_gc_pure(p280, descr=<FieldP treeClass.If.inst_cond 12>)
++3152: p293 = getfield_gc_pure(p280, descr=<FieldP treeClass.If.inst_ctrue 16>)
++3155: p294 = getfield_gc_pure(p280, descr=<FieldP treeClass.If.inst_cfalse 8>)
+debug_merge_point(0, 0, 'If Op =')
++3158: guard_value(p292, ConstPtr(ptr295), descr=<Guard150>) [p284, p292, p294, p293, None, None, p266]
++3170: p296 = getfield_gc_pure(p292, descr=<FieldP treeClass.Op.inst_rhs 12>)
++3173: i297 = getfield_gc_pure(p292, descr=<FieldU treeClass.Op.inst_op 16>)
++3177: p298 = getfield_gc_pure(p292, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op =')
++3180: guard_value(p298, ConstPtr(ptr299), descr=<Guard151>) [p284, p298, p296, i297, p294, p293, None, None, p266]
++3192: p300 = getfield_gc_pure(p298, descr=<FieldP treeClass.Id.inst_name 8>)
++3195: i302 = call_may_force(ConstClass(GetInEnv), p284, p300, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard26>) [p284, p298, i302, p296, i297, p294, p293, None, None, p266]
++3260: guard_no_exception(, descr=<Guard152>) [p284, p298, i302, p296, i297, p294, p293, None, None, p266]
+debug_merge_point(0, 0, 'Id x')
++3273: guard_value(p296, ConstPtr(ptr303), descr=<Guard153>) [p284, p296, i302, None, i297, p294, p293, None, None, p266]
++3291: i304 = getfield_gc_pure(p296, descr=<FieldS treeClass.Num.inst_n 8>)
++3294: i306 = int_eq(i297, 43)
+guard_false(i306, descr=<Guard154>) [p284, p296, i304, i302, None, i297, p294, p293, None, None, p266]
++3307: i308 = int_eq(i297, 45)
+guard_false(i308, descr=<Guard155>) [p284, p296, i304, i302, None, i297, p294, p293, None, None, p266]
++3320: i310 = int_eq(i297, 42)
+guard_false(i310, descr=<Guard156>) [p284, p296, i304, i302, None, i297, p294, p293, None, None, p266]
++3333: i312 = int_eq(i297, 47)
+guard_false(i312, descr=<Guard157>) [p284, p296, i304, i302, None, i297, p294, p293, None, None, p266]
++3346: i314 = int_eq(i297, 37)
+guard_false(i314, descr=<Guard158>) [p284, p296, i304, i302, None, i297, p294, p293, None, None, p266]
++3359: i316 = int_eq(i297, 61)
+guard_true(i316, descr=<Guard159>) [p284, p296, i304, i302, None, i297, p294, p293, None, None, p266]
++3372: i317 = int_sub(i302, i304)
++3376: i318 = int_is_zero(i317)
+guard_false(i318, descr=<Guard160>) [p284, p296, i302, None, None, p294, p293, None, None, p266]
+debug_merge_point(0, 0, 'Num 0')
++3385: guard_value(p294, ConstPtr(ptr319), descr=<Guard161>) [p266, p284, p294, None, None, None, None, None, None, None, None]
++3403: p320 = getfield_gc_pure(p294, descr=<FieldP treeClass.With.inst_body 8>)
++3406: p321 = getfield_gc_pure(p294, descr=<FieldP treeClass.With.inst_name 12>)
++3409: p322 = getfield_gc_pure(p294, descr=<FieldP treeClass.With.inst_nameExpr 16>)
+debug_merge_point(0, 0, 'With y')
++3412: guard_nonnull_class(p322, 1905788, descr=<Guard162>) [p284, p322, p320, p321, None, None, None, None, None, None, None, p266]
++3430: p324 = getfield_gc_pure(p322, descr=<FieldP treeClass.App.inst_arg 8>)
++3433: p325 = getfield_gc_pure(p322, descr=<FieldP treeClass.App.inst_funName 12>)
++3436: guard_value(p324, ConstPtr(ptr326), descr=<Guard163>) [p284, p324, p325, p320, p321, None, None, None, None, None, None, None, p266]
+debug_merge_point(0, 0, 'Num 3')
++3448: label(p284, p325, p320, p266, p321, descr=TargetToken(6373436))
+debug_merge_point(0, 0, 'Num 3')
++3448: p327 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr277), p325, descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard27>) [p284, p327, p321, p325, p320, p266]
++3500: guard_no_exception(, descr=<Guard164>) [p284, p327, p321, p325, p320, p266]
++3513: guard_nonnull_class(p327, 1905252, descr=<Guard165>) [p284, p327, p321, p325, p320, p266]
++3531: p328 = getfield_gc(p327, descr=<FieldP treeClass.Func.inst_body 12>)
++3534: p329 = getfield_gc(p327, descr=<FieldP treeClass.Func.inst_argName 8>)
++3537: i330 = call(ConstClass(ll_strhash__rpy_stringPtr), p329, descr=<Calli 4 r EF=0>)
+p331 = new(, descr=<SizeDescr 16>)
+p332 = new_array(8, descr=<ArrayX 8>)
++3629: setfield_gc(p331, p332, descr=<FieldP dicttable.entries 12>)
++3632: i333 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p331, p329, i330, descr=<Calli 4 rri EF=4>)
++3673: setfield_gc(p331, 16, descr=<FieldS dicttable.resize_counter 8>)
++3686: guard_no_exception(, descr=<Guard166>) [p284, i333, i330, p328, p329, p331, p321, p325, p320, p266]
++3699: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v54___simple_call__function__l), p331, p329, 3, i330, i333, descr=<Callv 0 rriii EF=4>)
++3747: guard_no_exception(, descr=<Guard167>) [p284, p328, p331, p321, p325, p320, p266]
+debug_merge_point(0, 0, 'Num 3')
++3760: guard_value(p328, ConstPtr(ptr27), descr=<Guard168>) [p331, p328, p284, p321, None, p320, p266]
++3778: p335 = getfield_gc_pure(p328, descr=<FieldP treeClass.Op.inst_rhs 12>)
++3781: i336 = getfield_gc_pure(p328, descr=<FieldU treeClass.Op.inst_op 16>)
++3785: p337 = getfield_gc_pure(p328, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++3788: guard_value(p337, ConstPtr(ptr31), descr=<Guard169>) [p331, p337, i336, p335, p284, p321, None, p320, p266]
++3800: p338 = getfield_gc_pure(p337, descr=<FieldP treeClass.Op.inst_rhs 12>)
++3803: i339 = getfield_gc_pure(p337, descr=<FieldU treeClass.Op.inst_op 16>)
++3807: p340 = getfield_gc_pure(p337, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++3810: guard_value(p340, ConstPtr(ptr35), descr=<Guard170>) [p331, p340, i339, p338, i336, p335, p284, p321, None, p320, p266]
++3822: p341 = getfield_gc_pure(p340, descr=<FieldP treeClass.Op.inst_rhs 12>)
++3825: i342 = getfield_gc_pure(p340, descr=<FieldU treeClass.Op.inst_op 16>)
++3835: p343 = getfield_gc_pure(p340, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++3838: guard_value(p343, ConstPtr(ptr39), descr=<Guard171>) [p331, p343, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++3850: p344 = getfield_gc_pure(p343, descr=<FieldP treeClass.Op.inst_rhs 12>)
++3859: i345 = getfield_gc_pure(p343, descr=<FieldU treeClass.Op.inst_op 16>)
++3869: p346 = getfield_gc_pure(p343, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++3872: guard_value(p346, ConstPtr(ptr43), descr=<Guard172>) [p331, p346, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++3884: p347 = getfield_gc_pure(p346, descr=<FieldP treeClass.Op.inst_rhs 12>)
++3893: i348 = getfield_gc_pure(p346, descr=<FieldU treeClass.Op.inst_op 16>)
++3903: p349 = getfield_gc_pure(p346, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++3906: guard_value(p349, ConstPtr(ptr47), descr=<Guard173>) [p331, p349, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++3918: p350 = getfield_gc_pure(p349, descr=<FieldP treeClass.Op.inst_rhs 12>)
++3927: i351 = getfield_gc_pure(p349, descr=<FieldU treeClass.Op.inst_op 16>)
++3937: p352 = getfield_gc_pure(p349, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++3940: guard_value(p352, ConstPtr(ptr51), descr=<Guard174>) [p331, p352, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++3952: p353 = getfield_gc_pure(p352, descr=<FieldP treeClass.Op.inst_rhs 12>)
++3961: i354 = getfield_gc_pure(p352, descr=<FieldU treeClass.Op.inst_op 16>)
++3971: p355 = getfield_gc_pure(p352, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++3974: guard_value(p355, ConstPtr(ptr55), descr=<Guard175>) [p331, p355, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++3986: p356 = getfield_gc_pure(p355, descr=<FieldP treeClass.Op.inst_rhs 12>)
++3995: i357 = getfield_gc_pure(p355, descr=<FieldU treeClass.Op.inst_op 16>)
++4005: p358 = getfield_gc_pure(p355, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++4008: guard_value(p358, ConstPtr(ptr59), descr=<Guard176>) [p331, p358, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4020: p359 = getfield_gc_pure(p358, descr=<FieldP treeClass.Op.inst_rhs 12>)
++4029: i360 = getfield_gc_pure(p358, descr=<FieldU treeClass.Op.inst_op 16>)
++4039: p361 = getfield_gc_pure(p358, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++4042: guard_value(p361, ConstPtr(ptr63), descr=<Guard177>) [p331, p361, i360, p359, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4054: p362 = getfield_gc_pure(p361, descr=<FieldP treeClass.Op.inst_rhs 12>)
++4063: i363 = getfield_gc_pure(p361, descr=<FieldU treeClass.Op.inst_op 16>)
++4073: p364 = getfield_gc_pure(p361, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++4076: guard_value(p364, ConstPtr(ptr67), descr=<Guard178>) [p331, p364, p362, i363, i360, p359, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4088: p365 = getfield_gc_pure(p364, descr=<FieldP treeClass.Id.inst_name 8>)
++4097: i366 = call_may_force(ConstClass(GetInEnv), p331, p365, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard32>) [p331, p364, i366, p362, i363, i360, p359, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4162: guard_no_exception(, descr=<Guard179>) [p331, p364, i366, p362, i363, i360, p359, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
+debug_merge_point(0, 0, 'Id x')
++4175: guard_value(p362, ConstPtr(ptr71), descr=<Guard180>) [p331, p362, i366, None, i363, i360, p359, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4193: p367 = getfield_gc_pure(p362, descr=<FieldP treeClass.Id.inst_name 8>)
++4196: i368 = call_may_force(ConstClass(GetInEnv), p331, p367, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard33>) [p331, p362, i368, i366, None, i363, i360, p359, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4237: guard_no_exception(, descr=<Guard181>) [p331, p362, i368, i366, None, i363, i360, p359, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4250: i369 = int_eq(i363, 43)
+guard_true(i369, descr=<Guard182>) [p331, p362, i368, i366, None, i363, i360, p359, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4263: i370 = int_add(i366, i368)
+debug_merge_point(0, 0, 'Id x')
++4271: guard_value(p359, ConstPtr(ptr79), descr=<Guard183>) [p331, p359, i370, None, None, None, i360, None, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4289: i371 = getfield_gc_pure(p359, descr=<FieldS treeClass.Num.inst_n 8>)
++4292: i372 = int_eq(i360, 43)
+guard_true(i372, descr=<Guard184>) [p331, p359, i371, i370, None, None, None, i360, None, i357, p356, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4305: i373 = int_add(i370, i371)
+debug_merge_point(0, 0, 'Num 0')
++4307: guard_value(p356, ConstPtr(ptr84), descr=<Guard185>) [p331, p356, i373, None, None, None, None, None, None, i357, None, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4325: i374 = getfield_gc_pure(p356, descr=<FieldS treeClass.Num.inst_n 8>)
++4328: i375 = int_eq(i357, 43)
+guard_true(i375, descr=<Guard186>) [p331, p356, i374, i373, None, None, None, None, None, None, i357, None, i354, p353, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4341: i376 = int_add(i373, i374)
+debug_merge_point(0, 0, 'Num 0')
++4343: guard_value(p353, ConstPtr(ptr89), descr=<Guard187>) [p331, p353, i376, None, None, None, None, None, None, None, None, None, i354, None, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4361: i377 = getfield_gc_pure(p353, descr=<FieldS treeClass.Num.inst_n 8>)
++4364: i378 = int_eq(i354, 43)
+guard_true(i378, descr=<Guard188>) [p331, p353, i377, i376, None, None, None, None, None, None, None, None, None, i354, None, i351, p350, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4377: i379 = int_add(i376, i377)
+debug_merge_point(0, 0, 'Num 0')
++4379: guard_value(p350, ConstPtr(ptr94), descr=<Guard189>) [p331, p350, i379, None, None, None, None, None, None, None, None, None, None, None, None, i351, None, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4397: i380 = getfield_gc_pure(p350, descr=<FieldS treeClass.Num.inst_n 8>)
++4400: i381 = int_eq(i351, 43)
+guard_true(i381, descr=<Guard190>) [p331, p350, i380, i379, None, None, None, None, None, None, None, None, None, None, None, None, i351, None, p347, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4413: i382 = int_add(i379, i380)
+debug_merge_point(0, 0, 'Num 0')
++4415: guard_value(p347, ConstPtr(ptr99), descr=<Guard191>) [p331, p347, i382, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4433: i383 = getfield_gc_pure(p347, descr=<FieldS treeClass.Num.inst_n 8>)
++4436: i384 = int_eq(i348, 43)
+guard_true(i384, descr=<Guard192>) [p331, p347, i383, i382, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i348, p344, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4449: i385 = int_add(i382, i383)
+debug_merge_point(0, 0, 'Num 0')
++4451: guard_value(p344, ConstPtr(ptr104), descr=<Guard193>) [p331, p344, i385, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4469: i386 = getfield_gc_pure(p344, descr=<FieldS treeClass.Num.inst_n 8>)
++4472: i387 = int_eq(i345, 43)
+guard_true(i387, descr=<Guard194>) [p331, p344, i386, i385, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i345, p341, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4485: i388 = int_add(i385, i386)
+debug_merge_point(0, 0, 'Num 0')
++4487: guard_value(p341, ConstPtr(ptr109), descr=<Guard195>) [p331, p341, i388, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4505: i389 = getfield_gc_pure(p341, descr=<FieldS treeClass.Num.inst_n 8>)
++4508: i390 = int_eq(i342, 43)
+guard_true(i390, descr=<Guard196>) [p331, p341, i389, i388, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i342, i339, p338, i336, p335, p284, p321, None, p320, p266]
++4521: i391 = int_add(i388, i389)
+debug_merge_point(0, 0, 'Num 0')
++4523: guard_value(p338, ConstPtr(ptr114), descr=<Guard197>) [p331, p338, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4541: p392 = getfield_gc_pure(p338, descr=<FieldP treeClass.Op.inst_rhs 12>)
++4544: i393 = getfield_gc_pure(p338, descr=<FieldU treeClass.Op.inst_op 16>)
++4548: p394 = getfield_gc_pure(p338, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++4551: guard_value(p394, ConstPtr(ptr118), descr=<Guard198>) [p331, p394, i393, p392, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4563: i395 = getfield_gc_pure(p394, descr=<FieldS treeClass.Num.inst_n 8>)
+debug_merge_point(0, 0, 'Num 0')
++4566: guard_value(p392, ConstPtr(ptr120), descr=<Guard199>) [p331, p392, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4578: p396 = getfield_gc_pure(p392, descr=<FieldP treeClass.Op.inst_rhs 12>)
++4581: i397 = getfield_gc_pure(p392, descr=<FieldU treeClass.Op.inst_op 16>)
++4585: p398 = getfield_gc_pure(p392, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++4588: guard_value(p398, ConstPtr(ptr124), descr=<Guard200>) [p331, p398, p396, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4600: p399 = getfield_gc_pure(p398, descr=<FieldP treeClass.Op.inst_rhs 12>)
++4609: i400 = getfield_gc_pure(p398, descr=<FieldU treeClass.Op.inst_op 16>)
++4619: p401 = getfield_gc_pure(p398, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++4622: guard_value(p401, ConstPtr(ptr128), descr=<Guard201>) [p331, p401, p399, i400, p396, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4634: p402 = getfield_gc_pure(p401, descr=<FieldP treeClass.Id.inst_name 8>)
++4643: i403 = call_may_force(ConstClass(GetInEnv), p331, p402, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard34>) [p331, p401, i403, p399, i400, p396, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4708: guard_no_exception(, descr=<Guard202>) [p331, p401, i403, p399, i400, p396, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
+debug_merge_point(0, 0, 'Id x')
++4721: guard_value(p399, ConstPtr(ptr132), descr=<Guard203>) [p331, p399, i403, None, i400, p396, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4739: p404 = getfield_gc_pure(p399, descr=<FieldP treeClass.Id.inst_name 8>)
++4742: i405 = call_may_force(ConstClass(GetInEnv), p331, p404, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard35>) [p331, p399, i405, i403, None, i400, p396, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4783: guard_no_exception(, descr=<Guard204>) [p331, p399, i405, i403, None, i400, p396, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4796: i406 = int_eq(i400, 43)
+guard_true(i406, descr=<Guard205>) [p331, p399, i405, i403, None, i400, p396, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4809: i407 = int_add(i403, i405)
+debug_merge_point(0, 0, 'Id x')
++4817: guard_value(p396, ConstPtr(ptr139), descr=<Guard206>) [p331, p396, i407, None, None, None, None, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4835: i408 = getfield_gc_pure(p396, descr=<FieldS treeClass.Num.inst_n 8>)
++4838: i409 = int_eq(i397, 43)
+guard_true(i409, descr=<Guard207>) [p331, p396, i408, i407, None, None, None, None, i397, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4851: i410 = int_add(i407, i408)
++4855: i411 = int_eq(i393, 43)
+guard_true(i411, descr=<Guard208>) [p331, p396, i410, i407, None, None, None, None, None, i395, i393, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4868: i412 = int_add(i395, i410)
++4876: i413 = int_eq(i339, 43)
+guard_true(i413, descr=<Guard209>) [p331, p396, i412, i407, None, None, None, None, None, i395, None, None, i391, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i339, None, i336, p335, p284, p321, None, p320, p266]
++4889: i414 = int_add(i391, i412)
+debug_merge_point(0, 0, 'Num 0')
++4897: guard_value(p335, ConstPtr(ptr150), descr=<Guard210>) [p331, p335, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++4915: p415 = getfield_gc_pure(p335, descr=<FieldP treeClass.Op.inst_rhs 12>)
++4918: i416 = getfield_gc_pure(p335, descr=<FieldU treeClass.Op.inst_op 16>)
++4922: p417 = getfield_gc_pure(p335, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++4925: guard_value(p417, ConstPtr(ptr154), descr=<Guard211>) [p331, p417, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++4937: p418 = getfield_gc_pure(p417, descr=<FieldP treeClass.Op.inst_rhs 12>)
++4940: i419 = getfield_gc_pure(p417, descr=<FieldU treeClass.Op.inst_op 16>)
++4944: p420 = getfield_gc_pure(p417, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++4947: guard_value(p420, ConstPtr(ptr158), descr=<Guard212>) [p331, p420, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++4959: p421 = getfield_gc_pure(p420, descr=<FieldP treeClass.Op.inst_rhs 12>)
++4968: i422 = getfield_gc_pure(p420, descr=<FieldU treeClass.Op.inst_op 16>)
++4978: p423 = getfield_gc_pure(p420, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++4981: guard_value(p423, ConstPtr(ptr162), descr=<Guard213>) [p331, p423, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++4993: p424 = getfield_gc_pure(p423, descr=<FieldP treeClass.Op.inst_rhs 12>)
++5002: i425 = getfield_gc_pure(p423, descr=<FieldU treeClass.Op.inst_op 16>)
++5012: p426 = getfield_gc_pure(p423, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++5015: guard_value(p426, ConstPtr(ptr166), descr=<Guard214>) [p331, p426, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5027: p427 = getfield_gc_pure(p426, descr=<FieldP treeClass.Op.inst_rhs 12>)
++5036: i428 = getfield_gc_pure(p426, descr=<FieldU treeClass.Op.inst_op 16>)
++5046: p429 = getfield_gc_pure(p426, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++5049: guard_value(p429, ConstPtr(ptr170), descr=<Guard215>) [p331, p429, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5061: p430 = getfield_gc_pure(p429, descr=<FieldP treeClass.Op.inst_rhs 12>)
++5070: i431 = getfield_gc_pure(p429, descr=<FieldU treeClass.Op.inst_op 16>)
++5080: p432 = getfield_gc_pure(p429, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++5083: guard_value(p432, ConstPtr(ptr174), descr=<Guard216>) [p331, p432, p430, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5095: p433 = getfield_gc_pure(p432, descr=<FieldP treeClass.Op.inst_rhs 12>)
++5104: i434 = getfield_gc_pure(p432, descr=<FieldU treeClass.Op.inst_op 16>)
++5114: p435 = getfield_gc_pure(p432, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++5117: guard_value(p435, ConstPtr(ptr178), descr=<Guard217>) [p331, p435, i434, p433, p430, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5129: p436 = getfield_gc_pure(p435, descr=<FieldP treeClass.Id.inst_name 8>)
++5138: i437 = call_may_force(ConstClass(GetInEnv), p331, p436, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard36>) [p331, p435, i437, i434, p433, p430, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5203: guard_no_exception(, descr=<Guard218>) [p331, p435, i437, i434, p433, p430, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
+debug_merge_point(0, 0, 'Id x')
++5216: guard_value(p433, ConstPtr(ptr182), descr=<Guard219>) [p331, p433, i437, i434, None, p430, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5234: p438 = getfield_gc_pure(p433, descr=<FieldP treeClass.Id.inst_name 8>)
++5237: i439 = call_may_force(ConstClass(GetInEnv), p331, p438, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard37>) [p331, p433, i439, i437, i434, None, p430, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5278: guard_no_exception(, descr=<Guard220>) [p331, p433, i439, i437, i434, None, p430, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5291: i440 = int_eq(i434, 43)
+guard_true(i440, descr=<Guard221>) [p331, p433, i439, i437, i434, None, p430, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5304: i441 = int_add(i437, i439)
+debug_merge_point(0, 0, 'Id x')
++5312: guard_value(p430, ConstPtr(ptr189), descr=<Guard222>) [p331, p430, i441, None, None, None, None, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5330: i442 = getfield_gc_pure(p430, descr=<FieldS treeClass.Num.inst_n 8>)
++5333: i443 = int_eq(i431, 43)
+guard_true(i443, descr=<Guard223>) [p331, p430, i442, i441, None, None, None, None, i431, p427, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5346: i444 = int_add(i441, i442)
+debug_merge_point(0, 0, 'Num 0')
++5348: guard_value(p427, ConstPtr(ptr194), descr=<Guard224>) [p331, p427, i444, None, None, None, None, None, None, None, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5366: i445 = getfield_gc_pure(p427, descr=<FieldS treeClass.Num.inst_n 8>)
++5369: i446 = int_eq(i428, 43)
+guard_true(i446, descr=<Guard225>) [p331, p427, i445, i444, None, None, None, None, None, None, None, i428, i425, p424, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5382: i447 = int_add(i444, i445)
+debug_merge_point(0, 0, 'Num 0')
++5384: guard_value(p424, ConstPtr(ptr199), descr=<Guard226>) [p331, p424, i447, None, None, None, None, None, None, None, None, None, i425, None, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5402: p448 = getfield_gc_pure(p424, descr=<FieldP treeClass.Id.inst_name 8>)
++5405: i449 = call_may_force(ConstClass(GetInEnv), p331, p448, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard38>) [p331, p424, i449, i447, None, None, None, None, None, None, None, None, None, i425, None, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5446: guard_no_exception(, descr=<Guard227>) [p331, p424, i449, i447, None, None, None, None, None, None, None, None, None, i425, None, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5459: i450 = int_eq(i425, 43)
+guard_true(i450, descr=<Guard228>) [p331, p424, i449, i447, None, None, None, None, None, None, None, None, None, i425, None, p421, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5472: i451 = int_add(i447, i449)
+debug_merge_point(0, 0, 'Id x')
++5480: guard_value(p421, ConstPtr(ptr206), descr=<Guard229>) [p331, p421, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5498: p452 = getfield_gc_pure(p421, descr=<FieldP treeClass.Op.inst_rhs 12>)
++5501: i453 = getfield_gc_pure(p421, descr=<FieldU treeClass.Op.inst_op 16>)
++5505: p454 = getfield_gc_pure(p421, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++5508: guard_value(p454, ConstPtr(ptr210), descr=<Guard230>) [p331, p454, p452, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5520: i455 = getfield_gc_pure(p454, descr=<FieldS treeClass.Num.inst_n 8>)
+debug_merge_point(0, 0, 'Num 0')
++5523: guard_value(p452, ConstPtr(ptr212), descr=<Guard231>) [p331, p452, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5535: p456 = getfield_gc_pure(p452, descr=<FieldP treeClass.Op.inst_rhs 12>)
++5538: i457 = getfield_gc_pure(p452, descr=<FieldU treeClass.Op.inst_op 16>)
++5542: p458 = getfield_gc_pure(p452, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++5545: guard_value(p458, ConstPtr(ptr216), descr=<Guard232>) [p331, p458, p456, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5557: p459 = getfield_gc_pure(p458, descr=<FieldP treeClass.Op.inst_rhs 12>)
++5566: i460 = getfield_gc_pure(p458, descr=<FieldU treeClass.Op.inst_op 16>)
++5576: p461 = getfield_gc_pure(p458, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op +')
++5579: guard_value(p461, ConstPtr(ptr220), descr=<Guard233>) [p331, p461, i460, p459, p456, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5591: p462 = getfield_gc_pure(p461, descr=<FieldP treeClass.Id.inst_name 8>)
++5600: i463 = call_may_force(ConstClass(GetInEnv), p331, p462, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard39>) [p331, p461, i463, i460, p459, p456, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5665: guard_no_exception(, descr=<Guard234>) [p331, p461, i463, i460, p459, p456, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
+debug_merge_point(0, 0, 'Id x')
++5678: guard_value(p459, ConstPtr(ptr224), descr=<Guard235>) [p331, p459, i463, i460, None, p456, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5696: p464 = getfield_gc_pure(p459, descr=<FieldP treeClass.Id.inst_name 8>)
++5699: i465 = call_may_force(ConstClass(GetInEnv), p331, p464, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard40>) [p331, p459, i465, i463, i460, None, p456, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5740: guard_no_exception(, descr=<Guard236>) [p331, p459, i465, i463, i460, None, p456, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5753: i466 = int_eq(i460, 43)
+guard_true(i466, descr=<Guard237>) [p331, p459, i465, i463, i460, None, p456, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5766: i467 = int_add(i463, i465)
+debug_merge_point(0, 0, 'Id x')
++5774: guard_value(p456, ConstPtr(ptr231), descr=<Guard238>) [p331, p456, i467, None, None, None, None, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5792: i468 = getfield_gc_pure(p456, descr=<FieldS treeClass.Num.inst_n 8>)
++5795: i469 = int_eq(i457, 43)
+guard_true(i469, descr=<Guard239>) [p331, p456, i468, i467, None, None, None, None, i457, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5808: i470 = int_add(i467, i468)
++5812: i471 = int_eq(i453, 43)
+guard_true(i471, descr=<Guard240>) [p331, p456, i470, i467, None, None, None, None, None, i455, None, i453, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5825: i472 = int_add(i455, i470)
++5833: i473 = int_eq(i422, 43)
+guard_true(i473, descr=<Guard241>) [p331, p456, i472, i467, None, None, None, None, None, i455, None, None, i451, None, None, None, None, None, None, None, None, None, None, None, None, None, i422, p418, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5846: i474 = int_add(i451, i472)
+debug_merge_point(0, 0, 'Num 0')
++5854: guard_value(p418, ConstPtr(ptr242), descr=<Guard242>) [p331, p418, i474, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5872: i475 = getfield_gc_pure(p418, descr=<FieldS treeClass.Num.inst_n 8>)
++5875: i476 = int_eq(i419, 43)
+guard_true(i476, descr=<Guard243>) [p331, p418, i475, i474, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i419, i416, p415, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5888: i477 = int_add(i474, i475)
+debug_merge_point(0, 0, 'Num 0')
++5890: guard_value(p415, ConstPtr(ptr247), descr=<Guard244>) [p331, p415, i477, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i416, None, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5908: p478 = getfield_gc_pure(p415, descr=<FieldP treeClass.Id.inst_name 8>)
++5911: i479 = call_may_force(ConstClass(GetInEnv), p331, p478, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard41>) [p331, p415, i479, i477, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i416, None, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5952: guard_no_exception(, descr=<Guard245>) [p331, p415, i479, i477, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i416, None, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5965: i480 = int_eq(i416, 43)
+guard_true(i480, descr=<Guard246>) [p331, p415, i479, i477, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i416, None, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5978: i481 = int_add(i477, i479)
++5986: i482 = int_eq(i336, 43)
+guard_true(i482, descr=<Guard247>) [p331, p415, i481, i477, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i336, None, p284, p321, None, p320, p266]
++5999: i483 = int_add(i414, i481)
++6007: i484 = call(ConstClass(ll_strhash__rpy_stringPtr), p321, descr=<Calli 4 r EF=0>)
++6034: i485 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p284, p321, i484, descr=<Calli 4 rri EF=4>)
++6075: guard_no_exception(, descr=<Guard248>) [p331, p415, i485, i484, i483, p321, p284, i477, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p320, p266]
++6088: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v54___simple_call__function__l), p284, p321, i483, i484, i485, descr=<Callv 0 rriii EF=4>)
++6143: guard_no_exception(, descr=<Guard249>) [p331, p415, i477, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, i414, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p284, p321, None, p320, p266]
+debug_merge_point(0, 0, 'Id x')
++6156: guard_nonnull_class(p320, 1905788, descr=<Guard250>) [p266, p284, p320, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
++6180: p486 = getfield_gc_pure(p320, descr=<FieldP treeClass.App.inst_arg 8>)
++6183: p487 = getfield_gc_pure(p320, descr=<FieldP treeClass.App.inst_funName 12>)
++6186: guard_value(p486, ConstPtr(ptr270), descr=<Guard251>) [p284, p486, p487, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p266]
+debug_merge_point(0, 0, 'Op -')
+debug_merge_point(0, 0, 'Op -')
++6198: i489 = call_may_force(ConstClass(GetInEnv), p284, ConstPtr(ptr488), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard45>) [p284, i489, p487, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p266]
++6244: guard_no_exception(, descr=<Guard252>) [p284, i489, p487, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p266]
+debug_merge_point(0, 0, 'Id x')
++6257: i491 = int_sub(i489, 1)
++6262: p492 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr277), p487, descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard46>) [p284, i491, p492, i489, p487, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p266]
++6314: guard_no_exception(, descr=<Guard253>) [p284, i491, p492, i489, p487, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p266]
++6327: guard_nonnull_class(p492, 1905252, descr=<Guard254>) [p284, i491, p492, i489, p487, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, p266]
++6345: p493 = getfield_gc(p492, descr=<FieldP treeClass.Func.inst_body 12>)
++6348: p494 = getfield_gc(p492, descr=<FieldP treeClass.Func.inst_argName 8>)
++6351: i495 = call(ConstClass(ll_strhash__rpy_stringPtr), p494, descr=<Calli 4 r EF=0>)
+p496 = new(, descr=<SizeDescr 16>)
+p497 = new_array(8, descr=<ArrayX 8>)
++6443: setfield_gc(p496, p497, descr=<FieldP dicttable.entries 12>)
++6446: i498 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p496, p494, i495, descr=<Calli 4 rri EF=4>)
++6487: setfield_gc(p496, 16, descr=<FieldS dicttable.resize_counter 8>)
++6500: guard_no_exception(, descr=<Guard255>) [p284, i498, i495, i491, p493, p494, p496, p487, p266, i489]
++6513: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v54___simple_call__function__l), p496, p494, i491, i495, i498, descr=<Callv 0 rriii EF=4>)
++6562: guard_no_exception(, descr=<Guard256>) [p284, p493, p496, p487, p266, i489]
+debug_merge_point(0, 0, 'Num 1')
++6575: guard_value(p493, ConstPtr(ptr291), descr=<Guard257>) [p266, p496, p493, None, None, None]
++6593: p499 = getfield_gc_pure(p493, descr=<FieldP treeClass.If.inst_cond 12>)
++6596: p500 = getfield_gc_pure(p493, descr=<FieldP treeClass.If.inst_ctrue 16>)
++6599: p501 = getfield_gc_pure(p493, descr=<FieldP treeClass.If.inst_cfalse 8>)
+debug_merge_point(0, 0, 'If Op =')
++6602: guard_value(p499, ConstPtr(ptr295), descr=<Guard258>) [p496, p499, p500, p501, None, p266, None]
++6614: p502 = getfield_gc_pure(p499, descr=<FieldP treeClass.Op.inst_rhs 12>)
++6617: i503 = getfield_gc_pure(p499, descr=<FieldU treeClass.Op.inst_op 16>)
++6621: p504 = getfield_gc_pure(p499, descr=<FieldP treeClass.Op.inst_lhs 8>)
+debug_merge_point(0, 0, 'Op =')
++6624: guard_value(p504, ConstPtr(ptr299), descr=<Guard259>) [p496, p504, i503, p502, p500, p501, None, p266, None]
++6636: p505 = getfield_gc_pure(p504, descr=<FieldP treeClass.Id.inst_name 8>)
++6639: i506 = call_may_force(ConstClass(GetInEnv), p496, p505, descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard51>) [p496, p504, i506, i503, p502, p500, p501, None, p266, None]
++6704: guard_no_exception(, descr=<Guard260>) [p496, p504, i506, i503, p502, p500, p501, None, p266, None]
+debug_merge_point(0, 0, 'Id x')
++6717: guard_value(p502, ConstPtr(ptr303), descr=<Guard261>) [p496, p502, i506, i503, None, p500, p501, None, p266, None]
++6735: i507 = getfield_gc_pure(p502, descr=<FieldS treeClass.Num.inst_n 8>)
++6738: i508 = int_eq(i503, 43)
+guard_false(i508, descr=<Guard262>) [p496, p502, i507, i506, i503, None, p500, p501, None, p266, None]
++6751: i509 = int_eq(i503, 45)
+guard_false(i509, descr=<Guard263>) [p496, p502, i507, i506, i503, None, p500, p501, None, p266, None]
++6764: i510 = int_eq(i503, 42)
+guard_false(i510, descr=<Guard264>) [p496, p502, i507, i506, i503, None, p500, p501, None, p266, None]
++6777: i511 = int_eq(i503, 47)
+guard_false(i511, descr=<Guard265>) [p496, p502, i507, i506, i503, None, p500, p501, None, p266, None]
++6790: i512 = int_eq(i503, 37)
+guard_false(i512, descr=<Guard266>) [p496, p502, i507, i506, i503, None, p500, p501, None, p266, None]
++6803: i513 = int_eq(i503, 61)
+guard_true(i513, descr=<Guard267>) [p496, p502, i507, i506, i503, None, p500, p501, None, p266, None]
++6816: i514 = int_sub(i506, i507)
++6820: i515 = int_is_zero(i514)
+guard_false(i515, descr=<Guard268>) [p496, p502, i506, None, None, p500, p501, None, p266, None]
+debug_merge_point(0, 0, 'Num 0')
++6829: guard_value(p501, ConstPtr(ptr319), descr=<Guard269>) [p266, p496, p501, None, None, None, None, None, None, None, None]
++6847: p516 = getfield_gc_pure(p501, descr=<FieldP treeClass.With.inst_body 8>)
++6850: p517 = getfield_gc_pure(p501, descr=<FieldP treeClass.With.inst_name 12>)
++6853: p518 = getfield_gc_pure(p501, descr=<FieldP treeClass.With.inst_nameExpr 16>)
+debug_merge_point(0, 0, 'With y')
++6856: guard_nonnull_class(p518, 1905788, descr=<Guard270>) [p496, p518, p516, p517, None, None, None, None, None, None, p266, None]
++6874: p519 = getfield_gc_pure(p518, descr=<FieldP treeClass.App.inst_arg 8>)
++6877: p520 = getfield_gc_pure(p518, descr=<FieldP treeClass.App.inst_funName 12>)
++6880: guard_value(p519, ConstPtr(ptr326), descr=<Guard271>) [p496, p519, p520, p516, p517, None, None, None, None, None, None, p266, None]
+debug_merge_point(0, 0, 'Num 3')
++6892: jump(p496, p520, p516, p266, p517, descr=TargetToken(6373436))
++6913: --end of the loop--
+[8a417ce64c9] jit-log-opt-loop}

@@ -17,10 +17,6 @@
 # <num> ::= [ '0' - '9' ]+
 # <id> ::= [ '_', 'a' - 'z', 'A' - 'Z'][ '_', 'a' - 'z', 'A' - 'Z', '0' -'9' ]*
 
-class File:
-    def __init__(self, prog, funcDic):
-        self.prog=prog #Should be a ifF1WAE
-        self.funcDic=funcDic #Should be a dictionnary of keys name_of_function and values of class Func
 
 class Func:
     def __init__(self, name, argName, body):
@@ -48,7 +44,6 @@ class Leaf(ifF1WAE):
 
 class Num(Leaf):
     _immutable_fields_ = ["n"]
-
     def __init__(self, n):
         self.n=n # Int
 

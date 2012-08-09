@@ -1,0 +1,306 @@
+[93fe4b54ee7] {jit-log-opt-loop
+# Loop 0 (Num 3) : loop with 301 ops
+[i0, p1, p2]
++57: label(i0, p1, p2, descr=TargetToken(6357096))
+debug_merge_point(0, 0, 'Num 3')
++57: guard_nonnull_class(p1, 1904808, descr=<Guard51>) [i0, p2, p1]
++78: p4 = getfield_gc(p1, descr=<FieldP JITRPinterpretIter.Appk.inst_expr 16>)
++81: p5 = getfield_gc(p1, descr=<FieldP JITRPinterpretIter.Appk.inst_arg 8>)
++84: i7 = call(ConstClass(ll_strhash__rpy_stringPtr), p5, descr=<Calli 4 r EF=0>)
+p8 = new(, descr=<SizeDescr 16>)
+p10 = new_array(8, descr=<ArrayX 8>)
++167: setfield_gc(p8, p10, descr=<FieldP dicttable.entries 12>)
++170: i12 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p8, p5, i7, descr=<Calli 4 rri EF=4>)
++202: setfield_gc(p8, 16, descr=<FieldS dicttable.resize_counter 8>)
++212: guard_no_exception(, descr=<Guard52>) [i12, i7, p4, p8, p5, p1]
++225: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v66___simple_call__function__l), p8, p5, 3, i7, i12, descr=<Callv 0 rriii EF=4>)
++267: guard_no_exception(, descr=<Guard53>) [p4, p8, p1]
++280: p16 = getfield_gc(p1, descr=<FieldP JITRPinterpretIter.Appk.inst_cont 12>)
++286: guard_value(p4, ConstPtr(ptr17), descr=<Guard54>) [p8, p16, p4]
+debug_merge_point(0, 0, 'Op +')
++301: guard_nonnull_class(p16, 1904880, descr=<Guard55>) [p8, p16]
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++319: i21 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr20), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard6>) [i21, p8, p16]
++359: guard_no_exception(, descr=<Guard56>) [i21, p8, p16]
+debug_merge_point(0, 0, 'Id x')
++372: i23 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr22), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard7>) [i23, p8, i21, p16]
++412: guard_no_exception(, descr=<Guard57>) [i23, p8, i21, p16]
++425: i24 = int_add(i21, i23)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++430: i26 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr25), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard8>) [i26, p8, i24, None, p16]
++470: guard_no_exception(, descr=<Guard58>) [i26, p8, i24, None, p16]
+debug_merge_point(0, 0, 'Id x')
++483: i29 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr28), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard9>) [i29, p8, i26, i24, None, p16]
++523: guard_no_exception(, descr=<Guard59>) [i29, p8, i26, i24, None, p16]
++536: i30 = int_add(i26, i29)
+debug_merge_point(0, 0, 'Num 0')
++541: i31 = int_add(i24, i30)
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++546: i33 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr32), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard10>) [i33, p8, i31, None, None, None, p16]
++586: guard_no_exception(, descr=<Guard60>) [i33, p8, i31, None, None, None, p16]
+debug_merge_point(0, 0, 'Id x')
++599: i35 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr34), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard11>) [i35, p8, i33, i31, None, None, None, p16]
++639: guard_no_exception(, descr=<Guard61>) [i35, p8, i33, i31, None, None, None, p16]
++652: i36 = int_add(i33, i35)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Id x')
++657: i38 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr37), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard12>) [i38, p8, i36, None, i31, None, None, None, p16]
++697: guard_no_exception(, descr=<Guard62>) [i38, p8, i36, None, i31, None, None, None, p16]
++710: i39 = int_add(i36, i38)
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++715: i41 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr40), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard13>) [i41, p8, i39, None, None, i31, None, None, None, p16]
++755: guard_no_exception(, descr=<Guard63>) [i41, p8, i39, None, None, i31, None, None, None, p16]
+debug_merge_point(0, 0, 'Id x')
++768: i43 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr42), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard14>) [i43, p8, i41, i39, None, None, i31, None, None, None, p16]
++808: guard_no_exception(, descr=<Guard64>) [i43, p8, i41, i39, None, None, i31, None, None, None, p16]
++821: i44 = int_add(i41, i43)
+debug_merge_point(0, 0, 'Num 0')
++826: i45 = int_add(i39, i44)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Id x')
++831: i47 = call_may_force(ConstClass(GetInEnv), p8, ConstPtr(ptr46), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard15>) [i47, p8, i45, None, None, None, None, i31, None, None, None, p16]
++871: guard_no_exception(, descr=<Guard65>) [i47, p8, i45, None, None, None, None, i31, None, None, None, p16]
++884: i48 = int_add(i45, i47)
++889: i49 = int_add(i31, i48)
++894: p50 = getfield_gc(p16, descr=<FieldP JITRPinterpretIter.Withk.inst_env 12>)
++900: p51 = getfield_gc(p16, descr=<FieldP JITRPinterpretIter.Withk.inst_name 20>)
++903: i53 = call(ConstClass(ll_strhash__rpy_stringPtr), p51, descr=<Calli 4 r EF=0>)
++927: i55 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p50, p51, i53, descr=<Calli 4 rri EF=4>)
++959: guard_no_exception(, descr=<Guard66>) [i55, i53, i49, p50, p51, p16, None, None, None, None, None, None, None, None, None, None]
++972: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v66___simple_call__function__l), p50, p51, i49, i53, i55, descr=<Callv 0 rriii EF=4>)
++1015: guard_no_exception(, descr=<Guard67>) [i49, p50, p16, None, None, None, None, None, None, None, None, None, None]
++1028: p57 = getfield_gc(p16, descr=<FieldP JITRPinterpretIter.Withk.inst_expr 16>)
++1034: p58 = getfield_gc(p16, descr=<FieldP JITRPinterpretIter.Withk.inst_cont 8>)
++1037: guard_value(p57, ConstPtr(ptr59), descr=<Guard68>) [i49, p50, p58, p57, None, None, None, None, None, None, None, None, None, None]
+debug_merge_point(0, 0, 'App run')
++1049: guard_nonnull_class(p58, 1904616, descr=<Guard69>) [i49, p50, p58, None, None, None, None, None, None, None, None, None, None]
++1067: p64 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr62), ConstPtr(ptr63), descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard19>) [i49, p64, p58, p50, None, None, None, None, None, None, None, None, None, None]
++1109: guard_no_exception(, descr=<Guard70>) [i49, p64, p58, p50, None, None, None, None, None, None, None, None, None, None]
++1122: guard_nonnull_class(p64, 1905188, descr=<Guard71>) [i49, p64, p58, p50, None, None, None, None, None, None, None, None, None, None]
++1140: p66 = getfield_gc(p64, descr=<FieldP treeClass.Func.inst_body 12>)
++1143: p67 = getfield_gc(p64, descr=<FieldP treeClass.Func.inst_argName 8>)
+debug_merge_point(0, 0, 'Op -')
+debug_merge_point(0, 0, 'Id x')
++1146: i69 = call_may_force(ConstClass(GetInEnv), p50, ConstPtr(ptr68), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard20>) [i69, p50, p66, p58, p67, None, None, None, None, None, None, None, None, None, None]
++1189: guard_no_exception(, descr=<Guard72>) [i69, p50, p66, p58, p67, None, None, None, None, None, None, None, None, None, None]
+debug_merge_point(0, 0, 'Num 1')
++1202: i71 = int_sub(i69, 1)
++1205: i73 = call(ConstClass(ll_strhash__rpy_stringPtr), p67, descr=<Calli 4 r EF=0>)
+p74 = new(, descr=<SizeDescr 16>)
+p76 = new_array(8, descr=<ArrayX 8>)
++1288: setfield_gc(p74, p76, descr=<FieldP dicttable.entries 12>)
++1291: i78 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p74, p67, i73, descr=<Calli 4 rri EF=4>)
++1323: setfield_gc(p74, 16, descr=<FieldS dicttable.resize_counter 8>)
++1333: guard_no_exception(, descr=<Guard73>) [i78, i73, i71, p66, p74, p67, p58]
++1346: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v66___simple_call__function__l), p74, p67, i71, i73, i78, descr=<Callv 0 rriii EF=4>)
++1386: guard_no_exception(, descr=<Guard74>) [i71, p66, p74, p67, p58]
++1399: guard_value(p66, ConstPtr(ptr81), descr=<Guard75>) [i71, p74, p58, p66, None, None]
+debug_merge_point(0, 0, 'If Op =')
+debug_merge_point(0, 0, 'Op =')
+debug_merge_point(0, 0, 'Id x')
++1414: i83 = call_may_force(ConstClass(GetInEnv), p74, ConstPtr(ptr82), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard25>) [i83, p74, None, p58]
++1451: guard_no_exception(, descr=<Guard76>) [i83, p74, None, p58]
+debug_merge_point(0, 0, 'Num 0')
++1464: i84 = int_is_zero(i83)
+guard_false(i84, descr=<Guard77>) [p74, i83, None, p58]
+debug_merge_point(0, 0, 'With y')
+debug_merge_point(0, 0, 'App f')
++1473: p86 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr62), ConstPtr(ptr85), descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard26>) [p86, p74, None, None, p58]
++1512: guard_no_exception(, descr=<Guard78>) [p86, p74, None, None, p58]
++1525: guard_nonnull_class(p86, 1905188, descr=<Guard79>) [p86, p74, None, None, p58]
++1543: p88 = getfield_gc(p86, descr=<FieldP treeClass.Func.inst_body 12>)
++1546: p89 = getfield_gc(p86, descr=<FieldP treeClass.Func.inst_argName 8>)
+debug_merge_point(0, 0, 'Num 3')
++1549: label(p89, p58, p74, p88, descr=TargetToken(6357140))
+debug_merge_point(0, 0, 'Num 3')
++1549: i90 = call(ConstClass(ll_strhash__rpy_stringPtr), p89, descr=<Calli 4 r EF=0>)
+p91 = new(, descr=<SizeDescr 16>)
+p92 = new_array(8, descr=<ArrayX 8>)
++1641: setfield_gc(p91, p92, descr=<FieldP dicttable.entries 12>)
++1644: i93 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p91, p89, i90, descr=<Calli 4 rri EF=4>)
++1685: setfield_gc(p91, 16, descr=<FieldS dicttable.resize_counter 8>)
++1698: guard_no_exception(, descr=<Guard80>) [i93, i90, p88, p91, p89, p58, p74]
++1711: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v66___simple_call__function__l), p91, p89, 3, i90, i93, descr=<Callv 0 rriii EF=4>)
++1759: guard_no_exception(, descr=<Guard81>) [p88, p91, p89, p58, p74]
++1772: guard_value(p88, ConstPtr(ptr17), descr=<Guard82>) [p91, p88, None, p58, p74]
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++1790: i94 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr20), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard31>) [i94, p91, None, p58, p74]
++1830: guard_no_exception(, descr=<Guard83>) [i94, p91, None, p58, p74]
+debug_merge_point(0, 0, 'Id x')
++1843: i95 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr22), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard32>) [i95, p91, i94, None, p58, p74]
++1889: guard_no_exception(, descr=<Guard84>) [i95, p91, i94, None, p58, p74]
++1902: i96 = int_add(i94, i95)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++1910: i97 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr25), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard33>) [i97, p91, i96, None, None, p58, p74]
++1956: guard_no_exception(, descr=<Guard85>) [i97, p91, i96, None, None, p58, p74]
+debug_merge_point(0, 0, 'Id x')
++1969: i98 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr28), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard34>) [i98, p91, i97, i96, None, None, p58, p74]
++2015: guard_no_exception(, descr=<Guard86>) [i98, p91, i97, i96, None, None, p58, p74]
++2028: i99 = int_add(i97, i98)
+debug_merge_point(0, 0, 'Num 0')
++2036: i100 = int_add(i96, i99)
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++2044: i101 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr32), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard35>) [i101, p91, i100, None, None, None, None, p58, p74]
++2090: guard_no_exception(, descr=<Guard87>) [i101, p91, i100, None, None, None, None, p58, p74]
+debug_merge_point(0, 0, 'Id x')
++2103: i102 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr34), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard36>) [i102, p91, i101, i100, None, None, None, None, p58, p74]
++2149: guard_no_exception(, descr=<Guard88>) [i102, p91, i101, i100, None, None, None, None, p58, p74]
++2162: i103 = int_add(i101, i102)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Id x')
++2170: i104 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr37), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard37>) [i104, p91, i103, None, i100, None, None, None, None, p58, p74]
++2216: guard_no_exception(, descr=<Guard89>) [i104, p91, i103, None, i100, None, None, None, None, p58, p74]
++2229: i105 = int_add(i103, i104)
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Op +')
+debug_merge_point(0, 0, 'Id x')
++2237: i106 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr40), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard38>) [i106, p91, i105, None, None, i100, None, None, None, None, p58, p74]
++2283: guard_no_exception(, descr=<Guard90>) [i106, p91, i105, None, None, i100, None, None, None, None, p58, p74]
+debug_merge_point(0, 0, 'Id x')
++2296: i107 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr42), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard39>) [i107, p91, i106, i105, None, None, i100, None, None, None, None, p58, p74]
++2342: guard_no_exception(, descr=<Guard91>) [i107, p91, i106, i105, None, None, i100, None, None, None, None, p58, p74]
++2355: i108 = int_add(i106, i107)
+debug_merge_point(0, 0, 'Num 0')
++2363: i109 = int_add(i105, i108)
+debug_merge_point(0, 0, 'Num 0')
+debug_merge_point(0, 0, 'Id x')
++2371: i110 = call_may_force(ConstClass(GetInEnv), p91, ConstPtr(ptr46), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard40>) [i110, p91, i109, None, None, None, None, i100, None, None, None, None, p58, p74]
++2417: guard_no_exception(, descr=<Guard92>) [i110, p91, i109, None, None, None, None, i100, None, None, None, None, p58, p74]
++2430: i111 = int_add(i109, i110)
++2438: i112 = int_add(i100, i111)
++2446: i115 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p74, ConstPtr(ptr113), -1691822600, descr=<Calli 4 rri EF=4>)
++2488: guard_no_exception(, descr=<Guard93>) [i115, i112, p74, None, None, None, None, None, None, None, None, None, None, p58, None]
++2501: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v66___simple_call__function__l), p74, ConstPtr(ptr113), i112, -1691822600, i115, descr=<Callv 0 rriii EF=4>)
++2551: guard_no_exception(, descr=<Guard94>) [i112, p74, None, None, None, None, None, None, None, None, None, None, p58, None]
+debug_merge_point(0, 0, 'App run')
++2564: p116 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr62), ConstPtr(ptr63), descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard43>) [i112, p116, p58, p74, None, None, None, None, None, None, None, None, None, None, None, None]
++2603: guard_no_exception(, descr=<Guard95>) [i112, p116, p58, p74, None, None, None, None, None, None, None, None, None, None, None, None]
++2616: guard_nonnull_class(p116, 1905188, descr=<Guard96>) [i112, p116, p58, p74, None, None, None, None, None, None, None, None, None, None, None, None]
++2634: p117 = getfield_gc(p116, descr=<FieldP treeClass.Func.inst_body 12>)
++2637: p118 = getfield_gc(p116, descr=<FieldP treeClass.Func.inst_argName 8>)
+debug_merge_point(0, 0, 'Op -')
+debug_merge_point(0, 0, 'Id x')
++2640: i119 = call_may_force(ConstClass(GetInEnv), p74, ConstPtr(ptr68), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard44>) [i119, p74, p118, p117, None, None, None, None, None, None, None, None, None, None, p58, None]
++2689: guard_no_exception(, descr=<Guard97>) [i119, p74, p118, p117, None, None, None, None, None, None, None, None, None, None, p58, None]
+debug_merge_point(0, 0, 'Num 1')
++2702: i120 = int_sub(i119, 1)
++2705: i121 = call(ConstClass(ll_strhash__rpy_stringPtr), p118, descr=<Calli 4 r EF=0>)
+p122 = new(, descr=<SizeDescr 16>)
+p123 = new_array(8, descr=<ArrayX 8>)
++2797: setfield_gc(p122, p123, descr=<FieldP dicttable.entries 12>)
++2800: i124 = call(ConstClass(ll_dict_lookup_trampoline__v37___simple_call__function_ll), p122, p118, i121, descr=<Calli 4 rri EF=4>)
++2838: setfield_gc(p122, 16, descr=<FieldS dicttable.resize_counter 8>)
++2848: guard_no_exception(, descr=<Guard98>) [i124, i121, i120, p117, p122, p118, p58]
++2861: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v66___simple_call__function__l), p122, p118, i120, i121, i124, descr=<Callv 0 rriii EF=4>)
++2910: guard_no_exception(, descr=<Guard99>) [i120, p117, p122, p118, p58]
++2923: guard_value(p117, ConstPtr(ptr81), descr=<Guard100>) [i120, p122, p58, p117, None, None]
+debug_merge_point(0, 0, 'If Op =')
+debug_merge_point(0, 0, 'Op =')
+debug_merge_point(0, 0, 'Id x')
++2941: i125 = call_may_force(ConstClass(GetInEnv), p122, ConstPtr(ptr82), descr=<Calli 4 rr EF=6>)
+guard_not_forced(, descr=<Guard49>) [i125, p122, None, p58]
++2978: guard_no_exception(, descr=<Guard101>) [i125, p122, None, p58]
+debug_merge_point(0, 0, 'Num 0')
++2991: i126 = int_is_zero(i125)
+guard_false(i126, descr=<Guard102>) [p122, i125, None, p58]
+debug_merge_point(0, 0, 'With y')
+debug_merge_point(0, 0, 'App f')
++3000: p127 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr62), ConstPtr(ptr85), descr=<Callr 4 rr EF=6>)
+guard_not_forced(, descr=<Guard50>) [p127, p122, None, None, p58]
++3039: guard_no_exception(, descr=<Guard103>) [p127, p122, None, None, p58]
++3052: guard_nonnull_class(p127, 1905188, descr=<Guard104>) [p127, p122, None, None, p58]
++3070: p128 = getfield_gc(p127, descr=<FieldP treeClass.Func.inst_body 12>)
++3073: p129 = getfield_gc(p127, descr=<FieldP treeClass.Func.inst_argName 8>)
+debug_merge_point(0, 0, 'Num 3')
++3076: jump(p129, p58, p122, p128, descr=TargetToken(6357140))
++3081: --end of the loop--
+[93fe4d161be] jit-log-opt-loop}

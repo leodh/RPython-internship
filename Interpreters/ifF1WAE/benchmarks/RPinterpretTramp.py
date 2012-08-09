@@ -158,7 +158,7 @@ def Trampoline(bouncer, funDict):
         return ToBounce(expr.nameExpr, env, k2)
     #
     elif isinstance(expr, treeClass.Id):
-        arg = GetinEnv(env, expr.name)
+        arg = GetInEnv(env, expr.name)
         return k.apply(arg)
     #
     elif isinstance(expr, treeClass.App):

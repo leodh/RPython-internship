@@ -2,27 +2,17 @@ import treeClass
 import parser
 import sys
 
+# So that you can still run this module under standard CPython, I add this
+# import guard that creates a dummy class instead.
+# (from Pypy's tutorial by Andrew Brown)
+try:
+    from pypy.rlib.jit import JitDriver, purefunction
+except ImportError:
+    class JitDriver(object):
+        def __init__(self,**kw): pass
+        def jit_merge_point(self,**kw): pass
+        def can_enter_jit(self,**kw): pass
 
-def GetFunc(funDict, name):
-    """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM.
-    Used here to make comparison accurate."""
-
-    body = funDict.get(name, treeClass.NoneFunc())
-    if isinstance(body, treeClass.NoneFunc) :
-        print("Inexistant function : "+ name)
-    return body
-
-
-def GetInEnv(env, name):
-    """Equivalent to env[name], but labelled as purefunction to be run faster by the JITing VM.
-    Used here to make comparison accurate."""
-
-    try:
-        val = env[name]
-    except KeyError:
-        print("Interpret Error: free identifier :\n" + name)
-        val = 2
-    return val
 
 ##########################
 # Class Function for CPS #
@@ -124,6 +114,7 @@ class Bounce:
         pass
 
 class ToBounce(Bounce):
+    #    _immutable_fields_ = ["expr"]
     def __init__(self, expr, env, k):
         self.expr = expr
         self.env = env
@@ -133,12 +124,14 @@ class NoMoreBounce(Bounce):
     def __init__(self,value):
         self.value = value
 
-#################
+##############
 # Trampoline #
-#################
+##############
 
 def Trampoline(bouncer, funDict):
     """ Interpret the ifF1WAE AST given a set of defined functions, one step at a time. We use deferred substituion and eagerness."""
+
+    # promote(funDict)
 
     assert isinstance(bouncer, ToBounce)
     expr = bouncer.expr
@@ -158,7 +151,7 @@ def Trampoline(bouncer, funDict):
         return ToBounce(expr.nameExpr, env, k2)
     #
     elif isinstance(expr, treeClass.Id):
-        arg = GetinEnv(env, expr.name)
+        arg = GetInEnv(env, expr.name)
         return k.apply(arg)
     #
     elif isinstance(expr, treeClass.App):
@@ -171,19 +164,66 @@ def Trampoline(bouncer, funDict):
         print("Argument of Interpk is not a <ifF1WAE>:\n")
         return NoMoreBounce(2)
     #
+    
+@purefunction
+def GetFunc(funDict, name):
+    """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM."""
 
+    body = funDict.get(name, treeClass.NoneFunc())
+    if isinstance(body, treeClass.NoneFunc) :
+        print("Inexistant function : "+ name)
+    return body
 
-def Interp(exp, funDict, env, k):
+@purefunction
+def GetInEnv(env, name):
+    """Equivalent to env[name], but labelled as purefunction to be run faster by the JITing VM."""
 
-    bouncer = ToBounce(exp, env, k)
+    try:
+        val = env[name]
+    except KeyError:
+        print("Interpret Error: free identifier :\n" + name)
+        val = 2
+    return val
 
+# JITing instructions
+
+def get_printable_location(funDict, expr):
+    return treeClass.treePrint(expr)
+    # if isinstance(bouncer, ToBounce):
+    #     return "ToBounce :\n\t " + treeClass.treePrint(bouncer.expr)
+    # elif isinstance(bouncer, NoMoreBounce):
+    #     return "NoMoreBounce :\n\t " + str(bouncer.value)
+    # else:
+    #     return "Not a valid bounce!"
+
+jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['bouncer', 'env', 'k'],
+        get_printable_location=get_printable_location)
+
+def Interp(expr, funDict, env, k):
+
+    bouncer = ToBounce(expr, env, k)
+    
     while 1:
 
+        jitdriver.jit_merge_point(funDict=funDict, bouncer=bouncer, expr=expr, env=env, k=k)
         if isinstance(bouncer, NoMoreBounce):
             break
         elif isinstance(bouncer, ToBounce):
+            expr = bouncer.expr
+            env = bouncer.env
+            k = bouncer.k
+            
+            if isinstance(expr, treeClass.App):
+                enter = True
+            else:
+                enter = False
             bouncer = Trampoline(bouncer, funDict)
-        
+            if enter:
+                expr = bouncer.expr
+                env = bouncer.env
+                k = bouncer.k
+                jitdriver.can_enter_jit(funDict=funDict, bouncer=bouncer, expr=expr, env=env, k=k)
+                
     assert isinstance(bouncer, NoMoreBounce)
     return bouncer.value
 
@@ -195,8 +235,12 @@ def Main(file):
     t,d = parser.Parse(file)
     j = Interp(t,d,{},Endk())
     print("the answer is :" + str(j))
-    
+
 import os
+
+def jitpolicy(driver):
+    from pypy.jit.codewriter.policy import JitPolicy
+    return JitPolicy()
 
 def run(fp):
     program_envents = ""

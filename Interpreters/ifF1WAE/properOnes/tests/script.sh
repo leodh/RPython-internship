@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# To be used in RPython-internship/midtimeReport/tests/
+# To be used in RPython-internship/Interpreters/ifF1WAE/properOnes/tests/
 
 # RPtranslate and RPtranslateJIT are symbolic links that I created, you might need to use your own.
 

@@ -6,7 +6,7 @@ import sys
 # import guard that creates a dummy class instead.
 # (from Pypy's tutorial by Andrew Brown)
 try:
-    from pypy.rlib.jit import JitDriver
+    from pypy.rlib.jit import JitDriver, purefunction
 except ImportError:
     class JitDriver(object):
         def __init__(self,**kw): pass
@@ -100,23 +100,34 @@ class Ifk(Contk):
 #################
 # Interpret CPS #
 #################
-
+        
 @purefunction
 def GetFunc(funDict, name):
-    """Equivalent to funDict[name], but labelled as purefunction to be run faster by the JITing VM."""
+    """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM."""
 
     body = funDict.get(name, treeClass.NoneFunc())
-    if isinstance(body, treeClass.NoneFunc):
+    if isinstance(body, treeClass.NoneFunc) :
         print("Inexistant function : "+ name)
     return body
+
+@purefunction
+def GetInEnv(env, name):
+    """Equivalent to env[name], but labelled as purefunction to be run faster by the JITing VM."""
+
+    try:
+        val = env[name]
+    except KeyError:
+        print("Interpret Error: free identifier :\n" + name)
+        val = 2
+    return val
 
 # JITing instructions
 
 def get_printable_location(funDict, expr):
     return treeClass.treePrint(expr)
 
-jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['env', 'k']),
-                    get_printable_location = get_printable_location
+jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['env', 'k'],
+       get_printable_location = get_printable_location)
 
 #Interpret CPS - tail recursive
 
@@ -138,11 +149,8 @@ def Interpk(expr, funDict, env, k):
         return Interpk(expr.body, funDict, env, k)
     #
     elif isinstance(expr, treeClass.Id):
-        try:
-            return env[expr.name]
-        except KeyError:
-            print("Interpret Error: free identifier :\n" + expr.name)
-            return 2
+        arg = GetInEnv(env, expr.name)
+        return k.apply(arg)
     #
     elif isinstance(expr, treeClass.App):
         expr = expr.arg

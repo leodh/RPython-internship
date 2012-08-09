@@ -2,41 +2,35 @@ import treeClass
 import parser
 import sys
 
+# So that you can still run this module under standard CPython, I add this
+# import guard that creates a dummy class instead.
+# (from Pypy's tutorial by Andrew Brown)
+try:
+    from pypy.rlib.jit import JitDriver, purefunction
+except ImportError:
+    class JitDriver(object):
+        def __init__(self,**kw): pass
+        def jit_merge_point(self,**kw): pass
+        def can_enter_jit(self,**kw): pass
 
-def GetFunc(funDict, name):
-    """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM.
-    Used here to make comparison accurate."""
-
-    body = funDict.get(name, treeClass.NoneFunc())
-    if isinstance(body, treeClass.NoneFunc) :
-        print("Inexistant function : "+ name)
-    return body
-
-
-def GetInEnv(env, name):
-    """Equivalent to env[name], but labelled as purefunction to be run faster by the JITing VM.
-    Used here to make comparison accurate."""
-
-    try:
-        val = env[name]
-    except KeyError:
-        print("Interpret Error: free identifier :\n" + name)
-        val = 2
-    return val
 
 ##########################
 # Class Function for CPS #
 ##########################
+
 class Contk:
     def __init__(self):
         pass
+    
+    def apply(self,arg):
+        return arg
 
-class Endk(Contk):
+class Idk(Contk):
     def __init__(self):
         pass
-
-    def apply(self, arg):
-        return NoMoreBounce(arg)
+    
+    def apply(self,arg):
+        return arg
 
 class Opk(Contk):
     def __init__(self,argLeft,op,k):
@@ -63,7 +57,7 @@ class Opk(Contk):
                 return self.k.apply(0)
         else:
             print("Parsing Error, symobl "+ self.op +" shouldn't be here.")
-            return NoMoreBounce(2)
+            return 2
 
 class OpLeftk(Contk):
     def __init__(self, exprRight, funDict, env, k, op):
@@ -74,7 +68,7 @@ class OpLeftk(Contk):
         self.op=op
 
     def apply(self, arg):
-        return ToBounce(self.exprRight, self.env, Opk(arg,self.op,self.k))
+        return Interpk(self.exprRight,self.funDict,self.env, Opk(arg,self.op,self.k))
 
 class Appk(Contk):
     def __init__(self, funName, funDict, k):
@@ -85,10 +79,9 @@ class Appk(Contk):
     def apply(self, arg):
         g = GetFunc(self.funDict, self.funName)
         if not isinstance(g, treeClass.NoneFunc):
-            return ToBounce(g.body, {g.argName: arg}, self.k)
+            return Interpk(g.body,self.funDict, {g.argName: arg}, self.k)
         else:
-            return NoMoreBounce(2)
-
+            return 2
 
 class Ifk(Contk):
     def __init__(self, true, false, funDict, env, k):
@@ -100,92 +93,77 @@ class Ifk(Contk):
 
     def apply(self,arg):
         if arg != 0:
-            return ToBounce(self.true, self.env, self.k)
+            return Interpk(self.true, self.funDict, self.env, self.k)
         else:
-            return ToBounce(self.false, self.env, self.k)
-
-class Evalk(Contk):
-    def __init__(self, body, name, env, k):
-        self.body = body
-        self.name = name
-        self.env = env
-        self.k = k
-
-    def apply(self, arg):
-        self.env[self.name] = arg
-        return ToBounce(self.body, self.env, self.k)
-
-##########
-# Bounce #
-##########
-
-class Bounce:
-    def __init__(self):
-        pass
-
-class ToBounce(Bounce):
-    def __init__(self, expr, env, k):
-        self.expr = expr
-        self.env = env
-        self.k = k
-
-class NoMoreBounce(Bounce):
-    def __init__(self,value):
-        self.value = value
+            return Interpk(self.false, self.funDict, self.env, self.k)
 
 #################
-# Trampoline #
+# Interpret CPS #
 #################
+        
+@purefunction
+def GetFunc(funDict, name):
+    """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM."""
 
-def Trampoline(bouncer, funDict):
-    """ Interpret the ifF1WAE AST given a set of defined functions, one step at a time. We use deferred substituion and eagerness."""
+    body = funDict.get(name, treeClass.NoneFunc())
+    if isinstance(body, treeClass.NoneFunc) :
+        print("Inexistant function : "+ name)
+    return body
 
-    assert isinstance(bouncer, ToBounce)
-    expr = bouncer.expr
-    env = bouncer.env
-    k = bouncer.k
-    
+@purefunction
+def GetInEnv(env, name):
+    """Equivalent to env[name], but labelled as purefunction to be run faster by the JITing VM."""
+
+    try:
+        val = env[name]
+    except KeyError:
+        print("Interpret Error: free identifier :\n" + name)
+        val = 2
+    return val
+
+# JITing instructions
+
+def get_printable_location(funDict, expr):
+    return treeClass.treePrint(expr)
+
+jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['env', 'k'],
+       get_printable_location = get_printable_location)
+
+#Interpret CPS - tail recursive
+
+def Interpk(expr, funDict, env, k):
+    """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
+
+    jitdriver.jit_merge_point(expr=expr, funDict=funDict, env=env, k=k)
     #
     if isinstance(expr, treeClass.Num):
         return k.apply(expr.n)
     #
     elif isinstance(expr, treeClass.Op):
         k2 = OpLeftk(expr.rhs, funDict, env, k, expr.op)
-        return ToBounce(expr.lhs, env, k2)
+        return Interpk(expr.lhs, funDict, env, k2)
     #
     elif isinstance(expr, treeClass.With):
-        k2 = Evalk(expr.body, expr.name, env, k)
-        return ToBounce(expr.nameExpr, env, k2)
+        val = Interpk(expr.nameExpr, funDict, env, Idk())
+        env[expr.name] = val #Eager
+        return Interpk(expr.body, funDict, env, k)
     #
     elif isinstance(expr, treeClass.Id):
-        arg = GetinEnv(env, expr.name)
-        return k.apply(arg)
+        return GetInEnv(env, expr.name)
     #
     elif isinstance(expr, treeClass.App):
-        return ToBounce(expr.arg, env, Appk(expr.funName, funDict, k))
+        expr = expr.arg
+        k = Appk(expr.funName, funDict, k)
+        jitdriver.can_enter_jit(expr=expr, funDict=funDict, env=env, k=k)
+        return Interpk(expr, funDict, env, k)
     #
     elif isinstance(expr, treeClass.If):
-        return ToBounce(expr.cond, env, Ifk(expr.ctrue,expr.cfalse,funDict,env,k))
+        return Interpk(expr.cond,funDict,env,Ifk(expr.ctrue,expr.cfalse,funDict,env,k))
     #
     else: # Not an <ifF1WAE>
         print("Argument of Interpk is not a <ifF1WAE>:\n")
-        return NoMoreBounce(2)
+        return 2
     #
-
-
-def Interp(exp, funDict, env, k):
-
-    bouncer = ToBounce(exp, env, k)
-
-    while 1:
-
-        if isinstance(bouncer, NoMoreBounce):
-            break
-        elif isinstance(bouncer, ToBounce):
-            bouncer = Trampoline(bouncer, funDict)
-        
-    assert isinstance(bouncer, NoMoreBounce)
-    return bouncer.value
 
 #############################    
 # Translation and execution #
@@ -193,10 +171,14 @@ def Interp(exp, funDict, env, k):
 
 def Main(file):
     t,d = parser.Parse(file)
-    j = Interp(t,d,{},Endk())
+    j = Interpk(t,d,{},Idk())
     print("the answer is :" + str(j))
-    
+
 import os
+
+def jitpolicy(driver):
+    from pypy.jit.codewriter.policy import JitPolicy
+    return JitPolicy()
 
 def run(fp):
     program_envents = ""
