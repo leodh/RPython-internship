@@ -2,8 +2,6 @@
 
 # To be run in /RPython-internship/Interpreters/ifF1WAE/benchmarks/
 
-rm test* result* out*
-
 # Useful variables
 
 export i=1
@@ -111,13 +109,24 @@ do
     done
 done
 
+# Trace every execution
 
-# Create a repertory for results and tests
+for fileToRun in `ls JIT*-c | sort `
+do
+    for fileToTest in `ls test* | sort`
+    do
+	fileToWrite = "out-$fileToRun-$fileToTest"
+	PYPYLOG=jit-log-opt:$fileToWrite ./$fileToRun $fileToTest
+    done
+done
+
+# Create a repertory for results, tests and traces
 
 mkdir generatedTests
 mkdir obtainedResults
+mkdir generatedTraces
 
 mv test* generatedTests/
 mv result* obtainedResults/
-
+mv out* generatedTraces/
 
