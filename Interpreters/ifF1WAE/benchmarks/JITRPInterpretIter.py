@@ -6,15 +6,12 @@ import sys
 # import guard that creates a dummy class instead.
 # (from Pypy's tutorial by Andrew Brown)
 try:
-    from pypy.rlib.jit import JitDriver, promote, purefunction
+    from pypy.rlib.jit import JitDriver, elidable, promote
 except ImportError:
     class JitDriver(object):
         def __init__(self,**kw): pass
         def jit_merge_point(self,**kw): pass
         def can_enter_jit(self,**kw): pass
-
-    def promote(arg):
-        pass
 
 ##########################
 # Class Function for CPS #
@@ -51,7 +48,7 @@ class Withk(Contk):
 
     def apply(self, expr, env, val):
         env2 = self.env
-        env2.write_attribute(self.name, val)
+        env2[self.name]=val
         return self.expr, env2, self.cont, val
 
 class Ifk(Contk):
@@ -117,31 +114,43 @@ class Appk(Contk):
         self.arg = arg
 
     def apply(self, expr, env, val):
-        env2 = treeClass.Env()
-        env2.write_attribute(self.arg, val)
-        return self.expr, env2, self.cont, val
+        return self.expr, {self.arg : val}, self.cont, val
         
 ##############################    
 #Interpret Iterative, JITing #
 ##############################
 
-@purefunction
+@elidable
 def GetFunc(funDict, name):
-    """Equivalent to funDict[name], but labelled as purefunction to be run faster by the JITing VM."""
+    """Equivalent to funDict[name], but labelled as elidable to be run faster by the JITing VM."""
 
     body = funDict.get(name, treeClass.NoneFunc())
     if isinstance(body, treeClass.NoneFunc):
-        print("Inexistant function : " + name)
+        print("Inexistant function : "+ name)
     return body
 
-def get_printable_location(expr, funDict):
+@elidable
+def GetInEnv(env, name):
+    """Equivalent to env[name], but labelled as elidable (?) to be run faster by the JITing VM."""
+
+    try:
+        val = env[name]
+    except KeyError:
+        print("Interpret Error: free identifier :\n" + name)
+        val = 2
+    return val
+
+# JITing instructions
+
+
+def get_printable_location(funDict, expr):
     return treeClass.treePrint(expr)
 
-jitdriver = JitDriver(greens=['expr', 'funDict'], reds=['val','cont','env'],
+jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['val','cont','env'],
         get_printable_location=get_printable_location)
 
 def Interpk(expr, funDict, env):
-    """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
+    """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substitution and eagerness."""
 
     val = -1
     funDict = funDict
@@ -152,7 +161,7 @@ def Interpk(expr, funDict, env):
     #value-of/k
     while 1:
         #
-        jitdriver.jit_merge_point(val=val, funDict=funDict, expr=expr, env=env, cont=cont)
+        jitdriver.jit_merge_point(val=val, expr=expr, env=env, cont=cont, funDict=funDict)
         if isinstance(cont, Endk):
             break
         #
@@ -165,7 +174,11 @@ def Interpk(expr, funDict, env):
             val = va
         #
         elif isinstance(expr, treeClass.Id):
-            val = env.get_attr(expr.name)
+            # try:
+            #     val = env[expr.name]
+            # except KeyError:
+            #     print("Interpret Error: free identifier :\n" + expr.name)
+            val = GetInEnv(env, expr.name)
             ex, en, co, va = cont.apply(expr,env,val) 
             expr = ex
             env = en
@@ -193,7 +206,7 @@ def Interpk(expr, funDict, env):
                 arg = fun.argName
                 expr = expr.arg
                 cont = Appk(body, cont, arg)
-                jitdriver.can_enter_jit(val=val, funDict=funDict, expr=expr, env=env, cont=cont)
+                jitdriver.can_enter_jit(val=val, expr=expr, env=env, cont=cont, funDict=funDict)
         #
         else: # Not an <ifF1WAE>
             print("Argument of Interpk is not a <ifF1WAE>:\n")
@@ -204,7 +217,7 @@ def Interpk(expr, funDict, env):
     
 def Main(file):
     t,d = parser.Parse(file)
-    j = Interpk(t,d,treeClass.Env())
+    j = Interpk(t,d,{})
     print("the answer is :" + str(j))
 
 import os
