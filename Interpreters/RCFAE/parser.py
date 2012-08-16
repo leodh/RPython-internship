@@ -52,6 +52,16 @@ class Op(RCFAE):
     def __str__(self):
         return ("( Op : %s %s %s )" % (self.lhs.__str__(), self.op, self.rhs.__str__() ))
 
+class If(RCFAE):
+
+    def __init__(self, cond, true, false):
+        self.cond = cond
+        self. true = true
+        self.false = false
+
+    def __str__(self):
+        return ("( If : %s then %s else %s )" % (self.cond.__str__(), self.true.__str__(), self.false.__str__()) )
+
 # Transformation from ebnf's tree structure to ours
 
 class Transformer(object):
@@ -73,6 +83,10 @@ class Transformer(object):
         op, lhs, rhs = opTree.children[1], opTree.children[2], opTree.children[3]
         return Op(str((op.children[0]).additional_info), self.visitRCFAE(lhs), self.visitRCFAE(rhs))
 
+    def visitIf(self, ifTree):
+        cond, true, false = ifTree.children[2], ifTree.children[3], ifTree.children[4]
+        return If(self.visitRCFAE(cond), self.visitRCFAE(true), self.visitRCFAE(false))
+
     def visitRCFAE(self, tree):
         first = tree.children[0]
              
@@ -84,6 +98,8 @@ class Transformer(object):
         else:
             if first.symbol == "op":
                 return self.visitOp(tree)
+            elif first.symbol =="if":
+                return self.visitIf(tree)
             else:
                 return ParsingError()
                 
