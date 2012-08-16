@@ -62,6 +62,24 @@ class If(RCFAE):
     def __str__(self):
         return ("( If : %s then %s else %s )" % (self.cond.__str__(), self.true.__str__(), self.false.__str__()) )
 
+class Func(RCFAE):
+
+    def __init__(self, arg, body):
+        self.arg = arg
+        self.body = body
+
+    def __str__(self):
+        return ("( Func : (%s) %s )" % (self.arg.__str__(), self.body.__str__()) )
+
+class App(RCFAE):
+
+    def __init__(self, fun, arg):
+        self.fun = fun
+        self.arg = arg
+
+    def __str__(self):
+        return ("( App : %s %s )" % (self.fun.__str__(), self.arg.__str__()))
+
 # Transformation from ebnf's tree structure to ours
 
 class Transformer(object):
@@ -87,6 +105,14 @@ class Transformer(object):
         cond, true, false = ifTree.children[2], ifTree.children[3], ifTree.children[4]
         return If(self.visitRCFAE(cond), self.visitRCFAE(true), self.visitRCFAE(false))
 
+    def visitFunc(self, funcTree):
+        arg, body = funcTree.children[3], funcTree.children[5]
+        return Func(self.visitSymbol(arg), self.visitRCFAE(body))
+
+    def visitApp(self, appTree):
+        fun, arg = appTree.children[1], appTree.children[2]
+        return App(self.visitRCFAE(fun), self.visitRCFAE(arg))
+
     def visitRCFAE(self, tree):
         first = tree.children[0]
              
@@ -98,11 +124,14 @@ class Transformer(object):
         else:
             if first.symbol == "op":
                 return self.visitOp(tree)
-            elif first.symbol =="if":
+            elif first.symbol == "if":
                 return self.visitIf(tree)
+            elif first.symbol == "fun":
+                return self.visitFunc(tree)
+            elif first.symbol == "rcfae":
+                return self.visitApp(tree)
             else:
-                return ParsingError()
-                
+                return ParsingError() 
         
         
 # Main instructions

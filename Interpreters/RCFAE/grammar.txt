@@ -1,8 +1,13 @@
 IGNORE: " |\n|\t";
 NUM: "\-?(0|[1-9][0-9]*)";
-ID: "([a-z]|[A-Z]|_) ([a-z]|[A-Z]|_|\-|[0-9])*";
+ID: "([a-zA-Z]|_)([a-zA-Z_0-9\-])*";
 OP: "\+|\-|\*|\\|%";
 
-rcfae: NUM |  "{"  op rcfae rcfae "}" | ID | "{" if rcfae rcfae rcfae "}";
+rcfae: NUM |  "{"  op rcfae rcfae "}" | ID |
+        "{" if rcfae rcfae rcfae "}" | "{" fun "{" ID "}" rcfae "}" | 
+	"{" rcfae rcfae "}";
+
 op: OP;
 if: "if0";
+fun: "fun";
+
