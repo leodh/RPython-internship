@@ -23,13 +23,16 @@ class ParsingError(RCFAE):
     def __init__(self):
         pass
 
+    def __str__(self):
+        return " ParsingError" 
+
 class Num(RCFAE):
 
     def __init__(self, val):
         self.val = val
 
     def __str__(self):
-        return ("( Num : % )" % self.val)
+        return ("( Num : %s )" % str(self.val))
 
 class Id(RCFAE):
 
@@ -37,7 +40,7 @@ class Id(RCFAE):
         self.name = name
 
     def __str__(self):
-        return ("( Id : %)" % self.name)
+        return ("( Id : %s )" % self.name)
 
 class Op(RCFAE):
 
@@ -47,9 +50,9 @@ class Op(RCFAE):
         self.rhs = rhs
 
     def __str__(self):
-        return ("Op : % % %" % (self.lhs.__str__, self.op, self.rhs.__str__))
+        return ("( Op : %s %s %s )" % (self.lhs.__str__(), self.op, self.rhs.__str__() ))
 
-# Transformation from ebnf's tree structure too ours
+# Transformation from ebnf's tree structure to ours
 
 class Transformer(object):
     """Transforme a tree in ebnf's structure to ours"""
@@ -58,7 +61,7 @@ class Transformer(object):
         pass
 
     def visitSymbol(self, symb):
-        val = symb.children[0]
+        val = symb.additional_info
         if symb.symbol == "NUM":
             return Num(int(val))
         elif symb.symbol == "ID":
@@ -66,12 +69,33 @@ class Transformer(object):
         else: # Case OP not treated here, must be detected elsewhere
             return ParsingError()
 
+    def visitOp(self, opTree):
+        op, lhs, rhs = opTree.children[1], opTree.children[2], opTree.children[3]
+        return Op(str((op.children[0]).additional_info), self.visitRCFAE(lhs), self.visitRCFAE(rhs))
+
+    def visitRCFAE(self, tree):
+        first = tree.children[0]
+             
+        if first.symbol == "__0_{":
+            first = tree.children[1]
+
+        if isinstance(first, Symbol):
+            return self.visitSymbol(first)
+        else:
+            if first.symbol == "op":
+                return self.visitOp(tree)
+            else:
+                return ParsingError()
+                
+        
         
 # Main instructions
 
 def Main(source):
     tree = _parse(source)
-    print(tree.__str__())
+    transforme = Transformer()
+    ourTree = transforme.visitRCFAE(tree)
+    print ourTree.__str__()
     print(42)
 
 import os
