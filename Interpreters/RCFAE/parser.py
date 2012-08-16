@@ -2,7 +2,7 @@
 
 import py
 from pypy.rlib.parsing.ebnfparse import parse_ebnf, make_parse_function
-from pypy.rlib.parsing.tree import Node, Nonterminal
+from pypy.rlib.parsing.tree import Node, Nonterminal, Symbol
 
 grammar = py.path.local().join('grammar.txt').read("rt")
 regexs, rules, ToAST = parse_ebnf(grammar)
@@ -19,6 +19,10 @@ class RCFAE(object):
     def __str__(self):
         pass
 
+class ParsingError(RCFAE):
+    def __init__(self):
+        pass
+
 class Num(RCFAE):
 
     def __init__(self, val):
@@ -26,6 +30,14 @@ class Num(RCFAE):
 
     def __str__(self):
         return ("( Num : % )" % self.val)
+
+class Id(RCFAE):
+
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return ("( Id : %)" % self.name)
 
 class Op(RCFAE):
 
@@ -37,8 +49,24 @@ class Op(RCFAE):
     def __str__(self):
         return ("Op : % % %" % (self.lhs.__str__, self.op, self.rhs.__str__))
 
+# Transformation from ebnf's tree structure too ours
 
+class Transformer(object):
+    """Transforme a tree in ebnf's structure to ours"""
 
+    def __init__(self):
+        pass
+
+    def visitSymbol(self, symb):
+        val = symb.children[0]
+        if symb.symbol == "NUM":
+            return Num(int(val))
+        elif symb.symbol == "ID":
+            return Id(val)
+        else: # Case OP not treated here, must be detected elsewhere
+            return ParsingError()
+
+        
 # Main instructions
 
 def Main(source):
