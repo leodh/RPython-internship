@@ -1,4 +1,4 @@
-# Parse and create AST based on FCAE's BNF
+# Parse and create AST based on RCFAE's BNF
 
 import py
 from pypy.rlib.parsing.ebnfparse import parse_ebnf, make_parse_function
