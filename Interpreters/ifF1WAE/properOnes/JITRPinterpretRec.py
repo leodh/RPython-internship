@@ -6,7 +6,7 @@ import sys
 # import guard that creates a dummy class instead.
 # (from Pypy's tutorial by Andrew Brown)
 try:
-    from pypy.rlib.jit import JitDriver, purefunction
+    from pypy.rlib.jit import JitDriver, purefunction, elidable, promote
 except ImportError:
     class JitDriver(object):
         def __init__(self,**kw): pass
@@ -45,6 +45,7 @@ def get_printable_location(funDict, expr):
 jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['env'],
         get_printable_location=get_printable_location)
 
+@elidable
 def Interpret(expr, funDict, env):
     """ Interpret the ifF1WAE AST given a set of defined functions. We use deferred substituion and eagerness."""
 

@@ -1,0 +1,678 @@
+[675bcead03a] {jit-log-opt-loop
+# Loop 0 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard2>) [i4, p0]
++171: guard_no_exception(, descr=<Guard4>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard3>) [i7, i4]
++269: guard_no_exception(, descr=<Guard5>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675bcee3583] jit-log-opt-loop}
+[675bde5e9ed] {jit-log-opt-loop
+# Loop 1 (Op =) : entry bridge with 10 ops
+[p0]
+debug_merge_point(0, 0, 'Op =')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard6>) [i4, p0]
++171: guard_no_exception(, descr=<Guard8>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard7>) [i7, i4]
++269: guard_no_exception(, descr=<Guard9>) [i7, i4]
++289: i8 = int_eq(i4, i7)
+guard_false(i8, descr=<Guard10>) []
++302: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++367: --end of the loop--
+[675bde79732] jit-log-opt-loop}
+[675bdf14c89] {jit-log-opt-loop
+# Loop 2 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard11>) [i3]
++148: guard_no_exception(, descr=<Guard12>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675bdf1f2fa] jit-log-opt-loop}
+[675bdfaef57] {jit-log-opt-loop
+# Loop 3 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bdfb7f2e] jit-log-opt-loop}
+[675be1b2e6e] {jit-log-opt-loop
+# Loop 4 (App f) : entry bridge with 23 ops
+[p0]
+debug_merge_point(0, 0, 'App f')
++97: p4 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr2), ConstPtr(ptr3), descr=<Callr 8 rr EF=6>)
+guard_not_forced(, descr=<Guard13>) [p4, p0]
++168: guard_no_exception(, descr=<Guard20>) [p4, p0]
++188: guard_nonnull_class(p4, 4297238008, descr=<Guard21>) [p4, p0]
++206: i8 = call_may_force(ConstClass(Interpret), ConstPtr(ptr7), ConstPtr(ptr2), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard14>) [i8, p4]
++284: guard_no_exception(, descr=<Guard22>) [i8, p4]
++304: p9 = getfield_gc(p4, descr=<FieldP treeClass.Func.inst_argName 8>)
++315: i11 = call(ConstClass(ll_strhash__rpy_stringPtr), p9, descr=<Calli 8 r EF=0>)
+p12 = new(, descr=<SizeDescr 32>)
+p14 = new_array(8, descr=<ArrayX 16>)
++464: setfield_gc(p12, p14, descr=<FieldP dicttable.entries 24>)
++468: i16 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p12, p9, i11, descr=<Calli 8 rri EF=4>)
++516: setfield_gc(p12, 16, descr=<FieldS dicttable.resize_counter 16>)
++531: guard_no_exception(, descr=<Guard23>) [i8, i11, i16, p4, p12, p9]
++551: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v149___simple_call__function__), p12, p9, i8, i11, i16, descr=<Callv 0 rriii EF=4>)
++602: guard_no_exception(, descr=<Guard24>) [p4, p12]
++622: p19 = getfield_gc(p4, descr=<FieldP treeClass.Func.inst_body 16>)
++633: i21 = call_may_force(ConstClass(Interpret), p19, ConstPtr(ptr2), p12, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard19>) [i21]
++694: guard_no_exception(, descr=<Guard25>) [i21]
++714: finish(i21, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++774: --end of the loop--
+[675be1da242] jit-log-opt-loop}
+[675be26b523] {jit-log-opt-loop
+# Loop 5 (Num 3) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 3')
++97: finish(3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675be2743a0] jit-log-opt-loop}
+[675be32ac05] {jit-log-opt-loop
+# Loop 6 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard26>) [i4, p0]
++171: guard_no_exception(, descr=<Guard28>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard27>) [i7, i4]
++269: guard_no_exception(, descr=<Guard29>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675be3605c7] jit-log-opt-loop}
+[675be41b430] {jit-log-opt-loop
+# Loop 7 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard30>) [i4, p0]
++171: guard_no_exception(, descr=<Guard32>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard31>) [i7, i4]
++269: guard_no_exception(, descr=<Guard33>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675be42b1de] jit-log-opt-loop}
+[675be4e9429] {jit-log-opt-loop
+# Loop 8 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard34>) [i4, p0]
++171: guard_no_exception(, descr=<Guard36>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard35>) [i7, i4]
++269: guard_no_exception(, descr=<Guard37>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675be4fcd46] jit-log-opt-loop}
+[675be5b848b] {jit-log-opt-loop
+# Loop 9 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard38>) [i4, p0]
++171: guard_no_exception(, descr=<Guard40>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard39>) [i7, i4]
++269: guard_no_exception(, descr=<Guard41>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675be5c85a1] jit-log-opt-loop}
+[675be6b21b8] {jit-log-opt-loop
+# Loop 10 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard42>) [i4, p0]
++171: guard_no_exception(, descr=<Guard44>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard43>) [i7, i4]
++269: guard_no_exception(, descr=<Guard45>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675be6c2ee8] jit-log-opt-loop}
+[675be83aafa] {jit-log-opt-loop
+# Loop 11 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard46>) [i4, p0]
++171: guard_no_exception(, descr=<Guard48>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard47>) [i7, i4]
++269: guard_no_exception(, descr=<Guard49>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675be84cdfb] jit-log-opt-loop}
+[675be95956d] {jit-log-opt-loop
+# Loop 12 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard50>) [i4, p0]
++171: guard_no_exception(, descr=<Guard52>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard51>) [i7, i4]
++269: guard_no_exception(, descr=<Guard53>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675be96c4fb] jit-log-opt-loop}
+[675bea3cae5] {jit-log-opt-loop
+# Loop 13 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard54>) [i4, p0]
++171: guard_no_exception(, descr=<Guard56>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard55>) [i7, i4]
++269: guard_no_exception(, descr=<Guard57>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675bea4fbd9] jit-log-opt-loop}
+[675beb12ebc] {jit-log-opt-loop
+# Loop 14 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard58>) [i4, p0]
++171: guard_no_exception(, descr=<Guard60>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard59>) [i7, i4]
++269: guard_no_exception(, descr=<Guard61>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675beb22f9e] jit-log-opt-loop}
+[675bebd3327] {jit-log-opt-loop
+# Loop 15 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard62>) [i3]
++148: guard_no_exception(, descr=<Guard63>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675bebdd742] jit-log-opt-loop}
+[675bec88253] {jit-log-opt-loop
+# Loop 16 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard64>) [i3]
++148: guard_no_exception(, descr=<Guard65>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675bec953d5] jit-log-opt-loop}
+[675bed354c4] {jit-log-opt-loop
+# Loop 17 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bed3e3fe] jit-log-opt-loop}
+[675beddc730] {jit-log-opt-loop
+# Loop 18 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bede1d7c] jit-log-opt-loop}
+[675bee85a19] {jit-log-opt-loop
+# Loop 19 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bee8ddec] jit-log-opt-loop}
+[675bef30ee2] {jit-log-opt-loop
+# Loop 20 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bef363c9] jit-log-opt-loop}
+[675bf4c4eae] {jit-log-opt-loop
+# Loop 21 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bf4ebf8d] jit-log-opt-loop}
+[675bf595ff4] {jit-log-opt-loop
+# Loop 22 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bf59bae3] jit-log-opt-loop}
+[675bf642f3d] {jit-log-opt-loop
+# Loop 23 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bf64855f] jit-log-opt-loop}
+[675bf72306a] {jit-log-opt-loop
+# Loop 24 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard66>) [i4, p0]
++171: guard_no_exception(, descr=<Guard68>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard67>) [i7, i4]
++269: guard_no_exception(, descr=<Guard69>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675bf734473] jit-log-opt-loop}
+[675bf7e21c2] {jit-log-opt-loop
+# Loop 25 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bf7e7c87] jit-log-opt-loop}
+[675bf8d3014] {jit-log-opt-loop
+# Loop 26 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard70>) [i4, p0]
++171: guard_no_exception(, descr=<Guard72>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard71>) [i7, i4]
++269: guard_no_exception(, descr=<Guard73>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675bf8e30e1] jit-log-opt-loop}
+[675bf9ba4a2] {jit-log-opt-loop
+# Loop 27 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard74>) [i4, p0]
++171: guard_no_exception(, descr=<Guard76>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard75>) [i7, i4]
++269: guard_no_exception(, descr=<Guard77>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675bf9ca5f7] jit-log-opt-loop}
+[675bfa87f51] {jit-log-opt-loop
+# Loop 28 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard78>) [i3]
++148: guard_no_exception(, descr=<Guard79>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675bfa950b3] jit-log-opt-loop}
+[675bfb58247] {jit-log-opt-loop
+# Loop 29 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard80>) [i3]
++148: guard_no_exception(, descr=<Guard81>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675bfb6218a] jit-log-opt-loop}
+[675bfc13f2a] {jit-log-opt-loop
+# Loop 30 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675bfc1c8b0] jit-log-opt-loop}
+[675bfcf83cf] {jit-log-opt-loop
+# Loop 31 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard82>) [i4, p0]
++171: guard_no_exception(, descr=<Guard84>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard83>) [i7, i4]
++269: guard_no_exception(, descr=<Guard85>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675bfd1e2e2] jit-log-opt-loop}
+[675bfdf4f2c] {jit-log-opt-loop
+# Loop 32 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard86>) [i4, p0]
++171: guard_no_exception(, descr=<Guard88>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard87>) [i7, i4]
++269: guard_no_exception(, descr=<Guard89>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675bfe0874d] jit-log-opt-loop}
+[675bfee62d3] {jit-log-opt-loop
+# Loop 33 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard90>) [i4, p0]
++171: guard_no_exception(, descr=<Guard92>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard91>) [i7, i4]
++269: guard_no_exception(, descr=<Guard93>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675bfef68f4] jit-log-opt-loop}
+[675bffd9162] {jit-log-opt-loop
+# Loop 34 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard94>) [i4, p0]
++171: guard_no_exception(, descr=<Guard96>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard95>) [i7, i4]
++269: guard_no_exception(, descr=<Guard97>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675bffe949a] jit-log-opt-loop}
+[675c00cc286] {jit-log-opt-loop
+# Loop 35 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard98>) [i4, p0]
++171: guard_no_exception(, descr=<Guard100>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard99>) [i7, i4]
++269: guard_no_exception(, descr=<Guard101>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675c00df5d0] jit-log-opt-loop}
+[675c01c696c] {jit-log-opt-loop
+# Loop 36 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard102>) [i4, p0]
++171: guard_no_exception(, descr=<Guard104>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard103>) [i7, i4]
++269: guard_no_exception(, descr=<Guard105>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675c01d69d0] jit-log-opt-loop}
+[675c02bc491] {jit-log-opt-loop
+# Loop 37 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard106>) [i4, p0]
++171: guard_no_exception(, descr=<Guard108>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard107>) [i7, i4]
++269: guard_no_exception(, descr=<Guard109>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675c02dd7b8] jit-log-opt-loop}
+[675c03ae61f] {jit-log-opt-loop
+# Loop 38 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard110>) [i3]
++148: guard_no_exception(, descr=<Guard111>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675c03b8b4b] jit-log-opt-loop}
+[675c0489616] {jit-log-opt-loop
+# Loop 39 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard112>) [i3]
++148: guard_no_exception(, descr=<Guard113>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675c0493453] jit-log-opt-loop}
+[675c055e465] {jit-log-opt-loop
+# Loop 40 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675c0563ed5] jit-log-opt-loop}
+[675c062b681] {jit-log-opt-loop
+# Loop 41 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675c0634051] jit-log-opt-loop}
+[675c07052e8] {jit-log-opt-loop
+# Loop 42 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard114>) [i3]
++148: guard_no_exception(, descr=<Guard115>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675c070f3ba] jit-log-opt-loop}
+[675c0804aef] {jit-log-opt-loop
+# Loop 43 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard116>) [i4, p0]
++171: guard_no_exception(, descr=<Guard118>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard117>) [i7, i4]
++269: guard_no_exception(, descr=<Guard119>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675c0814e51] jit-log-opt-loop}
+[675c08e2f3c] {jit-log-opt-loop
+# Loop 44 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675c08e8afc] jit-log-opt-loop}
+[675c09e4a7e] {jit-log-opt-loop
+# Loop 45 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard120>) [i4, p0]
++171: guard_no_exception(, descr=<Guard122>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard121>) [i7, i4]
++269: guard_no_exception(, descr=<Guard123>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675c09f4c5c] jit-log-opt-loop}
+[675c0aeac03] {jit-log-opt-loop
+# Loop 46 (Op +) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op +')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard124>) [i4, p0]
++171: guard_no_exception(, descr=<Guard126>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard125>) [i7, i4]
++269: guard_no_exception(, descr=<Guard127>) [i7, i4]
++289: i8 = int_add(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675c0b1355f] jit-log-opt-loop}
+[675c0bf6d8d] {jit-log-opt-loop
+# Loop 47 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard128>) [i3]
++148: guard_no_exception(, descr=<Guard129>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675c0c00edd] jit-log-opt-loop}
+[675c0ceabc7] {jit-log-opt-loop
+# Loop 48 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard130>) [i3]
++148: guard_no_exception(, descr=<Guard131>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675c0cf4b69] jit-log-opt-loop}
+[675c0dc4f1c] {jit-log-opt-loop
+# Loop 49 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675c0dcaae7] jit-log-opt-loop}
+[675c0e9e85a] {jit-log-opt-loop
+# Loop 50 (Num 0) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 0')
++97: finish(0, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675c0ea7047] jit-log-opt-loop}
+[675c0f8f25d] {jit-log-opt-loop
+# Loop 51 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard132>) [i3]
++148: guard_no_exception(, descr=<Guard133>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675c0f997d2] jit-log-opt-loop}
+[675c117e79c] {jit-log-opt-loop
+# Loop 52 (Op -) : entry bridge with 9 ops
+[p0]
+debug_merge_point(0, 0, 'Op -')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard134>) [i4, p0]
++171: guard_no_exception(, descr=<Guard136>) [i4, p0]
++191: i7 = call_may_force(ConstClass(Interpret), ConstPtr(ptr6), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard135>) [i7, i4]
++269: guard_no_exception(, descr=<Guard137>) [i7, i4]
++289: i8 = int_sub(i4, i7)
++299: finish(i8, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++359: --end of the loop--
+[675c118f159] jit-log-opt-loop}
+[675c12791b5] {jit-log-opt-loop
+# Loop 53 (Id x) : entry bridge with 5 ops
+[p0]
+debug_merge_point(0, 0, 'Id x')
++97: i3 = call_may_force(ConstClass(GetInEnv), p0, ConstPtr(ptr2), descr=<Calli 8 rr EF=6>)
+guard_not_forced(, descr=<Guard138>) [i3]
++148: guard_no_exception(, descr=<Guard139>) [i3]
++168: finish(i3, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++228: --end of the loop--
+[675c1283512] jit-log-opt-loop}
+[675c1834891] {jit-log-opt-loop
+# Loop 54 (Num 1) : entry bridge with 2 ops
+[p0]
+debug_merge_point(0, 0, 'Num 1')
++97: finish(1, descr=<DoneWithThisFrameDescrInt object at 0x10023a910>)
++162: --end of the loop--
+[675c183c4f8] jit-log-opt-loop}
+[675c272ab29] {jit-log-opt-loop
+# Loop 55 (App run) : entry bridge with 23 ops
+[p0]
+debug_merge_point(0, 0, 'App run')
++97: p4 = call_may_force(ConstClass(GetFunc), ConstPtr(ptr2), ConstPtr(ptr3), descr=<Callr 8 rr EF=6>)
+guard_not_forced(, descr=<Guard140>) [p4, p0]
++168: guard_no_exception(, descr=<Guard148>) [p4, p0]
++188: guard_nonnull_class(p4, 4297238008, descr=<Guard149>) [p4, p0]
++206: i8 = call_may_force(ConstClass(Interpret), ConstPtr(ptr7), ConstPtr(ptr2), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard141>) [i8, p4]
++284: guard_no_exception(, descr=<Guard150>) [i8, p4]
++304: p9 = getfield_gc(p4, descr=<FieldP treeClass.Func.inst_argName 8>)
++315: i11 = call(ConstClass(ll_strhash__rpy_stringPtr), p9, descr=<Calli 8 r EF=0>)
+p12 = new(, descr=<SizeDescr 32>)
+p14 = new_array(8, descr=<ArrayX 16>)
++464: setfield_gc(p12, p14, descr=<FieldP dicttable.entries 24>)
++468: i16 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p12, p9, i11, descr=<Calli 8 rri EF=4>)
++516: setfield_gc(p12, 16, descr=<FieldS dicttable.resize_counter 16>)
++531: guard_no_exception(, descr=<Guard151>) [i8, i11, i16, p4, p12, p9]
++551: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v149___simple_call__function__), p12, p9, i8, i11, i16, descr=<Callv 0 rriii EF=4>)
++602: guard_no_exception(, descr=<Guard152>) [p4, p12]
++622: p19 = getfield_gc(p4, descr=<FieldP treeClass.Func.inst_body 16>)
++633: i21 = call_may_force(ConstClass(Interpret), p19, ConstPtr(ptr2), p12, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard146>) [i21]
++694: p23 = guard_exception(4297235192, descr=<Guard153>) [i21]
++773: finish(p23, descr=<ExitFrameWithExceptionDescrRef object at 0x100240280>)
++833: --end of the loop--
+[675c277855c] jit-log-opt-loop}
+[675c283a4e4] {jit-log-opt-loop
+# Loop 56 (With y) : entry bridge with 12 ops
+[p0]
+debug_merge_point(0, 0, 'With y')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard154>) [i4, p0]
++171: guard_no_exception(, descr=<Guard158>) [i4, p0]
++191: i8 = call(ConstClass(ll_dict_lookup_trampoline__v132___simple_call__function_l), p0, ConstPtr(ptr6), 15488046584, descr=<Calli 8 rri EF=4>)
++255: guard_no_exception(, descr=<Guard159>) [i4, i8, p0]
++275: call(ConstClass(_ll_dict_setitem_lookup_done_trampoline__v149___simple_call__function__), p0, ConstPtr(ptr6), i4, 15488046584, i8, descr=<Callv 0 rriii EF=4>)
++342: guard_no_exception(, descr=<Guard160>) [p0]
++362: i12 = call_may_force(ConstClass(Interpret), ConstPtr(ptr11), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard157>) [i12]
++433: p14 = guard_exception(4297235192, descr=<Guard161>) [i12]
++512: finish(p14, descr=<ExitFrameWithExceptionDescrRef object at 0x100240280>)
++572: --end of the loop--
+[675c2854caa] jit-log-opt-loop}
+[675c28e397b] {jit-log-opt-loop
+# Loop 57 (If Op =) : entry bridge with 10 ops
+[p0]
+debug_merge_point(0, 0, 'If Op =')
++97: i4 = call_may_force(ConstClass(Interpret), ConstPtr(ptr2), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard162>) [i4, p0]
++171: guard_no_exception(, descr=<Guard164>) [i4, p0]
++191: i5 = int_is_true(i4)
+guard_false(i5, descr=<Guard165>) [p0]
++201: i8 = call_may_force(ConstClass(Interpret), ConstPtr(ptr7), ConstPtr(ptr3), p0, descr=<Calli 8 rrr EF=6>)
+guard_not_forced(, descr=<Guard163>) [i8]
++272: p10 = guard_exception(4297235192, descr=<Guard166>) [i8]
++351: finish(p10, descr=<ExitFrameWithExceptionDescrRef object at 0x100240280>)
++411: --end of the loop--
+[675c28f4fbb] jit-log-opt-loop}
