@@ -80,9 +80,49 @@ class EndK(Continuation):
     def __init__(self):
         pass
 
-    def apply(self, x):
+    def _apply(self, x):
         return x
-    
+
+class Op1K(Continuation):
+
+    def __init__(self, op, lhs, rhs, env, k):
+        self.op = op
+        self.lhs = lhs
+        self.rhs = rhs
+        self.env = env
+        self.k = k
+
+    def _apply(self, Lhs):
+        if not assertNumV(Lhs, self.lhs):
+            return ReturnType()
+        k = Op2K(Lhs, self.op, self.rhs, self.k)
+        return Interpret(self.rhs, self.env, k)
+
+class Op2K(Continuation):
+
+    def __init__(self, Lhs, op, rhs, k):
+        self.Lhs = Lhs
+        self.op = op
+        self.rhs = rhs
+        self.k = k
+
+    def _apply(self, Rhs):
+        if not assertNumV(Rhs, self.rhs):
+            return ReturnType()
+
+        if self.op == '+':
+            return self.k._apply(self.Lhs.add(Rhs))
+        elif self.op == '-':
+            return self.k._apply(self.Lhs.diff(Rhs))
+        elif self.op == '*':
+            return self.k._apply(self.Lhs.mult(Rhs))
+        elif self.op == '/':
+            return self.k._apply(self.Lhs.div(Rhs))
+        elif self.op == '%':
+            return self.k._apply(self.Lhs.mod(Rhs))
+        else:
+            print "Parsing error, operator %s not valid" % self.op
+            return ReturnType()        
 
 ###############
 # Interpreter #
@@ -92,30 +132,12 @@ def Interpret(tree, env, k):
     """Interpret the tree, given an environment."""
 
     if isinstance(tree, parser.Num):
-        return k.apply(NumV(tree.val))
+        return k._apply(NumV(tree.val))
 
-    # elif isinstance(tree, parser.Op):
-    #     Lhs = Interpret(tree.lhs, env)
-    #     if not assertNumV(Lhs,tree.lhs):
-    #         return ReturnType()
-    #     Rhs = Interpret(tree.rhs, env)
-    #     if not assertNumV(Rhs, tree.rhs):
-    #         return ReturnType()
-    #     else:
-    #         if tree.op == '+':
-    #             return Lhs.add(Rhs)
-    #         elif tree.op == '-':
-    #             return Lhs.diff(Rhs)
-    #         elif tree.op == '*':
-    #             return Lhs.mult(Rhs)
-    #         elif tree.op == '/':
-    #             return Lhs.div(Rhs)
-    #         elif tree.op == '%':
-    #             return Lhs.mod(Rhs)
-    #         else:
-    #             print "Parsing error, operator %s not valid" % tree.op
-    #             return ReturnType()
-
+    elif isinstance(tree, parser.Op):
+        newK = Op1K(tree.op, tree.lhs, tree.rhs, env, k)
+        return Interpret(tree.lhs, env, newK)
+        
     # elif isinstance(tree, parser.Id):
     #     try:
     #         return env.get_attr(tree.name)
