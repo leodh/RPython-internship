@@ -5,7 +5,8 @@ import parser
 ###############
 
 class ReturnType(object):
-    """ Class of objects returned by the Interpret function."""
+    """ Class of objects returned by the Interpret function.
+    For Inheritance and errors."""
 
     def __init__(self):
         pass
@@ -124,6 +125,52 @@ class Op2K(Continuation):
             print "Parsing error, operator %s not valid" % self.op
             return ReturnType()        
 
+class If0K(Continuation):
+
+    def __init__(self, nul, true, false, env, k):
+        self.nul = nul
+        self.true = true
+        self.false = false
+        self.env = env
+        self.k = k
+
+    def _apply(self, nul):
+        if not assertNumV(nul, self.nul):
+            return ReturnType()
+        if nul.val == 0:
+            return Interpret(self.true, self.env, self.k)
+        else:
+            return Interpret(self.false, self.env, self.k)
+
+class App1K(Continuation):
+
+    def __init__(self, fun, arg, env, k):
+        self.fun = fun
+        self.arg = arg
+        self.env = env
+        self.k = k
+
+    def _apply(self, fun):
+        if not assertClosureV(fun, self.fun):
+            return ReturnType()
+        newK = App2K(fun, self.env, self.k)
+        return Interpret(self.arg, self.env, newK)
+
+class App2K(Continuation):
+
+    def __init__(self, fun, env, k):
+        self.fun = fun
+        self.env = env
+        self.k = k
+
+    def _apply(self, arg):
+        param = self.fun.arg
+        assert isinstance(param, parser.Id)
+        newEnv = self.env
+        newEnv.write_attribute(param.name, arg)
+        return Interpret(self.fun.body, newEnv, self.k)
+        
+
 ###############
 # Interpreter #
 ###############
@@ -138,36 +185,26 @@ def Interpret(tree, env, k):
         newK = Op1K(tree.op, tree.lhs, tree.rhs, env, k)
         return Interpret(tree.lhs, env, newK)
         
-    # elif isinstance(tree, parser.Id):
-    #     try:
-    #         return env.get_attr(tree.name)
-    #     except parser.FreeVariable as FV:
-    #         print "Free variable : %s" % FV.__str__()
-    #         return ReturnType()
+    elif isinstance(tree, parser.Id):
+        try:
+            return k._apply(env.get_attr(tree.name))
+        except parser.FreeVariable as FV:
+            print "Free variable : %s" % FV.__str__()
+            return ReturnType()
 
-    # elif isinstance(tree, parser.If):
-    #     nul = Interpret(tree.nul, env)
-    #     if not assertNumV(nul, tree.nul):
-    #         return ReturnType()
-    #     if nul.val == 0:
-    #         return Interpret(tree.true, env)
-    #     else:
-    #         return Interpret(tree.false, env)
+    elif isinstance(tree, parser.If):
+        newK = If0K(tree.nul, tree.true, tree.false, env, k)
+        return Interpret(tree.nul, env, newK)
 
-    # elif isinstance(tree, parser.Func):
-    #     assert isinstance(tree.arg, parser.Id)
-    #     return ClosureV(tree.arg, tree.body, env)
 
-    # elif isinstance(tree, parser.App):
-    #     fun = Interpret(tree.fun, env)
-    #     if not assertClosureV(fun, tree.fun):
-    #         return ReturnType()
-    #     arg = Interpret(tree.arg, env)
-    #     newEnv = fun.env
-    #     param = fun.arg
-    #     assert isinstance(param, parser.Id)
-    #     newEnv.write_attribute(param.name, arg)
-    #     return Interpret(fun.body, newEnv)
+    elif isinstance(tree, parser.Func):
+        assert isinstance(tree.arg, parser.Id)
+        return k._apply(ClosureV(tree.arg, tree.body, env))
+
+    elif isinstance(tree, parser.App):
+        newK = App1K(tree.fun, tree.arg, env, k)
+        return Interpret(tree.fun, env, newK)
+
 
     # elif isinstance(tree, parser.Rec):
     #     dummy = NumV(42)
