@@ -72,72 +72,72 @@ def assertClosureV(expr, tree):
 def Interpret(tree, env):
     """Interpret the tree, given an environment."""
 
-    if isinstance(tree, parser.Num):
-        return NumV(tree.val)
+    # if isinstance(tree, parser.Num):
+    #     return NumV(tree.val)
 
-    elif isinstance(tree, parser.Op):
-        Lhs = Interpret(tree.lhs, env)
-        if not assertNumV(Lhs,tree.lhs):
-            return ReturnType()
-        Rhs = Interpret(tree.rhs, env)
-        if not assertNumV(Rhs, tree.rhs):
-            return ReturnType()
-        else:
-            if tree.op == '+':
-                return Lhs.add(Rhs)
-            elif tree.op == '-':
-                return Lhs.diff(Rhs)
-            elif tree.op == '*':
-                return Lhs.mult(Rhs)
-            elif tree.op == '/':
-                return Lhs.div(Rhs)
-            elif tree.op == '%':
-                return Lhs.mod(Rhs)
-            else:
-                print "Parsing error, operator %s not valid" % tree.op
-                return ReturnType()
+    # elif isinstance(tree, parser.Op):
+    #     Lhs = Interpret(tree.lhs, env)
+    #     if not assertNumV(Lhs,tree.lhs):
+    #         return ReturnType()
+    #     Rhs = Interpret(tree.rhs, env)
+    #     if not assertNumV(Rhs, tree.rhs):
+    #         return ReturnType()
+    #     else:
+    #         if tree.op == '+':
+    #             return Lhs.add(Rhs)
+    #         elif tree.op == '-':
+    #             return Lhs.diff(Rhs)
+    #         elif tree.op == '*':
+    #             return Lhs.mult(Rhs)
+    #         elif tree.op == '/':
+    #             return Lhs.div(Rhs)
+    #         elif tree.op == '%':
+    #             return Lhs.mod(Rhs)
+    #         else:
+    #             print "Parsing error, operator %s not valid" % tree.op
+    #             return ReturnType()
 
-    elif isinstance(tree, parser.Id):
-        try:
-            return env.get_attr(tree.name)
-        except parser.FreeVariable as FV:
-            print "Free variable : %s" % FV.__str__()
-            return ReturnType()
+    # elif isinstance(tree, parser.Id):
+    #     try:
+    #         return env.get_attr(tree.name)
+    #     except parser.FreeVariable as FV:
+    #         print "Free variable : %s" % FV.__str__()
+    #         return ReturnType()
 
-    elif isinstance(tree, parser.If):
-        nul = Interpret(tree.nul, env)
-        if not assertNumV(nul, tree.nul):
-            return ReturnType()
-        if nul.val == 0:
-            return Interpret(tree.true, env)
-        else:
-            return Interpret(tree.false, env)
+    # elif isinstance(tree, parser.If):
+    #     nul = Interpret(tree.nul, env)
+    #     if not assertNumV(nul, tree.nul):
+    #         return ReturnType()
+    #     if nul.val == 0:
+    #         return Interpret(tree.true, env)
+    #     else:
+    #         return Interpret(tree.false, env)
 
-    elif isinstance(tree, parser.Func):
-        assert isinstance(tree.arg, parser.Id)
-        return ClosureV(tree.arg, tree.body, env)
+    # elif isinstance(tree, parser.Func):
+    #     assert isinstance(tree.arg, parser.Id)
+    #     return ClosureV(tree.arg, tree.body, env)
 
-    elif isinstance(tree, parser.App):
-        fun = Interpret(tree.fun, env)
-        if not assertClosureV(fun, tree.fun):
-            return ReturnType()
-        arg = Interpret(tree.arg, env)
-        newEnv = fun.env
-        param = fun.arg
-        assert isinstance(param, parser.Id)
-        newEnv.write_attribute(param.name, arg)
-        return Interpret(fun.body, newEnv)
+    # elif isinstance(tree, parser.App):
+    #     fun = Interpret(tree.fun, env)
+    #     if not assertClosureV(fun, tree.fun):
+    #         return ReturnType()
+    #     arg = Interpret(tree.arg, env)
+    #     newEnv = fun.env
+    #     param = fun.arg
+    #     assert isinstance(param, parser.Id)
+    #     newEnv.write_attribute(param.name, arg)
+    #     return Interpret(fun.body, newEnv)
 
-    elif isinstance(tree, parser.Rec):
-        dummy = NumV(42)
-        env.write_attribute(tree.funName, dummy)
-        funDef = Interpret(tree.body, env)
-        if not assertClosureV(funDef, tree.body):
-            return ReturnType()
-        newEnv = funDef.env
-        newEnv.write_attribute(tree.funName, funDef)
-        funDef.env = newEnv
-        return Interpret(tree.expr, newEnv)
+    # elif isinstance(tree, parser.Rec):
+    #     dummy = NumV(42)
+    #     env.write_attribute(tree.funName, dummy)
+    #     funDef = Interpret(tree.body, env)
+    #     if not assertClosureV(funDef, tree.body):
+    #         return ReturnType()
+    #     newEnv = funDef.env
+    #     newEnv.write_attribute(tree.funName, funDef)
+    #     funDef.env = newEnv
+    #     return Interpret(tree.expr, newEnv)
     
     else:
         print "Parsing error, tree %s is not valid" % tree.__str__()
