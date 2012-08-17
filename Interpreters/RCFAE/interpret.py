@@ -118,6 +118,17 @@ def Interpret(tree, env):
         assert isinstance(param, parser.Id)
         newEnv.write_attribute(param.name, arg)
         return Interpret(fun.body, newEnv)
+
+    elif isinstance(tree, parser.Rec):
+        dummy = NumV(42)
+        env.write_attribute(tree.funName, dummy)
+        funDef = Interpret(tree.body, env)
+        if not assertClosureV(funDef, tree.body):
+            return ReturnType()
+        newEnv = funDef.env
+        newEnv.write_attribute(tree.funName, funDef)
+        funDef.env = newEnv
+        return Interpret(tree.expr, newEnv)
     
     else:
         print "Parsing error, tree %s is not valid" % tree.__str__()
