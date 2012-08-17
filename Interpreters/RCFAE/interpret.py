@@ -171,6 +171,22 @@ class App2K(Continuation):
         return Interpret(self.fun.body, newEnv, self.k)
         
 
+class RecK(Continuation):
+
+    def __init__(self, funName, body, expr, k):
+        self.funName = funName
+        self.body = body
+        self.expr = expr
+        self.k = k
+
+    def _apply(self, funDef):
+        if not assertClosureV(funDef, self.body):
+            return ReturnType()
+        newEnv = funDef.env
+        newEnv.write_attribute(self.funName, funDef)
+        funDef.env = newEnv
+        return Interpret(self.expr, funDef.env, self.k) 
+
 ###############
 # Interpreter #
 ###############
@@ -205,17 +221,11 @@ def Interpret(tree, env, k):
         newK = App1K(tree.fun, tree.arg, env, k)
         return Interpret(tree.fun, env, newK)
 
-
-    # elif isinstance(tree, parser.Rec):
-    #     dummy = NumV(42)
-    #     env.write_attribute(tree.funName, dummy)
-    #     funDef = Interpret(tree.body, env)
-    #     if not assertClosureV(funDef, tree.body):
-    #         return ReturnType()
-    #     newEnv = funDef.env
-    #     newEnv.write_attribute(tree.funName, funDef)
-    #     funDef.env = newEnv
-    #     return Interpret(tree.expr, newEnv)
+    elif isinstance(tree, parser.Rec):
+        newK = RecK(tree.funName, tree.body, tree.expr, k)
+        dummy = NumV(42)
+        env.write_attribute(tree.funName, dummy)
+        return Interpret(tree.body, env, newK)
     
     else:
         print "Parsing error, tree %s is not valid" % tree.__str__()
