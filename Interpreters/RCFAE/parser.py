@@ -20,6 +20,7 @@ class RCFAE(object):
         pass
 
 class ParsingError(RCFAE):
+    
     def __init__(self):
         pass
 
@@ -27,7 +28,7 @@ class ParsingError(RCFAE):
         return " ParsingError" 
 
 class Num(RCFAE):
-
+    _immutable_fields_ = [ "val" ]
     def __init__(self, val):
         self.val = val
 
@@ -35,7 +36,7 @@ class Num(RCFAE):
         return ("( Num : %s )" % str(self.val))
 
 class Id(RCFAE):
-
+    _immutable_fields_ = [ "name" ]
     def __init__(self, name):
         self.name = name
 
@@ -43,7 +44,7 @@ class Id(RCFAE):
         return ("( Id : %s )" % self.name)
 
 class Op(RCFAE):
-
+    _immutable_fields_ = [ "op", "lhs", "rhs" ]
     def __init__(self, op, lhs, rhs):
         self.op = op
         self.lhs = lhs
@@ -53,8 +54,8 @@ class Op(RCFAE):
         return ("( Op : %s %s %s )" % (self.lhs.__str__(), self.op, self.rhs.__str__() ))
 
 class If(RCFAE):
-
-    def __init__(self, cond, true, false):
+    _immutable_fields_ = [ "nul", "true", "false" ]
+    def __init__(self, nul, true, false):
         self.nul = nul
         self. true = true
         self.false = false
@@ -63,7 +64,7 @@ class If(RCFAE):
         return ("( If : %s == 0 then %s else %s )" % (self.nul.__str__(), self.true.__str__(), self.false.__str__()) )
 
 class Func(RCFAE):
-
+    _immutable_fields_ = [ "arg", "body" ]
     def __init__(self, arg, body):
         self.arg = arg
         self.body = body
@@ -72,7 +73,7 @@ class Func(RCFAE):
         return ("( Fun : (%s) %s )" % (self.arg.__str__(), self.body.__str__()) )
 
 class App(RCFAE):
-
+    _immutable_fields_ = [ "fun", "arg" ]
     def __init__(self, fun, arg):
         self.fun = fun
         self.arg = arg
@@ -81,7 +82,7 @@ class App(RCFAE):
         return ("( App : %s %s )" % (self.fun.__str__(), self.arg.__str__()))
 
 class Rec(RCFAE):
-
+    _immutable_fields_ = [ "funName", "body", "expr" ]
     def __init__(self, funName, body, expr):
         self.funName = funName
         self.body = body
