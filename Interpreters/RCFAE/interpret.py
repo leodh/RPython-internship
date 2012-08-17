@@ -105,7 +105,19 @@ def Interpret(tree, env):
             return Interpret(tree.false, env)
 
     elif isinstance(tree, parser.Func):
+        assert isinstance(tree.arg, parser.Id)
         return ClosureV(tree.arg, tree.body, env)
+
+    elif isinstance(tree, parser.App):
+        fun = Interpret(tree.fun, env)
+        if not assertClosureV(fun, tree.fun):
+            return ReturnType()
+        arg = Interpret(tree.arg, env)
+        newEnv = fun.env
+        param = fun.arg
+        assert isinstance(param, parser.Id)
+        newEnv.write_attribute(param.name, arg)
+        return Interpret(fun.body, newEnv)
     
     else:
         print "Parsing error, tree %s is not valid" % tree.__str__()

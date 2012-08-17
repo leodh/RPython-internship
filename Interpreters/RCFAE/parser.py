@@ -198,7 +198,6 @@ class Env(object):
 
     def write_attribute(self, name, value):
         assert isinstance(name, str)
-        assert isinstance(value, int)
         map = self.map
         # promote(map)
         index = map.getindex(name)
