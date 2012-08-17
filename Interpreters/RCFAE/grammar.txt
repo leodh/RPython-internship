@@ -5,9 +5,10 @@ OP: "\+|\-|\*|\\|%";
 
 rcfae: NUM |  "{"  op rcfae rcfae "}" | ID |
         "{" if rcfae rcfae rcfae "}" | "{" fun "{" ID "}" rcfae "}" | 
-	"{" rcfae rcfae "}";
+	"{" rcfae rcfae "}" | "{" rec "{" ID rcfae "}" rcfae "}";
 
 op: OP;
 if: "if0";
 fun: "fun";
+rec: "rec";
 

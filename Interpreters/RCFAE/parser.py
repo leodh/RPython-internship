@@ -55,12 +55,12 @@ class Op(RCFAE):
 class If(RCFAE):
 
     def __init__(self, cond, true, false):
-        self.cond = cond
+        self.nul = nul
         self. true = true
         self.false = false
 
     def __str__(self):
-        return ("( If : %s then %s else %s )" % (self.cond.__str__(), self.true.__str__(), self.false.__str__()) )
+        return ("( If : %s == 0 then %s else %s )" % (self.nul.__str__(), self.true.__str__(), self.false.__str__()) )
 
 class Func(RCFAE):
 
@@ -69,7 +69,7 @@ class Func(RCFAE):
         self.body = body
 
     def __str__(self):
-        return ("( Func : (%s) %s )" % (self.arg.__str__(), self.body.__str__()) )
+        return ("( Fun : (%s) %s )" % (self.arg.__str__(), self.body.__str__()) )
 
 class App(RCFAE):
 
@@ -79,6 +79,16 @@ class App(RCFAE):
 
     def __str__(self):
         return ("( App : %s %s )" % (self.fun.__str__(), self.arg.__str__()))
+
+class Rec(RCFAE):
+
+    def __init__(self, funName, body, expr):
+        self.funName = funName
+        self.body = body
+        self.expr = expr
+
+    def __str__(self):
+        return ("( Rec : ( FunDef : %s:%s) %s)" % ( self.funName, self.body.__str__(), self.expr.__str__() ))
 
 # Transformation from ebnf's tree structure to ours
 
@@ -102,8 +112,8 @@ class Transformer(object):
         return Op(str((op.children[0]).additional_info), self.visitRCFAE(lhs), self.visitRCFAE(rhs))
 
     def visitIf(self, ifTree):
-        cond, true, false = ifTree.children[2], ifTree.children[3], ifTree.children[4]
-        return If(self.visitRCFAE(cond), self.visitRCFAE(true), self.visitRCFAE(false))
+        nul, true, false = ifTree.children[2], ifTree.children[3], ifTree.children[4]
+        return If(self.visitRCFAE(nul), self.visitRCFAE(true), self.visitRCFAE(false))
 
     def visitFunc(self, funcTree):
         arg, body = funcTree.children[3], funcTree.children[5]
@@ -112,6 +122,10 @@ class Transformer(object):
     def visitApp(self, appTree):
         fun, arg = appTree.children[1], appTree.children[2]
         return App(self.visitRCFAE(fun), self.visitRCFAE(arg))
+
+    def visitRec(self, recTree):
+        funName, body, expr = recTree.children[3], recTree.children[4], recTree.children[6]
+        return Rec( funName.additional_info, self.visitRCFAE(body), self.visitRCFAE(expr) )
 
     def visitRCFAE(self, tree):
         first = tree.children[0]
@@ -130,6 +144,8 @@ class Transformer(object):
                 return self.visitFunc(tree)
             elif first.symbol == "rcfae":
                 return self.visitApp(tree)
+            elif first.symbol == "rec":
+                return self.visitRec(tree)
             else:
                 return ParsingError() 
         
