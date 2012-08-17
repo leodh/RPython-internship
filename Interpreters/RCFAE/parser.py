@@ -176,6 +176,12 @@ class Map(object):
 
 EMPTY_MAP = Map()
 
+class FreeVariable(Exception):
+    def __init__(self, name):
+        self.name = name
+    def __str__(self):
+        return self.name
+
 class Env(object):
     def __init__(self):
         self.map = EMPTY_MAP
@@ -188,8 +194,7 @@ class Env(object):
         if index != -1:
             return self.storage[index]
         else:
-            print("Free variable : " + name)
-            return 2
+            raise FreeVariable(name)
 
     def write_attribute(self, name, value):
         assert isinstance(name, str)

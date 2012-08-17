@@ -66,9 +66,11 @@ def Interpret(tree, env):
                 return ReturnType()
 
     elif isinstance(tree, parser.Id):
-        print "Not implemented yet"
-        return ReturnType()
-        
+        try:
+            return env.get_attr(tree.name)
+        except parser.FreeVariable as FV:
+            print "Free variable : %s" % FV.__str__()
+            return ReturnType()
     else:
         print "Parsing error, tree %s is not valid" % tree.__str__()
         return ReturnType()
