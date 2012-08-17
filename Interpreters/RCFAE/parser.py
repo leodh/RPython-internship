@@ -1,4 +1,6 @@
-# Parse and create AST based on RCFAE's BNF
+#############################################
+# Parse and create AST based on RCFAE's BNF #
+#############################################
 
 import py
 from pypy.rlib.parsing.ebnfparse import parse_ebnf, make_parse_function
@@ -8,7 +10,9 @@ grammar = py.path.local().join('grammar.txt').read("rt")
 regexs, rules, ToAST = parse_ebnf(grammar)
 _parse = make_parse_function(regexs, rules, eof=True)
 
-# Tree classes
+################
+# Tree classes #
+################
 
 class RCFAE(object):
     """ For ineritance purpose only """
@@ -20,6 +24,7 @@ class RCFAE(object):
         pass
 
 class ParsingError(RCFAE):
+    """ To deal with errors """
     
     def __init__(self):
         pass
@@ -91,8 +96,10 @@ class Rec(RCFAE):
     def __str__(self):
         return ("( Rec : ( FunDef : %s:%s) %s)" % ( self.funName, self.body.__str__(), self.expr.__str__() ))
 
-# Transformation from ebnf's tree structure to ours
-
+#####################################################
+# Transformation from ebnf's tree structure to ours #
+#####################################################
+    
 class Transformer(object):
     """Transforme a tree in ebnf's structure to ours"""
 

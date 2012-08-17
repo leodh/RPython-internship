@@ -1,8 +1,11 @@
 import parser
 
-# Return type
+###############
+# Return type #
+###############
 
 class ReturnType(object):
+    """ Class of objects returned by the Interpret function."""
 
     def __init__(self):
         pass
@@ -35,6 +38,8 @@ class NumV(ReturnType):
 
 
 def assertNumV(expr, tree):
+    """ Assert class of expr is NumV, else blame tree."""
+    
     if not isinstance(expr, NumV):
         print "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.__str__()
         return False
@@ -52,16 +57,20 @@ class ClosureV(ReturnType):
         return "(fun : %s |-> %s)" % (self.arg.__str__(), self.body.__str__())
 
 def assertClosureV(expr, tree):
+    """ Assert class of expr is ClosureV, else blame tree."""
+    
     if not isinstance(expr, ClosureV):
         print "Wrong return type for expression :\n %s\n Should be of type ClosureV." % tree.__str__()
         return False
     else:
         return True
 
-
-# Interpreter
+###############
+# Interpreter #
+###############
 
 def Interpret(tree, env):
+    """Interpret the tree, given an environment."""
 
     if isinstance(tree, parser.Num):
         return NumV(tree.val)
@@ -134,10 +143,13 @@ def Interpret(tree, env):
         print "Parsing error, tree %s is not valid" % tree.__str__()
         return ReturnType()
 
-            
-# Main instructions
+#####################            
+# Main instructions #
+#####################
 
 def Main(source):
+    """Main function."""
+    
     tree = parser._parse(source)
     transforme = parser.Transformer()
     ourTree = transforme.visitRCFAE(tree)
