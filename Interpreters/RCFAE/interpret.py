@@ -19,56 +19,55 @@ class NumV(ReturnType):
         return str(self.val)
 
     def add(self, other):
-        assert isinstance(other, NumV)
         return NumV(self.val + other.val)
 
     def diff(self, other):
-        assert isinstance(other, NumV)
         return NumV(self.val - other.val)
 
     def mult(self, other):
-        assert isinstance(other, NumV)
         return NumV(self.val * other.val)
 
     def div(self, other):
-        assert isinstance(other, NumV)
         return NumV(self.val / other.val)
 
     def mod(self, other):
-        assert isinstance(other, NumV)
         return NumV(self.val % other.val)
 
 
 # Interpreter
 
-def Interpret(tree):
+def Interpret(tree, env):
 
     if isinstance(tree, parser.Num):
         return NumV(tree.val)
 
     elif isinstance(tree, parser.Op):
-        if tree.op == '+':
-            Lhs = Interpret(tree.lhs)
-            assert isinstance(Lhs, NumV)
-            return Lhs.add(Interpret(tree.rhs))
-        elif tree.op == '-':
-            Lhs = Interpret(tree.lhs)
-            assert isinstance(Lhs, NumV)
-            return Lhs.diff(Interpret(tree.rhs))
-        elif tree.op == '*':
-            Lhs = Interpret(tree.lhs)
-            assert isinstance(Lhs, NumV)
-            return Lhs.mult(Interpret(tree.rhs))
-        elif tree.op == '/':
-            Lhs = Interpret(tree.lhs)
-            assert isinstance(Lhs, NumV)
-            return Lhs.div(Interpret(tree.rhs))
-        elif tree.op == '%':
-            Lhs = Interpret(tree.lhs)
-            assert isinstance(Lhs, NumV)
-            return Lhs.mod(Interpret(tree.rhs))
-        else:
+        Lhs = Interpret(tree.lhs, env)
+        if not isinstance(Lhs, NumV):
+            print "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.lhs.__str__()
             return ReturnType()
+        Rhs = Interpret(tree.rhs, env)
+        if not isinstance(Rhs, NumV):
+            print "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.rhs.__str__()
+            return ReturnType()
+        else:
+            if tree.op == '+':
+                return Lhs.add(Rhs)
+            elif tree.op == '-':
+                return Lhs.diff(Rhs)
+            elif tree.op == '*':
+                return Lhs.mult(Rhs)
+            elif tree.op == '/':
+                return Lhs.div(Rhs)
+            elif tree.op == '%':
+                return Lhs.mod(Rhs)
+            else:
+                print "Parsing error, operator %s not valid" % tree.op
+                return ReturnType()
+
+    elif isinstance(tree, parser.Id):
+        print "Not implemented yet"
+        return ReturnType()
         
     else:
         print "Parsing error, tree %s is not valid" % tree.__str__()
@@ -82,7 +81,8 @@ def Main(source):
     transforme = parser.Transformer()
     ourTree = transforme.visitRCFAE(tree)
     print ourTree.__str__()
-    answer = Interpret(ourTree)
+    env = parser.Env()
+    answer = Interpret(ourTree, env)
     print answer.__str__()
 
 import os
