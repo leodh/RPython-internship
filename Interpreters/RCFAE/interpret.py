@@ -71,6 +71,17 @@ def Interpret(tree, env):
         except parser.FreeVariable as FV:
             print "Free variable : %s" % FV.__str__()
             return ReturnType()
+
+    elif isinstance(tree, parser.If):
+        nul = Interpret(tree.nul, env)
+        if not isinstance(nul, NumV):
+            print "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.nul.__str__()
+            return ReturnType()
+        if nul.val == 0:
+            return Interpret(tree.true, env)
+        else:
+            return Interpret(tree.false, env)
+        
     else:
         print "Parsing error, tree %s is not valid" % tree.__str__()
         return ReturnType()
