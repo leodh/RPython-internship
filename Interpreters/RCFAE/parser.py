@@ -151,41 +151,56 @@ class Transformer(object):
                 return ParsingError() 
         
         
-# Main instructions
 
-def Main(source):
-    tree = _parse(source)
-    transforme = Transformer()
-    ourTree = transforme.visitRCFAE(tree)
-    print ourTree.__str__()
-    print(42)
+#####################
+# Map and Env Class #
+#####################
 
-import os
+class Map(object):
+    def __init__(self):
+        self.indexes = {}
+        self.other_maps = {}
 
-def run(fp):
-    program_envents = ""
-    while True:
-        read = os.read(fp, 4096)
-        if len(read) == 0:
-            break
-        program_envents += read
-    os.close(fp)
-    Main(program_envents)
+        #    @elidable
+    def getindex(self, name):
+        return self.indexes.get(name, -1)
 
-def entry_point(argv):
-    try:
-        filename = argv[1]
-    except IndexError:
-        print "You must supply a filename"
-        return 1
+    #    @elidable
+    def add_attribute(self, name):
+        if name not in self.other_maps:
+            newmap = Map()
+            newmap.indexes.update(self.indexes)
+            newmap.indexes[name] = len(self.indexes)
+            self.other_maps[name] = newmap
+        return self.other_maps[name]
 
-    run(os.open(filename, os.O_RDONLY, 0777))
-    return 0
+EMPTY_MAP = Map()
 
+class Env(object):
+    def __init__(self):
+        self.map = EMPTY_MAP
+        self.storage = []
+        
+    def get_attr(self, name):
+        map = self.map
+        #  promote(map)
+        index = map.getindex(name)
+        if index != -1:
+            return self.storage[index]
+        else:
+            print("Free variable : " + name)
+            return 2
 
-def target(*args):
-    return entry_point, None
-
-if __name__ == "__main__":
-    entry_point(sys.argv)
+    def write_attribute(self, name, value):
+        assert isinstance(name, str)
+        assert isinstance(value, int)
+        map = self.map
+        # promote(map)
+        index = map.getindex(name)
+        if index != -1:
+            self.storage[index] = value
+            return
+        self.map = map.add_attribute(name)
+        self.storage.append(value)
+        
 
