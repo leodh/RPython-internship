@@ -65,15 +65,34 @@ def assertClosureV(expr, tree):
     else:
         return True
 
+#################
+# Continuations #
+#################
+
+class Continuation(object):
+    """ Super class, for inheritance purpose only."""
+
+    def __init__(self):
+        pass
+
+class EndK(Continuation):
+
+    def __init__(self):
+        pass
+
+    def apply(self, x):
+        return x
+    
+
 ###############
 # Interpreter #
 ###############
 
-def Interpret(tree, env):
+def Interpret(tree, env, k):
     """Interpret the tree, given an environment."""
 
-    # if isinstance(tree, parser.Num):
-    #     return NumV(tree.val)
+    if isinstance(tree, parser.Num):
+        return k.apply(NumV(tree.val))
 
     # elif isinstance(tree, parser.Op):
     #     Lhs = Interpret(tree.lhs, env)
@@ -155,7 +174,7 @@ def Main(source):
     ourTree = transforme.visitRCFAE(tree)
     print ourTree.__str__()
     env = parser.Env()
-    answer = Interpret(ourTree, env)
+    answer = Interpret(ourTree, env, EndK())
     print answer.__str__()
 
 import os
