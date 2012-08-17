@@ -34,6 +34,31 @@ class NumV(ReturnType):
         return NumV(self.val % other.val)
 
 
+def assertNumV(expr, tree):
+    if not isinstance(expr, NumV):
+        print "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.__str__()
+        return False
+    else:
+        return True
+
+class ClosureV(ReturnType):
+
+    def __init__(self, arg, body, env):
+        self.arg = arg
+        self.body = body
+        self.env = env
+
+    def __str__(self):
+        return "(fun : %s |-> %s)" % (self.arg.__str__(), self.body.__str__())
+
+def assertClosureV(expr, tree):
+    if not isinstance(expr, ClosureV):
+        print "Wrong return type for expression :\n %s\n Should be of type ClosureV." % tree.__str__()
+        return False
+    else:
+        return True
+
+
 # Interpreter
 
 def Interpret(tree, env):
@@ -43,12 +68,10 @@ def Interpret(tree, env):
 
     elif isinstance(tree, parser.Op):
         Lhs = Interpret(tree.lhs, env)
-        if not isinstance(Lhs, NumV):
-            print "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.lhs.__str__()
+        if not assertNumV(Lhs,tree.lhs):
             return ReturnType()
         Rhs = Interpret(tree.rhs, env)
-        if not isinstance(Rhs, NumV):
-            print "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.rhs.__str__()
+        if not assertNumV(Rhs, tree.rhs):
             return ReturnType()
         else:
             if tree.op == '+':
@@ -74,14 +97,16 @@ def Interpret(tree, env):
 
     elif isinstance(tree, parser.If):
         nul = Interpret(tree.nul, env)
-        if not isinstance(nul, NumV):
-            print "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.nul.__str__()
+        if not assertNumV(nul, tree.nul):
             return ReturnType()
         if nul.val == 0:
             return Interpret(tree.true, env)
         else:
             return Interpret(tree.false, env)
-        
+
+    elif isinstance(tree, parser.Func):
+        return ClosureV(tree.arg, tree.body, env)
+    
     else:
         print "Parsing error, tree %s is not valid" % tree.__str__()
         return ReturnType()
