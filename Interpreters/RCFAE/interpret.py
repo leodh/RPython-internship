@@ -187,6 +187,27 @@ class RecK(Continuation):
         funDef.env = newEnv
         return Interpret(self.expr, funDef.env, self.k) 
 
+
+##############
+# Trampoline #
+##############
+
+class Bounce(object):
+    """ For inheritance purpose """
+
+    def __init__(self):
+        pass
+
+class FinalBounce(Bounce):
+    """ Indicates end of loop and work """
+
+    def __init__(self, answ):
+        self.answ = answ
+
+    def bounce(self):
+        return self.answ
+
+
 ###############
 # Interpreter #
 ###############
