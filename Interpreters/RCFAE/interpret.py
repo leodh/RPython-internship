@@ -82,7 +82,7 @@ class EndK(Continuation):
         pass
 
     def _apply(self, x):
-        return x
+        return FinalBounce(x)
 
 class Op1K(Continuation):
 
@@ -95,9 +95,9 @@ class Op1K(Continuation):
 
     def _apply(self, Lhs):
         if not assertNumV(Lhs, self.lhs):
-            return ReturnType()
+            return FinalBounce(ReturnType())
         k = Op2K(Lhs, self.op, self.rhs, self.k)
-        return Interpret(self.rhs, self.env, k)
+        return KeepBouncing(self.rhs, self.env, k)
 
 class Op2K(Continuation):
 
@@ -109,7 +109,7 @@ class Op2K(Continuation):
 
     def _apply(self, Rhs):
         if not assertNumV(Rhs, self.rhs):
-            return ReturnType()
+            return FinalBounce(ReturnType())
 
         if self.op == '+':
             return self.k._apply(self.Lhs.add(Rhs))
@@ -123,7 +123,7 @@ class Op2K(Continuation):
             return self.k._apply(self.Lhs.mod(Rhs))
         else:
             print "Parsing error, operator %s not valid" % self.op
-            return ReturnType()        
+            return FinalBounce(ReturnType())
 
 class If0K(Continuation):
 
@@ -136,11 +136,11 @@ class If0K(Continuation):
 
     def _apply(self, nul):
         if not assertNumV(nul, self.nul):
-            return ReturnType()
+            return FinalBounce(ReturnType())
         if nul.val == 0:
-            return Interpret(self.true, self.env, self.k)
+            return KeepBouncing(self.true, self.env, self.k)
         else:
-            return Interpret(self.false, self.env, self.k)
+            return KeepBouncing(self.false, self.env, self.k)
 
 class App1K(Continuation):
 
@@ -152,9 +152,9 @@ class App1K(Continuation):
 
     def _apply(self, fun):
         if not assertClosureV(fun, self.fun):
-            return ReturnType()
+            return FinalBounce(ReturnType())
         newK = App2K(fun, self.env, self.k)
-        return Interpret(self.arg, self.env, newK)
+        return KeepBouncing(self.arg, self.env, newK)
 
 class App2K(Continuation):
 
@@ -168,7 +168,7 @@ class App2K(Continuation):
         assert isinstance(param, parser.Id)
         newEnv = self.env
         newEnv.write_attribute(param.name, arg)
-        return Interpret(self.fun.body, newEnv, self.k)
+        return KeepBouncing(self.fun.body, newEnv, self.k)
         
 
 class RecK(Continuation):
@@ -181,11 +181,11 @@ class RecK(Continuation):
 
     def _apply(self, funDef):
         if not assertClosureV(funDef, self.body):
-            return ReturnType()
+            return FinalBounce(ReturnType())
         newEnv = funDef.env
         newEnv.write_attribute(self.funName, funDef)
         funDef.env = newEnv
-        return Interpret(self.expr, funDef.env, self.k) 
+        return KeepBouncing(self.expr, funDef.env, self.k) 
 
 
 ##############
@@ -198,6 +198,9 @@ class Bounce(object):
     def __init__(self):
         pass
 
+    def bounce(self):
+        pass
+
 class FinalBounce(Bounce):
     """ Indicates end of loop and work """
 
@@ -207,6 +210,55 @@ class FinalBounce(Bounce):
     def bounce(self):
         return self.answ
 
+class KeepBouncing(Bounce):
+
+    def __init__(self, tree, env, k):
+        self.tree = tree
+        self.env = env
+        self.k = k
+
+    def bounce(self):
+
+        tree = self.tree
+        env = self.env
+        k = self.k
+        
+        if isinstance(tree, parser.Num):
+            return k._apply(NumV(tree.val))
+
+        elif isinstance(tree, parser.Op):
+            newK = Op1K(tree.op, tree.lhs, tree.rhs, env, k)
+            return KeepBouncing(tree.lhs, env, newK)
+        
+        elif isinstance(tree, parser.Id):
+            try:
+                return k._apply(env.get_attr(tree.name))
+            except parser.FreeVariable as FV:
+                print "Free variable : %s" % FV.__str__()
+                return FinalBounce(ReturnType())
+
+        elif isinstance(tree, parser.If):
+            newK = If0K(tree.nul, tree.true, tree.false, env, k)
+            return KeepBouncing(tree.nul, env, newK)
+
+        elif isinstance(tree, parser.Func):
+            assert isinstance(tree.arg, parser.Id)
+            return k._apply(ClosureV(tree.arg, tree.body, env))
+
+        elif isinstance(tree, parser.App):
+            newK = App1K(tree.fun, tree.arg, env, k)
+            return KeepBouncing(tree.fun, env, newK)
+
+        elif isinstance(tree, parser.Rec):
+            newK = RecK(tree.funName, tree.body, tree.expr, k)
+            dummy = NumV(42)
+            env.write_attribute(tree.funName, dummy)
+            return KeepBouncing(tree.body, env, newK)
+
+        else:
+            print "Parsing error, tree %s is not valid" % tree.__str__()
+            return FinalBounce(ReturnType())
+
 
 ###############
 # Interpreter #
@@ -215,42 +267,20 @@ class FinalBounce(Bounce):
 def Interpret(tree, env, k):
     """Interpret the tree, given an environment."""
 
-    if isinstance(tree, parser.Num):
-        return k._apply(NumV(tree.val))
+    bouncer = KeepBouncing(tree, env, k)
 
-    elif isinstance(tree, parser.Op):
-        newK = Op1K(tree.op, tree.lhs, tree.rhs, env, k)
-        return Interpret(tree.lhs, env, newK)
-        
-    elif isinstance(tree, parser.Id):
-        try:
-            return k._apply(env.get_attr(tree.name))
-        except parser.FreeVariable as FV:
-            print "Free variable : %s" % FV.__str__()
-            return ReturnType()
+    while 1:
 
-    elif isinstance(tree, parser.If):
-        newK = If0K(tree.nul, tree.true, tree.false, env, k)
-        return Interpret(tree.nul, env, newK)
+        if isinstance(bouncer, FinalBounce):
+            break
+        elif isinstance(bouncer, KeepBouncing):
+            bouncer = bouncer.bounce()
+        else:
+            print " Bouncer not a bounce ?!"
 
+    assert isinstance(bouncer, FinalBounce)
+    return bouncer.bounce()
 
-    elif isinstance(tree, parser.Func):
-        assert isinstance(tree.arg, parser.Id)
-        return k._apply(ClosureV(tree.arg, tree.body, env))
-
-    elif isinstance(tree, parser.App):
-        newK = App1K(tree.fun, tree.arg, env, k)
-        return Interpret(tree.fun, env, newK)
-
-    elif isinstance(tree, parser.Rec):
-        newK = RecK(tree.funName, tree.body, tree.expr, k)
-        dummy = NumV(42)
-        env.write_attribute(tree.funName, dummy)
-        return Interpret(tree.body, env, newK)
-    
-    else:
-        print "Parsing error, tree %s is not valid" % tree.__str__()
-        return ReturnType()
 
 #####################            
 # Main instructions #
