@@ -6,13 +6,22 @@ import parser
 
 class ReturnType(object):
     """ Class of objects returned by the Interpret function.
-    For Inheritance and errors."""
+    For Inheritance."""
 
     def __init__(self):
         pass
 
     def __str__(self):
         pass
+
+class ErrorV(ReturnType):
+    """ In case an error occurs """
+
+    def __init__(self, msg):
+        self.msg = msg
+
+    def __str__(self):
+        return self.msg
 
 class NumV(ReturnType):
 
@@ -42,10 +51,9 @@ def assertNumV(expr, tree):
     """ Assert class of expr is NumV, else blame tree."""
     
     if not isinstance(expr, NumV):
-        print "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.__str__()
-        return False
+        return "Wrong return type for expression :\n %s\n Should be of type NumV." % tree.__str__()
     else:
-        return True
+        return "True"
 
 class ClosureV(ReturnType):
 
@@ -61,10 +69,9 @@ def assertClosureV(expr, tree):
     """ Assert class of expr is ClosureV, else blame tree."""
     
     if not isinstance(expr, ClosureV):
-        print "Wrong return type for expression :\n %s\n Should be of type ClosureV." % tree.__str__()
-        return False
+        return "Wrong return type for expression :\n %s\n Should be of type ClosureV." % tree.__str__()
     else:
-        return True
+        return "True"
 
 #################
 # Continuations #
@@ -94,8 +101,9 @@ class Op1K(Continuation):
         self.k = k
 
     def _apply(self, Lhs):
-        if not assertNumV(Lhs, self.lhs):
-            return FinalBounce(ReturnType())
+        msg = assertNumV(Lhs, self.lhs)
+        if msg != "True":
+            return FinalBounce(ErrorV(msg))
         k = Op2K(Lhs, self.op, self.rhs, self.k)
         return KeepBouncing(self.rhs, self.env, k)
 
@@ -108,8 +116,9 @@ class Op2K(Continuation):
         self.k = k
 
     def _apply(self, Rhs):
-        if not assertNumV(Rhs, self.rhs):
-            return FinalBounce(ReturnType())
+        msg = assertNumV(Rhs, self.rhs)
+        if msg != "True":
+            return FinalBounce(ErrorV(msg))
 
         if self.op == '+':
             return self.k._apply(self.Lhs.add(Rhs))
@@ -122,8 +131,8 @@ class Op2K(Continuation):
         elif self.op == '%':
             return self.k._apply(self.Lhs.mod(Rhs))
         else:
-            print "Parsing error, operator %s not valid" % self.op
-            return FinalBounce(ReturnType())
+            msg = "Parsing error, operator %s not valid" % self.op
+            return FinalBounce(ErrorV(msg))
 
 class If0K(Continuation):
 
@@ -135,8 +144,9 @@ class If0K(Continuation):
         self.k = k
 
     def _apply(self, nul):
-        if not assertNumV(nul, self.nul):
-            return FinalBounce(ReturnType())
+        msg = assertNumV(nul, self.nul)
+        if msg  != "True":
+            return FinalBounce(ErrorV(msg))
         if nul.val == 0:
             return KeepBouncing(self.true, self.env, self.k)
         else:
@@ -151,8 +161,9 @@ class App1K(Continuation):
         self.k = k
 
     def _apply(self, fun):
-        if not assertClosureV(fun, self.fun):
-            return FinalBounce(ReturnType())
+        msg = assertClosureV(fun, self.fun)
+        if msg != "True":
+            return FinalBounce(ErrorV(msg))
         newK = App2K(fun, self.env, self.k)
         return KeepBouncing(self.arg, self.env, newK)
 
@@ -180,8 +191,9 @@ class RecK(Continuation):
         self.k = k
 
     def _apply(self, funDef):
-        if not assertClosureV(funDef, self.body):
-            return FinalBounce(ReturnType())
+        msg = assertClosureV(funDef, self.body)
+        if msg != "True":
+            return FinalBounce(ErrorV(msg))
         newEnv = funDef.env
         newEnv.write_attribute(self.funName, funDef)
         funDef.env = newEnv
@@ -234,8 +246,8 @@ class KeepBouncing(Bounce):
             try:
                 return k._apply(env.get_attr(tree.name))
             except parser.FreeVariable as FV:
-                print "Free variable : %s" % FV.__str__()
-                return FinalBounce(ReturnType())
+                msg = "Free variable : %s" % FV.__str__()
+                return FinalBounce(ErrorV(msg))
 
         elif isinstance(tree, parser.If):
             newK = If0K(tree.nul, tree.true, tree.false, env, k)
@@ -256,8 +268,8 @@ class KeepBouncing(Bounce):
             return KeepBouncing(tree.body, env, newK)
 
         else:
-            print "Parsing error, tree %s is not valid" % tree.__str__()
-            return FinalBounce(ReturnType())
+            msg = "Parsing error, tree %s is not valid" % tree.__str__()
+            return FinalBounce(ErrorV(msg))
 
 
 ###############
