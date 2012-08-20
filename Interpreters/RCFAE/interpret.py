@@ -279,7 +279,7 @@ class KeepBouncing(Bounce):
 def Interpret(tree, env, k):
     """Interpret the tree, given an environment."""
 
-    bouncer = KeepBouncing(tree, env, k)
+    bouncer = KeepBouncing(tree, parser.Env, EndK())
 
     while 1:
 
@@ -305,8 +305,7 @@ def Main(source):
     transforme = parser.Transformer()
     ourTree = transforme.visitRCFAE(tree)
     print ourTree.__str__()
-    env = parser.Env()
-    answer = Interpret(ourTree, env, EndK())
+    answer = Interpret(ourTree)
     print answer.__str__()
 
 import os
