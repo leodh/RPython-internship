@@ -276,8 +276,8 @@ class KeepBouncing(Bounce):
 # Interpreter #
 ###############
 
-def Interpret(tree, env, k):
-    """Interpret the tree, given an environment."""
+def Interpret(tree):
+    """Interpret the tree."""
 
     bouncer = KeepBouncing(tree, parser.Env, EndK())
 
