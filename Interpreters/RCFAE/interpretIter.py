@@ -83,216 +83,187 @@ class Continuation(object):
     def __init__(self):
         pass
 
+class FinalK(Continuation):
+    """To get out of the loop"""
+    
+    def __init__(self):
+        pass
+
+    def _apply(self, reg, tree, env, k):
+        return reg, tree, env, FinalK()
+
 class EndK(Continuation):
 
     def __init__(self):
         pass
 
-    def _apply(self, x):
-        return FinalBounce(x)
+    def _apply(self, reg, tree, env, k):
+        return reg, tree, env, FinalK()
 
-class Op1K(Continuation):
+# class Op1K(Continuation):
 
-    def __init__(self, op, lhs, rhs, env, k):
-        self.op = op
-        self.lhs = lhs
-        self.rhs = rhs
-        self.env = env
-        self.k = k
+#     def __init__(self, op, lhs, rhs, env, k):
+#         self.op = op
+#         self.lhs = lhs
+#         self.rhs = rhs
+#         self.env = env
+#         self.k = k
 
-    def _apply(self, Lhs):
-        msg = assertNumV(Lhs, self.lhs)
-        if msg != "True":
-            return FinalBounce(ErrorV(msg))
-        k = Op2K(Lhs, self.op, self.rhs, self.k)
-        return KeepBouncing(self.rhs, self.env, k)
+#     def _apply(self, Lhs):
+#         msg = assertNumV(Lhs, self.lhs)
+#         if msg != "True":
+#             return FinalBounce(ErrorV(msg))
+#         k = Op2K(Lhs, self.op, self.rhs, self.k)
+#         return KeepBouncing(self.rhs, self.env, k)
 
-class Op2K(Continuation):
+# class Op2K(Continuation):
 
-    def __init__(self, Lhs, op, rhs, k):
-        self.Lhs = Lhs
-        self.op = op
-        self.rhs = rhs
-        self.k = k
+#     def __init__(self, Lhs, op, rhs, k):
+#         self.Lhs = Lhs
+#         self.op = op
+#         self.rhs = rhs
+#         self.k = k
 
-    def _apply(self, Rhs):
-        msg = assertNumV(Rhs, self.rhs)
-        if msg != "True":
-            return FinalBounce(ErrorV(msg))
+#     def _apply(self, Rhs):
+#         msg = assertNumV(Rhs, self.rhs)
+#         if msg != "True":
+#             return FinalBounce(ErrorV(msg))
 
-        if self.op == '+':
-            return self.k._apply(self.Lhs.add(Rhs))
-        elif self.op == '-':
-            return self.k._apply(self.Lhs.diff(Rhs))
-        elif self.op == '*':
-            return self.k._apply(self.Lhs.mult(Rhs))
-        elif self.op == '/':
-            return self.k._apply(self.Lhs.div(Rhs))
-        elif self.op == '%':
-            return self.k._apply(self.Lhs.mod(Rhs))
-        else:
-            msg = "Parsing error, operator %s not valid" % self.op
-            return FinalBounce(ErrorV(msg))
+#         if self.op == '+':
+#             return self.k._apply(self.Lhs.add(Rhs))
+#         elif self.op == '-':
+#             return self.k._apply(self.Lhs.diff(Rhs))
+#         elif self.op == '*':
+#             return self.k._apply(self.Lhs.mult(Rhs))
+#         elif self.op == '/':
+#             return self.k._apply(self.Lhs.div(Rhs))
+#         elif self.op == '%':
+#             return self.k._apply(self.Lhs.mod(Rhs))
+#         else:
+#             msg = "Parsing error, operator %s not valid" % self.op
+#             return FinalBounce(ErrorV(msg))
 
-class If0K(Continuation):
+# class If0K(Continuation):
 
-    def __init__(self, nul, true, false, env, k):
-        self.nul = nul
-        self.true = true
-        self.false = false
-        self.env = env
-        self.k = k
+#     def __init__(self, nul, true, false, env, k):
+#         self.nul = nul
+#         self.true = true
+#         self.false = false
+#         self.env = env
+#         self.k = k
 
-    def _apply(self, nul):
-        msg = assertNumV(nul, self.nul)
-        if msg  != "True":
-            return FinalBounce(ErrorV(msg))
-        if nul.val == 0:
-            return KeepBouncing(self.true, self.env, self.k)
-        else:
-            return KeepBouncing(self.false, self.env, self.k)
+#     def _apply(self, nul):
+#         msg = assertNumV(nul, self.nul)
+#         if msg  != "True":
+#             return FinalBounce(ErrorV(msg))
+#         if nul.val == 0:
+#             return KeepBouncing(self.true, self.env, self.k)
+#         else:
+#             return KeepBouncing(self.false, self.env, self.k)
 
-class App1K(Continuation):
+# class App1K(Continuation):
 
-    def __init__(self, fun, arg, env, k):
-        self.fun = fun
-        self.arg = arg
-        self.env = env
-        self.k = k
+#     def __init__(self, fun, arg, env, k):
+#         self.fun = fun
+#         self.arg = arg
+#         self.env = env
+#         self.k = k
 
-    def _apply(self, fun):
-        msg = assertClosureV(fun, self.fun)
-        if msg != "True":
-            return FinalBounce(ErrorV(msg))
-        newK = App2K(fun, self.env, self.k)
-        return KeepBouncing(self.arg, self.env, newK)
+#     def _apply(self, fun):
+#         msg = assertClosureV(fun, self.fun)
+#         if msg != "True":
+#             return FinalBounce(ErrorV(msg))
+#         newK = App2K(fun, self.env, self.k)
+#         return KeepBouncing(self.arg, self.env, newK)
 
-class App2K(Continuation):
+# class App2K(Continuation):
 
-    def __init__(self, fun, env, k):
-        self.fun = fun
-        self.env = env
-        self.k = k
+#     def __init__(self, fun, env, k):
+#         self.fun = fun
+#         self.env = env
+#         self.k = k
 
-    def _apply(self, arg):
-        param = self.fun.arg
-        assert isinstance(param, parser.Id)
-        fun = self.fun
-        newEnv = fun.env
-        newEnv.write_attribute(param.name, arg)
-        return KeepBouncing(self.fun.body, newEnv, self.k)
+#     def _apply(self, arg):
+#         param = self.fun.arg
+#         assert isinstance(param, parser.Id)
+#         fun = self.fun
+#         newEnv = fun.env
+#         newEnv.write_attribute(param.name, arg)
+#         return KeepBouncing(self.fun.body, newEnv, self.k)
         
 
-class RecK(Continuation):
+# class RecK(Continuation):
 
-    def __init__(self, funName, body, expr, k):
-        self.funName = funName
-        self.body = body
-        self.expr = expr
-        self.k = k
+#     def __init__(self, funName, body, expr, k):
+#         self.funName = funName
+#         self.body = body
+#         self.expr = expr
+#         self.k = k
 
-    def _apply(self, funDef):
-        msg = assertClosureV(funDef, self.body)
-        if msg != "True":
-            return FinalBounce(ErrorV(msg))
-        newEnv = funDef.env
-        newEnv.write_attribute(self.funName, funDef)
-        funDef.env = newEnv
-        return KeepBouncing(self.expr, funDef.env, self.k) 
-
-
-##############
-# Trampoline #
-##############
-
-class Bounce(object):
-    """ For inheritance purpose """
-
-    def __init__(self):
-        pass
-
-    def bounce(self):
-        pass
-
-class FinalBounce(Bounce):
-    """ Indicates end of loop and work """
-
-    def __init__(self, answ):
-        self.answ = answ
-
-    def bounce(self):
-        return self.answ
-
-class KeepBouncing(Bounce):
-
-    def __init__(self, tree, env, k):
-        self.tree = tree
-        self.env = env
-        self.k = k
-
-    def bounce(self):
-
-        tree = self.tree
-        env = self.env
-        k = self.k
-        
-        if isinstance(tree, parser.Num):
-            return k._apply(NumV(tree.val))
-
-        elif isinstance(tree, parser.Op):
-            newK = Op1K(tree.op, tree.lhs, tree.rhs, env, k)
-            return KeepBouncing(tree.lhs, env, newK)
-        
-        elif isinstance(tree, parser.Id):
-            try:                
-                return k._apply(env.get_attr(tree.name))
-            except parser.FreeVariable as FV:
-                msg = "Free variable : %s" % FV.__str__()
-                return FinalBounce(ErrorV(msg))
-
-        elif isinstance(tree, parser.If):
-            newK = If0K(tree.nul, tree.true, tree.false, env, k)
-            return KeepBouncing(tree.nul, env, newK)
-
-        elif isinstance(tree, parser.Func):
-            assert isinstance(tree.arg, parser.Id)
-            return k._apply(ClosureV(tree.arg, tree.body, env))
-
-        elif isinstance(tree, parser.App):
-            newK = App1K(tree.fun, tree.arg, env, k)
-            return KeepBouncing(tree.fun, env, newK)
-
-        elif isinstance(tree, parser.Rec):
-            newK = RecK(tree.funName, tree.body, tree.expr, k)
-            dummy = NumV(42)
-            env.write_attribute(tree.funName, dummy)
-            return KeepBouncing(tree.body, env, newK)
-
-        else:
-            msg = "Parsing error, tree %s is not valid" % tree.__str__()
-            return FinalBounce(ErrorV(msg))
-
+#     def _apply(self, funDef):
+#         msg = assertClosureV(funDef, self.body)
+#         if msg != "True":
+#             return FinalBounce(ErrorV(msg))
+#         newEnv = funDef.env
+#         newEnv.write_attribute(self.funName, funDef)
+#         funDef.env = newEnv
+#         return KeepBouncing(self.expr, funDef.env, self.k) 
 
 ###############
 # Interpreter #
 ###############
 
-def Interpret(tree, env, k):
-    """Interpret the tree, given an environment."""
+def Interpret(tree):
+    """Interpret the tree, iteratively."""
 
-    bouncer = KeepBouncing(tree, env, k)
+    register = ReturnType()
+    tree = tree
+    env = parser.Env()
+    k = EndK()
 
     while 1:
 
-        if isinstance(bouncer, FinalBounce):
+        if isinstance(k, FinalK):
             break
-        elif isinstance(bouncer, KeepBouncing):
-            bouncer = bouncer.bounce()
-        else:
-            bouncer = FinalBounce( ErrorV(" Bouncer not a bounce ?!"))
 
-    assert isinstance(bouncer, FinalBounce)
-    return bouncer.bounce()
+        if isinstance(tree, parser.Num):
+            register, tree, env, k = k._apply(NumV(tree.val), tree, env, k)
+
+        # elif isinstance(tree, parser.Op):
+        #     newK = Op1K(tree.op, tree.lhs, tree.rhs, env, k)
+        #     return KeepBouncing(tree.lhs, env, newK)
+
+        # elif isinstance(tree, parser.Id):
+        #     try:                
+        #         return k._apply(env.get_attr(tree.name))
+        #     except parser.FreeVariable as FV:
+        #         msg = "Free variable : %s" % FV.__str__()
+        #         return FinalBounce(ErrorV(msg))
+
+        # elif isinstance(tree, parser.If):
+        #     newK = If0K(tree.nul, tree.true, tree.false, env, k)
+        #     return KeepBouncing(tree.nul, env, newK)
+
+        # elif isinstance(tree, parser.Func):
+        #     assert isinstance(tree.arg, parser.Id)
+        #     return k._apply(ClosureV(tree.arg, tree.body, env))
+
+        # elif isinstance(tree, parser.App):
+        #     newK = App1K(tree.fun, tree.arg, env, k)
+        #     return KeepBouncing(tree.fun, env, newK)
+
+        # elif isinstance(tree, parser.Rec):
+        #     newK = RecK(tree.funName, tree.body, tree.expr, k)
+        #     dummy = NumV(42)
+        #     env.write_attribute(tree.funName, dummy)
+        #     return KeepBouncing(tree.body, env, newK)
+
+        else:
+            msg = "Parsing error, tree %s is not valid" % tree.__str__()
+            register = ErrorV(msg)
+            k = FinalK()
+
+    return register
 
 
 #####################            
@@ -306,8 +277,7 @@ def Main(source):
     transforme = parser.Transformer()
     ourTree = transforme.visitRCFAE(tree)
     print ourTree.__str__()
-    env = parser.Env()
-    answer = Interpret(ourTree, env, EndK())
+    answer = Interpret(ourTree)
     print answer.__str__()
 
 import os
