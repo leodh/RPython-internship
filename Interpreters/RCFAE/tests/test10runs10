@@ -1,0 +1,9 @@
+{
+        {fun {f}
+         { rec
+           {run { fun {z}
+                  {if0 z {f 5} {{fun {y} {run {- z 1}}} {f 5}} }
+                }
+           } {run 10}
+         } }
+        { fun {x} {+ {+ 0 {+ {+ x x} 0}} {+ x {+ {+ {+ x x} {+ x x}} {+ x {+ x x}}}}}}}
