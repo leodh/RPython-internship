@@ -154,6 +154,17 @@ class If0K(Continuation):
 
 class App1K(Continuation):
 
+    def __init__(self, fun, env, k):
+        self.fun = fun
+        self.env = env
+        self.k = k
+
+    def _apply(self, arg):
+        newK = App2K(self.fun, arg, self.env, self.k)
+        return KeepBouncing(self.fun, self.env, newK)
+
+class App2K(Continuation):
+
     def __init__(self, fun, arg, env, k):
         self.fun = fun
         self.arg = arg
@@ -164,23 +175,11 @@ class App1K(Continuation):
         msg = assertClosureV(fun, self.fun)
         if msg != "True":
             return FinalBounce(ErrorV(msg))
-        newK = App2K(fun, self.env, self.k)
-        return KeepBouncing(self.arg, self.env, newK)
-
-class App2K(Continuation):
-
-    def __init__(self, fun, env, k):
-        self.fun = fun
-        self.env = env
-        self.k = k
-
-    def _apply(self, arg):
-        param = self.fun.arg
+        param = fun.arg
         assert isinstance(param, parser.Id)
-        fun = self.fun
         newEnv = fun.env
-        newEnv.write_attribute(param.name, arg)
-        return KeepBouncing(self.fun.body, newEnv, self.k)
+        newEnv.write_attribute(param.name, self.arg)
+        return KeepBouncing(fun.body, newEnv, self.k)
         
 
 class RecK(Continuation):
@@ -259,8 +258,8 @@ class KeepBouncing(Bounce):
             return k._apply(ClosureV(tree.arg, tree.body, env))
 
         elif isinstance(tree, parser.App):
-            newK = App1K(tree.fun, tree.arg, env, k)
-            return KeepBouncing(tree.fun, env, newK)
+            newK = App1K(tree.fun, env, k)
+            return KeepBouncing(tree.arg, env, newK)
 
         elif isinstance(tree, parser.Rec):
             newK = RecK(tree.funName, tree.body, tree.expr, k)
