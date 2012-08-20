@@ -167,35 +167,38 @@ class If0K(Continuation):
         else:
             return reg, self.false, self.env, self.k
 
-# class App1K(Continuation):
+class App1K(Continuation):
 
-#     def __init__(self, fun, arg, env, k):
-#         self.fun = fun
-#         self.arg = arg
-#         self.env = env
-#         self.k = k
+    def __init__(self, fun, env, k):
+        self.fun = fun
+        self.env = env
+        self.k = k
 
-#     def _apply(self, fun):
-#         msg = assertClosureV(fun, self.fun)
-#         if msg != "True":
-#             return FinalBounce(ErrorV(msg))
-#         newK = App2K(fun, self.env, self.k)
-#         return KeepBouncing(self.arg, self.env, newK)
+    def _apply(self, reg, tree, env, k):
+        # reg is expected to be the interpretation of arg
+        arg = reg
+        newK = App2K(self.fun, arg, self.env, self.k)
+        return arg, self.fun, self.env, newK
 
-# class App2K(Continuation):
+class App2K(Continuation):
 
-#     def __init__(self, fun, env, k):
-#         self.fun = fun
-#         self.env = env
-#         self.k = k
+    def __init__(self, fun, arg, env, k):
+        self.fun = fun
+        self.arg = arg
+        self.env = env
+        self.k = k
 
-#     def _apply(self, arg):
-#         param = self.fun.arg
-#         assert isinstance(param, parser.Id)
-#         fun = self.fun
-#         newEnv = fun.env
-#         newEnv.write_attribute(param.name, arg)
-#         return KeepBouncing(self.fun.body, newEnv, self.k)
+    def _apply(self, reg, tree, env, k):
+        # reg is expected to be the interpretation of fun
+        fun = reg
+        msg = assertClosureV(fun, self.fun)
+        if msg != "True":
+            return ErrorV(msg), tree, env, FinalK()
+        param = fun.arg
+        assert isinstance(param, parser.Id)
+        newEnv = fun.env
+        newEnv.write_attribute(param.name, self.arg)
+        return fun, fun.body, newEnv, self.k
         
 
 # class RecK(Continuation):
@@ -251,13 +254,13 @@ def Interpret(tree):
             k = If0K(tree.nul, tree.true, tree.false, env, k)
             tree = tree.nul
 
-        # elif isinstance(tree, parser.Func):
-        #     assert isinstance(tree.arg, parser.Id)
-        #     return k._apply(ClosureV(tree.arg, tree.body, env))
+        elif isinstance(tree, parser.Func):
+            assert isinstance(tree.arg, parser.Id)
+            register, tree, env, k = k._apply(ClosureV(tree.arg, tree.body, env), tree, env, k)
 
-        # elif isinstance(tree, parser.App):
-        #     newK = App1K(tree.fun, tree.arg, env, k)
-        #     return KeepBouncing(tree.fun, env, newK)
+        elif isinstance(tree, parser.App):
+            k = App1K(tree.fun, env, k)
+            tree = tree.arg
 
         # elif isinstance(tree, parser.Rec):
         #     newK = RecK(tree.funName, tree.body, tree.expr, k)
