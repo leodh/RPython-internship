@@ -1,3 +1,5 @@
+from pypy.rlib.jit import promote, elidable
+
 #############################################
 # Parse and create AST based on RCFAE's BNF #
 #############################################
@@ -168,11 +170,11 @@ class Map(object):
         self.indexes = {}
         self.other_maps = {}
 
-        #    @elidable
+    @elidable
     def getindex(self, name):
         return self.indexes.get(name, -1)
 
-    #    @elidable
+    @elidable
     def add_attribute(self, name):
         if name not in self.other_maps:
             newmap = Map()
@@ -196,7 +198,7 @@ class Env(object):
         
     def get_attr(self, name):
         map = self.map
-        #  promote(map)
+        promote(map)
         index = map.getindex(name)
         if index != -1:
             return self.storage[index]
@@ -206,7 +208,7 @@ class Env(object):
     def write_attribute(self, name, value):
         assert isinstance(name, str)
         map = self.map
-        # promote(map)
+        promote(map)
         index = map.getindex(name)
         if index != -1:
             self.storage[index] = value
@@ -214,4 +216,15 @@ class Env(object):
         self.map = map.add_attribute(name)
         self.storage.append(value)
         
-
+    def copy(self):
+        new = Env()
+        new.map = self.map
+        i = 0
+        while 1:
+            try:
+                x = self.storage[i]
+            except IndexError:
+                break
+            i += 1
+            new.storage.append(x)            
+        return new

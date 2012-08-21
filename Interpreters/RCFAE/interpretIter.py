@@ -177,15 +177,14 @@ class App1K(Continuation):
     def _apply(self, reg, tree, env, k):
         # reg is expected to be the interpretation of arg
         arg = reg
-        newK = App2K(self.fun, arg, self.env, self.k)
-        return arg, self.fun, self.env, newK
+        newK = App2K(self.fun, arg, self.k)
+        return arg, self.fun, self.env.copy(), newK
 
 class App2K(Continuation):
 
-    def __init__(self, fun, arg, env, k):
+    def __init__(self, fun, arg, k):
         self.fun = fun
         self.arg = arg
-        self.env = env
         self.k = k
 
     def _apply(self, reg, tree, env, k):
