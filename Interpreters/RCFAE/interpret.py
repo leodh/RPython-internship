@@ -279,7 +279,7 @@ class KeepBouncing(Bounce):
 def Interpret(tree):
     """Interpret the tree."""
 
-    bouncer = KeepBouncing(tree, parser.Env, EndK())
+    bouncer = KeepBouncing(tree, parser.Env(), EndK())
 
     while 1:
 
