@@ -3,7 +3,7 @@
 # To be run in RCFAE/benchmarks/
 
 # Start by cleaning out the repertory
-rm *
+rm out* test* RP*
 
 # Create file tests
 
