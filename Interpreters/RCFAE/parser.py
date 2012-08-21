@@ -23,7 +23,7 @@ class RCFAE(object):
         pass
 
     def __str__(self):
-        pass
+        return "Root type RCFAE"
 
 class ParsingError(RCFAE):
     """ To deal with errors """
