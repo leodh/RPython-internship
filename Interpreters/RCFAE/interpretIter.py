@@ -1,5 +1,7 @@
 import parser
 
+from pypy.rlib.jit import JitDriver
+
 ###############
 # Return type #
 ###############
@@ -223,6 +225,13 @@ class RecK(Continuation):
 # Interpreter #
 ###############
 
+# JITing instructions
+
+def get_printable_location(tree):
+    return tree.__str__()
+
+jitdriver = JitDriver(greens=['tree'], reds=['env', 'k', 'register'], get_printable_location=get_printable_location)
+
 def Interpret(tree):
     """Interpret the tree, iteratively."""
 
@@ -232,6 +241,7 @@ def Interpret(tree):
     k = EndK()
 
     while 1:
+        jitdriver.jit_merge_point(tree=tree, env=env, k=k, register=register)
 
         if isinstance(k, FinalK):
             break
@@ -262,6 +272,7 @@ def Interpret(tree):
         elif isinstance(tree, parser.App):
             k = App1K(tree.fun, env, k)
             tree = tree.arg
+            jitdriver.can_enter_jit(tree=tree, env=env, k=k, register=register)
 
         elif isinstance(tree, parser.Rec):
             k = RecK(tree.funName, tree.body, tree.expr, k)
@@ -292,6 +303,10 @@ def Main(source):
     print answer.__str__()
 
 import os
+
+def jitpolicy(driver):
+    from pypy.jit.codewriter.policy import JitPolicy
+    return JitPolicy()
 
 def run(fp):
     program_envents = ""
