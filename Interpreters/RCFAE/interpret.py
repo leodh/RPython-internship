@@ -1,5 +1,7 @@
 import parser
 
+from pypy.rlib.jit import JitDriver
+
 ###############
 # Return type #
 ###############
@@ -209,6 +211,9 @@ class Bounce(object):
     def __init__(self):
         pass
 
+    def __str__(self):
+        return "Root class"
+
     def bounce(self):
         pass
 
@@ -217,6 +222,9 @@ class FinalBounce(Bounce):
 
     def __init__(self, answ):
         self.answ = answ
+
+    def __str__(self):
+        return self.answ.__str__()
 
     def bounce(self):
         return self.answ
@@ -227,6 +235,9 @@ class KeepBouncing(Bounce):
         self.tree = tree
         self.env = env
         self.k = k
+
+    def __str__(self):
+        return self.tree.__str__()
 
     def bounce(self):
 
@@ -275,17 +286,32 @@ class KeepBouncing(Bounce):
 # Interpreter #
 ###############
 
+# JITing instructions
+
+def get_printable_location(tree):
+    return tree.__str__()
+
+jitdriver = JitDriver(greens=['tree'], reds=['env', 'k', 'bouncer'], get_printable_location=get_printable_location)
+    
+
 def Interpret(tree):
     """Interpret the tree."""
 
-    bouncer = KeepBouncing(tree, parser.Env(), EndK())
+    env = parser.Env()
+    k = EndK()
+    bouncer = KeepBouncing(tree, env, k)
 
     while 1:
-
+        jitdriver.jit_merge_point(tree=tree, env=env, k=k, bouncer=bouncer)
+        
         if isinstance(bouncer, FinalBounce):
             break
         elif isinstance(bouncer, KeepBouncing):
+            tree = bouncer.tree
+            env = bouncer.env
+            k = bouncer.k
             bouncer = bouncer.bounce()
+            jitdriver.can_enter_jit(tree=tree, env=env, k=k, bouncer=bouncer)
         else:
             bouncer = FinalBounce( ErrorV(" Bouncer not a bounce ?!"))
 
@@ -308,6 +334,10 @@ def Main(source):
     print answer.__str__()
 
 import os
+
+def jitpolicy(driver):
+    from pypy.jit.codewriter.policy import JitPolicy
+    return JitPolicy()
 
 def run(fp):
     program_envents = ""
