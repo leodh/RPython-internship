@@ -26,17 +26,21 @@ done
 
 # Create translated, non JITing version of the two interpreters
 
-RPtranslate ../interpret.py
-mv interpret-c RPinterpretTramp
-RPtranslate ../interpretIter.py
-mv interpretIter-c RPinterpretIter
+cd ..
+
+RPtranslate interpretTramp.py
+mv interpretTramp-c benchmarks/RPinterpretTramp
+RPtranslate interpretIter.py
+mv interpretIter-c benchmarks/RPinterpretIter
 
 # Create translated, JITing version of the two interpreters
 
-RPtranslate ../interpret.py
-mv interpret-c RPJITinterpretTramp
+RPtranslate ../interpretTramp.py
+mv interpretTramp-c benchmarks/RPJITinterpretTramp
 RPtranslate ../interpretIter.py
-mv interpretIter-c RPJITinterpretIter
+mv interpretIter-c benchmarks/RPJITinterpretIter
+
+cd benchmarks/
 
 # Run tests
 
