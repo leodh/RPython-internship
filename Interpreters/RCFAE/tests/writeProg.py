@@ -18,8 +18,8 @@ def generateFunc(nodes,runs):
     fileT = """{
         {fun {f}
          { rec
-           {run { fun {z}
-                  {if0 z {f 5} {{fun {y} {run {- z 1}}} {f 5}} }
+           {run { fun {x}
+                  {if0 x {f 5} {{fun {y} {run {- x 1}}} {f 5}} }
                 }
            } {run %s}
          } }
