@@ -1,0 +1,275 @@
+[9a0724861d0] {jit-log-opt-loop
+# Loop 0 (( App : ( Id : f ) ( Num : 5 ) )) : loop with 270 ops
+[p0, p1, p2]
++97: label(p0, p1, p2, descr=TargetToken(4302127216))
+debug_merge_point(0, 0, '( App : ( Id : f ) ( Num : 5 ) )')
++104: guard_nonnull_class(p1, 4297288008, descr=<Guard20>) [p2, p1, p0]
+debug_merge_point(0, 0, '( Num : 5 )')
++122: p5 = call(ConstClass(Env.copy), p0, descr=<Callr 8 r EF=4>)
++153: guard_no_exception(, descr=<Guard21>) [p5, p1]
+debug_merge_point(0, 0, '( Id : f )')
++173: p6 = getfield_gc(p5, descr=<FieldP parser.Env.inst_map 8>)
++177: guard_value(p6, ConstPtr(ptr7), descr=<Guard22>) [p5, p6, p1]
++196: p8 = getfield_gc(p5, descr=<FieldP parser.Env.inst_storage 16>)
++200: p9 = getfield_gc(p8, descr=<FieldP list.items 16>)
++204: p11 = getarrayitem_gc(p9, 0, descr=<ArrayP 8>)
++208: guard_nonnull_class(p11, 4297288088, descr=<Guard23>) [p5, p11, p1]
++226: p13 = getfield_gc(p11, descr=<FieldP interpretIter.ReturnType.inst_arg 8>)
++230: p14 = getfield_gc(p11, descr=<FieldP interpretIter.ReturnType.inst_env 24>)
++234: p15 = getfield_gc_pure(p13, descr=<FieldP parser.Id.inst_name 8>)
++238: p16 = getfield_gc(p14, descr=<FieldP parser.Env.inst_map 8>)
++242: guard_value(p16, ConstPtr(ptr17), descr=<Guard24>) [p5, p14, p11, p16, p15, p1]
++261: i19 = call(ConstClass(Map.getindex), ConstPtr(ptr17), p15, descr=<Calli 8 rr EF=3>)
++329: guard_no_exception(, descr=<Guard25>) [p5, p14, p11, i19, p15, p1]
++349: i21 = int_ne(i19, -1)
+guard_true(i21, descr=<Guard26>) [p5, p14, p11, i19, p15, p1]
++359: p22 = getfield_gc(p14, descr=<FieldP parser.Env.inst_storage 16>)
++370: i24 = int_lt(i19, 0)
+guard_false(i24, descr=<Guard27>) [p5, p14, p11, i19, p22, p1]
++380: p25 = getfield_gc(p22, descr=<FieldP list.items 16>)
+p27 = new_with_vtable(4297287928)
++474: setfield_gc(p27, 5, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
+setarrayitem_gc(p25, i19, p27, descr=<ArrayP 8>)
++540: p29 = getfield_gc(p11, descr=<FieldP interpretIter.ReturnType.inst_body 16>)
++551: guard_value(p29, ConstPtr(ptr30), descr=<Guard28>) [p11, p1, p14, p29]
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Op : ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Id : x ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Op : ( Op : ( Op : ( Num : 0 ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Num : 0 ) ) + ( Id : x ) ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Id : x ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Id : x ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Id : x )')
++570: p32 = getarrayitem_gc(p25, 0, descr=<ArrayP 8>)
++574: guard_nonnull_class(p32, 4297287928, descr=<Guard29>) [p14, p32, p1]
+debug_merge_point(0, 0, '( Id : x )')
++592: i34 = getfield_gc(p32, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
++596: i35 = int_add(i34, i34)
+debug_merge_point(0, 0, '( Num : 0 )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Id : x ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Num : 0 )')
++602: i36 = int_add(i35, i35)
+debug_merge_point(0, 0, '( Id : x )')
++608: i37 = int_add(i36, i34)
+debug_merge_point(0, 0, '( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Id : x ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Num : 0 )')
++611: i38 = int_add(i37, i35)
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Num : 0 ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Num : 0 ) ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Num : 0 ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Num : 0 ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) )')
+debug_merge_point(0, 0, '( Num : 0 )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Id : x ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Num : 0 )')
+debug_merge_point(0, 0, '( Num : 0 )')
+debug_merge_point(0, 0, '( Id : x )')
++614: i39 = int_add(i35, i34)
++617: i40 = int_add(i38, i39)
++620: p41 = getfield_gc(p1, descr=<FieldP interpretIter.App1K.inst_fun 16>)
++631: p42 = getfield_gc(p1, descr=<FieldP interpretIter.App1K.inst_k 24>)
++635: p43 = getfield_gc(p1, descr=<FieldP interpretIter.App1K.inst_env 8>)
++639: p45 = call(ConstClass(Env.copy), p43, descr=<Callr 8 r EF=4>)
++687: guard_no_exception(, descr=<Guard30>) [p14, p41, p45, p42, i40, None]
++707: guard_value(p41, ConstPtr(ptr47), descr=<Guard31>) [p45, p41, p42, i40, None]
+debug_merge_point(0, 0, '( Fun : (( Id : y )) ( App : ( Id : run ) ( Op : ( Id : x ) - ( Num : 1 ) ) ) )')
++733: p48 = getfield_gc(p45, descr=<FieldP parser.Env.inst_map 8>)
++737: guard_value(p48, ConstPtr(ptr49), descr=<Guard32>) [p45, p48, p42, i40, None]
++756: p50 = getfield_gc(p45, descr=<FieldP parser.Env.inst_storage 16>)
++760: i51 = getfield_gc(p50, descr=<FieldS list.length 8>)
++764: i53 = int_add(i51, 1)
++771: p54 = getfield_gc(p50, descr=<FieldP list.items 16>)
++771: i55 = arraylen_gc(p54, descr=<ArrayP 8>)
++771: call(ConstClass(_ll_list_resize_ge_trampoline__v117___simple_call__function__), p50, i53, descr=<Callv 0 ri EF=4>)
+setfield_gc(p45, ConstPtr(ptr57), descr=<FieldP parser.Env.inst_map 8>)
++862: guard_no_exception(, descr=<Guard33>) [p45, i51, p50, p42, i40, None]
++882: p58 = getfield_gc(p50, descr=<FieldP list.items 16>)
+p60 = new_with_vtable(4297287928)
++969: setfield_gc(p60, i40, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
+setarrayitem_gc(p58, i51, p60, descr=<ArrayP 8>)
+debug_merge_point(0, 0, '( App : ( Id : run ) ( Op : ( Id : x ) - ( Num : 1 ) ) )')
++1031: guard_nonnull_class(p42, 4297291976, descr=<Guard34>) [p42, p45]
+debug_merge_point(0, 0, '( Op : ( Id : x ) - ( Num : 1 ) )')
+debug_merge_point(0, 0, '( Id : x )')
++1056: p63 = getarrayitem_gc(p58, 2, descr=<ArrayP 8>)
++1060: guard_nonnull_class(p63, 4297287928, descr=<Guard35>) [p45, p63, p42]
+debug_merge_point(0, 0, '( Num : 1 )')
++1078: i65 = getfield_gc(p63, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
++1082: i67 = int_sub(i65, 1)
++1086: p69 = call(ConstClass(Env.copy), p45, descr=<Callr 8 r EF=4>)
++1120: guard_no_exception(, descr=<Guard36>) [p69, i67, p42]
+debug_merge_point(0, 0, '( Id : run )')
++1140: p70 = getfield_gc(p69, descr=<FieldP parser.Env.inst_map 8>)
++1144: guard_value(p70, ConstPtr(ptr71), descr=<Guard37>) [p69, p70, i67, p42]
++1163: p72 = getfield_gc(p69, descr=<FieldP parser.Env.inst_storage 16>)
++1167: p73 = getfield_gc(p72, descr=<FieldP list.items 16>)
++1171: p75 = getarrayitem_gc(p73, 1, descr=<ArrayP 8>)
++1175: guard_nonnull_class(p75, 4297288088, descr=<Guard38>) [p69, p75, i67, p42]
++1193: p77 = getfield_gc(p75, descr=<FieldP interpretIter.ReturnType.inst_arg 8>)
++1197: p78 = getfield_gc(p75, descr=<FieldP interpretIter.ReturnType.inst_env 24>)
++1201: p79 = getfield_gc_pure(p77, descr=<FieldP parser.Id.inst_name 8>)
++1205: p80 = getfield_gc(p78, descr=<FieldP parser.Env.inst_map 8>)
++1209: guard_value(p80, ConstPtr(ptr81), descr=<Guard39>) [p69, p78, p75, p80, p79, i67, p42]
++1228: i83 = call(ConstClass(Map.getindex), ConstPtr(ptr81), p79, descr=<Calli 8 rr EF=3>)
++1296: guard_no_exception(, descr=<Guard40>) [p69, p78, p75, i83, p79, i67, p42]
++1316: i85 = int_ne(i83, -1)
+guard_true(i85, descr=<Guard41>) [p69, p78, p75, i83, p79, i67, p42]
++1326: p86 = getfield_gc(p78, descr=<FieldP parser.Env.inst_storage 16>)
++1337: i88 = int_lt(i83, 0)
+guard_false(i88, descr=<Guard42>) [p69, p78, p75, i83, p86, i67, p42]
++1347: p89 = getfield_gc(p86, descr=<FieldP list.items 16>)
+p91 = new_with_vtable(4297287928)
++1434: setfield_gc(p91, i67, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
+setarrayitem_gc(p89, i83, p91, descr=<ArrayP 8>)
++1498: p92 = getfield_gc(p75, descr=<FieldP interpretIter.ReturnType.inst_body 16>)
++1509: guard_value(p92, ConstPtr(ptr93), descr=<Guard43>) [p75, p42, p78, p92]
+debug_merge_point(0, 0, '( If : ( Id : x ) == 0 then ( App : ( Id : f ) ( Num : 5 ) ) else ( App : ( Fun : (( Id : y )) ( App : ( Id : run ) ( Op : ( Id : x ) - ( Num : 1 ) ) ) ) ( App : ( Id : f ) ( Num : 5 ) ) ) )')
+debug_merge_point(0, 0, '( Id : x )')
++1528: p95 = getarrayitem_gc(p89, 2, descr=<ArrayP 8>)
++1532: guard_nonnull_class(p95, 4297287928, descr=<Guard44>) [p78, p95, p42]
++1551: i97 = getfield_gc(p95, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
++1555: i98 = int_is_zero(i97)
+guard_false(i98, descr=<Guard45>) [p78, p95, p42]
+debug_merge_point(0, 0, '( App : ( Fun : (( Id : y )) ( App : ( Id : run ) ( Op : ( Id : x ) - ( Num : 1 ) ) ) ) ( App : ( Id : f ) ( Num : 5 ) ) )')
+debug_merge_point(0, 0, '( App : ( Id : f ) ( Num : 5 ) )')
++1565: p99 = same_as(p95)
++1565: label(p78, p42, p95, descr=TargetToken(4302127296))
+debug_merge_point(0, 0, '( App : ( Id : f ) ( Num : 5 ) )')
+debug_merge_point(0, 0, '( Num : 5 )')
++1572: p100 = call(ConstClass(Env.copy), p78, descr=<Callr 8 r EF=4>)
++1606: guard_no_exception(, descr=<Guard46>) [p100, p42, p78]
+debug_merge_point(0, 0, '( Id : f )')
++1626: p101 = getfield_gc(p100, descr=<FieldP parser.Env.inst_map 8>)
++1630: guard_value(p101, ConstPtr(ptr7), descr=<Guard47>) [p100, p101, p42, p78]
++1649: p102 = getfield_gc(p100, descr=<FieldP parser.Env.inst_storage 16>)
++1653: p103 = getfield_gc(p102, descr=<FieldP list.items 16>)
++1657: p104 = getarrayitem_gc(p103, 0, descr=<ArrayP 8>)
++1661: guard_nonnull_class(p104, 4297288088, descr=<Guard48>) [p100, p104, p42, p78]
++1679: p105 = getfield_gc(p104, descr=<FieldP interpretIter.ReturnType.inst_arg 8>)
++1683: p106 = getfield_gc(p104, descr=<FieldP interpretIter.ReturnType.inst_env 24>)
++1687: p107 = getfield_gc_pure(p105, descr=<FieldP parser.Id.inst_name 8>)
++1691: p108 = getfield_gc(p106, descr=<FieldP parser.Env.inst_map 8>)
++1695: guard_value(p108, ConstPtr(ptr17), descr=<Guard49>) [p100, p106, p104, p108, p107, p42, p78]
++1714: i109 = call(ConstClass(Map.getindex), ConstPtr(ptr17), p107, descr=<Calli 8 rr EF=3>)
++1782: guard_no_exception(, descr=<Guard50>) [p100, p106, p104, i109, p107, p42, p78]
++1802: i110 = int_ne(i109, -1)
+guard_true(i110, descr=<Guard51>) [p100, p106, p104, i109, p107, p42, p78]
++1812: p111 = getfield_gc(p106, descr=<FieldP parser.Env.inst_storage 16>)
++1823: i112 = int_lt(i109, 0)
+guard_false(i112, descr=<Guard52>) [p100, p106, p104, i109, p111, p42, p78]
++1833: p113 = getfield_gc(p111, descr=<FieldP list.items 16>)
+p114 = new_with_vtable(4297287928)
++1920: setfield_gc(p114, 5, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
+setarrayitem_gc(p113, i109, p114, descr=<ArrayP 8>)
++1979: p115 = getfield_gc(p104, descr=<FieldP interpretIter.ReturnType.inst_body 16>)
++1990: guard_value(p115, ConstPtr(ptr30), descr=<Guard53>) [p104, p106, p115, p42, p78]
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Op : ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Id : x ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Op : ( Op : ( Op : ( Num : 0 ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Num : 0 ) ) + ( Id : x ) ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Id : x ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Id : x ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Id : x )')
++2009: p116 = getarrayitem_gc(p113, 0, descr=<ArrayP 8>)
++2013: guard_nonnull_class(p116, 4297287928, descr=<Guard54>) [p106, p116, p42, p78]
+debug_merge_point(0, 0, '( Id : x )')
++2031: i117 = getfield_gc(p116, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
++2035: i118 = int_add(i117, i117)
+debug_merge_point(0, 0, '( Num : 0 )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Id : x ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Num : 0 )')
++2041: i119 = int_add(i118, i118)
+debug_merge_point(0, 0, '( Id : x )')
++2047: i120 = int_add(i119, i117)
+debug_merge_point(0, 0, '( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Id : x ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Num : 0 )')
++2050: i121 = int_add(i120, i118)
+debug_merge_point(0, 0, '( Op : ( Op : ( Op : ( Num : 0 ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Num : 0 ) ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Num : 0 ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Num : 0 ) + ( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) ) )')
+debug_merge_point(0, 0, '( Num : 0 )')
+debug_merge_point(0, 0, '( Op : ( Op : ( Id : x ) + ( Id : x ) ) + ( Num : 0 ) )')
+debug_merge_point(0, 0, '( Op : ( Id : x ) + ( Id : x ) )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Id : x )')
+debug_merge_point(0, 0, '( Num : 0 )')
+debug_merge_point(0, 0, '( Num : 0 )')
+debug_merge_point(0, 0, '( Id : x )')
++2053: i122 = int_add(i118, i117)
++2056: i123 = int_add(i121, i122)
++2059: p124 = call(ConstClass(Env.copy), p78, descr=<Callr 8 r EF=4>)
++2097: guard_no_exception(, descr=<Guard55>) [p106, p124, i123, p42, None]
+debug_merge_point(0, 0, '( Fun : (( Id : y )) ( App : ( Id : run ) ( Op : ( Id : x ) - ( Num : 1 ) ) ) )')
++2117: p125 = getfield_gc(p124, descr=<FieldP parser.Env.inst_map 8>)
++2121: guard_value(p125, ConstPtr(ptr49), descr=<Guard56>) [p124, p125, i123, p42, None]
++2140: p126 = getfield_gc(p124, descr=<FieldP parser.Env.inst_storage 16>)
++2144: i127 = getfield_gc(p126, descr=<FieldS list.length 8>)
++2148: i128 = int_add(i127, 1)
++2155: p129 = getfield_gc(p126, descr=<FieldP list.items 16>)
++2155: i130 = arraylen_gc(p129, descr=<ArrayP 8>)
++2155: call(ConstClass(_ll_list_resize_ge_trampoline__v117___simple_call__function__), p126, i128, descr=<Callv 0 ri EF=4>)
+setfield_gc(p124, ConstPtr(ptr57), descr=<FieldP parser.Env.inst_map 8>)
++2247: guard_no_exception(, descr=<Guard57>) [p124, i127, p126, i123, p42, None]
++2267: p131 = getfield_gc(p126, descr=<FieldP list.items 16>)
+p132 = new_with_vtable(4297287928)
++2354: setfield_gc(p132, i123, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
+setarrayitem_gc(p131, i127, p132, descr=<ArrayP 8>)
+debug_merge_point(0, 0, '( App : ( Id : run ) ( Op : ( Id : x ) - ( Num : 1 ) ) )')
+debug_merge_point(0, 0, '( Op : ( Id : x ) - ( Num : 1 ) )')
+debug_merge_point(0, 0, '( Id : x )')
++2418: p133 = getarrayitem_gc(p131, 2, descr=<ArrayP 8>)
++2422: guard_nonnull_class(p133, 4297287928, descr=<Guard58>) [p124, p133, p42]
+debug_merge_point(0, 0, '( Num : 1 )')
++2441: i134 = getfield_gc(p133, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
++2445: i135 = int_sub(i134, 1)
++2449: p136 = call(ConstClass(Env.copy), p124, descr=<Callr 8 r EF=4>)
++2480: guard_no_exception(, descr=<Guard59>) [p136, i135, p42]
+debug_merge_point(0, 0, '( Id : run )')
++2500: p137 = getfield_gc(p136, descr=<FieldP parser.Env.inst_map 8>)
++2504: guard_value(p137, ConstPtr(ptr71), descr=<Guard60>) [p136, p137, i135, p42]
++2523: p138 = getfield_gc(p136, descr=<FieldP parser.Env.inst_storage 16>)
++2527: p139 = getfield_gc(p138, descr=<FieldP list.items 16>)
++2531: p140 = getarrayitem_gc(p139, 1, descr=<ArrayP 8>)
++2535: guard_nonnull_class(p140, 4297288088, descr=<Guard61>) [p136, p140, i135, p42]
++2553: p141 = getfield_gc(p140, descr=<FieldP interpretIter.ReturnType.inst_arg 8>)
++2557: p142 = getfield_gc(p140, descr=<FieldP interpretIter.ReturnType.inst_env 24>)
++2561: p143 = getfield_gc_pure(p141, descr=<FieldP parser.Id.inst_name 8>)
++2565: p144 = getfield_gc(p142, descr=<FieldP parser.Env.inst_map 8>)
++2569: guard_value(p144, ConstPtr(ptr81), descr=<Guard62>) [p136, p142, p140, p144, p143, i135, p42]
++2588: i145 = call(ConstClass(Map.getindex), ConstPtr(ptr81), p143, descr=<Calli 8 rr EF=3>)
++2653: guard_no_exception(, descr=<Guard63>) [p136, p142, p140, i145, p143, i135, p42]
++2673: i146 = int_ne(i145, -1)
+guard_true(i146, descr=<Guard64>) [p136, p142, p140, i145, p143, i135, p42]
++2683: p147 = getfield_gc(p142, descr=<FieldP parser.Env.inst_storage 16>)
++2694: i148 = int_lt(i145, 0)
+guard_false(i148, descr=<Guard65>) [p136, p142, p140, i145, p147, i135, p42]
++2704: p149 = getfield_gc(p147, descr=<FieldP list.items 16>)
+p150 = new_with_vtable(4297287928)
++2791: setfield_gc(p150, i135, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
+setarrayitem_gc(p149, i145, p150, descr=<ArrayP 8>)
++2846: p151 = getfield_gc(p140, descr=<FieldP interpretIter.ReturnType.inst_body 16>)
++2857: guard_value(p151, ConstPtr(ptr93), descr=<Guard66>) [p140, p42, p142, p151]
+debug_merge_point(0, 0, '( If : ( Id : x ) == 0 then ( App : ( Id : f ) ( Num : 5 ) ) else ( App : ( Fun : (( Id : y )) ( App : ( Id : run ) ( Op : ( Id : x ) - ( Num : 1 ) ) ) ) ( App : ( Id : f ) ( Num : 5 ) ) ) )')
+debug_merge_point(0, 0, '( Id : x )')
++2876: p152 = getarrayitem_gc(p149, 2, descr=<ArrayP 8>)
++2880: guard_nonnull_class(p152, 4297287928, descr=<Guard67>) [p142, p152, p42]
++2898: i153 = getfield_gc(p152, descr=<FieldS interpretIter.ReturnType.inst_val 32>)
++2902: i154 = int_is_zero(i153)
+guard_false(i154, descr=<Guard68>) [p142, p152, p42]
+debug_merge_point(0, 0, '( App : ( Fun : (( Id : y )) ( App : ( Id : run ) ( Op : ( Id : x ) - ( Num : 1 ) ) ) ) ( App : ( Id : f ) ( Num : 5 ) ) )')
+debug_merge_point(0, 0, '( App : ( Id : f ) ( Num : 5 ) )')
++2912: jump(p142, p42, p152, descr=TargetToken(4302127296))
++2924: --end of the loop--
+[9a0726293d3] jit-log-opt-loop}
