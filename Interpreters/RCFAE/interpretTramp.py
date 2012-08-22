@@ -1,6 +1,31 @@
 import parser
 
-from pypy.rlib.jit import JitDriver
+from pypy.rlib.jit import JitDriver, elidable, promote
+
+#######################################
+# Map for environement representation #
+#######################################
+
+class Map(object):
+    def __init__(self):
+        self.values = {}
+
+    @elidable
+    def getvalue(self, name):
+        return self.values.get(name, ErrorV("Free variable : %s" % name))
+
+    @elidable
+    def add_attribute(self, name, value):
+        newmap = Map()
+        newmap.values.update(self.values)
+        newmap.values[name] = value
+        return newmap
+
+    def __str__(self):
+        str = "Map : \n"
+        for i in self.values.keys():
+            str += "(\n %s, \n %s\n)\n" % (i,(self.values[i].__str__()))
+        return str
 
 ###############
 # Return type #
@@ -163,7 +188,7 @@ class App1K(Continuation):
 
     def _apply(self, arg):
         newK = App2K(self.fun, arg, self.k)
-        return KeepBouncing(self.fun, self.env.copy(), newK)
+        return KeepBouncing(self.fun, self.env, newK)
 
 class App2K(Continuation):
 
@@ -179,7 +204,8 @@ class App2K(Continuation):
         param = fun.arg
         assert isinstance(param, parser.Id)
         newEnv = fun.env
-        newEnv.write_attribute(param.name, self.arg)
+        promote(newEnv)
+        newEnv = newEnv.add_attribute(param.name, self.arg)
         return KeepBouncing(fun.body, newEnv, self.k)
         
 
@@ -196,8 +222,8 @@ class RecK(Continuation):
         if msg != "True":
             return FinalBounce(ErrorV(msg))
         newEnv = funDef.env
-        newEnv.write_attribute(self.funName, funDef)
-        funDef.env = newEnv
+        promote(newEnv)
+        funDef.env = newEnv.add_attribute(self.funName, funDef)
         return KeepBouncing(self.expr, funDef.env, self.k) 
 
 
@@ -253,11 +279,12 @@ class KeepBouncing(Bounce):
             return KeepBouncing(tree.lhs, env, newK)
         
         elif isinstance(tree, parser.Id):
-            try:                
-                return k._apply(env.get_attr(tree.name))
-            except parser.FreeVariable as FV:
-                msg = "Free variable : %s" % FV.__str__()
-                return FinalBounce(ErrorV(msg))
+            promote(env)
+            val = env.getvalue(tree.name)
+            if isinstance(val, ErrorV):
+                return FinalBounce(val)
+            else:
+                return k._apply(val)
 
         elif isinstance(tree, parser.If):
             newK = If0K(tree.nul, tree.true, tree.false, env, k)
@@ -274,7 +301,8 @@ class KeepBouncing(Bounce):
         elif isinstance(tree, parser.Rec):
             newK = RecK(tree.funName, tree.body, tree.expr, k)
             dummy = NumV(42)
-            env.write_attribute(tree.funName, dummy)
+            promote(env)
+            env = env.add_attribute(tree.funName, dummy)
             return KeepBouncing(tree.body, env, newK)
 
         else:
@@ -297,7 +325,7 @@ jitdriver = JitDriver(greens=['tree'], reds=['env', 'k', 'bouncer'], get_printab
 def Interpret(tree):
     """Interpret the tree."""
 
-    env = parser.Env()
+    env = Map()
     k = EndK()
     bouncer = KeepBouncing(tree, env, k)
 
@@ -329,7 +357,7 @@ def Main(source):
     tree = parser._parse(source)
     transforme = parser.Transformer()
     ourTree = transforme.visitRCFAE(tree)
-    print ourTree.__str__()
+    #    print ourTree.__str__()
     answer = Interpret(ourTree)
     print answer.__str__()
 

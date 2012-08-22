@@ -1,6 +1,32 @@
 import parser
 
-from pypy.rlib.jit import JitDriver
+from pypy.rlib.jit import JitDriver, elidable, promote
+
+#######################################
+# Map for environement representation #
+#######################################
+
+class Map(object):
+    def __init__(self):
+        self.values = {}
+        self.other_maps = {}
+
+    @elidable
+    def getvalue(self, name):
+        return self.values.get(name, ErrorV("Free variable : %s" % name))
+
+    @elidable
+    def add_attribute(self, name, value):
+        newmap = Map()
+        newmap.values.update(self.values)
+        newmap.values[name] = value
+        return newmap
+
+    def __str__(self):
+        str = "Map : \n"
+        for i in self.values.keys():
+            str += "(\n %s, \n %s\n)\n" % (i,(self.values[i].__str__()))
+        return str
 
 ###############
 # Return type #
@@ -180,7 +206,7 @@ class App1K(Continuation):
         # reg is expected to be the interpretation of arg
         arg = reg
         newK = App2K(self.fun, arg, self.k)
-        return arg, self.fun, self.env.copy(), newK
+        return arg, self.fun, self.env, newK
 
 class App2K(Continuation):
 
@@ -198,7 +224,8 @@ class App2K(Continuation):
         param = fun.arg
         assert isinstance(param, parser.Id)
         newEnv = fun.env
-        newEnv.write_attribute(param.name, self.arg)
+        promote(newEnv)
+        newEnv = newEnv.add_attribute(param.name, self.arg)
         return fun, fun.body, newEnv, self.k
         
 
@@ -217,8 +244,8 @@ class RecK(Continuation):
         if msg != "True":
             return ErrorV(msg), tree, env, FinalK()
         newEnv = funDef.env
-        newEnv.write_attribute(self.funName, funDef)
-        funDef.env = newEnv
+        promote(newEnv)
+        funDef.env = newEnv.add_attribute(self.funName, funDef)
         return funDef, self.expr, funDef.env, self.k
 
 ###############
@@ -237,7 +264,7 @@ def Interpret(tree):
 
     register = ReturnType()
     tree = tree
-    env = parser.Env()
+    env = Map()
     k = EndK()
 
     while 1:
@@ -254,12 +281,12 @@ def Interpret(tree):
             tree = tree.lhs
 
         elif isinstance(tree, parser.Id):
-            try:                
-                register, tree, env, k = k._apply(env.get_attr(tree.name), tree, env, k)
-            except parser.FreeVariable as FV:
-                msg = "Free variable : %s" % FV.__str__()
-                register = ErrorV(msg)
+            promote(env)
+            register = env.getvalue(tree.name)
+            if isinstance(register, ErrorV):
                 k = FinalK()
+            else:
+                register, tree, env, k = k._apply(register, tree, env, k)
 
         elif isinstance(tree, parser.If):
             k = If0K(tree.nul, tree.true, tree.false, env, k)
@@ -277,7 +304,8 @@ def Interpret(tree):
         elif isinstance(tree, parser.Rec):
             k = RecK(tree.funName, tree.body, tree.expr, k)
             dummy = NumV(42)
-            env.write_attribute(tree.funName, dummy)
+            promote(env)
+            env = env.add_attribute(tree.funName, dummy)
             tree = tree.body
 
         else:
@@ -298,7 +326,7 @@ def Main(source):
     tree = parser._parse(source)
     transforme = parser.Transformer()
     ourTree = transforme.visitRCFAE(tree)
-    print ourTree.__str__()
+    #    print ourTree.__str__()
     answer = Interpret(ourTree)
     print answer.__str__()
 

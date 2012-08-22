@@ -13,15 +13,21 @@ export runs=1000
 export max_nodes=10000
 export max_runs=1000000
 
-until [ "$nodes" -gt $max_nodes ];
+until [ "$nodes" -gt "$max_nodes" ];
 do
-    until [ "$runs" -gt $max_runs ];
+    if [ `expr $nodes - $max_nodes` -eq 0 ];
+    then 
+	max_runs=100000
+    fi;
+    until [ "$runs" -gt "$max_runs" ];
     do
-	pypy ../tests/writeProg.py $nodes $runs
-	runs=`expr $runs \\* 10`
+    	pypy ../tests/writeProg.py $nodes $runs
+    	runs=`expr $runs \\* 10`
     done
+    echo "lapin $nodes"
+    echo "ninja $max_runs"
     nodes=`expr $nodes \\* 10`
-    runs=10
+    runs=1000
 done
 
 # Create translated, non JITing version of the two interpreters
