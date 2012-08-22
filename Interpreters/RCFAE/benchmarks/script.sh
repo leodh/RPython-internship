@@ -41,9 +41,9 @@ mv interpretIter-c benchmarks/RPinterpretIter
 
 # Create translated, JITing version of the two interpreters
 
-RPtranslate ../interpretTramp.py
+RPtranslate ./interpretTramp.py
 mv interpretTramp-c benchmarks/RPJITinterpretTramp
-RPtranslate ../interpretIter.py
+RPtranslate ./interpretIter.py
 mv interpretIter-c benchmarks/RPJITinterpretIter
 
 cd benchmarks/
