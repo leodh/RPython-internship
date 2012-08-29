@@ -1,0 +1,1004 @@
+Tests of JITRPInterpretRec-c
+
+Testing test1000runs10
+
+run 1
+        0.15 real         0.03 user         0.01 sys
+
+run 2
+        0.03 real         0.02 user         0.00 sys
+
+run 3
+        0.03 real         0.03 user         0.00 sys
+
+run 4
+        0.03 real         0.02 user         0.00 sys
+
+run 5
+        0.03 real         0.02 user         0.00 sys
+
+run 6
+        0.03 real         0.02 user         0.00 sys
+
+run 7
+        0.03 real         0.02 user         0.00 sys
+
+run 8
+        0.03 real         0.02 user         0.00 sys
+
+run 9
+        0.03 real         0.02 user         0.00 sys
+
+run 10
+        0.03 real         0.02 user         0.00 sys
+
+run 11
+        0.03 real         0.02 user         0.00 sys
+
+run 12
+        0.03 real         0.02 user         0.00 sys
+
+run 13
+        0.03 real         0.02 user         0.00 sys
+
+run 14
+        0.03 real         0.02 user         0.00 sys
+
+run 15
+        0.03 real         0.02 user         0.00 sys
+
+run 16
+        0.03 real         0.02 user         0.00 sys
+
+run 17
+        0.03 real         0.02 user         0.00 sys
+
+run 18
+        0.03 real         0.02 user         0.00 sys
+
+run 19
+        0.03 real         0.02 user         0.00 sys
+
+run 20
+        0.03 real         0.02 user         0.00 sys
+
+Testing test1000runs100
+
+run 1
+        0.09 real         0.08 user         0.00 sys
+
+run 2
+        0.09 real         0.08 user         0.00 sys
+
+run 3
+        0.09 real         0.08 user         0.00 sys
+
+run 4
+        0.09 real         0.08 user         0.00 sys
+
+run 5
+        0.09 real         0.08 user         0.00 sys
+
+run 6
+        0.09 real         0.08 user         0.00 sys
+
+run 7
+        0.09 real         0.08 user         0.00 sys
+
+run 8
+        0.09 real         0.08 user         0.00 sys
+
+run 9
+        0.09 real         0.08 user         0.00 sys
+
+run 10
+        0.09 real         0.08 user         0.00 sys
+
+run 11
+        0.09 real         0.08 user         0.00 sys
+
+run 12
+        0.09 real         0.08 user         0.00 sys
+
+run 13
+        0.09 real         0.08 user         0.00 sys
+
+run 14
+        0.09 real         0.08 user         0.00 sys
+
+run 15
+        0.09 real         0.08 user         0.00 sys
+
+run 16
+        0.09 real         0.08 user         0.00 sys
+
+run 17
+        0.09 real         0.08 user         0.00 sys
+
+run 18
+        0.09 real         0.08 user         0.00 sys
+
+run 19
+        0.09 real         0.08 user         0.00 sys
+
+run 20
+        0.09 real         0.08 user         0.00 sys
+
+Testing test1000runs1000
+
+run 1
+        0.75 real         0.71 user         0.00 sys
+
+run 2
+        0.71 real         0.70 user         0.00 sys
+
+run 3
+        0.71 real         0.70 user         0.00 sys
+
+run 4
+        0.71 real         0.70 user         0.01 sys
+
+run 5
+        0.71 real         0.70 user         0.00 sys
+
+run 6
+        0.71 real         0.70 user         0.00 sys
+
+run 7
+        0.71 real         0.70 user         0.00 sys
+
+run 8
+        0.71 real         0.70 user         0.00 sys
+
+run 9
+        0.71 real         0.70 user         0.00 sys
+
+run 10
+        0.71 real         0.70 user         0.00 sys
+
+run 11
+        0.71 real         0.70 user         0.00 sys
+
+run 12
+        0.71 real         0.70 user         0.01 sys
+
+run 13
+        0.71 real         0.70 user         0.00 sys
+
+run 14
+        0.71 real         0.70 user         0.01 sys
+
+run 15
+        0.71 real         0.70 user         0.00 sys
+
+run 16
+        0.71 real         0.70 user         0.00 sys
+
+run 17
+        0.71 real         0.70 user         0.00 sys
+
+run 18
+        0.71 real         0.70 user         0.00 sys
+
+run 19
+        0.71 real         0.70 user         0.01 sys
+
+run 20
+        0.71 real         0.70 user         0.00 sys
+
+Testing test1000runs10000
+
+run 1
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 680, in Main
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  ...
+Fatal RPython error: StackOverflow
+Command terminated abnormally.
+        2.09 real         1.44 user         0.02 sys
+
+Abort tests of test1000runs10000
+Testing test1000runs100000
+
+run 1
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 680, in Main
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  ...
+Fatal RPython error: StackOverflow
+Command terminated abnormally.
+        1.49 real         1.43 user         0.02 sys
+
+Abort tests of test1000runs100000
+Testing test100runs10
+
+run 1
+        0.01 real         0.00 user         0.00 sys
+
+run 2
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+        0.01 real         0.00 user         0.00 sys
+
+run 20
+        0.01 real         0.00 user         0.00 sys
+
+Testing test100runs100
+
+run 1
+        0.02 real         0.01 user         0.00 sys
+
+run 2
+        0.01 real         0.01 user         0.00 sys
+
+run 3
+        0.02 real         0.01 user         0.00 sys
+
+run 4
+        0.01 real         0.01 user         0.00 sys
+
+run 5
+        0.02 real         0.01 user         0.00 sys
+
+run 6
+        0.01 real         0.01 user         0.00 sys
+
+run 7
+        0.02 real         0.01 user         0.00 sys
+
+run 8
+        0.01 real         0.01 user         0.00 sys
+
+run 9
+        0.02 real         0.01 user         0.00 sys
+
+run 10
+        0.01 real         0.01 user         0.00 sys
+
+run 11
+        0.02 real         0.01 user         0.00 sys
+
+run 12
+        0.01 real         0.01 user         0.00 sys
+
+run 13
+        0.02 real         0.01 user         0.00 sys
+
+run 14
+        0.01 real         0.01 user         0.00 sys
+
+run 15
+        0.02 real         0.01 user         0.00 sys
+
+run 16
+        0.01 real         0.01 user         0.00 sys
+
+run 17
+        0.02 real         0.01 user         0.00 sys
+
+run 18
+        0.01 real         0.01 user         0.00 sys
+
+run 19
+        0.02 real         0.01 user         0.00 sys
+
+run 20
+        0.01 real         0.01 user         0.00 sys
+
+Testing test100runs1000
+
+run 1
+        0.07 real         0.06 user         0.00 sys
+
+run 2
+        0.07 real         0.06 user         0.00 sys
+
+run 3
+        0.07 real         0.06 user         0.00 sys
+
+run 4
+        0.07 real         0.06 user         0.00 sys
+
+run 5
+        0.07 real         0.06 user         0.00 sys
+
+run 6
+        0.07 real         0.06 user         0.00 sys
+
+run 7
+        0.07 real         0.06 user         0.00 sys
+
+run 8
+        0.07 real         0.06 user         0.00 sys
+
+run 9
+        0.07 real         0.06 user         0.00 sys
+
+run 10
+        0.07 real         0.06 user         0.00 sys
+
+run 11
+        0.07 real         0.06 user         0.00 sys
+
+run 12
+        0.07 real         0.06 user         0.00 sys
+
+run 13
+        0.07 real         0.06 user         0.00 sys
+
+run 14
+        0.07 real         0.06 user         0.00 sys
+
+run 15
+        0.07 real         0.06 user         0.00 sys
+
+run 16
+        0.07 real         0.06 user         0.00 sys
+
+run 17
+        0.07 real         0.06 user         0.00 sys
+
+run 18
+        0.07 real         0.06 user         0.00 sys
+
+run 19
+        0.07 real         0.06 user         0.00 sys
+
+run 20
+        0.07 real         0.06 user         0.00 sys
+
+Testing test100runs10000
+
+run 1
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 680, in Main
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  ...
+Fatal RPython error: StackOverflow
+Command terminated abnormally.
+        0.11 real         0.08 user         0.00 sys
+
+Abort tests of test100runs10000
+Testing test100runs100000
+
+run 1
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 680, in Main
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  ...
+Fatal RPython error: StackOverflow
+Command terminated abnormally.
+        0.09 real         0.07 user         0.00 sys
+
+Abort tests of test100runs100000
+Testing test10runs10
+
+run 1
+        0.01 real         0.00 user         0.00 sys
+
+run 2
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+        0.02 real         0.00 user         0.00 sys
+
+run 4
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+        0.01 real         0.00 user         0.00 sys
+
+run 20
+        0.01 real         0.00 user         0.00 sys
+
+Testing test10runs100
+
+run 1
+        0.01 real         0.00 user         0.00 sys
+
+run 2
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+        0.01 real         0.00 user         0.00 sys
+
+run 20
+        0.01 real         0.00 user         0.00 sys
+
+Testing test10runs1000
+
+run 1
+        0.02 real         0.01 user         0.00 sys
+
+run 2
+        0.02 real         0.01 user         0.00 sys
+
+run 3
+        0.02 real         0.01 user         0.00 sys
+
+run 4
+        0.02 real         0.01 user         0.00 sys
+
+run 5
+        0.02 real         0.01 user         0.00 sys
+
+run 6
+        0.02 real         0.01 user         0.00 sys
+
+run 7
+        0.02 real         0.01 user         0.00 sys
+
+run 8
+        0.02 real         0.01 user         0.00 sys
+
+run 9
+        0.02 real         0.01 user         0.00 sys
+
+run 10
+        0.02 real         0.01 user         0.00 sys
+
+run 11
+        0.02 real         0.01 user         0.00 sys
+
+run 12
+        0.02 real         0.01 user         0.00 sys
+
+run 13
+        0.02 real         0.01 user         0.00 sys
+
+run 14
+        0.02 real         0.01 user         0.00 sys
+
+run 15
+        0.02 real         0.01 user         0.00 sys
+
+run 16
+        0.02 real         0.01 user         0.00 sys
+
+run 17
+        0.02 real         0.01 user         0.00 sys
+
+run 18
+        0.02 real         0.01 user         0.00 sys
+
+run 19
+        0.02 real         0.01 user         0.00 sys
+
+run 20
+        0.02 real         0.01 user         0.00 sys
+
+Testing test10runs10000
+
+run 1
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 680, in Main
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  ...
+Fatal RPython error: StackOverflow
+Command terminated abnormally.
+        0.05 real         0.02 user         0.00 sys
+
+Abort tests of test10runs10000
+Testing test10runs100000
+
+run 1
+RPython traceback:
+  File "implement.c", line 165, in entry_point
+  File "implement.c", line 680, in Main
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  File "jit_metainterp_warmspot.c", line 178, in ll_portal_runner__dicttablePtr_treeClass_ifF1WAE
+  ...
+Fatal RPython error: StackOverflow
+Command terminated abnormally.
+        0.03 real         0.02 user         0.00 sys
+
+Abort tests of test10runs100000
