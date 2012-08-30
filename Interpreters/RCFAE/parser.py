@@ -25,6 +25,9 @@ class RCFAE(object):
     def __str__(self):
         return "Root type RCFAE"
 
+    def printable(self):
+        return self.__str__()
+
 class ParsingError(RCFAE):
     """ To deal with errors """
     
@@ -34,6 +37,9 @@ class ParsingError(RCFAE):
     def __str__(self):
         return " ParsingError" 
 
+    def printable(self):
+        return self.__str__()
+    
 class Num(RCFAE):
     _immutable_fields_ = [ "val" ]
     def __init__(self, val):
@@ -42,6 +48,10 @@ class Num(RCFAE):
     def __str__(self):
         return ("( Num : %s )" % str(self.val))
 
+    def printable(self):
+        return self.__str__()
+            
+
 class Id(RCFAE):
     _immutable_fields_ = [ "name" ]
     def __init__(self, name):
@@ -49,6 +59,9 @@ class Id(RCFAE):
 
     def __str__(self):
         return ("( Id : %s )" % self.name)
+
+    def printable(self):
+        return self.__str__()
 
 class Op(RCFAE):
     _immutable_fields_ = [ "op", "lhs", "rhs" ]
@@ -60,6 +73,9 @@ class Op(RCFAE):
     def __str__(self):
         return ("( Op : %s %s %s )" % (self.lhs.__str__(), self.op, self.rhs.__str__() ))
 
+    def printable(self):
+        return "( Op : %s )" % self.op
+    
 class If(RCFAE):
     _immutable_fields_ = [ "nul", "true", "false" ]
     def __init__(self, nul, true, false):
@@ -70,6 +86,9 @@ class If(RCFAE):
     def __str__(self):
         return ("( If : %s == 0 then %s else %s )" % (self.nul.__str__(), self.true.__str__(), self.false.__str__()) )
 
+    def printable(self):
+        return "( If0 : %s )" % self.nul.printable()
+        
 class Func(RCFAE):
     _immutable_fields_ = [ "arg", "body" ]
     def __init__(self, arg, body):
@@ -78,6 +97,9 @@ class Func(RCFAE):
 
     def __str__(self):
         return ("( Fun : (%s) %s )" % (self.arg.__str__(), self.body.__str__()) )
+
+    def printable(self):
+        return "( Fun : (%s) %s)" % (self.arg.__str__(), self.body.printable())
 
 class App(RCFAE):
     _immutable_fields_ = [ "fun", "arg" ]
@@ -88,6 +110,9 @@ class App(RCFAE):
     def __str__(self):
         return ("( App : %s %s )" % (self.fun.__str__(), self.arg.__str__()))
 
+    def printable(self):
+        return "( App : %s %s)" % (self.fun.printable(), self.arg.printable())
+
 class Rec(RCFAE):
     _immutable_fields_ = [ "funName", "body", "expr" ]
     def __init__(self, funName, body, expr):
@@ -97,6 +122,9 @@ class Rec(RCFAE):
 
     def __str__(self):
         return ("( Rec : ( FunDef : %s:%s) %s)" % ( self.funName, self.body.__str__(), self.expr.__str__() ))
+
+    def printable(self):
+        return "( Rec : ( %s ) %s)" % (self.funName, self.expr.printable())
 
 #####################################################
 # Transformation from ebnf's tree structure to ours #

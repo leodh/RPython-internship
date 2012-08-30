@@ -1,6 +1,6 @@
 import parser
 
-from pypy.rlib.jit import JitDriver, elidable, promote
+from pypy.rlib.jit import JitDriver, elidable, promote, set_param
 
 #######################################
 # Map for environement representation #
@@ -317,13 +317,15 @@ class KeepBouncing(Bounce):
 # JITing instructions
 
 def get_printable_location(tree):
-    return tree.__str__()
+    return tree.printable()
 
 jitdriver = JitDriver(greens=['tree'], reds=['env', 'k', 'bouncer'], get_printable_location=get_printable_location)
     
 
 def Interpret(tree):
     """Interpret the tree."""
+
+    set_param(jitdriver, "trace_limit", 25000)
 
     env = Map()
     k = EndK()

@@ -1,15 +1,15 @@
 import parser
 
-from pypy.rlib.jit import JitDriver, elidable, promote
+from pypy.rlib.jit import JitDriver, elidable, promote, set_param
 
 #######################################
 # Map for environement representation #
 #######################################
 
 class Map(object):
+    _immutable_fields_=['values']
     def __init__(self):
         self.values = {}
-        self.other_maps = {}
 
     @elidable
     def getvalue(self, name):
@@ -255,12 +255,14 @@ class RecK(Continuation):
 # JITing instructions
 
 def get_printable_location(tree):
-    return tree.__str__()
+    return tree.printable()
 
 jitdriver = JitDriver(greens=['tree'], reds=['env', 'k', 'register'], get_printable_location=get_printable_location)
 
 def Interpret(tree):
     """Interpret the tree, iteratively."""
+
+    set_param(jitdriver, "trace_limit", 25000)
 
     register = ReturnType()
     tree = tree

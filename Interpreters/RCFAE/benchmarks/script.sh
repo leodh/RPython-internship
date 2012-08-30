@@ -7,11 +7,11 @@ rm out* test* RP*
 
 # Create file tests
 
-export nodes=10
+export nodes=1
 export runs=1000
 
-export max_nodes=10000
-export max_runs=1000000
+export max_nodes=11
+export max_runs=100000
 
 until [ "$nodes" -gt "$max_nodes" ];
 do
@@ -26,7 +26,7 @@ do
     done
     echo "lapin $nodes"
     echo "ninja $max_runs"
-    nodes=`expr $nodes \\* 10`
+    nodes=`expr $nodes + 1`
     runs=1000
 done
 
@@ -50,8 +50,8 @@ cd benchmarks/
 
 # Run tests
 
-export i=1
-export max_tests=20
+export i=0
+export max_tests=10
 
 export fileToWrite=''
 
@@ -78,7 +78,7 @@ do
 		i=`expr $i + 1`
 	    fi
 	done
-	i=1
+	i=0
     done
 done
 

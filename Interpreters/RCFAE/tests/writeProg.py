@@ -2,15 +2,10 @@ from random import randrange
 
 def generateProg(nodes):
     if nodes == 0:
-        return "0"
-    elif nodes == 1:
         return "x"
     else:
-        nodes_left = randrange(nodes+1)
-        nodes_right = nodes - nodes_left
-        left = generateProg(nodes_left)
-        right = generateProg(nodes_right)
-        return "{+ %s %s}" % (left,right)
+        right = generateProg(nodes - 1)
+        return "{+ %s %s}" % (right,right)
 
 def generateFunc(nodes,runs):
     prog = generateProg(nodes)
