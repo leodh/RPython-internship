@@ -2,16 +2,7 @@ import treeClass
 import parser
 import sys
 
-# So that you can still run this module under standard CPython, I add this
-# import guard that creates a dummy class instead.
-# (from Pypy's tutorial by Andrew Brown)
-try:
-    from pypy.rlib.jit import JitDriver, purefunction
-except ImportError:
-    class JitDriver(object):
-        def __init__(self,**kw): pass
-        def jit_merge_point(self,**kw): pass
-        def can_enter_jit(self,**kw): pass
+from pypy.rlib.jit import JitDriver, elidable
 
 
 ##########################
@@ -165,18 +156,17 @@ def Trampoline(bouncer, funDict):
         return NoMoreBounce(2)
     #
     
-@purefunction
+@elidable
 def GetFunc(funDict, name):
-    """Equivalent to funDict[name], but labelled as purefunction in JITing version to be run faster by the JITing VM."""
+    """Equivalent to funDict[name], but labelled as elidable in JITing version to be run faster by the JITing VM."""
 
     body = funDict.get(name, treeClass.NoneFunc())
     if isinstance(body, treeClass.NoneFunc) :
         print("Inexistant function : "+ name)
     return body
 
-@purefunction
 def GetInEnv(env, name):
-    """Equivalent to env[name], but labelled as purefunction to be run faster by the JITing VM."""
+    """Equivalent to env[name]."""
 
     try:
         val = env[name]
@@ -189,14 +179,8 @@ def GetInEnv(env, name):
 
 def get_printable_location(funDict, expr):
     return treeClass.treePrint(expr)
-    # if isinstance(bouncer, ToBounce):
-    #     return "ToBounce :\n\t " + treeClass.treePrint(bouncer.expr)
-    # elif isinstance(bouncer, NoMoreBounce):
-    #     return "NoMoreBounce :\n\t " + str(bouncer.value)
-    # else:
-    #     return "Not a valid bounce!"
 
-jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['bouncer', 'env', 'k'],
+jitdriver = JitDriver(greens=['funDict', 'expr'], reds=['bouncer', 'env'],
         get_printable_location=get_printable_location)
 
 def Interp(expr, funDict, env, k):
@@ -205,13 +189,12 @@ def Interp(expr, funDict, env, k):
     
     while 1:
 
-        jitdriver.jit_merge_point(funDict=funDict, bouncer=bouncer, expr=expr, env=env, k=k)
+        jitdriver.jit_merge_point(funDict=funDict, bouncer=bouncer, expr=expr, env=env)
         if isinstance(bouncer, NoMoreBounce):
             break
         elif isinstance(bouncer, ToBounce):
             expr = bouncer.expr
             env = bouncer.env
-            k = bouncer.k
             
             if isinstance(expr, treeClass.App):
                 enter = True
@@ -221,8 +204,7 @@ def Interp(expr, funDict, env, k):
             if enter:
                 expr = bouncer.expr
                 env = bouncer.env
-                k = bouncer.k
-                jitdriver.can_enter_jit(funDict=funDict, bouncer=bouncer, expr=expr, env=env, k=k)
+                jitdriver.can_enter_jit(funDict=funDict, bouncer=bouncer, expr=expr, env=env)
                 
     assert isinstance(bouncer, NoMoreBounce)
     return bouncer.value
