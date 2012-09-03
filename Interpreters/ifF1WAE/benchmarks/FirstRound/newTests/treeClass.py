@@ -3,7 +3,7 @@
 # <Prog> ::= <ifF1WAE>
 
 # <Def> ::= { ( <id> <id> )
-#                ( <ifF1WAE> ) } 
+#                <ifF1WAE> } 
 
 
 # <ifF1WAE> :: = <num>
@@ -17,13 +17,9 @@
 # <num> ::= [ '0' - '9' ]+
 # <id> ::= [ '_', 'a' - 'z', 'A' - 'Z'][ '_', 'a' - 'z', 'A' - 'Z', '0' -'9' ]*
 
-try:
-    from pypy.rlib.jit import elidable, promote
-except ImportError:
-    def promote(arg):
-        pass
-
-class Func:
+class Func(object):
+    _immutable_fields_ = ['name', 'argName', 'body']
+    
     def __init__(self, name, argName, body):
         self.name=name # Id
         self.argName=argName # Id
@@ -35,7 +31,8 @@ class NoneFunc(Func):
     def __init__(self):
         pass
 
-class ifF1WAE:
+class ifF1WAE(object):
+    _immutable_fields_ = ["funName"]
     def __init__(self):
         pass
         
@@ -55,11 +52,13 @@ class Num(Leaf):
 
 class Id(Leaf):
     _immutable_fields_ = ["name"]
+    
     def __init__(self, name):
         self.name=name # Id
 
 class Op(Node):
     _immutable_fields_ = ["op", "lhs", "rhs"]
+    
     def __init__(self, op, lhs, rhs):
         self.op=op # Op
         self.lhs=lhs # ifF1WAE
@@ -67,6 +66,7 @@ class Op(Node):
 
 class With(Node):
     _immutable_fields_ = ["name", "nameExpr", "body"]
+    
     def __init__(self, name, nameExpr, body):
         self.name=name # Id
         self.nameExpr=nameExpr # ifF1WAE
@@ -74,12 +74,14 @@ class With(Node):
 
 class App(Node):
     _immutable_fields_ = ["funName", "arg"]
+    
     def __init__(self, funName, arg):
         self.funName=funName # Id, name of a function
         self.arg=arg # ifF1WAE
 
 class If(Node):
     _immutable_fields_ = ["cond", "ctrue", "cfalse"]
+    
     def __init__(self, cond, ctrue, cfalse):
         self.cond=cond # Condition
         self.ctrue=ctrue # If condition is true
