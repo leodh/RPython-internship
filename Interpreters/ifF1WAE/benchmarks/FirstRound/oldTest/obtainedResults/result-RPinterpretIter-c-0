@@ -1,0 +1,932 @@
+Tests of RPinterpretIter-c
+
+Testing test1000runs10
+
+run 1
+        0.06 real         0.02 user         0.00 sys
+
+run 2
+        0.03 real         0.02 user         0.00 sys
+
+run 3
+        0.03 real         0.02 user         0.00 sys
+
+run 4
+        0.03 real         0.02 user         0.00 sys
+
+run 5
+        0.03 real         0.02 user         0.00 sys
+
+run 6
+        0.03 real         0.02 user         0.00 sys
+
+run 7
+        0.03 real         0.02 user         0.00 sys
+
+run 8
+        0.03 real         0.02 user         0.00 sys
+
+run 9
+        0.03 real         0.02 user         0.00 sys
+
+run 10
+        0.03 real         0.02 user         0.00 sys
+
+run 11
+        0.03 real         0.02 user         0.00 sys
+
+run 12
+        0.03 real         0.02 user         0.00 sys
+
+run 13
+        0.03 real         0.02 user         0.00 sys
+
+run 14
+        0.03 real         0.02 user         0.00 sys
+
+run 15
+        0.03 real         0.02 user         0.00 sys
+
+run 16
+        0.03 real         0.02 user         0.00 sys
+
+run 17
+        0.03 real         0.02 user         0.00 sys
+
+run 18
+        0.03 real         0.02 user         0.00 sys
+
+run 19
+        0.03 real         0.02 user         0.00 sys
+
+run 20
+        0.03 real         0.02 user         0.00 sys
+
+Testing test1000runs100
+
+run 1
+        0.05 real         0.04 user         0.00 sys
+
+run 2
+        0.05 real         0.04 user         0.00 sys
+
+run 3
+        0.05 real         0.04 user         0.00 sys
+
+run 4
+        0.05 real         0.04 user         0.00 sys
+
+run 5
+        0.05 real         0.04 user         0.00 sys
+
+run 6
+        0.05 real         0.04 user         0.00 sys
+
+run 7
+        0.05 real         0.04 user         0.00 sys
+
+run 8
+        0.05 real         0.04 user         0.00 sys
+
+run 9
+        0.05 real         0.04 user         0.00 sys
+
+run 10
+        0.05 real         0.04 user         0.00 sys
+
+run 11
+        0.05 real         0.04 user         0.00 sys
+
+run 12
+        0.05 real         0.04 user         0.00 sys
+
+run 13
+        0.05 real         0.04 user         0.00 sys
+
+run 14
+        0.05 real         0.04 user         0.00 sys
+
+run 15
+        0.05 real         0.04 user         0.00 sys
+
+run 16
+        0.05 real         0.04 user         0.00 sys
+
+run 17
+        0.05 real         0.04 user         0.00 sys
+
+run 18
+        0.05 real         0.04 user         0.00 sys
+
+run 19
+        0.05 real         0.04 user         0.00 sys
+
+run 20
+        0.05 real         0.04 user         0.00 sys
+
+Testing test1000runs1000
+
+run 1
+        0.27 real         0.26 user         0.00 sys
+
+run 2
+        0.27 real         0.26 user         0.00 sys
+
+run 3
+        0.27 real         0.26 user         0.00 sys
+
+run 4
+        0.27 real         0.26 user         0.00 sys
+
+run 5
+        0.27 real         0.26 user         0.00 sys
+
+run 6
+        0.27 real         0.26 user         0.00 sys
+
+run 7
+        0.27 real         0.26 user         0.00 sys
+
+run 8
+        0.27 real         0.26 user         0.00 sys
+
+run 9
+        0.27 real         0.26 user         0.00 sys
+
+run 10
+        0.27 real         0.26 user         0.00 sys
+
+run 11
+        0.27 real         0.26 user         0.00 sys
+
+run 12
+        0.27 real         0.26 user         0.00 sys
+
+run 13
+        0.27 real         0.26 user         0.00 sys
+
+run 14
+        0.27 real         0.26 user         0.00 sys
+
+run 15
+        0.27 real         0.26 user         0.00 sys
+
+run 16
+        0.27 real         0.26 user         0.00 sys
+
+run 17
+        0.27 real         0.26 user         0.00 sys
+
+run 18
+        0.27 real         0.26 user         0.00 sys
+
+run 19
+        0.27 real         0.26 user         0.00 sys
+
+run 20
+        0.27 real         0.26 user         0.00 sys
+
+Testing test1000runs10000
+
+run 1
+        2.37 real         2.36 user         0.00 sys
+
+run 2
+        2.38 real         2.36 user         0.00 sys
+
+run 3
+        2.38 real         2.36 user         0.00 sys
+
+run 4
+        2.37 real         2.36 user         0.00 sys
+
+run 5
+        2.38 real         2.36 user         0.00 sys
+
+run 6
+        2.38 real         2.36 user         0.00 sys
+
+run 7
+        2.37 real         2.36 user         0.00 sys
+
+run 8
+        2.37 real         2.36 user         0.00 sys
+
+run 9
+        2.37 real         2.36 user         0.01 sys
+
+run 10
+        2.37 real         2.36 user         0.00 sys
+
+run 11
+        2.38 real         2.36 user         0.00 sys
+
+run 12
+        2.38 real         2.36 user         0.01 sys
+
+run 13
+        2.38 real         2.36 user         0.00 sys
+
+run 14
+        2.38 real         2.36 user         0.00 sys
+
+run 15
+        2.37 real         2.36 user         0.01 sys
+
+run 16
+        2.38 real         2.36 user         0.01 sys
+
+run 17
+        2.38 real         2.36 user         0.00 sys
+
+run 18
+        2.38 real         2.36 user         0.01 sys
+
+run 19
+        2.37 real         2.36 user         0.00 sys
+
+run 20
+        2.37 real         2.36 user         0.00 sys
+
+Testing test1000runs100000
+
+run 1
+       22.73 real        22.68 user         0.04 sys
+
+run 2
+       22.70 real        22.66 user         0.03 sys
+
+run 3
+       22.71 real        22.67 user         0.03 sys
+
+run 4
+       22.72 real        22.68 user         0.03 sys
+
+run 5
+       22.73 real        22.68 user         0.04 sys
+
+run 6
+       22.71 real        22.67 user         0.03 sys
+
+run 7
+       22.71 real        22.67 user         0.03 sys
+
+run 8
+       22.69 real        22.66 user         0.02 sys
+
+run 9
+       22.73 real        22.68 user         0.04 sys
+
+run 10
+       22.68 real        22.66 user         0.02 sys
+
+run 11
+       22.69 real        22.66 user         0.02 sys
+
+run 12
+       22.72 real        22.68 user         0.03 sys
+
+run 13
+       22.69 real        22.66 user         0.02 sys
+
+run 14
+       22.67 real        22.65 user         0.01 sys
+
+run 15
+       22.72 real        22.68 user         0.03 sys
+
+run 16
+       22.68 real        22.66 user         0.02 sys
+
+run 17
+       22.70 real        22.67 user         0.02 sys
+
+run 18
+       22.68 real        22.66 user         0.01 sys
+
+run 19
+       22.69 real        22.66 user         0.02 sys
+
+run 20
+       22.67 real        22.65 user         0.01 sys
+
+Testing test100runs10
+
+run 1
+        0.01 real         0.00 user         0.00 sys
+
+run 2
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+        0.01 real         0.00 user         0.00 sys
+
+run 20
+        0.01 real         0.00 user         0.00 sys
+
+Testing test100runs100
+
+run 1
+        0.01 real         0.00 user         0.00 sys
+
+run 2
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+        0.01 real         0.00 user         0.00 sys
+
+run 20
+        0.01 real         0.00 user         0.00 sys
+
+Testing test100runs1000
+
+run 1
+        0.03 real         0.03 user         0.00 sys
+
+run 2
+        0.03 real         0.02 user         0.00 sys
+
+run 3
+        0.03 real         0.02 user         0.00 sys
+
+run 4
+        0.03 real         0.02 user         0.00 sys
+
+run 5
+        0.03 real         0.02 user         0.00 sys
+
+run 6
+        0.03 real         0.02 user         0.00 sys
+
+run 7
+        0.03 real         0.03 user         0.00 sys
+
+run 8
+        0.03 real         0.03 user         0.00 sys
+
+run 9
+        0.03 real         0.02 user         0.00 sys
+
+run 10
+        0.03 real         0.02 user         0.00 sys
+
+run 11
+        0.03 real         0.02 user         0.00 sys
+
+run 12
+        0.03 real         0.02 user         0.00 sys
+
+run 13
+        0.03 real         0.03 user         0.00 sys
+
+run 14
+        0.03 real         0.03 user         0.00 sys
+
+run 15
+        0.03 real         0.03 user         0.00 sys
+
+run 16
+        0.03 real         0.02 user         0.00 sys
+
+run 17
+        0.03 real         0.02 user         0.00 sys
+
+run 18
+        0.03 real         0.02 user         0.00 sys
+
+run 19
+        0.03 real         0.02 user         0.00 sys
+
+run 20
+        0.03 real         0.02 user         0.00 sys
+
+Testing test100runs10000
+
+run 1
+        0.27 real         0.26 user         0.00 sys
+
+run 2
+        0.27 real         0.26 user         0.00 sys
+
+run 3
+        0.27 real         0.26 user         0.00 sys
+
+run 4
+        0.27 real         0.26 user         0.00 sys
+
+run 5
+        0.27 real         0.26 user         0.00 sys
+
+run 6
+        0.27 real         0.26 user         0.00 sys
+
+run 7
+        0.27 real         0.26 user         0.00 sys
+
+run 8
+        0.27 real         0.26 user         0.00 sys
+
+run 9
+        0.27 real         0.26 user         0.00 sys
+
+run 10
+        0.27 real         0.26 user         0.00 sys
+
+run 11
+        0.27 real         0.26 user         0.00 sys
+
+run 12
+        0.27 real         0.26 user         0.00 sys
+
+run 13
+        0.27 real         0.26 user         0.00 sys
+
+run 14
+        0.27 real         0.26 user         0.00 sys
+
+run 15
+        0.27 real         0.26 user         0.00 sys
+
+run 16
+        0.27 real         0.26 user         0.00 sys
+
+run 17
+        0.27 real         0.26 user         0.00 sys
+
+run 18
+        0.27 real         0.26 user         0.00 sys
+
+run 19
+        0.27 real         0.26 user         0.00 sys
+
+run 20
+        0.27 real         0.27 user         0.00 sys
+
+Testing test100runs100000
+
+run 1
+        2.22 real         2.21 user         0.00 sys
+
+run 2
+        2.22 real         2.21 user         0.00 sys
+
+run 3
+        2.22 real         2.21 user         0.00 sys
+
+run 4
+        2.22 real         2.21 user         0.00 sys
+
+run 5
+        2.22 real         2.21 user         0.00 sys
+
+run 6
+        2.22 real         2.21 user         0.00 sys
+
+run 7
+        2.22 real         2.21 user         0.00 sys
+
+run 8
+        2.22 real         2.21 user         0.00 sys
+
+run 9
+        2.22 real         2.21 user         0.00 sys
+
+run 10
+        2.22 real         2.21 user         0.00 sys
+
+run 11
+        2.22 real         2.21 user         0.00 sys
+
+run 12
+        2.22 real         2.21 user         0.00 sys
+
+run 13
+        2.22 real         2.21 user         0.00 sys
+
+run 14
+        2.22 real         2.21 user         0.00 sys
+
+run 15
+        2.22 real         2.21 user         0.00 sys
+
+run 16
+        2.22 real         2.21 user         0.00 sys
+
+run 17
+        2.22 real         2.21 user         0.00 sys
+
+run 18
+        2.22 real         2.21 user         0.00 sys
+
+run 19
+        2.22 real         2.21 user         0.00 sys
+
+run 20
+        2.22 real         2.21 user         0.00 sys
+
+Testing test10runs10
+
+run 1
+        0.01 real         0.00 user         0.00 sys
+
+run 2
+        0.00 real         0.00 user         0.00 sys
+
+run 3
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+        0.00 real         0.00 user         0.00 sys
+
+run 5
+        0.00 real         0.00 user         0.00 sys
+
+run 6
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+        0.00 real         0.00 user         0.00 sys
+
+run 8
+        0.00 real         0.00 user         0.00 sys
+
+run 9
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+        0.00 real         0.00 user         0.00 sys
+
+run 11
+        0.00 real         0.00 user         0.00 sys
+
+run 12
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+        0.00 real         0.00 user         0.00 sys
+
+run 14
+        0.00 real         0.00 user         0.00 sys
+
+run 15
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+        0.00 real         0.00 user         0.00 sys
+
+run 17
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+        0.00 real         0.00 user         0.00 sys
+
+run 20
+        0.01 real         0.00 user         0.00 sys
+
+Testing test10runs100
+
+run 1
+        0.01 real         0.00 user         0.00 sys
+
+run 2
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+        0.01 real         0.00 user         0.00 sys
+
+run 20
+        0.01 real         0.00 user         0.00 sys
+
+Testing test10runs1000
+
+run 1
+        0.01 real         0.00 user         0.00 sys
+
+run 2
+        0.01 real         0.00 user         0.00 sys
+
+run 3
+        0.01 real         0.00 user         0.00 sys
+
+run 4
+        0.01 real         0.00 user         0.00 sys
+
+run 5
+        0.01 real         0.00 user         0.00 sys
+
+run 6
+        0.01 real         0.00 user         0.00 sys
+
+run 7
+        0.01 real         0.00 user         0.00 sys
+
+run 8
+        0.01 real         0.00 user         0.00 sys
+
+run 9
+        0.01 real         0.00 user         0.00 sys
+
+run 10
+        0.01 real         0.00 user         0.00 sys
+
+run 11
+        0.01 real         0.00 user         0.00 sys
+
+run 12
+        0.01 real         0.00 user         0.00 sys
+
+run 13
+        0.01 real         0.00 user         0.00 sys
+
+run 14
+        0.01 real         0.00 user         0.00 sys
+
+run 15
+        0.01 real         0.00 user         0.00 sys
+
+run 16
+        0.01 real         0.00 user         0.00 sys
+
+run 17
+        0.01 real         0.00 user         0.00 sys
+
+run 18
+        0.01 real         0.00 user         0.00 sys
+
+run 19
+        0.01 real         0.00 user         0.00 sys
+
+run 20
+        0.01 real         0.00 user         0.00 sys
+
+Testing test10runs10000
+
+run 1
+        0.04 real         0.04 user         0.00 sys
+
+run 2
+        0.04 real         0.04 user         0.00 sys
+
+run 3
+        0.05 real         0.04 user         0.00 sys
+
+run 4
+        0.04 real         0.04 user         0.00 sys
+
+run 5
+        0.04 real         0.04 user         0.00 sys
+
+run 6
+        0.04 real         0.04 user         0.00 sys
+
+run 7
+        0.04 real         0.04 user         0.00 sys
+
+run 8
+        0.04 real         0.04 user         0.00 sys
+
+run 9
+        0.04 real         0.04 user         0.00 sys
+
+run 10
+        0.04 real         0.04 user         0.00 sys
+
+run 11
+        0.04 real         0.04 user         0.00 sys
+
+run 12
+        0.04 real         0.04 user         0.00 sys
+
+run 13
+        0.04 real         0.04 user         0.00 sys
+
+run 14
+        0.04 real         0.04 user         0.00 sys
+
+run 15
+        0.04 real         0.04 user         0.00 sys
+
+run 16
+        0.04 real         0.04 user         0.00 sys
+
+run 17
+        0.04 real         0.04 user         0.00 sys
+
+run 18
+        0.04 real         0.04 user         0.00 sys
+
+run 19
+        0.04 real         0.04 user         0.00 sys
+
+run 20
+        0.04 real         0.04 user         0.00 sys
+
+Testing test10runs100000
+
+run 1
+        0.26 real         0.25 user         0.00 sys
+
+run 2
+        0.26 real         0.25 user         0.00 sys
+
+run 3
+        0.26 real         0.25 user         0.00 sys
+
+run 4
+        0.26 real         0.25 user         0.00 sys
+
+run 5
+        0.26 real         0.25 user         0.00 sys
+
+run 6
+        0.26 real         0.25 user         0.00 sys
+
+run 7
+        0.26 real         0.25 user         0.00 sys
+
+run 8
+        0.26 real         0.25 user         0.00 sys
+
+run 9
+        0.26 real         0.25 user         0.00 sys
+
+run 10
+        0.26 real         0.25 user         0.00 sys
+
+run 11
+        0.26 real         0.25 user         0.00 sys
+
+run 12
+        0.26 real         0.25 user         0.00 sys
+
+run 13
+        0.26 real         0.25 user         0.00 sys
+
+run 14
+        0.26 real         0.25 user         0.00 sys
+
+run 15
+        0.26 real         0.25 user         0.00 sys
+
+run 16
+        0.26 real         0.25 user         0.00 sys
+
+run 17
+        0.26 real         0.25 user         0.00 sys
+
+run 18
+        0.26 real         0.25 user         0.00 sys
+
+run 19
+        0.26 real         0.25 user         0.00 sys
+
+run 20
+        0.26 real         0.25 user         0.00 sys
+

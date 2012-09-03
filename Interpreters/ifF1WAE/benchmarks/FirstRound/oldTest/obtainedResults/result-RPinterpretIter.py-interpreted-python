@@ -1,0 +1,212 @@
+Test of RPinterpretIter.py interpreted with python
+
+Testing test1000runs10
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.05 real         0.03 user         0.01 sys
+
+Abort tests of test1000runs10
+Testing test1000runs100
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test1000runs100
+Testing test1000runs1000
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test1000runs1000
+Testing test1000runs10000
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test1000runs10000
+Testing test1000runs100000
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test1000runs100000
+Testing test100runs10
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test100runs10
+Testing test100runs100
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test100runs100
+Testing test100runs1000
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test100runs1000
+Testing test100runs10000
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test100runs10000
+Testing test100runs100000
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test100runs100000
+Testing test10runs10
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test10runs10
+Testing test10runs100
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test10runs100
+Testing test10runs1000
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test10runs1000
+Testing test10runs10000
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test10runs10000
+Testing test10runs100000
+
+run 1
+Traceback (most recent call last):
+  File "RPinterpretIter.py", line 1, in <module>
+    import treeClass
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 116, in <module>
+    class Map(object):
+  File "/Users/leonarddeharo2/RPython-internship/Interpreters/ifF1WAE/benchmarks/treeClass.py", line 121, in Map
+    @elidable
+NameError: name 'elidable' is not defined
+        0.04 real         0.03 user         0.01 sys
+
+Abort tests of test10runs100000
